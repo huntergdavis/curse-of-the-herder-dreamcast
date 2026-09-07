@@ -1,0 +1,6 @@
+# mkdcdisc: the modern Dreamcast disc-image tool (ELF in, self-booting CDI out).
+FROM debian:bookworm-slim
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get update && apt-get install -y --no-install-recommends git build-essential meson ninja-build pkg-config libisofs-dev ca-certificates && rm -rf /var/lib/apt/lists/*
+RUN git clone --depth 1 https://gitlab.com/simulant/mkdcdisc.git /opt/mkdcdisc && cd /opt/mkdcdisc && meson setup builddir && ninja -C builddir && cp builddir/mkdcdisc /usr/local/bin/
+WORKDIR /src

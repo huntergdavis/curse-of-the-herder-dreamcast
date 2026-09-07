@@ -25,3 +25,15 @@ cdi: $(TARGET)
 	mkisofs -C 0,11702 -V HERDER -G build/IP.BIN -joliet -rock -l -o build/herder.iso build/disc
 	cdi4dc build/herder.iso build/herder.cdi
 	ls -la build/herder.cdi
+
+# Plain single-session ISO images, which the browser emulator (Flycast WASM) loads; two variants while we learn
+# whether its high-level BIOS descrambles 1ST_READ.BIN.
+iso: $(TARGET)
+	mkdir -p build build/disc build/disc-plain
+	sh-elf-objcopy -R .stack -O binary $(TARGET) build/herder.bin
+	scramble build/herder.bin build/disc/1ST_READ.BIN
+	cp build/herder.bin build/disc-plain/1ST_READ.BIN
+	cd disc && makeip ip.txt ../build/IP.BIN
+	mkisofs -V HERDER -G build/IP.BIN -joliet -rock -l -o build/herder-scrambled.iso build/disc
+	mkisofs -V HERDER -G build/IP.BIN -joliet -rock -l -o build/herder-plain.iso build/disc-plain
+	ls -la build/*.iso

@@ -15,11 +15,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Build the ELF and the CDI in the KallistiOS image
+      - name: Build the ELF and the browser ISO in the KallistiOS image
+        run: docker run --rm -v "$PWD":/src -w /src einsteinx2/dcdev-kos-toolchain:latest sh -c "make iso"
+      - name: Build the self-booting CDI with mkdcdisc
         run: |
-          docker run --rm -v "$PWD":/src -w /src einsteinx2/dcdev-kos-toolchain:latest sh -c "make cdi"
+          docker build -t herder-mkdcdisc -f tools/Dockerfile.mkdcdisc tools
+          docker run --rm -v "$PWD":/src -w /src herder-mkdcdisc mkdcdisc -e herder.elf -o build/herder.cdi -n "Curse of the Herder" -a "Hunter Davis" -r 20260907 -N
+      - name: Stage the game files into the site
+        run: |
           mkdir -p site/game
           cp build/herder.cdi site/game/herder.cdi
+          cp build/herder-plain.iso site/game/herder-plain.iso
           cp herder.elf site/game/herder.elf
           ls -la site/game
       - uses: actions/upload-pages-artifact@v3

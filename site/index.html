@@ -4,22 +4,67 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Curse of the Herder — Dreamcast</title>
+<script src="coi-serviceworker.js"></script>
 <style>
+  :root { color-scheme: dark; }
   body { margin: 0; font: 16px/1.5 system-ui, sans-serif; background: #1d2a1e; color: #f4f1e6; }
-  main { max-width: 900px; margin: 0 auto; padding: 24px 16px; }
+  main { max-width: 900px; margin: 0 auto; padding: 20px 16px 48px; }
+  h1 { margin: 0 0 6px; font-size: 26px; }
+  h2 { font-size: 19px; margin: 26px 0 8px; }
+  .sub { margin: 0 0 16px; color: #cfd8c4; }
+  #game { width: 100%; aspect-ratio: 4 / 3; background: #000; border-radius: 10px; overflow: hidden; }
+  img.shot { width: 100%; border-radius: 10px; display: block; }
   a { color: #ffd37a; }
-  .card { background: #2a3a2b; border-radius: 12px; padding: 16px 20px; margin: 16px 0; }
+  .row { display: flex; gap: 12px; flex-wrap: wrap; margin: 14px 0; }
+  .btn { display: inline-block; background: #ffd37a; color: #1d2a1e; font-weight: 600; padding: 10px 16px; border-radius: 8px; text-decoration: none; }
+  .btn.alt { background: #2a3a2b; color: #f4f1e6; border: 1px solid #4a5f4b; }
+  .card { background: #2a3a2b; border-radius: 12px; padding: 14px 18px; margin: 14px 0; }
+  .tag { display: inline-block; font-size: 12px; font-weight: 600; color: #1d2a1e; background: #cf8; border-radius: 999px; padding: 2px 10px; vertical-align: middle; }
+  small { color: #a9b6a0; }
 </style>
 </head>
 <body>
 <main>
   <h1>Curse of the Herder — Dreamcast</h1>
-  <p>The try-it-in-your-browser emulator is being wired up. Until it is, the disc image is here:</p>
-  <div class="card">
-    <p><a href="game/herder.cdi">Download herder.cdi</a> (self-booting; burn to CD-R or load in Flycast / Redream / GDEMU)</p>
-    <p><a href="game/herder.elf">Download herder.elf</a> (for Flycast or dc-load)</p>
+  <p class="sub">A port of <a href="https://hunterdavis.com/curse-of-the-herder/">Curse of the Herder</a> to the Sega Dreamcast, on KallistiOS. Status: boot proof.</p>
+
+  <div class="row">
+    <a class="btn" href="game/herder.cdi">Download herder.cdi</a>
+    <a class="btn alt" href="game/herder.elf">herder.elf (dc-load / Flycast)</a>
+    <a class="btn alt" href="https://github.com/huntergdavis/curse-of-the-herder-dreamcast">Source and plan</a>
   </div>
-  <p>Source and plan: <a href="https://github.com/huntergdavis/curse-of-the-herder-dreamcast">github.com/huntergdavis/curse-of-the-herder-dreamcast</a>. The web original: <a href="https://hunterdavis.com/curse-of-the-herder/">hunterdavis.com/curse-of-the-herder</a>.</p>
+
+  <h2>The disc, on hardware and desktop emulators</h2>
+  <p>Open <code>herder.cdi</code> in <a href="https://github.com/flyinghead/flycast">Flycast</a> or Redream, burn it to a CD-R, or load it from a GDEMU. This is what it does today, captured from Flycast:</p>
+  <img class="shot" src="boot-proof.png" alt="A green pasture, a brown pen, and a white sheep, running on the Dreamcast" />
+
+  <h2>Try it in the browser <span class="tag">experimental</span></h2>
+  <p>This runs the same disc in <a href="https://github.com/nasomers/flycast-wasm">Flycast WASM</a>, a browser Dreamcast emulator. It is only a few weeks old and does not yet boot this KallistiOS homebrew; the frame you see may stay black. Desktop Flycast and real hardware run it fine. The player is here so it starts working the moment the browser core can boot homebrew.</p>
+  <div id="game"></div>
+
+  <div class="card">
+    <p><small>Emulator: Flycast WASM by Nick Somers, on <a href="https://github.com/flyinghead/flycast">Flycast</a> (GPLv2), inside <a href="https://github.com/EmulatorJS/EmulatorJS">EmulatorJS</a> (GPLv3), redistributed in <code>emulatorjs/</code> and <code>emulator/</code> with their sources. No Sega BIOS is included; the emulator boots with its own high-level BIOS. Saves stay in your browser.</small></p>
+  </div>
 </main>
+<script>
+  window.EJS_player = "#game";
+  window.EJS_core = "flycast";
+  window.EJS_gameName = "Curse of the Herder";
+  window.EJS_gameUrl = new URLSearchParams(location.search).get("game") || "game/herder-plain.iso";
+  window.EJS_pathtodata = "emulatorjs/";
+  window.EJS_threads = false;
+  window.EJS_startOnLoaded = false;
+  window.EJS_disableLocalStorage = true; // so EJS_defaultOptions reach the core settings file before boot
+  window.EJS_color = "#ffd37a";
+  window.EJS_backgroundColor = "#1d2a1e";
+  window.EJS_defaultOptions = {
+    "reicast_hle_bios": "enabled",
+    "reicast_boot_to_bios": "disabled",
+    "reicast_emulate_framebuffer": "enabled",
+    "reicast_internal_resolution": "640x480",
+    "reicast_frame_skipping": "disabled"
+  };
+</script>
+<script src="emulatorjs/loader.js"></script>
 </body>
 </html>
