@@ -21,7 +21,7 @@ cdi: $(TARGET)
 	mkdir -p build build/disc
 	sh-elf-objcopy -R .stack -O binary $(TARGET) build/herder.bin
 	scramble build/herder.bin build/disc/1ST_READ.BIN
-	makeip disc/ip.txt build/IP.BIN
+	cd disc && makeip ip.txt ../build/IP.BIN
 	mkisofs -C 0,11702 -V HERDER -G build/IP.BIN -joliet -rock -l -o build/herder.iso build/disc
 	cdi4dc build/herder.iso build/herder.cdi
 	ls -la build/herder.cdi
