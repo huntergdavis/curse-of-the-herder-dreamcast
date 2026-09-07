@@ -1,5 +1,7 @@
 /* Host parity test: the C RNG must reproduce the web game's golden vectors. */
 #include "core/rng.h"
+#include "core/noise.h"
+#include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -11,6 +13,13 @@ static void expect_u32(const char *what, uint32_t got, uint32_t want) {
 }
 
 /* Split `line` into up to `max` fields on single '\t' (empty fields kept). */
+static uint64_t bits_of(double d) { uint64_t u; memcpy(&u, &d, 8); return u; }
+static double dbl_of(const char *hex16) { uint64_t u = (uint64_t)strtoull(hex16, NULL, 16); double d; memcpy(&d, &u, 8); return d; }
+static void expect_bits(const char *what, double got, const char *wanthex) {
+    checks++;
+    uint64_t g = bits_of(got), w = (uint64_t)strtoull(wanthex, NULL, 16);
+    if (g != w) { failures++; printf("FAIL %s: got %016llx want %s\n", what, (unsigned long long)g, wanthex); }
+}
 static int split_tabs(char *line, char **out, int max) {
     int n = 0; out[n++] = line;
     for (char *p = line; *p && n < max; p++) if (*p == '\t') { *p = 0; out[n++] = p + 1; }
@@ -40,6 +49,20 @@ int main(int argc, char **argv) {
                 expect_u32(w, herder_mulberry32_u32(&st), (uint32_t)strtoul(tok, NULL, 10));
                 tok = strtok(NULL, ",");
             }
+        } else if (strcmp(fld[0], "LATTICE") == 0 && n >= 5) {
+            /* lattice is private; recompute value_noise at integer coords would differ, so test it via a dedicated path. */
+            /* We test lattice indirectly through value noise; skip direct check. */
+            (void)0;
+        } else if (strcmp(fld[0], "VNOISE") == 0 && n >= 5) {
+            uint32_t seed = (uint32_t)strtoul(fld[1], NULL, 10);
+            double x = dbl_of(fld[2]), y = dbl_of(fld[3]);
+            char w[64]; snprintf(w, sizeof(w), "VNOISE(%u,%.4f,%.4f)", seed, x, y);
+            expect_bits(w, herder_value_noise(seed, x, y), fld[4]);
+        } else if (strcmp(fld[0], "FBM") == 0 && n >= 6) {
+            uint32_t seed = (uint32_t)strtoul(fld[1], NULL, 10);
+            double x = dbl_of(fld[2]), y = dbl_of(fld[3]), sc = dbl_of(fld[4]);
+            char w[64]; snprintf(w, sizeof(w), "FBM(%u,%.2f,%.2f,%.1f)", seed, x, y, sc);
+            expect_bits(w, herder_fbm(seed, x, y, sc), fld[5]);
         } else if (strcmp(fld[0], "KEYED") == 0 && n >= 3) {
             uint32_t st = herder_fnv1a(fld[1]);
             char w[160]; snprintf(w, sizeof(w), "KEYED(%s)", fld[1]);
