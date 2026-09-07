@@ -1,0 +1,63 @@
+FNV		811c9dc5
+FNV	a	e40c292c
+FNV	seed	5045bcac
+FNV	|	f90c4a3b
+FNV	seed|sheep|7|100|flee	61ace977
+FNV	The Curse	d21ca6ce
+FNV	0	350ca8af
+FNV	-1	14cd0a2b
+FNV	curse-of-the-herder	13355f58
+FNV	map|tex|511|511	02f8be14
+MUL	0	8	1144304738,1416247,958946056,627933444,2007157716,2340967985,2642484575,2787370982
+MUL	1	8	2693262067,11749833,2265367787,4213581821,4159151403,1207330352,2632122864,3095568220
+MUL	2166136261	8	2625274932,2119670693,3324411561,1770755366,3488654967,245707362,3933777375,831505780
+MUL	3735928559	8	4043151706,1147597007,3315858022,1538288752,2042435954,3600176436,484360372,1362401224
+MUL	4294967295	8	3850105811,813802916,3073704848,4054706436,3630262831,2315588663,2922715533,2042566601
+KEYED	seed|sheep|7|100|flee	495590118	seed|sheep|7|100|flee
+KEYED	seed|sheep|7|101|flee	2499900343	seed|sheep|7|101|flee
+KEYED	seed|sheep|8|100|flee	4211532619	seed|sheep|8|100|flee
+KEYED	seed|tex|511|511	2538967244	seed|tex|511|511
+KEYED	seed|deco-var|0|0	4048710609	seed|deco-var|0|0
+KEYED	seed|dog-name	818511368	seed|dog-name
+KEYED	seed|signature	3325418309	seed|signature
+KEYED	seed|rain-len|4200	2733396371	seed|rain-len|4200
+KEYED	seed|pen-x|3	258862111	seed|pen-x|3
+KEYED	seed|flee|12|2|480	850602930	seed|flee|12|2|480
+KEYED	seed|mishap|bog|999	1616606422	seed|mishap|bog|999
+KEYED	seed|jailbreak-who|12345	2898874259	seed|jailbreak-who|12345
+KEYED	other|sheep|7|100|flee	2623181448	other|sheep|7|100|flee
+KEYED	other|sheep|7|101|flee	4237374025	other|sheep|7|101|flee
+KEYED	other|sheep|8|100|flee	3347521139	other|sheep|8|100|flee
+KEYED	other|tex|511|511	4246231990	other|tex|511|511
+KEYED	other|deco-var|0|0	1674162958	other|deco-var|0|0
+KEYED	other|dog-name	4197611812	other|dog-name
+KEYED	other|signature	3169386825	other|signature
+KEYED	other|rain-len|4200	1948620303	other|rain-len|4200
+KEYED	other|pen-x|3	851815939	other|pen-x|3
+KEYED	other|flee|12|2|480	230800049	other|flee|12|2|480
+KEYED	other|mishap|bog|999	1824609092	other|mishap|bog|999
+KEYED	other|jailbreak-who|12345	4257838836	other|jailbreak-who|12345
+KEYED	curse-of-the-herder|sheep|7|100|flee	1142594600	curse-of-the-herder|sheep|7|100|flee
+KEYED	curse-of-the-herder|sheep|7|101|flee	1220590803	curse-of-the-herder|sheep|7|101|flee
+KEYED	curse-of-the-herder|sheep|8|100|flee	1339869677	curse-of-the-herder|sheep|8|100|flee
+KEYED	curse-of-the-herder|tex|511|511	1569244160	curse-of-the-herder|tex|511|511
+KEYED	curse-of-the-herder|deco-var|0|0	3983358976	curse-of-the-herder|deco-var|0|0
+KEYED	curse-of-the-herder|dog-name	3895420344	curse-of-the-herder|dog-name
+KEYED	curse-of-the-herder|signature	3479248901	curse-of-the-herder|signature
+KEYED	curse-of-the-herder|rain-len|4200	2897088423	curse-of-the-herder|rain-len|4200
+KEYED	curse-of-the-herder|pen-x|3	1734986857	curse-of-the-herder|pen-x|3
+KEYED	curse-of-the-herder|flee|12|2|480	200538775	curse-of-the-herder|flee|12|2|480
+KEYED	curse-of-the-herder|mishap|bog|999	2028207434	curse-of-the-herder|mishap|bog|999
+KEYED	curse-of-the-herder|jailbreak-who|12345	1284967359	curse-of-the-herder|jailbreak-who|12345
+KEYED	payoff|sheep|7|100|flee	3015366382	payoff|sheep|7|100|flee
+KEYED	payoff|sheep|7|101|flee	2534537258	payoff|sheep|7|101|flee
+KEYED	payoff|sheep|8|100|flee	3714383532	payoff|sheep|8|100|flee
+KEYED	payoff|tex|511|511	3602875933	payoff|tex|511|511
+KEYED	payoff|deco-var|0|0	1865621498	payoff|deco-var|0|0
+KEYED	payoff|dog-name	2848312388	payoff|dog-name
+KEYED	payoff|signature	3696226069	payoff|signature
+KEYED	payoff|rain-len|4200	1033366944	payoff|rain-len|4200
+KEYED	payoff|pen-x|3	1462816741	payoff|pen-x|3
+KEYED	payoff|flee|12|2|480	2916395033	payoff|flee|12|2|480
+KEYED	payoff|mishap|bog|999	2564663250	payoff|mishap|bog|999
+KEYED	payoff|jailbreak-who|12345	2401589897	payoff|jailbreak-who|12345

@@ -23,7 +23,17 @@ port is known; the field will be integer costs).
 ## Phases
 
 0. **Boot proof** (done): a KallistiOS program that clears the screen, draws a
-   pen and a blinking sheep, exits on Start; Docker build; `.cdi`.
+   pen and a blinking sheep, exits on Start; Docker build; `.cdi`. Verified on
+   native Flycast via the reios HLE BIOS.
+
+1b. **Determinism spine** (in progress): the RNG is ported to C
+   (`src/core/rng.c`: fnv1a, mulberry32, keyedUnit) and checked against golden
+   vectors dumped from the web game (`scripts/dc-golden.ts` there,
+   `tests/golden/rng.txt` here). `./scripts/host-test.sh` builds with the host
+   compiler and asserts byte-exact parity; CI runs it on every push. This is
+   the method for the rest: port a module, dump a golden from TS, prove the C
+   matches, then move on. Next: value noise, then map generation, then the
+   sim step, each with its own golden.
 1. **Try-before-you-download site**: GitHub Pages hosts Flycast WASM with the
    current `.cdi` and a download link. CI builds the disc and publishes both.
    Cross-origin isolation via a service worker; BIOS-less boot via HLE.

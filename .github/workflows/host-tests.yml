@@ -1,0 +1,13 @@
+name: Host parity tests
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+jobs:
+  host-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and run host parity tests
+        run: ./scripts/host-test.sh
