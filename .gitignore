@@ -1,0 +1,6 @@
+*.o
+*.elf
+build/
+site/game/
+node_modules/
+scratch/
