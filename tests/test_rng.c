@@ -1,6 +1,7 @@
 /* Host parity test: the C RNG must reproduce the web game's golden vectors. */
 #include "core/rng.h"
 #include "core/noise.h"
+#include "core/map/terrain.h"
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -63,6 +64,11 @@ int main(int argc, char **argv) {
             double x = dbl_of(fld[2]), y = dbl_of(fld[3]), sc = dbl_of(fld[4]);
             char w[64]; snprintf(w, sizeof(w), "FBM(%u,%.2f,%.2f,%.1f)", seed, x, y, sc);
             expect_bits(w, herder_fbm(seed, x, y, sc), fld[5]);
+        } else if (strcmp(fld[0], "CLASSIFY") == 0 && n >= 4) {
+            double e = dbl_of(fld[1]), m = dbl_of(fld[2]);
+            checks++;
+            int got = herder_classify(e, m), want = atoi(fld[3]);
+            if (got != want) { failures++; printf("FAIL CLASSIFY(%.3f,%.3f): got %d want %d\n", e, m, got, want); }
         } else if (strcmp(fld[0], "KEYED") == 0 && n >= 3) {
             uint32_t st = herder_fnv1a(fld[1]);
             char w[160]; snprintf(w, sizeof(w), "KEYED(%s)", fld[1]);
