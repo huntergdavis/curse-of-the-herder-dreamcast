@@ -142,8 +142,8 @@ static void induction_screen(const HallRec *r, int *prevBtns){
         herder_fb_text(fb,(HERDER_SCRW-herder_fb_text_w(r->name,2))/2,116,r->name,0xffff,2);
         herder_fb_text_wrap(fb,HERDER_SCRW/2-84,230,r->epitaph,HERDER_C_ink,1,168,4);
         char st[80]; snprintf(st,sizeof(st),"%d sheep  %d books  Lv%d  %s", r->sheep, r->books, r->level, r->clock);
-        herder_fb_text(fb,(HERDER_SCRW-herder_fb_text_w(st,1))/2,410,st,0xffff,1);
-        herder_fb_text(fb,(HERDER_SCRW-herder_fb_text_w("Inducted into the Hall  -  Press START",1))/2,432,"Inducted into the Hall  -  Press START",0xffff,1);
+        herder_fb_text(fb,(HERDER_SCRW-herder_fb_text_w(st,1))/2,392,st,0xffff,1);
+        herder_fb_text(fb,(HERDER_SCRW-herder_fb_text_w("Inducted into the Hall  -  Press START",1))/2,414,"Inducted into the Hall  -  Press START",0xffff,1);
         vid_waitvbl();
     }
 }
