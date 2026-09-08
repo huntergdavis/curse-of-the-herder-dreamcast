@@ -31,6 +31,7 @@ static int seed_idx=0;
 static HerderMap g_map;
 static HerderWorld g_world;
 static int g_inited=0;
+static int g_cowx=-1, g_cowy=-1;
 
 static void new_day(void){
     if(g_inited){ herder_world_free(&g_world); herder_map_free(&g_map); }
@@ -260,6 +261,7 @@ int main(int argc, char **argv){
             }
             if(g_world.tick-lastInn>90*60*4){ for(int v=0;v<g_world.map->village_count;v++){ int dx=g_world.map->villages[v].x-hx, dy=g_world.map->villages[v].y-hy; if(dx*dx+dy*dy<25){ lastInn=g_world.tick; HerderUtterance u=herder_speak_kind(&g_world,EV_inn,4,0.3); if(u.ok){ snprintf(curline,sizeof(curline),"%s",u.text); lineUntil=frame+(int)(u.seconds*60); snprintf(lastHeard,sizeof(lastHeard),"%s",u.text); } break; } } }
             if(g_world.tick-lastHens>45*60*4 && mku(g_world.seed,"hens-say",g_world.tick)<0.5){ int found=0; for(int dy=-3;dy<=3&&!found;dy++) for(int dx=-3;dx<=3;dx++){ int x=hx+dx,y=hy+dy; if(x<0||y<0||x>=N||y>=N)continue; int dd=g_world.map->deco[y*N+x]; if(dd==D_House||dd==D_HouseRed){ found=1; break; } } if(found){ lastHens=g_world.tick; HerderUtterance u=herder_speak_kind(&g_world,EV_hens,4,0.3); if(u.ok){ snprintf(curline,sizeof(curline),"%s",u.text); lineUntil=frame+(int)(u.seconds*60); snprintf(lastHeard,sizeof(lastHeard),"%s",u.text); } } }
+            if(g_cowx>=0){ int dx=g_cowx-hx, dy=g_cowy-hy; static int lastCow=-100000; if(dx*dx+dy*dy<20 && g_world.tick-lastCow>60*60*4 && (g_world.h.carrying>=0 || mku(g_world.seed,"cow-say",g_world.tick)<0.6)){ lastCow=g_world.tick; HerderUtterance u=herder_speak_kind(&g_world,EV_cow,4,0.3); if(u.ok){ snprintf(curline,sizeof(curline),"%s",u.text); lineUntil=frame+(int)(u.seconds*60); snprintf(lastHeard,sizeof(lastHeard),"%s",u.text); } } }
         }
         /* deliver queued flyting beats when the bubble is free */
         if(qn>0 && frame>=lineUntil && frame>=qat[qhead]){ snprintf(curline,sizeof(curline),"%s",qtext[qhead]); lineUntil=frame+qsecs[qhead]; snprintf(lastHeard,sizeof(lastHeard),"%s",qtext[qhead]); qhead=(qhead+1)%8; qn--; }
@@ -276,6 +278,7 @@ int main(int argc, char **argv){
         herder_fb_set_anim(frame);
         herder_fb_set_tint(9.0 + g_world.tick/14400.0);
         herder_fb_draw_world(fb,&g_world);
+        herder_fb_cow(fb,&g_world,g_cowx,g_cowy);
         herder_fb_weather(fb,&g_world);
         if(frame<rainbowUntil){ int left=rainbowUntil-frame; herder_fb_rainbow(fb, left>120?200:left*200/120); }
         herder_fb_minimap(fb,&g_world);

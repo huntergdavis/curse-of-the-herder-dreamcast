@@ -506,3 +506,21 @@ void herder_fb_forecast(uint16_t *fb, const char *text){
     herder_fb_fill(fb,bx,by,bw,bh,HERDER_C_panel);
     herder_fb_text_wrap(fb,bx+8,by+8,text,HERDER_C_ink,1,bw-16,4);
 }
+
+
+/* a cow standing in a field, drawn at a world tile (camera-transformed) */
+void herder_fb_cow(uint16_t *fb, const HerderWorld *w, int tx, int ty){
+    if(tx<0) return;
+    int cx=(int)(g_camx<0?w->h.x:g_camx), cy=(int)(g_camy<0?w->h.y:g_camy);
+    int ox=cx-VIEWW/2, oy=cy-VIEWH/2;
+    int sx=(tx-ox)*HERDER_TS+HERDER_TS/2, sy=HERDER_TOP+(ty-oy)*HERDER_TS+HERDER_TS/2;
+    if(sx<-20||sy<HERDER_TOP-20||sx>HERDER_SCRW+20||sy>HERDER_SCRH+20) return;
+    uint16_t body=HEX(0x6b5a4a), white=HEX(0xf0ead8), dark=HEX(0x2a2018);
+    shadow(fb,sx,sy+8,12);
+    herder_fb_fill(fb,sx-7,sy+6,3,5,dark); herder_fb_fill(fb,sx+4,sy+6,3,5,dark); /* legs */
+    disc(fb,sx,sy,9,body);                       /* body */
+    herder_fb_fill(fb,sx-6,sy-4,6,7,white); herder_fb_fill(fb,sx+2,sy+1,5,5,white); /* patches */
+    disc(fb,sx+9,sy-2,4,body);                    /* head */
+    herder_fb_fill(fb,sx+12,sy-1,2,2,HEX(0xd8b0a0)); /* muzzle */
+    herder_fb_fill(fb,sx+8,sy-6,1,2,dark); herder_fb_fill(fb,sx+11,sy-6,1,2,dark); /* horns/ears */
+}
