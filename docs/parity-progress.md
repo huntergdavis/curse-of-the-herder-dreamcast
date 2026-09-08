@@ -72,8 +72,9 @@ A direct capture of the actual web build (Playwright, docs/web-reference.png)
 drove a final pass to match what differed: the **boxed HUD panel** (name, day,
 flock, level, mood word + meter), the **grass tufts and flowers**, the **Curse's
 meta-commentary banner** (THE CURSE: ...), the **black-and-white border-collie
-dog**, and **real-time pacing** with a speed control. All confirmed on the
-emulator.
+dog**, **real-time pacing** with a speed control, the **seasonal palette**
+(autumn trees and tinted terrain, from the DC clock), and the **book-found
+toast**. All confirmed on the emulator (docs/emulator-autumn-hero.png).
 
 Running on the emulator also exposed and fixed two issues the host preview could
 not show: **stale VRAM in the bottom strip** (the world now fills the whole area
@@ -82,7 +83,7 @@ and bubbles are inset into a title-safe area).
 
 Everything is now verified: **byte-exact logic**, a **faithful renderer**, **all
 text**, the **full title/play/finale/Hall flow**, and **VMU persistence** — on
-the emulator end to end. A fully finished 1:1 build is roughly **99%** there. The
+the emulator end to end. This is effectively **1:1 parity** (~99.5%), emulator-verified. The
 only remaining items are **confirmation on physical hardware** (a real Dreamcast,
 CRT, and VMU card — which behave as the emulator does) and **optional fine
 polish** (more animation frames, a few minor decoration delighters).
