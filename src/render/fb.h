@@ -7,7 +7,7 @@
 
 #define HERDER_SCRW 640
 #define HERDER_SCRH 480
-#define HERDER_TS   5
+#define HERDER_TS   22
 #define HERDER_TOP  32                 /* HUD height */
 #define HERDER_BOT  64                 /* speech panel height */
 
