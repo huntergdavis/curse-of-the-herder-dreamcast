@@ -182,7 +182,9 @@ int main(int argc, char **argv){
     int wasRaining=0, rainbowUntil=-1;
     char curseLine[160]=""; int curseUntil=-1, lastCurse=-100000;
     char toastLine[96]=""; int toastUntil=-1;
-    char lastHeard[512]=""; char forecast[256]=""; int forecastUntil=frame+8*60; herder_forecast(g_world.seed,g_world.season,forecast,sizeof(forecast));
+    char lastHeard[512]="";
+    char qtext[8][512]; int qat[8], qsecs[8]; int qn=0, qhead=0;
+    int lastDiaryHour=9; char diaryLine[160]=""; int diaryUntil=-1; char forecast[256]=""; int forecastUntil=frame+8*60; herder_forecast(g_world.seed,g_world.season,forecast,sizeof(forecast));
     static const int SPEEDS[6]={1,2,5,20,60,300}; int spi=0; g_fast=SPEEDS[spi];
     uint64 lastms=timer_ms_gettime64(); double tickAccum=0;
 
@@ -205,6 +207,12 @@ int main(int argc, char **argv){
                     HerderEvent *ev=&g_world.events[seq];
                     HerderUtterance u=herder_speak_for_event(&g_world,ev,4);
                     if(u.ok){ snprintf(curline,sizeof(curline),"%s",u.text); lineUntil=frame+(int)(u.seconds*60); snprintf(lastHeard,sizeof(lastHeard),"%s",u.text); }
+                    if(strcmp(ev->kind,"caught")==0 && ev->sheep_id>=0 && ev->sheep_id<g_world.sheep_count && g_world.sheep[ev->sheep_id].named && u.ok){
+                        int lv=herder_level_for(herder_erudition(g_world.booksRead,g_world.sheepPenned,g_world.tick/14400.0));
+                        if(lv>=2){ int at=frame+(int)(u.seconds*60)+24; static const char*bk[3]={"repeatEscape","flytingReply","repeatEscape"};
+                            for(int bi=0;bi<3 && qn<8;bi++){ HerderEvent be=*ev; snprintf(be.kind,sizeof(be.kind),"%s",bk[bi]); HerderUtterance bu=herder_speak_for_event(&g_world,&be,4);
+                                if(bu.ok){ snprintf(qtext[(qhead+qn)%8],512,"%s",bu.text); qat[(qhead+qn)%8]=at; qsecs[(qhead+qn)%8]=(int)(bu.seconds*60); qn++; at+=(int)(bu.seconds*60)+36; } } }
+                    }
                     if(strcmp(ev->kind,"bookFound")==0 && ev->book[0]){ const char *ti=ev->book; for(int bi=0;bi<HERDER_BOOKS_N;bi++) if(strcmp(HERDER_BOOKS[bi].id,ev->book)==0){ ti=HERDER_BOOKS[bi].title; break; } snprintf(toastLine,sizeof(toastLine),"Found: %s",ti); toastUntil=frame+5*60; }
                     if(frame-lastCurse>1200){ int lv=herder_level_for(herder_erudition(g_world.booksRead,g_world.sheepPenned,g_world.tick/14400.0));
                         const char *ck = (strcmp(ev->kind,"mishap")==0||strcmp(ev->kind,"milestone")==0)&&ev->detail[0]?ev->detail:ev->kind;
@@ -235,6 +243,15 @@ int main(int argc, char **argv){
                 HerderUtterance u=herder_speak_kind(&g_world,EV_hat,4,0.35); lastHat=g_world.tick; if(u.ok){ snprintf(curline,sizeof(curline),"%s",u.text); lineUntil=frame+(int)(u.seconds*60); snprintf(lastHeard,sizeof(lastHeard),"%s",u.text); }
             }
         }
+        /* deliver queued flyting beats when the bubble is free */
+        if(qn>0 && frame>=lineUntil && frame>=qat[qhead]){ snprintf(curline,sizeof(curline),"%s",qtext[qhead]); lineUntil=frame+qsecs[qhead]; snprintf(lastHeard,sizeof(lastHeard),"%s",qtext[qhead]); qhead=(qhead+1)%8; qn--; }
+        /* hourly diary */
+        { double dh=9.0+g_world.tick/14400.0; int hr=(int)dh;
+          if(hr!=lastDiaryHour && g_world.tick>=40 && hr!=9 && !g_world.finished){ lastDiaryHour=hr;
+            int lv=herder_level_for(herder_erudition(g_world.booksRead,g_world.sheepPenned,g_world.tick/14400.0));
+            double fr=g_world.frustration; const char*md=fr<22?"grumbling":fr<42?"cursing":fr<66?"swearing":"unhinged";
+            snprintf(diaryLine,sizeof(diaryLine),"%02d:00 - %d/%d in - %d books - level %d - %s", hr, g_world.sheepPenned, g_world.sheep_count, g_world.booksRead, lv, md);
+            diaryUntil=frame+5*60; } }
         herder_fb_set_anim(frame);
         herder_fb_set_tint(9.0 + g_world.tick/14400.0);
         herder_fb_draw_world(fb,&g_world);
@@ -245,6 +262,7 @@ int main(int argc, char **argv){
         if(frame<forecastUntil) herder_fb_forecast(fb,forecast);
         if(frame<curseUntil) herder_fb_curse_banner(fb,curseLine);
         if(frame<toastUntil) herder_fb_toast(fb,toastLine);
+        if(frame<diaryUntil) herder_fb_toast(fb,diaryLine);
         if(frame<lineUntil) herder_fb_bubble(fb,&g_world,curline);
         herder_fb_lastheard(fb,lastHeard);
         vid_waitvbl();
