@@ -18,6 +18,7 @@ uint16_t HERDER_C_hud, HERDER_C_panel, HERDER_C_ink, HERDER_C_bar_bg, HERDER_C_b
 static int g_anim = 0;
 void herder_fb_set_anim(int frame){ g_anim = frame; }
 static double g_shadow_skew = 0;
+static double g_tired = 0;
 static double g_camx=-1, g_camy=-1;
 void herder_fb_reset_camera(void){ g_camx=-1; g_camy=-1; }
 
@@ -229,7 +230,7 @@ static void draw_house(uint16_t *fb,int px,int py,int red){
 static void draw_rival(uint16_t *fb, const HerderWorld *w);
 void herder_fb_draw_world(uint16_t *fb, const HerderWorld *w){
     const HerderMap *m=w->map;
-    { double hr=9.0+w->tick/14400.0; double sk=(hr-13.5)*0.14; if(sk<-0.6)sk=-0.6; if(sk>0.6)sk=0.6; g_shadow_skew=sk; }
+    { double hr=9.0+w->tick/14400.0; double sk=(hr-13.5)*0.14; if(sk<-0.6)sk=-0.6; if(sk>0.6)sk=0.6; g_shadow_skew=sk; double td=(hr-14.0)/4.0; if(td<0)td=0; if(td>1)td=1; g_tired=td; }
     /* lead the camera toward where he is going (web: +0.25 * toward path[min(4,rem-1)]) */
     double _tx=w->h.x, _ty=w->h.y; int _rem=w->h.path_len - w->h.path_head;
     if(_rem>0){ int _k=(_rem-1<4)?(_rem-1):4; int _wx=w->h.path[(w->h.path_head+_k)*2], _wy=w->h.path[(w->h.path_head+_k)*2+1]; _tx+=(_wx-w->h.x)*0.25; _ty+=(_wy-w->h.y)*0.25; }
