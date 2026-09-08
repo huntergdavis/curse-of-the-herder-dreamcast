@@ -99,28 +99,43 @@ static void draw_sheep(uint16_t *fb,int cx,int cy,int black,int facing,int movin
     if(crowned){ uint16_t g=HEX(0xe0b33c); int gx=cx+(facing==2?-6:6); herder_fb_fill(fb,gx-3,cy-8,7,2,g); herder_fb_fill(fb,gx-3,cy-11,2,3,g); herder_fb_fill(fb,gx,cy-11,2,3,g); herder_fb_fill(fb,gx+2,cy-11,2,3,g); }
     else if(named){ uint16_t r=HEX(0xc94f4f); int rx=cx+(facing==2?-5:5); herder_fb_fill(fb,rx-1,cy-7,3,3,r); }
 }
-static void draw_herder(uint16_t *fb,int cx,int cy,int facing,int carrying,int moving,int level,int winter){
+static void draw_herder(uint16_t *fb,int cx,int cy,int facing,int carrying,int moving,int level,int winter,int mode){
     uint16_t coat=C_herder, skin=HEX(0xe8b98a), hat=HERDER_C_ink, boot=HEX(0x3b3a4a), belt=HEX(0x3a2f2a);
+    int sitting = (mode==HM_READING||mode==HM_RESTING);
+    int ranting = (mode==HM_RANTING||mode==HM_MISHAP);
+    int gazing  = (mode==HM_GAZING);
     int sw = moving ? ((g_anim/4)%2 ? 2 : -2) : 0;  /* stride */
     int bob = moving ? ((g_anim/4)%2 ? -1 : 0) : 0;
     shadow(fb,cx,cy+13,10);
-    herder_fb_fill(fb,cx-4,cy+8, 3, 5, boot); herder_fb_fill(fb,cx+1,cy+8, 3, 5, boot); /* legs */
-    if(moving){ herder_fb_fill(fb,cx-4+sw,cy+11,3,2,boot); herder_fb_fill(fb,cx+1-sw,cy+11,3,2,boot); }
+    if(sitting){
+        cy+=6;                                       /* drop down onto the grass */
+        herder_fb_fill(fb,cx-6,cy+9,5,3,boot); herder_fb_fill(fb,cx+2,cy+9,5,3,boot); /* folded legs forward */
+    } else {
+        herder_fb_fill(fb,cx-4,cy+8, 3, 5, boot); herder_fb_fill(fb,cx+1,cy+8, 3, 5, boot);
+        if(moving){ herder_fb_fill(fb,cx-4+sw,cy+11,3,2,boot); herder_fb_fill(fb,cx+1-sw,cy+11,3,2,boot); }
+    }
     cy+=bob;
     if(level>=4 && !carrying){ herder_fb_fill(fb,cx+(facing==2?4:-6),cy+1,3,5,HEX(0x7b2d3a)); } /* book under arm */
     herder_fb_fill(fb,cx-4,cy-2,8,12,coat);         /* tunic */
     herder_fb_fill(fb,cx-4,cy+5,8,2,belt);          /* belt */
     if(level>=8||winter){ herder_fb_fill(fb,cx-4,cy-2,8,2,HEX(0xb03a3a)); herder_fb_fill(fb,cx+2,cy-1,2,6,HEX(0xb03a3a)); } /* scarf */
     disc(fb,cx,cy-8,4,skin);                        /* head */
-    /* facing: front shows two eyes, profile one, back none */
     if(facing==1){ herder_fb_fill(fb,cx-2,cy-8,1,1,HERDER_C_ink); herder_fb_fill(fb,cx+1,cy-8,1,1,HERDER_C_ink); }
     else if(facing==0){ herder_fb_fill(fb,cx+1,cy-8,1,1,HERDER_C_ink); }
     else if(facing==2){ herder_fb_fill(fb,cx-2,cy-8,1,1,HERDER_C_ink); }
-    herder_fb_fill(fb,cx-5,cy-11,10,2,hat);         /* hat brim */
-    herder_fb_fill(fb,cx-3,cy-14,6,3,hat);          /* hat crown */
-    if(facing==3) herder_fb_fill(fb,cx-4,cy-12,8,1,HEX(0x4a4438)); /* back of hat band */
-    if(carrying){ herder_fb_fill(fb,cx-6,cy-9,3,6,skin); herder_fb_fill(fb,cx+3,cy-9,3,6,skin); disc(fb,cx,cy-13,5,C_sheep); herder_fb_fill(fb,cx-2,cy-13,1,1,HERDER_C_ink); }
-    else { int px=facing==0?5:facing==2?-6:-1; herder_fb_fill(fb,cx+px,cy-10,2,18,HEX(0x8a6a3a)); herder_fb_fill(fb,cx+px-1,cy-11,4,2,HEX(0x8a6a3a)); } /* crook */
+    if(ranting){ /* the hat leaves his head */
+        herder_fb_fill(fb,cx-5,cy-16,10,2,hat); herder_fb_fill(fb,cx-3,cy-19,6,3,hat);
+        herder_fb_fill(fb,cx-7,cy-6,3,6,skin); herder_fb_fill(fb,cx+4,cy-6,3,6,skin); /* arms up */
+    } else {
+        herder_fb_fill(fb,cx-5,cy-11,10,2,hat);     /* hat brim */
+        herder_fb_fill(fb,cx-3,cy-14,6,3,hat);      /* hat crown */
+        if(facing==3) herder_fb_fill(fb,cx-4,cy-12,8,1,HEX(0x4a4438));
+    }
+    if(mode==HM_READING){ /* an open book in his hands */
+        herder_fb_fill(fb,cx-6,cy-4,12,7,HEX(0xc94f4f)); herder_fb_fill(fb,cx-5,cy-3,5,5,HEX(0xfffdf5)); herder_fb_fill(fb,cx+1,cy-3,5,5,HEX(0xfffdf5)); herder_fb_fill(fb,cx-1,cy-4,2,7,HEX(0x8a3030));
+    } else if(carrying){ herder_fb_fill(fb,cx-6,cy-9,3,6,skin); herder_fb_fill(fb,cx+3,cy-9,3,6,skin); disc(fb,cx,cy-13,5,C_sheep); herder_fb_fill(fb,cx-2,cy-13,1,1,HERDER_C_ink); }
+    else if(!ranting && !sitting){ int px=facing==0?5:facing==2?-6:-1; herder_fb_fill(fb,cx+px,cy-10,2,18,HEX(0x8a6a3a)); herder_fb_fill(fb,cx+px-1,cy-11,4,2,HEX(0x8a6a3a)); } /* crook */
+    (void)gazing;
 }
 static void draw_dog(uint16_t *fb,int cx,int cy,int facing,int moving){
     uint16_t body=HEX(0x7a5a3a), dark=HEX(0x2a2018), white=HEX(0xf0ead8);
@@ -184,7 +199,7 @@ void herder_fb_draw_world(uint16_t *fb, const HerderWorld *w){
       /* the sheepdog trots a step behind, on the side away from his facing */
       int ddx=w->h.facing==0?1:w->h.facing==2?-1:0, ddy=w->h.facing==1?1:w->h.facing==3?-1:0;
       draw_dog(fb,sx-ddx*HERDER_TS,sy-ddy*HERDER_TS+HERDER_TS/2, w->h.facing, hmv);
-      draw_herder(fb,sx,sy,w->h.facing,w->h.carrying>=0,hmv,lvl,winter); }
+      draw_herder(fb,sx,sy,w->h.facing,w->h.carrying>=0,hmv,lvl,winter,w->h.mode); }
     draw_rival(fb,w);
 }
 
@@ -248,7 +263,7 @@ void herder_fb_title(uint16_t *fb){
     disc(fb,cx+34,cy-6,15,rgb565(0x3a,0x2f,0x2a)); /* face */
     herder_fb_fill(fb,cx+40,cy-12,3,3,HERDER_C_ink); /* eye */
     /* the herder to the left, dog beside */
-    draw_herder(fb,cx-90,cy+6,0,0,0,6,0);
+    draw_herder(fb,cx-90,cy+6,0,0,0,6,0,HM_IDLE);
     draw_dog(fb,cx-70,cy+22,0,0);
 }
 
@@ -359,7 +374,7 @@ void herder_fb_gravestone(uint16_t *fb){
 
 
 /* dev helper: draw one herder / sheep for the sprite sheet. */
-void herder_fb_test_herder(uint16_t *fb,int x,int y,int facing,int carrying,int moving,int level){ draw_herder(fb,x,y,facing,carrying,moving,level,0); }
+void herder_fb_test_herder(uint16_t *fb,int x,int y,int facing,int carrying,int moving,int level,int mode){ draw_herder(fb,x,y,facing,carrying,moving,level,0,mode); }
 void herder_fb_test_sheep(uint16_t *fb,int x,int y,int black,int facing,int moving,int named,int crowned,int pose){ draw_sheep(fb,x,y,black,facing,moving,named,crowned,pose); }
 void herder_fb_test_dog(uint16_t *fb,int x,int y,int facing,int moving){ draw_dog(fb,x,y,facing,moving); }
 
