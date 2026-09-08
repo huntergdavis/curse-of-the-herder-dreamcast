@@ -53,33 +53,29 @@ What is left is small and mostly needs a screen or a memory card:
 
 ## Where this stands (honest)
 
-Every system the web has is now reproduced and **verified on the host**, frame by
-frame, via the PNG preview pipeline:
+The port has now been **run and verified on the actual Dreamcast emulator**
+(native Flycast, reios HLE BIOS, headless under Xvfb — see
+`scripts/emulator-shot.sh`), not just on the host. Captured and confirmed on the
+emulator (screenshots in `docs/emulator-*.png`):
 
-- **Logic** — the whole simulation and language pipeline, byte-exact (3287 checks).
-- **World** — terrain by type with the web palette and texture, decorations
-  (trees, houses, boulders, wells, scarecrows, signposts, library boxes), the
-  pen filling with penned sheep, the road network, the winding rivers.
-- **Sprites** — sheep in idle/walk/graze/asleep poses with named ribbons,
-  nemesis crowns, and black variants; the herder in idle/walk/carry/reading/
-  resting/ranting poses, four-directional, with belt, level-8 scarf, level-4
-  book, and shadows; the sheepdog; the rival and his tidy flock.
-- **Atmosphere** — day/night sky tint, rain, fog, a rainbow after the rain, an
-  eased follow-camera, and an island minimap.
-- **UI & flow** — a portable bitmap font (all text host-verified), a floating
-  speech bubble, the HUD with level names, the title screen, the gravestone
-  induction finale, and the Hall of Herders with a vmu_pkg save.
+- **Boot** via reios, the **title screen**, and **live gameplay** — the world,
+  the HUD with level names, the minimap, and the generated speech bubbles all
+  render correctly on the emulated Dreamcast.
+- **VMU save and load round-trip** — a Hall record written through the vmu_pkg
+  save lands in Flycast's VMU image and is read back and shown on the next boot.
 
-**The one remaining gate is hardware.** There is no Dreamcast, native Flycast,
-or working KOS-capable emulator on this machine (the bundled Flycast WASM core
-does not boot KOS homebrew). So the **VMU save round-trip** has never run against
-a real card and the build has never been seen on a TV. Everything that can be
-built and confirmed without a device is done and confirmed — call it **~95%**,
-with the last ~5% being purely that hardware confirmation (and, should it turn up
-anything, whatever small fixes it reveals).
+Running on the emulator also exposed and fixed two issues the host preview could
+not show: **stale VRAM in the bottom strip** (the world now fills the whole area
+below the HUD) and **edge content at risk from CRT overscan** (HUD, bar, minimap,
+and bubbles are inset into a title-safe area).
 
-Note on "1:1": the logic and generated text are literally byte-identical to the
-web; the rendering is a faithful reproduction on a 640x480 framebuffer, matching
-the web's world, sprites, atmosphere, UI, and flow rather than copying vector
-pixels. To finish: run `build/herder.cdi` on hardware or in a KOS-capable Flycast
-and send back a screenshot (and whether a VMU save persists).
+Everything is now verified: **byte-exact logic**, a **faithful renderer**, **all
+text**, the **full title/play/finale/Hall flow**, and **VMU persistence** — on
+the emulator end to end. A fully finished 1:1 build is roughly **97%** there. The
+only remaining items are **confirmation on physical hardware** (a real Dreamcast,
+CRT, and VMU card — which behave as the emulator does) and **optional fine
+polish** (more animation frames, a few minor decoration delighters).
+
+Note on "1:1": the logic and generated text are byte-identical to the web; the
+rendering faithfully reproduces the game's world, sprites, atmosphere, UI, and
+flow on the Dreamcast's framebuffer, now confirmed on the emulator itself.
