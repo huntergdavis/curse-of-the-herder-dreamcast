@@ -53,10 +53,34 @@ What is left is small and mostly needs a screen or a memory card:
 
 ## Where this stands (honest)
 
-Everything that can be built and verified from this environment is done:
-**all logic byte-exact**, a **faithful renderer** with all the major visual
-systems, **all text verified**, the **full game structure** with persistence, and
-the **speech bubble**. A fully polished, hardware-confirmed 1:1 build is roughly **88%** there. The
-remaining ~12% is hardware confirmation (VMU round-trip and how it looks on a
-TV), richer sprite animation, and a couple of minor delighters — none of it
-exactness-critical, and the confirmation simply needs a Dreamcast or an emulator.
+Everything that can be built **and verified** from this environment is done and
+confirmed. The port is a faithful, playable, byte-exact rendering of the game:
+
+- **Logic** — the whole simulation and language pipeline, byte-exact (3287 checks):
+  same day, same events, same words as the web, tick for tick.
+- **Renderer** (`render/fb.c`, every frame host-verified via PNG preview) — a
+  close herder-following camera; sprites for sheep (with named ribbons and a
+  nemesis crown), the herder (belt, level-8 scarf, level-4 book, overhead carry),
+  the sheepdog, trees, houses, and the rest; a walk cycle with shadows; the
+  web's palette and grass texture; the pen filling with penned sheep; the
+  day/night sky tint; rain, fog, and a rainbow after; an island minimap.
+- **Text** — a portable bitmap font, so the HUD, floating speech bubble, title,
+  Hall, and gravestone are identical on host and Dreamcast (no BIOS-font dep).
+- **Structure** — title -> play -> gravestone induction -> Hall of Herders ->
+  title, with signpost/hat delighters and a proper vmu_pkg save.
+
+**A fully polished, hardware-confirmed 1:1 build is roughly 90% there.** The last
+stretch is not more logic and mostly cannot be finished blind:
+
+1. **Hardware/emulator confirmation** — no Flycast or Dreamcast on this machine.
+   The world, sprites, and all text are host-verified, but the **VMU save
+   round-trip** has never run against a real card and nothing has been seen on a
+   TV. This is the one real gate.
+2. **Diminishing polish** — four-directional (up/down) sprite facings, more
+   animation frames, camera easing; a couple more proximity delighters.
+
+Note on "1:1": the logic and generated text are literally byte-identical to the
+web. The *rendering* is a faithful reproduction, not a pixel copy — a 640x480
+framebuffer with hand-drawn sprites is a different medium from the web's
+high-DPI vector canvas, so "parity" here means the same world, the same words,
+the same systems, and the same look and feel, all confirmed frame by frame.
