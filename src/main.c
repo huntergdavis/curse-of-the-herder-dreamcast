@@ -25,7 +25,7 @@ static void draw_hud(const HerderWorld *w){
     double hours=w->tick/14400.0;
     int hh=9+(int)hours, mm=(int)((hours-(int)hours)*60);
     int level=herder_level_for(herder_erudition(w->booksRead,w->sheepPenned,hours));
-    snprintf(line,sizeof(line),"%02d:%02d  Lv%d  Pen %d/%d  Books %d", hh,mm,level,w->sheepPenned,w->sheep_count,w->booksRead);
+    snprintf(line,sizeof(line),"%02d:%02d  Lv%d %s  Pen %d/%d  Books %d", hh,mm,level,HERDER_LEVEL_NAMES[level],w->sheepPenned,w->sheep_count,w->booksRead);
     bfont_set_foreground_color(0xef7b);
     bfont_set_background_color(HERDER_C_hud);
     bfont_draw_str(fb+2*HERDER_SCRW+6, HERDER_SCRW, 0, line);
@@ -37,15 +37,7 @@ static void draw_speech(const char *text){
     herder_fb_fill(fb,0,panelY,HERDER_SCRW,HERDER_BOT,HERDER_C_panel);
     herder_fb_fill(fb,0,panelY,HERDER_SCRW,2,HERDER_C_ink);
     if(!text||!text[0]) return;
-    bfont_set_foreground_color(HERDER_C_ink);
-    bfont_set_background_color(HERDER_C_panel);
-    char buf[256]; snprintf(buf,sizeof(buf),"%s",text);
-    int per=50, len=(int)strlen(buf);
-    char l1[64]={0}, l2[64]={0};
-    if(len<=per) snprintf(l1,sizeof(l1),"%s",buf);
-    else { int cut=per; while(cut>0 && buf[cut]!=' ') cut--; if(cut==0) cut=per; strncpy(l1,buf,cut); l1[cut]=0; snprintf(l2,sizeof(l2),"%.*s",per,buf+cut+1); }
-    bfont_draw_str(fb+(panelY+8)*HERDER_SCRW+8, HERDER_SCRW, 0, l1);
-    if(l2[0]) bfont_draw_str(fb+(panelY+34)*HERDER_SCRW+8, HERDER_SCRW, 0, l2);
+    herder_fb_text_wrap(fb,12,panelY+12,text,HERDER_C_ink,2,HERDER_SCRW-24,2);
 }
 
 static const char *SEEDS[]={"seed","grudge","payoff","curse-of-the-herder","tom"};
@@ -115,16 +107,15 @@ static void hall_screen(int *prevBtns){
         int pressed=btns & ~*prevBtns; *prevBtns=btns;
         if(pressed & (CONT_START|CONT_A|CONT_B)) return;
         herder_fb_fill(fb,0,0,HERDER_SCRW,HERDER_SCRH,HERDER_C_hud);
-        bfont_set_background_color(HERDER_C_hud); bfont_set_foreground_color(0xffff);
-        bfont_draw_str(fb+20*HERDER_SCRW+180, HERDER_SCRW, 0, "THE HALL OF HERDERS");
-        if(g_hall_n==0) bfont_draw_str(fb+120*HERDER_SCRW+120, HERDER_SCRW, 0, "No days yet. Go and suffer one.");
-        for(int i=0;i<g_hall_n;i++){ char l[80]; HallRec *r=&g_hall[i];
+        herder_fb_text(fb,(HERDER_SCRW-herder_fb_text_w("THE HALL OF HERDERS",2))/2,16,"THE HALL OF HERDERS",0xffff,2);
+        if(g_hall_n==0) herder_fb_text(fb,120,120,"No days yet. Go and suffer one.",0xffff,2);
+        for(int i=0;i<g_hall_n;i++){ char l[96]; HallRec *r=&g_hall[i];
             snprintf(l,sizeof(l),"%-22s %s  %2d sheep  Lv%d", r->name, r->clock, r->sheep, r->level);
-            bfont_draw_str(fb+(70+i*46)*HERDER_SCRW+30, HERDER_SCRW, 0, l);
-            char e[64]; snprintf(e,sizeof(e),"  \"%.44s\"", r->epitaph);
-            bfont_set_foreground_color(0xce59); bfont_draw_str(fb+(70+i*46+22)*HERDER_SCRW+30, HERDER_SCRW, 0, e); bfont_set_foreground_color(0xffff);
+            herder_fb_text(fb,24,58+i*46,l,0xffff,1);
+            char e[80]; snprintf(e,sizeof(e),"  \"%.60s\"", r->epitaph);
+            herder_fb_text(fb,24,58+i*46+16,e,0xce59,1);
         }
-        bfont_draw_str(fb+450*HERDER_SCRW+220, HERDER_SCRW, 0, "B: back");
+        herder_fb_text(fb,(HERDER_SCRW-herder_fb_text_w("B: back",2))/2,452,"B: back",0xffff,2);
         vid_waitvbl();
     }
 }
@@ -140,13 +131,11 @@ static void title_screen(int *prevBtns){
         if(pressed & CONT_Y){ hall_screen(prevBtns); continue; }
         if(pressed & (CONT_START|CONT_A)) return;
         herder_fb_title(fb);
-        bfont_set_background_color(HERDER_C_ink);
-        bfont_set_foreground_color(0xffff);
-        bfont_draw_str(fb+70*HERDER_SCRW+150, HERDER_SCRW, 0, "CURSE OF THE HERDER");
+        herder_fb_text(fb,(HERDER_SCRW-herder_fb_text_w("CURSE OF THE HERDER",3))/2, 40, "CURSE OF THE HERDER", HERDER_C_ink, 3);
         char sl[64]; snprintf(sl,sizeof(sl),"< pasture: %s >", SEEDS[seed_idx]);
-        bfont_draw_str(fb+420*HERDER_SCRW+180, HERDER_SCRW, 0, sl);
-        if((frame/30)%2==0) bfont_draw_str(fb+445*HERDER_SCRW+230, HERDER_SCRW, 0, "Press START");
-        bfont_draw_str(fb+445*HERDER_SCRW+20, HERDER_SCRW, 0, "Y: Hall");
+        herder_fb_text(fb,(HERDER_SCRW-herder_fb_text_w(sl,2))/2, 418, sl, 0xffff, 2);
+        if((frame/30)%2==0) herder_fb_text(fb,(HERDER_SCRW-herder_fb_text_w("Press START",2))/2, 448, "Press START", HERDER_C_ink, 2);
+        herder_fb_text(fb,16,452,"Y: Hall",HERDER_C_ink,2);
         vid_waitvbl(); frame++;
     }
 }

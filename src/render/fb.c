@@ -1,5 +1,6 @@
 #include "render/fb.h"
 #include "core/map/terrain.h"
+#include "render/font.h"
 
 static uint16_t rgb565(int r, int g, int b){ return (uint16_t)(((r>>3)<<11)|((g>>2)<<5)|(b>>3)); }
 #define HEX(h) rgb565(((h)>>16)&0xff, ((h)>>8)&0xff, (h)&0xff)
@@ -213,4 +214,40 @@ void herder_fb_title(uint16_t *fb){
     /* the herder to the left, dog beside */
     draw_herder(fb,cx-90,cy+6,0,0,0);
     draw_dog(fb,cx-70,cy+22,0,0);
+}
+
+
+/* bitmap-font text. scale>=1 magnifies. Returns the x after the string. */
+int herder_fb_text(uint16_t *fb, int x, int y, const char *str, uint16_t color, int scale){
+    if(scale<1) scale=1;
+    for(const unsigned char *p=(const unsigned char*)str; *p; p++){
+        int c=*p; if(c<32||c>126){ x+=HERDER_FONT_W*scale; continue; }
+        const uint8_t *g=HERDER_FONT[c-32];
+        for(int gy=0;gy<HERDER_FONT_H;gy++){ uint8_t row=g[gy];
+            for(int gx=0;gx<HERDER_FONT_W;gx++) if(row&(1<<gx)){
+                int px=x+gx*scale, py=y+gy*scale;
+                herder_fb_fill(fb,px,py,scale,scale,color);
+            }
+        }
+        x+=HERDER_FONT_W*scale;
+    }
+    return x;
+}
+int herder_fb_text_w(const char *str, int scale){ int n=0; for(const char*p=str;*p;p++)n++; return n*HERDER_FONT_W*(scale<1?1:scale); }
+
+
+/* word-wrapped text; draws up to maxlines lines within pixel width maxw. */
+void herder_fb_text_wrap(uint16_t *fb, int x, int y, const char *str, uint16_t color, int scale, int maxw, int maxlines){
+    int cw=HERDER_FONT_W*scale, lineh=(HERDER_FONT_H+2)*scale;
+    int per = maxw/cw; if(per<1) per=1;
+    char buf[512]; int n=0; for(const char*p=str; *p && n<511; p++) buf[n++]=*p; buf[n]=0;
+    int start=0, line=0, len=n;
+    while(start<len && line<maxlines){
+        int end=start+per; if(end>=len){ end=len; }
+        else { int cut=end; while(cut>start && buf[cut]!=' ') cut--; if(cut>start) end=cut; }
+        char tmp[128]; int L=end-start; if(L>127)L=127; for(int i=0;i<L;i++) tmp[i]=buf[start+i]; tmp[L]=0;
+        herder_fb_text(fb, x, y+line*lineh, tmp, color, scale);
+        start = (end<len && buf[end]==' ')? end+1 : end;
+        line++;
+    }
 }
