@@ -195,7 +195,10 @@ static void draw_fence(uint16_t *fb,int px,int py,int mx,int my,const HerderMap 
     herder_fb_fill(fb,cxp-2,cyp-6,4,13,post);
     #undef HASF
 }
-static void draw_tree(uint16_t *fb,int cx,int cy,uint16_t foliage){ herder_fb_fill(fb,cx-1,cy,3,7,HEX(0x6b4a2b)); disc(fb,cx,cy-3,7,foliage); }
+static uint16_t lighten(uint16_t c,int amt){ int r=((c>>11)&0x1f)*8+amt,g=((c>>5)&0x3f)*4+amt,b=(c&0x1f)*8+amt; if(r>255)r=255;if(g>255)g=255;if(b>255)b=255; return rgb565(r,g,b); }
+static void draw_tree(uint16_t *fb,int cx,int cy,uint16_t foliage){ herder_fb_fill(fb,cx-1,cy,3,7,HEX(0x6b4a2b)); disc(fb,cx,cy-3,7,foliage); disc(fb,cx-2,cy-5,2,lighten(foliage,40)); }
+static void draw_conifer(uint16_t *fb,int cx,int cy,uint16_t foliage){ herder_fb_fill(fb,cx-1,cy+4,2,4,HEX(0x6b4a2b)); uint16_t dark=(uint16_t)((foliage>>1)&0x7bef);
+    for(int r=0;r<11;r++){ int w=r; herder_fb_fill(fb,cx-w,cy-6+r,(w?w*2:1),1,foliage); herder_fb_fill(fb,cx,cy-6+r,(w?w:1),1,dark); } }
 static void draw_house(uint16_t *fb,int px,int py,int red){
     uint16_t wall=red?HEX(0xd8b28a):HEX(0xe8dcc3), roof=red?HEX(0xb03a3a):HEX(0x8c4a3a);
     herder_fb_fill(fb,px+3,py+HERDER_TS/2,HERDER_TS-6,HERDER_TS/2-1,wall);
@@ -224,7 +227,7 @@ void herder_fb_draw_world(uint16_t *fb, const HerderWorld *w){
             if(mx>=0&&my>=0&&mx<m->size&&my<m->size){ tex_fleck(fb,px,py,mx,my,t,w->seed);
                 switch(d){
                     case D_Tree: draw_tree(fb,px+HERDER_TS/2,py+HERDER_TS/2, g_greens[(unsigned)(mx*7+my*13)%5]); break;
-                    case D_Tree2: draw_tree(fb,px+HERDER_TS/2,py+HERDER_TS/2, C_tree2); break;
+                    case D_Tree2: draw_conifer(fb,px+HERDER_TS/2,py+HERDER_TS/2, C_tree2); break;
                     case D_House: case D_HouseRed: { draw_house(fb,px,py,d==D_HouseRed);
                         /* a couple of hens scratching by the door */
                         unsigned hh=(unsigned)(mx*17+my*31); for(int k=0;k<2;k++){ int hx=px+2+((hh>>(k*3))&7)%(HERDER_TS-3), hy=py+HERDER_TS-4-(k*2); disc(fb,hx,hy,2,HEX(0xf0ead8)); herder_fb_fill(fb,hx,hy-2,1,1,HEX(0xc94f4f)); herder_fb_fill(fb,hx+(k?2:-2),hy,1,1,HEX(0xe0b33c)); } } break;
