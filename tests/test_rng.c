@@ -10,6 +10,7 @@
 #include "core/sim/world.h"
 #include "core/lang/morphology.h"
 #include "core/lang/banned.h"
+#include "core/lang/grammar.h"
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -57,6 +58,26 @@ static HerderWorld *ev_world(const char *seed) {
     while (!cache[i]->finished && guard++ < 9*3600*4 + 10000) herder_step(cache[i]);
     return cache[i];
 }
+
+
+static void build_ctx(int cid, HerderContext *c){
+  static const char *RB[]={"bard"},*RC[]={"crawler"},*RV[]={"verse"},*RH[]={"hemingway"};
+  memset(c,0,sizeof(*c));
+  c->seed="seed"; c->tick=1000; c->level=0; c->band=0; c->heat=0; c->hour=11;
+  c->target.kind=0; c->target.noun="sheep"; c->target.name=NULL; c->target.plural=0;
+  c->registers=NULL; c->registers_n=0; c->signatureWord="turnip";
+  c->sheepRemaining=40; c->sheepPenned=0; c->booksRead=0;
+  c->recent=NULL; c->recent_n=0; c->recentRules=NULL; c->recentRules_n=0;
+  c->rulesToday=NULL; c->rulesToday_n=0; c->knownPacks=NULL; c->knownPacks_n=0;
+  c->villageName="Nether Wallop"; c->dogName="Biscuit"; c->rivalName="Tom"; c->season="summer";
+  c->st_flees=c->st_absurds=c->st_shames=c->st_rains=c->st_breathers=c->st_books=0;
+  if(cid==1){ c->level=3;c->band=2;c->heat=0.6;c->tick=5000;c->sheepRemaining=30;c->sheepPenned=10;c->target.name="Gerald"; }
+  else if(cid==2){ c->level=6;c->band=3;c->heat=0.85;c->tick=12000;c->sheepRemaining=5;c->sheepPenned=25;c->registers=RB;c->registers_n=1;c->target.kind=1;c->target.noun="mud";c->st_flees=4;c->st_absurds=2;c->st_shames=1;c->st_rains=2;c->st_breathers=1;c->st_books=3; }
+  else if(cid==3){ c->level=9;c->band=4;c->heat=0.95;c->tick=30000;c->sheepRemaining=1;c->sheepPenned=59;c->registers=RC;c->registers_n=1;c->target.name="Donut";c->st_flees=7;c->st_absurds=3;c->st_shames=2;c->st_rains=3;c->st_breathers=2;c->st_books=5; }
+  else if(cid==4){ c->level=11;c->band=2;c->heat=0.4;c->tick=40000;c->sheepRemaining=12;c->sheepPenned=48;c->registers=RV;c->registers_n=1;c->target.kind=3;c->target.noun="herder"; }
+  else if(cid==5){ c->level=12;c->band=4;c->heat=0.7;c->tick=60000;c->sheepRemaining=8;c->sheepPenned=52;c->registers=RH;c->registers_n=1;c->target.kind=2;c->target.noun="rain";c->st_flees=9;c->st_absurds=4;c->st_shames=3;c->st_rains=5;c->st_breathers=2;c->st_books=8; }
+}
+static int event_id(const char *name){ for(int i=0;i<HERDER_EVENT_COUNT;i++) if(strcmp(HERDER_EVENT_NAME[i],name)==0) return i; return -1; }
 
 int main(int argc, char **argv) {
     const char *path = argc > 1 ? argv[1] : "tests/golden/rng.txt";
@@ -219,6 +240,20 @@ int main(int argc, char **argv) {
             checks++;
             int got = herder_classify(e, m), want = atoi(fld[3]);
             if (got != want) { failures++; printf("FAIL CLASSIFY(%.3f,%.3f): got %d want %d\n", e, m, got, want); }
+        } else if (strcmp(fld[0], "GEN") == 0 && n >= 6) {
+            HerderContext ctx; build_ctx(atoi(fld[1]), &ctx);
+            int ev = event_id(fld[2]);
+            HerderGen g = herder_generate(ev, &ctx, atoi(fld[3]), atoi(fld[4]));
+            checks++;
+            int wantOk = atoi(fld[5]);
+            int bad = (g.ok != wantOk);
+            if (!bad && g.ok) {
+                if (strcmp(g.ruleId?g.ruleId:"", fld[6]) != 0) bad = 1;
+                else if (g.tier != atoi(fld[7])) bad = 1;
+                else if (strcmp(g.text, n>=9?fld[8]:"") != 0) bad = 1;
+                else if (strcmp(g.used, n>=10?fld[9]:"") != 0) bad = 1;
+            }
+            if (bad) { failures++; if (failures < 40) printf("FAIL GEN(c%s,%s,s%s,mt%s):\n  got  ok=%d id=%s t=%d [%s] used[%s]\n  want ok=%s id=%s t=%s [%s] used[%s]\n", fld[1],fld[2],fld[3],fld[4], g.ok,g.ruleId?g.ruleId:"",g.tier,g.text,g.used, fld[5],fld[6],fld[7],n>=9?fld[8]:"",n>=10?fld[9]:""); }
         } else if (strcmp(fld[0], "BAN") == 0 && n >= 3) {
             int g = herder_find_banned(fld[1]) ? 1 : 0;
             checks++; if (g != atoi(fld[2])) { failures++; printf("FAIL BAN(%s): got %d want %s\n", fld[1], g, fld[2]); }

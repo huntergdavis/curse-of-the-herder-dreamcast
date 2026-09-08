@@ -1899,3 +1899,735 @@ NORM	caféÀ	cafea
 NORM	traîner	trainer
 NORM	GREAT!!!	greatii
 NORM	a$$	ass
+GEN	0	idle	0	-1	1	t0-idle-6	0	Sheep.	
+GEN	0	idle	1	-1	1	t0-idle-18	0	Forty left.	
+GEN	0	idle	2	-1	1	t0-idle-3	0	Oy. Stick.	oy stick
+GEN	0	idle	3	-1	1	t0-idle-16	0	Hands. Marvellous.	hands marvellous
+GEN	0	flee	0	-1	1	t0-flee-1	0	Hey.	
+GEN	0	flee	1	-1	1	t0-flee-9	0	Oh no.	
+GEN	0	flee	2	-1	1	t0-flee-8	0	No no no.	
+GEN	0	flee	3	-1	1	t0-flee-5	0	Stop!	
+GEN	0	caught	0	-1	1	t0-caught-5	0	Come.	
+GEN	0	caught	1	-1	1	t0-caught-4	0	Up.	
+GEN	0	caught	2	-1	1	t0-caught-2	0	Tsk.	tsk
+GEN	0	caught	3	-1	1	t0-caught-8	0	Right.	
+GEN	0	penned	0	-1	1	t0-penned-6	0	Zero.	
+GEN	0	penned	1	-1	1	t0-penned-6	0	Zero.	
+GEN	0	penned	2	-1	1	t0-penned-6	0	Zero.	
+GEN	0	penned	3	-1	1	t0-penned-3	0	Stay.	
+GEN	0	absurd	0	-1	1	t0-absurd-5	0	Sheep. Rock. Why.	
+GEN	0	absurd	1	-1	1	t0-absurd-4	0	No. How.	
+GEN	0	absurd	2	-1	1	t0-absurd-4	0	No. How.	
+GEN	0	absurd	3	-1	1	t0-absurd-1	0	How.	
+GEN	0	repeatEscape	0	-1	1	t0-repeatEscape-5	0	Not you.	
+GEN	0	repeatEscape	1	-1	1	t0-repeatEscape-4	0	No. You.	
+GEN	0	repeatEscape	2	-1	1	t0-repeatEscape-4	0	No. You.	
+GEN	0	repeatEscape	3	-1	1	t0-repeatEscape-5	0	Not you.	
+GEN	0	finished	0	-1	1	t0-finished-2	0	All of them. In.	
+GEN	0	finished	1	-1	1	t0-finished-0	0	All. In.	
+GEN	0	finished	2	-1	1	t0-finished-3	0	…Done. All done.	
+GEN	0	finished	3	-1	1	t0-finished-0	0	All. In.	
+GEN	0	book	0	-1	1	t0-book-4	0	Hm. Words.	
+GEN	0	book	1	-1	1	t0-book-3	0	Book. Good.	
+GEN	0	book	2	-1	1	t0-book-3	0	Book. Good.	
+GEN	0	book	3	-1	1	t0-book-0	0	Book.	
+GEN	0	epitaph	0	-1	1	t0-epitaph-1	0	Gah.	gah
+GEN	0	epitaph	1	-1	1	t0-epitaph-0	0	Hedge.	hedge
+GEN	0	epitaph	2	-1	1	t0-epitaph-2	0	Sheep.	
+GEN	0	epitaph	3	-1	1	t0-epitaph-3	0	Sheep.	
+GEN	0	rain	0	-1	1	t0-rain-1	0	Wet.	
+GEN	0	rain	1	-1	1	t0-rain-2	0	Rain. Feh.	feh
+GEN	0	rain	2	-1	1	t0-rain-0	0	Rain.	
+GEN	0	rain	3	-1	1	t0-rain-0	0	Rain.	
+GEN	0	dusk	0	-1	1	t0-dusk-1	0	Sun low.	
+GEN	0	dusk	1	-1	1	t0-dusk-3	0	Tired.	
+GEN	0	dusk	2	-1	1	t0-dusk-2	0	Still sheep.	
+GEN	0	dusk	3	-1	1	t0-dusk-1	0	Sun low.	
+GEN	0	walkOfShame	0	-1	1	t0-walkOfShame-2	0	Pen. No sheep.	
+GEN	0	walkOfShame	1	-1	1	t0-walkOfShame-0	0	Empty.	
+GEN	0	walkOfShame	2	-1	1	t0-walkOfShame-3	0	Past. Nothing.	
+GEN	0	walkOfShame	3	-1	1	t0-walkOfShame-0	0	Empty.	
+GEN	0	breather	0	-1	1	t0-breather-1	0	Ears.	ears
+GEN	0	breather	1	-1	1	t0-breather-1	0	Ankles.	ankles
+GEN	0	breather	2	-1	1	t0-breather-1	0	Legs.	legs
+GEN	0	breather	3	-1	1	t0-breather-1	0	Teeth.	teeth
+GEN	0	bookPassed	0	-1	0				
+GEN	0	bookPassed	1	-1	0				
+GEN	0	bookPassed	2	-1	0				
+GEN	0	bookPassed	3	-1	0				
+GEN	0	callback	0	-1	0				
+GEN	0	callback	1	-1	0				
+GEN	0	callback	2	-1	0				
+GEN	0	callback	3	-1	0				
+GEN	0	rant	0	-1	0				
+GEN	0	rant	1	-1	0				
+GEN	0	rant	2	-1	0				
+GEN	0	rant	3	-1	0				
+GEN	0	gaze	0	-1	1	cb0-gaze-0	0	Cloud.	
+GEN	0	gaze	1	-1	1	cb0-gaze-1	0	Nice cloud.	
+GEN	0	gaze	2	-1	1	cb0-gaze-1	0	Nice cloud.	
+GEN	0	gaze	3	-1	1	cb0-gaze-4	0	Sun. Good.	
+GEN	0	nemesis	0	-1	1	cb0-nemesis-1	0	You. I see you.	
+GEN	0	nemesis	1	-1	1	cb0-nemesis-2	0	Three times. Remember face.	
+GEN	0	nemesis	2	-1	1	cb0-nemesis-0	0	THREE. You. Enemy.	
+GEN	0	nemesis	3	-1	1	cb0-nemesis-2	0	Three times. Remember face.	
+GEN	0	nemesisCaught	0	-1	1	cb0-nemesisCaught-0	0	GOT. YOU.	
+GEN	0	nemesisCaught	1	-1	1	cb0-nemesisCaught-2	0	Ha. HA.	
+GEN	0	nemesisCaught	2	-1	1	cb0-nemesisCaught-0	0	GOT. YOU.	
+GEN	0	nemesisCaught	3	-1	1	cb0-nemesisCaught-0	0	GOT. YOU.	
+GEN	0	jailbreak	0	-1	1	cb0-jailbreak-3	0	No. No. NO.	
+GEN	0	jailbreak	1	-1	1	cb0-jailbreak-0	0	IN. It was IN.	
+GEN	0	jailbreak	2	-1	1	cb0-jailbreak-1	0	Pen. Out. HOW.	
+GEN	0	jailbreak	3	-1	1	cb0-jailbreak-0	0	IN. It was IN.	
+GEN	0	streak	0	-1	1	cb0-streak-2	0	Suspicious.	
+GEN	0	streak	1	-1	1	cb0-streak-1	0	Easy. Too easy.	
+GEN	0	streak	2	-1	1	cb0-streak-1	0	Easy. Too easy.	
+GEN	0	streak	3	-1	1	cb0-streak-2	0	Suspicious.	
+GEN	0	halfway	0	-1	1	cb0-halfway-2	0	Half. Typical.	typical
+GEN	0	halfway	1	-1	1	cb0-halfway-0	0	Half.	
+GEN	0	halfway	2	-1	1	cb0-halfway-2	0	Half. No.	no
+GEN	0	halfway	3	-1	1	cb0-halfway-2	0	Half. Hmph.	hmph
+GEN	0	lastone	0	-1	1	cb0-lastone-1	0	One more.	
+GEN	0	lastone	1	-1	1	cb0-lastone-2	0	Last. One.	
+GEN	0	lastone	2	-1	1	cb0-lastone-1	0	One more.	
+GEN	0	lastone	3	-1	1	cb0-lastone-2	0	Last. One.	
+GEN	0	rival	0	-1	1	cb0-rival-0	0	Look. LOOK. His sheep. Walk BEHIND him.	
+GEN	0	rival	1	-1	1	cb0-rival-1	0	Him again. Hate him.	
+GEN	0	rival	2	-1	1	cb0-rival-0	0	Look. LOOK. His sheep. Walk BEHIND him.	
+GEN	0	rival	3	-1	1	cb0-rival-0	0	Look. LOOK. His sheep. Walk BEHIND him.	
+GEN	0	drink	0	-1	1	cb0-drink-1	0	Drink. Cold. Good. Sheep.	
+GEN	0	drink	1	-1	1	cb0-drink-2	0	Well. Bucket. Gah, cold.	
+GEN	0	drink	2	-1	1	cb0-drink-2	0	Well. Bucket. Gah, cold.	
+GEN	0	drink	3	-1	1	cb0-drink-0	0	Water. Not ale. WATER.	
+GEN	0	lunch	0	-1	1	cb0-lunch-3	0	Lunch. Finally.	
+GEN	0	lunch	1	-1	1	cb0-lunch-0	0	Bread.	
+GEN	0	lunch	2	-1	1	cb0-lunch-1	0	Sit. Eat.	
+GEN	0	lunch	3	-1	1	cb0-lunch-0	0	Bread.	
+GEN	0	scarecrow	0	-1	1	cb0-scarecrow-0	0	Scarecrow. Lucky.	
+GEN	0	scarecrow	1	-1	1	cb0-scarecrow-0	0	Scarecrow. Lucky.	
+GEN	0	scarecrow	2	-1	1	cb0-scarecrow-0	0	Scarecrow. Lucky.	
+GEN	0	scarecrow	3	-1	1	cb0-scarecrow-1	0	Stands. All day. Lucky.	
+GEN	0	reread	0	-1	1	cb0-reread-1	0	Same book. Fine.	
+GEN	0	reread	1	-1	1	cb0-reread-0	0	Read it. Reading again.	
+GEN	0	reread	2	-1	1	cb0-reread-0	0	Read it. Reading again.	
+GEN	0	reread	3	-1	1	cb0-reread-2	0	Hm. This one.	
+GEN	0	curious	0	-1	1	cb0-curious-0	0	Oh. Hello.	
+GEN	0	curious	1	-1	1	cb0-curious-1	0	You. Came. Good.	
+GEN	0	curious	2	-1	1	cb0-curious-2	0	Hm. Sensible sheep.	
+GEN	0	curious	3	-1	1	cb0-curious-1	0	You. Came. Good.	
+GEN	0	dozy	0	-1	1	cb0-dozy-1	0	Zzz. Good. Up.	
+GEN	0	dozy	1	-1	1	cb0-dozy-1	0	Zzz. Good. Up.	
+GEN	0	dozy	2	-1	1	cb0-dozy-2	0	Sleeping. Fine.	
+GEN	0	dozy	3	-1	1	cb0-dozy-0	0	Asleep. Still asleep.	
+GEN	0	idle	0	5	1	t0-idle-6	0	Sheep.	
+GEN	0	penned	0	3	1	t0-penned-6	0	Zero.	
+GEN	1	idle	0	-1	1	t0-idle-5	0	No!	
+GEN	1	idle	1	-1	1	t3-idle-13	3	There is a word for this sheep, and the word is skein of trouble!	skein of trouble
+GEN	1	idle	2	-1	1	t2-idle-19	2	Nobody told me about the worms.	worm
+GEN	1	idle	3	-1	1	t3-idle-16	3	This sheep is lumpy; that is all. That is the whole of it.	lumpy
+GEN	1	flee	0	-1	1	t3-flee-5	3	Every sheep runs, all morning. Every one. Like a very old cheese!	a very old cheese
+GEN	1	flee	1	-1	1	t3-flee-0	3	You run like a haystack in the rain!	a haystack in the rain
+GEN	1	flee	2	-1	1	t1-flee-1	1	Wonderful! Gerald!	wonderful
+GEN	1	flee	3	-1	1	t3-flee-4	3	Run, then! Run like a sermon in the rain!	a sermon in the rain
+GEN	1	caught	0	-1	1	t3-caught-0	3	Got you, you flaming miserable git!	flaming miserable git
+GEN	1	caught	1	-1	1	t2-caught-0	2	Got you, you git!	git
+GEN	1	caught	2	-1	1	t3-caught-1	3	You are heavier than last week's porridge!	last week's porridge
+GEN	1	caught	3	-1	1	t2-caught-0	2	Got you, you arse!	arse
+GEN	1	penned	0	-1	1	cb3-penned-0	3	Yan, tan, tethera, methera, pip, sethera… and there I lose the old count and the new one both, and you are in, so nobody needs to know!	
+GEN	1	penned	1	-1	1	t3-penned-3	3	Tenth sheep penned, before noon. I feel like a bucket with no bottom!	a bucket with no bottom
+GEN	1	penned	2	-1	1	t1-penned-2	1	Ten in!	
+GEN	1	penned	3	-1	1	t3-penned-3	3	Tenth sheep penned, on a perfectly good morning. I feel like a wet Wednesday!	a wet Wednesday
+GEN	1	absurd	0	-1	1	t3-absurd-3	3	That is not a place. That is drizzle you slubberdegullion!	drizzle slubberdegullion
+GEN	1	absurd	1	-1	1	t3-absurd-0	3	A sheep on a fence. Like a sermon in the rain!	fence a sermon in the rain
+GEN	1	absurd	2	-1	1	t0-absurd-1	0	How!	
+GEN	1	absurd	3	-1	1	t3-absurd-1	3	You have the sense of a candle in a bucket and the reach of a goat!	a candle in a bucket
+GEN	1	repeatEscape	0	-1	1	t2-repeatEscape-3	2	Gerald. Of course it is you.	
+GEN	1	repeatEscape	1	-1	1	t3-repeatEscape-1	3	You, Gerald, are poor choices with legs.	poor choices
+GEN	1	repeatEscape	2	-1	1	t1-repeatEscape-2	1	Bad Gerald.	
+GEN	1	repeatEscape	3	-1	1	t2-repeatEscape-3	2	Gerald. Of course it is you.	
+GEN	1	finished	0	-1	1	t1-finished-2	1	Ten in. None out!	
+GEN	1	finished	1	-1	1	t2-finished-1	2	That is every sheep. Every single one!	
+GEN	1	finished	2	-1	1	t0-finished-2	0	All of them. In!	
+GEN	1	finished	3	-1	1	t3-finished-0	3	Ten sheep. Zero books. One herder, as lumpy as a broken sundial. In!	lumpy a broken sundial
+GEN	1	book	0	-1	1	t2-book-1	2	This book calls it sun. I have other names.	sun
+GEN	1	book	1	-1	1	t3-book-0	3	A book, before noon. Better than a sigh with a beard!	a sigh with a beard
+GEN	1	book	2	-1	1	t0-book-0	0	Book!	
+GEN	1	book	3	-1	1	t2-book-1	2	This book calls it a hedge. I have other names.	hedge
+GEN	1	epitaph	0	-1	1	t2-epitaph-2	2	My lungs.	lungs
+GEN	1	epitaph	1	-1	1	t3-epitaph-0	3	Shiftless bloody fool.	shiftless bloody fool
+GEN	1	epitaph	2	-1	1	t3-epitaph-1	3	As doltish as soup in a sieve.	doltish soup in a sieve
+GEN	1	epitaph	3	-1	1	t0-epitaph-2	0	Sheep.	
+GEN	1	rain	0	-1	1	t3-rain-1	3	And now rain. As bloody useless as a stile with a grudge!	bloody useless a stile with a grudge
+GEN	1	rain	1	-1	1	t2-rain-0	2	Rain. Of course it is raining.	
+GEN	1	rain	2	-1	1	t3-rain-0	3	Rain, all morning. Like soup in a sieve, it does not care!	soup in a sieve
+GEN	1	rain	3	-1	1	t3-rain-0	3	Rain, on a perfectly good morning. Like a Tuesday, it does not care.	a Tuesday
+GEN	1	dusk	0	-1	1	t3-dusk-1	3	The light goes like a sandwich left on a wall. So do I.	a sandwich left on a wall
+GEN	1	dusk	1	-1	1	t2-dusk-2	2	Evening. Hellish evening!	hellish
+GEN	1	dusk	2	-1	1	t2-dusk-1	2	The sun is leaving. The sun is allowed to leave!	
+GEN	1	dusk	3	-1	1	t3-dusk-0	3	Dusk, thirty out, and I feel like a shoe in a hedge.	a shoe in a hedge
+GEN	1	walkOfShame	0	-1	1	t3-walkOfShame-1	3	The sheep watch me go by. Empty. Like a jumper knitted by a distant aunt!	a jumper knitted by a distant aunt
+GEN	1	walkOfShame	1	-1	1	t2-walkOfShame-0	2	Do not look at me, sheep. I am working!	
+GEN	1	walkOfShame	2	-1	1	t3-walkOfShame-0	3	Past the pen with nothing, like a pudding left out.	a pudding left out
+GEN	1	walkOfShame	3	-1	1	t2-walkOfShame-2	2	I know. I know. I am going!	
+GEN	1	breather	0	-1	1	t1-breather-1	1	Ankles. Typical!	ankles typical
+GEN	1	breather	1	-1	1	t3-breather-0	3	A sit-down. I am as dank as a boot full of rain!	dank a boot full of rain
+GEN	1	breather	2	-1	1	t2-breather-2	2	The stump does not run away. I like the stump!	
+GEN	1	breather	3	-1	1	t2-breather-0	2	Sitting. Just for a moment!	
+GEN	1	bookPassed	0	-1	1	cb2-bookPassed-1	2	I see you, book. I will come back for you.	
+GEN	1	bookPassed	1	-1	1	cb2-bookPassed-0	2	A book. And my arms are full of sheep. Later, book!	
+GEN	1	bookPassed	2	-1	1	cb2-bookPassed-2	2	Of course there is a book here. Of course I am carrying a clammy sheep!	clammy
+GEN	1	bookPassed	3	-1	1	cb2-bookPassed-3	2	Not now, book. I have a sheep to deliver.	
+GEN	1	callback	0	-1	1	cb2-callback-2	2	Zero times past the pen with nothing. The sheep in the pen know.	
+GEN	1	callback	1	-1	1	cb2-callback-4	2	Zero runners, zero climbers, thirty still out. I keep a tally now. It does not help!	
+GEN	1	callback	2	-1	1	cb2-callback-3	2	Zero sheep on things they should not be on. Today. Just today!	
+GEN	1	callback	3	-1	1	cb2-callback-0	2	That is zero sheep that have run from me today. Zero!	
+GEN	1	rant	0	-1	1	cb2-rant-2	2	Why are there so many of you? Who needs sixty sheep? WHO?	
+GEN	1	rant	1	-1	1	cb3-rant-1	3	You, sheep, are the flea-bittenest thing I have met today, and I have met ten sheep!	flea-bitten
+GEN	1	rant	2	-1	1	cb3-rant-0	3	Look at me. LOOK at me. I am a grown man shouting at a stick.	stick
+GEN	1	rant	3	-1	1	cb2-rant-2	2	Why are there so many of you? Who needs sixty sheep? WHO?	
+GEN	1	gaze	0	-1	1	cb2-gaze-0	2	That cloud looks like a sheep. Everything looks like a sheep. That is the problem!	
+GEN	1	gaze	1	-1	1	cb2-gaze-2	2	The sky is doing very well. I have no complaints about the sky. Yet.	
+GEN	1	gaze	2	-1	1	cb0-gaze-4	0	Sun. Good.	
+GEN	1	gaze	3	-1	1	cb1-gaze-0	1	Nice cloud. Shaped like a sheep. Of course!	
+GEN	1	nemesis	0	-1	1	cb2-nemesis-2	2	Everyone else is a sheep. You are a project.	
+GEN	1	nemesis	1	-1	1	cb2-nemesis-1	2	Right. You have a name now and I am going to use it in a tone of voice!	
+GEN	1	nemesis	2	-1	1	cb2-nemesis-1	2	Right. You have a name now and I am going to use it in a tone of voice!	
+GEN	1	nemesis	3	-1	1	cb2-nemesis-1	2	Right. You have a name now and I am going to use it in a tone of voice!	
+GEN	1	nemesisCaught	0	-1	1	cb2-nemesisCaught-2	2	Say goodbye to the hill, Gerald. Say it. I will wait!	
+GEN	1	nemesisCaught	1	-1	1	cb0-nemesisCaught-2	0	Ha. HA!	
+GEN	1	nemesisCaught	2	-1	1	cb2-nemesisCaught-0	2	Got you. GOT you. The charm, Gerald, was patience, and I am going to enjoy every step of this walk.	
+GEN	1	nemesisCaught	3	-1	1	cb0-nemesisCaught-0	0	GOT. YOU.	
+GEN	1	jailbreak	0	-1	1	cb2-jailbreak-0	2	It was in. It was IN THE PEN. I put it there. I watched it go in. And now it is over THERE.	
+GEN	1	jailbreak	1	-1	1	cb2-jailbreak-0	2	It was in. It was IN THE PEN. I put it there. I watched it go in. And now it is over THERE!	
+GEN	1	jailbreak	2	-1	1	cb2-jailbreak-0	2	It was in. It was IN THE PEN. I put it there. I watched it go in. And now it is over THERE!	
+GEN	1	jailbreak	3	-1	1	cb2-jailbreak-2	2	The fence is four feet high. The sheep is two feet high. Explain this to me, somebody. Anybody. Biscuit!	
+GEN	1	streak	0	-1	1	cb2-streak-2	2	Five sheep, no trouble. Biscuit, are you seeing this? Biscuit. You are asleep. Of course.	
+GEN	1	streak	1	-1	1	cb0-streak-0	0	Five. In a row. Hm.	
+GEN	1	streak	2	-1	1	cb2-streak-2	2	Five sheep, no trouble. Biscuit, are you seeing this? Biscuit. You are asleep. Of course!	
+GEN	1	streak	3	-1	1	cb2-streak-1	2	That is five without a single one running. I do not like it. This is how the bad ones start!	
+GEN	1	halfway	0	-1	1	cb2-halfway-1	2	Half the flock is in. The half that was near. I know how this goes!	
+GEN	1	halfway	1	-1	1	cb2-halfway-1	2	Half the flock is in. The half that was near. I know how this goes.	
+GEN	1	halfway	2	-1	1	cb2-halfway-2	2	Halfway, Biscuit. Halfway. Do not get up. You never do!	
+GEN	1	halfway	3	-1	1	cb2-halfway-0	2	Thirty. Halfway. The other half are the ones that run!	
+GEN	1	lastone	0	-1	1	cb2-lastone-0	2	One left. It is on the rock. It is always on the rock!	
+GEN	1	lastone	1	-1	1	cb2-lastone-2	2	The last one. Somewhere out there, chewing, unaware that it is the last one!	
+GEN	1	lastone	2	-1	1	cb0-lastone-0	0	One.	
+GEN	1	lastone	3	-1	1	cb2-lastone-2	2	The last one. Somewhere out there, chewing, unaware that it is the last one!	
+GEN	1	rival	0	-1	1	cb2-rival-2	2	Three sheep. Tom has three sheep and a smile. I have sixty and a hernia. Wave back. WAVE BACK!	
+GEN	1	rival	1	-1	1	cb2-rival-0	2	Oh, here comes Tom. Look at him. Look at his sheep. In a line. Like they LIKE him!	
+GEN	1	rival	2	-1	1	cb2-rival-2	2	Three sheep. Tom has three sheep and a smile. I have sixty and a hernia. Wave back. WAVE BACK!	
+GEN	1	rival	3	-1	1	cb0-rival-0	0	Look. LOOK. His sheep. Walk BEHIND him!	
+GEN	1	drink	0	-1	1	cb2-drink-0	2	A drink. From a well. Like a man with no inn, no friends and sixty sheep, which is what I am!	
+GEN	1	drink	1	-1	1	cb2-drink-0	2	A drink. From a well. Like a man with no inn, no friends and sixty sheep, which is what I am!	
+GEN	1	drink	2	-1	1	cb2-drink-1	2	Cold water, straight from the ground, honest and free and tasting faintly of bucket. Better than the sheep. Lower bar than you would think!	
+GEN	1	drink	3	-1	1	cb2-drink-1	2	Cold water, straight from the ground, honest and free and tasting faintly of bucket. Better than the sheep. Lower bar than you would think.	
+GEN	1	lunch	0	-1	1	cb2-lunch-2	2	The bread is hard. The cheese is harder. I have never been happier.	
+GEN	1	lunch	1	-1	1	cb2-lunch-2	2	The bread is hard. The cheese is harder. I have never been happier!	
+GEN	1	lunch	2	-1	1	cb2-lunch-1	2	Lunch. Biscuit has noticed. Biscuit has done nothing all day and has noticed lunch.	
+GEN	1	lunch	3	-1	1	cb0-lunch-3	0	Lunch. Finally!	
+GEN	1	scarecrow	0	-1	1	cb0-scarecrow-0	0	Scarecrow. Lucky!	
+GEN	1	scarecrow	1	-1	1	cb2-scarecrow-1	2	Evening, scarecrow. No? Fine. You and the sheep can not-talk together.	
+GEN	1	scarecrow	2	-1	1	cb2-scarecrow-2	2	I envy the scarecrow. Nobody expects him to catch anything!	
+GEN	1	scarecrow	3	-1	1	cb0-scarecrow-1	0	Stands. All day. Lucky.	
+GEN	1	reread	0	-1	1	cb2-reread-2	2	Somebody keeps putting this book in the box. I suspect the sheep!	
+GEN	1	reread	1	-1	1	cb2-reread-0	2	I have read this one. I am going to read it again, because the alternative is the sheep.	
+GEN	1	reread	2	-1	1	cb0-reread-0	0	Read it. Reading again.	
+GEN	1	reread	3	-1	1	cb2-reread-2	2	Somebody keeps putting this book in the box. I suspect the sheep!	
+GEN	1	curious	0	-1	1	cb0-curious-1	0	You. Came. Good!	
+GEN	1	curious	1	-1	1	cb2-curious-0	2	At least one of you has sense. Come here. You are my favourite. Do not tell the others!	
+GEN	1	curious	2	-1	1	cb2-curious-0	2	At least one of you has sense. Come here. You are my favourite. Do not tell the others!	
+GEN	1	curious	3	-1	1	cb2-curious-2	2	Look at this one. Look. This is how it is SUPPOSED to go.	
+GEN	1	dozy	0	-1	1	cb2-dozy-0	2	It did not even wake up. I have carried furniture with more opinions!	
+GEN	1	dozy	1	-1	1	cb2-dozy-2	2	Shh. Do not wake it. This is the best one!	
+GEN	1	dozy	2	-1	1	cb2-dozy-0	2	It did not even wake up. I have carried furniture with more opinions.	
+GEN	1	dozy	3	-1	1	cb0-dozy-2	0	Sleeping. Fine!	
+GEN	1	idle	0	5	1	t0-idle-5	0	No!	
+GEN	1	penned	0	3	1	cb3-penned-1	3	Dick, they would have said on the fells, and then a word I cannot say near a village, and then dick again because the sheep had moved!	
+GEN	2	idle	0	-1	1	t6-idle-6	6	A plague upon this mud, and upon thee, thou fen-sucked nut-hook.	fen-sucked nut-hook
+GEN	2	idle	1	-1	1	t6-idle-7	6	At least the man in the book had a cat with a tiara. I have mud, who has neither a tiara nor a single redeeming quality!!	
+GEN	2	idle	2	-1	1	t6-idle-10	6	Bugger it, what damned nuisance is this that stands before me, ill-nurtured and plume-plucked?	bugger it damned nuisance ill-nurtured plume-plucked
+GEN	2	idle	3	-1	1	t6-idle-5	6	Hie thee hence, thou bog-soaked pigeon-egg, ere I carry you upside down!	bog-soaked pigeon-egg carry you upside down
+GEN	2	flee	0	-1	1	t6-flee-2	6	Hold, thou ill-nurtured nickumpoop! Thy legs are un-looted and thy cause is lost!!	ill-nurtured nickumpoop un-looted
+GEN	2	flee	1	-1	1	t6-flee-1	6	Bollocks! It flies! Thou week-old loaf of choler, come hither!!	bollocks week-old loaf choler
+GEN	2	flee	2	-1	1	t6-flee-3	6	Wilt thou run, mud? Then run, thou spectacularly milk-livered puttock, and be shard-borne elsewhere!	spectacularly milk-livered puttock shard-borne
+GEN	2	flee	3	-1	1	t4-flee-1	4	Stop, you right patch, or I will write to the Sheep Council!!	right patch write to the Sheep Council
+GEN	2	caught	0	-1	1	cb6-caught-1	6	Caught, you goatish knave, and the court finds against you, with costs, payable in wool!	goatish knave
+GEN	2	caught	1	-1	1	t6-caught-1	6	Got you. Loot box, opened. Contents: you. I want a refund.	
+GEN	2	caught	2	-1	1	t5-caught-1	5	There, you turnip. Caught, and not before time!!	turnip
+GEN	2	caught	3	-1	1	t4-caught-1	4	Got you, you walking loot box of spleen, and holy shit, you will stay got.	walking loot box spleen holy shit
+GEN	2	penned	0	-1	1	t6-penned-0	6	Goddamnit, Donut, stay IN. New achievement: Twenty-five in the Pen. Reward: an announcer who will not stop!	
+GEN	2	penned	1	-1	1	t6-penned-1	6	Twenty-fifth sheep penned. Well, bugger me sideways, five yet roam, each one a bleeding twit.	well, bugger me sideways bleeding twit
+GEN	2	penned	2	-1	1	t6-penned-3	6	Get thee in, thou dismal-dreaming clotpole, and mind the gate.	dismal-dreaming clotpole
+GEN	2	penned	3	-1	1	t0-penned-2	0	One!	
+GEN	2	absurd	0	-1	1	t6-absurd-3	6	Sheep do not roost. Thou art not a hairball. Come down!	hairball
+GEN	2	absurd	1	-1	1	t6-absurd-3	6	Sheep do not roost. Thou art not a weather. Come down!	weather
+GEN	2	absurd	2	-1	1	t6-absurd-0	6	Oh, shit! A sheep upon a level! What wasted effort is this?	oh, shit level wasted effort
+GEN	2	absurd	3	-1	1	t2-absurd-5	2	I am not built for this. Neither are you.	
+GEN	2	repeatEscape	0	-1	1	t6-repeatEscape-3	6	I named thee mud, and thou hast made a curse of it!	
+GEN	2	repeatEscape	1	-1	1	t6-repeatEscape-0	6	Mud! Thou again! Thou spleeny pot-walloper of a mud, I know thee!	spleeny pot-walloper
+GEN	2	repeatEscape	2	-1	1	t6-repeatEscape-1	6	Twice, mud! Twice thou hast fled me, thou bawdy, vain villain!	bawdy vain villain
+GEN	2	repeatEscape	3	-1	1	t6-repeatEscape-3	6	I named thee mud, and thou hast made a curse of it!!	
+GEN	2	finished	0	-1	1	t6-finished-1	6	The last is penned. Fie upon this day, and good night!	
+GEN	2	finished	1	-1	1	t6-finished-1	6	The last is penned. Fie upon this day, and good night!	
+GEN	2	finished	2	-1	1	t6-finished-1	6	The last is penned. Fie upon this day, and good night.	
+GEN	2	finished	3	-1	1	t6-finished-1	6	The last is penned. Fie upon this day, and good night!!	
+GEN	2	book	0	-1	1	t6-book-2	6	Marry, a book. I shall learn a phrase and spend it on a sheep.	
+GEN	2	book	1	-1	1	t6-book-2	6	Marry, a book. I shall learn a phrase and spend it on a sheep!!	
+GEN	2	book	2	-1	1	t6-book-1	6	Soft, what words are these? Ill words, I hope, for the mud!	
+GEN	2	book	3	-1	1	t6-book-2	6	Marry, a book. I shall learn a phrase and spend it on a sheep!!	
+GEN	2	epitaph	0	-1	1	t3-epitaph-0	3	Moth-eaten foot-licker of vexation.	moth-eaten foot-licker vexation
+GEN	2	epitaph	1	-1	1	t6-epitaph-3	6	He was gone off. They were more weather-bitten.	gone off weather-bitten
+GEN	2	epitaph	2	-1	1	t6-epitaph-0	6	Thou boar-pig of despair.	boar-pig despair
+GEN	2	epitaph	3	-1	1	t6-epitaph-3	6	He was heavy. They were more base.	heavy base
+GEN	2	rain	0	-1	1	t6-rain-1	6	It rains, and I am pissy, and the mud is more wit-starved!!	pissy wit-starved
+GEN	2	rain	1	-1	1	t6-rain-1	6	It rains, and I am truculent, and the mud is more good-for-nothing!!	truculent good-for-nothing
+GEN	2	rain	2	-1	1	t6-rain-1	6	It rains, and I am slack-jawed, and the mud is more unchin-snouted.	slack-jawed unchin-snouted
+GEN	2	rain	3	-1	1	t6-rain-0	6	Rain! Bugger me, the heavens are insolent too!!	bugger me insolent
+GEN	2	dusk	0	-1	1	t5-dusk-1	5	Dusk (I say this with love, and I am lying), and I am as mud-larking as a dropped pie!!	mud-larking a dropped pie
+GEN	2	dusk	1	-1	1	t0-dusk-3	0	Tired!	
+GEN	2	dusk	2	-1	1	t6-dusk-1	6	Dusk, shit, and I am fobbing as a cloud that owes money!!	shit fobbing a cloud that owes money
+GEN	2	dusk	3	-1	1	t6-dusk-1	6	Dusk, by my troth, and I am guts-griping as a scarecrow's promise.	by my troth guts-griping a scarecrow's promise
+GEN	2	walkOfShame	0	-1	1	t6-walkOfShame-0	6	Past the pen, empty-handed, like a dropped pie. Look not upon me, sad dogs!!	a dropped pie sad dog
+GEN	2	walkOfShame	1	-1	1	t6-walkOfShame-0	6	Past the pen, empty-handed, like a beadle without his staff. Look not upon me, vanities in years.	a beadle without his staff vanity in years
+GEN	2	walkOfShame	2	-1	1	t6-walkOfShame-0	6	Past the pen, empty-handed, like a wet Lent. Look not upon me, roasted Manningtree oxen!	a wet Lent roasted Manningtree ox
+GEN	2	walkOfShame	3	-1	1	t6-walkOfShame-1	6	By my boots, I pass mine own pen with nothing. The sheep within do smirk!	by my boots
+GEN	2	breather	0	-1	1	t5-breather-1	5	I sit. The mud does not. I am winning, in a sense.	
+GEN	2	breather	1	-1	1	t6-breather-1	6	A moment's rest, ere I caper again into bother!!	caper bother
+GEN	2	breather	2	-1	1	t6-breather-1	6	A moment's rest, ere I scatter again into infamy.	scatter infamy
+GEN	2	breather	3	-1	1	t1-breather-0	1	Sit down. Short!!	
+GEN	2	bookPassed	0	-1	1	cb4-bookPassed-1	4	Wait for me, little library. I am coming back, and I am bringing opinions!	
+GEN	2	bookPassed	1	-1	1	cb2-bookPassed-3	2	Not now, book. I have a mud to deliver!!	
+GEN	2	bookPassed	2	-1	1	cb4-bookPassed-0	4	Go to, a library, and I with a sheep on my shoulders like a spleeny scarf.	go to spleeny
+GEN	2	bookPassed	3	-1	1	cb4-bookPassed-1	4	Wait for me, little library. I am coming back, and I am bringing opinions!	
+GEN	2	callback	0	-1	1	cb4-callback-2	4	Blessed Crook, four of them have run. Four! And I have the legs of one man!	Blessed Crook
+GEN	2	callback	1	-1	1	cb6-callback-0	6	Thou art the fourth sheep to flee me this day, and I say to thee what I said to the others: oh, hell!	oh, hell
+GEN	2	callback	2	-1	1	cb6-callback-0	6	Thou art the fourth sheep to flee me this day, and I say to thee what I said to the others: consume it.	consume it
+GEN	2	callback	3	-1	1	cb4-callback-3	4	By my count, two sheep have been somewhere no sheep should be, and every one of them looked pleased about it!!	
+GEN	2	rant	0	-1	1	cb6-rant-1	6	Hear me, hill, thou ill-breeding lump of the earth's bad temper: I am done being reasonable, and I was never good at it!	ill-breeding
+GEN	2	rant	1	-1	1	cb4-rant-2	4	You! Curse! I know you are watching! Is this FUNNY to you? It is a little funny. I am still angry.	
+GEN	2	rant	2	-1	1	cb3-rant-3	3	Do you know what I wanted to be? A herder. This is on me. THIS IS ON ME!	
+GEN	2	rant	3	-1	1	cb6-rant-2	6	Out, out, and piss, and, for the sheep who are listening, damn it!	out, out piss damn it
+GEN	2	gaze	0	-1	1	cb4-gaze-1	4	Peace, briefly, like a rumour about turnips. Let no sheep interrupt it. (One will.)	a rumour about turnips
+GEN	2	gaze	1	-1	1	cb4-gaze-0	4	Sweet Saint Bleat, that is a handsome cloud. I shall hold it against nobody!	sweet Saint Bleat
+GEN	2	gaze	2	-1	1	cb0-gaze-0	0	Cloud!!	
+GEN	2	gaze	3	-1	1	cb4-gaze-0	4	By the Patron of Lost Things, that is a handsome cloud. I shall hold it against nobody!!	by the Patron of Lost Things
+GEN	2	nemesis	0	-1	1	cb4-nemesis-1	4	By the Patron of Lost Things, mark this one. Not for me. I want it marked for later!!	by the Patron of Lost Things
+GEN	2	nemesis	1	-1	1	cb4-nemesis-0	4	Great Ram above, I' faith! Three flights! Hear me, mud: of sixty sheep on this hill you are the only one I would describe as PERSONAL.	Great Ram above i' faith
+GEN	2	nemesis	2	-1	1	cb6-nemesis-0	6	I have herded sheep for a lifetime and I have never before hated one by name. Congratulations, mud. You are a first!	
+GEN	2	nemesis	3	-1	1	cb6-nemesis-0	6	I have herded sheep for a lifetime and I have never before hated one by name. Congratulations, mud. You are a first.	
+GEN	2	nemesisCaught	0	-1	1	cb6-nemesisCaught-0	6	Caught. Hold still, mud; I want to remember the exact weight of you for when I am old and need something to smile about!!	
+GEN	2	nemesisCaught	1	-1	1	cb0-nemesisCaught-2	0	Ha. HA.	
+GEN	2	nemesisCaught	2	-1	1	cb6-nemesisCaught-0	6	Caught. Hold still, mud; I want to remember the exact weight of you for when I am old and need something to smile about!!	
+GEN	2	nemesisCaught	3	-1	1	cb6-nemesisCaught-0	6	Caught. Hold still, mud; I want to remember the exact weight of you for when I am old and need something to smile about!!	
+GEN	2	jailbreak	0	-1	1	cb0-jailbreak-3	0	No. No. NO.	
+GEN	2	jailbreak	1	-1	1	cb0-jailbreak-1	0	Pen. Out. HOW!	
+GEN	2	jailbreak	2	-1	1	cb4-jailbreak-2	4	Mud! Back! You right whey-faced dundering rascal, you were FINISHED, you were DONE, you were IN!!	right whey-faced dundering rascal
+GEN	2	jailbreak	3	-1	1	cb4-jailbreak-0	4	Horsefeathers! It has JUMPED THE FENCE! A sheep! The fence I built! For SHEEP!	horsefeathers
+GEN	2	streak	0	-1	1	cb4-streak-1	4	Eight. EIGHT in a row. I am not going to say anything. I am not going to say ANYTHING. …Eight!	
+GEN	2	streak	1	-1	1	cb4-streak-0	4	By all the lambs of March, five in a row. I know what this is. This is the quiet before the sheep.	by all the lambs of March
+GEN	2	streak	2	-1	1	cb2-streak-2	2	Five sheep, no trouble. Biscuit, are you seeing this? Biscuit. You are asleep. Of course.	
+GEN	2	streak	3	-1	1	cb0-streak-0	0	Five. In a row. Hm!!	
+GEN	2	halfway	0	-1	1	cb4-halfway-0	4	Holy Fleece, thirty in, thirty out, and the thirty out are the droning ones.	Holy Fleece droning
+GEN	2	halfway	1	-1	1	cb2-halfway-2	2	Halfway, Biscuit. Halfway. Do not get up. You never do!!	
+GEN	2	halfway	2	-1	1	cb4-halfway-0	4	Blessed Crook, thirty in, thirty out, and the thirty out are the itchy ones!!	Blessed Crook itchy
+GEN	2	halfway	3	-1	1	cb4-halfway-1	4	Out, out, halfway! And the easy half is the half that is done!!	out, out
+GEN	2	lastone	0	-1	1	cb4-lastone-1	4	Dang my buttons, a plague upon it and bugger it, one left, and the day is nearly done, and my lungs are nearly done, and so, nearly, am I.	dang my buttons a plague upon it bugger it lungs
+GEN	2	lastone	1	-1	1	cb4-lastone-0	4	By the Ewe Mother, one. ONE. Let it be near. Let it be slow. Let it be ASLEEP!!	by the Ewe Mother
+GEN	2	lastone	2	-1	1	cb4-lastone-0	4	By the Patron of Lost Things, one. ONE. Let it be near. Let it be slow. Let it be ASLEEP.	by the Patron of Lost Things
+GEN	2	lastone	3	-1	1	cb0-lastone-1	0	One more!!	
+GEN	2	rival	0	-1	1	cb4-rival-1	4	Merciful Shears, you gave that man sheep that follow him and you gave me THESE. I would like to speak to whoever is in charge of allocations.	merciful Shears
+GEN	2	rival	1	-1	1	cb6-rival-1	6	There goes the only man on this hill who has never needed a vocabulary. I pity him. I pity him very loudly!	
+GEN	2	rival	2	-1	1	cb6-rival-0	6	Observe him, all of you: a man whose flock obeys him without a single roguish word spoken. I do not trust it. Nothing that quiet is honest!!	roguish
+GEN	2	rival	3	-1	1	cb6-rival-0	6	Observe him, all of you: a man whose flock obeys him without a single rank word spoken. I do not trust it. Nothing that quiet is honest!	rank
+GEN	2	drink	0	-1	1	cb4-drink-1	4	Saint Woolgather preserve me, I thank you for the well and I would thank you more for a barrel!	Saint Woolgather preserve me
+GEN	2	drink	1	-1	1	cb2-drink-0	2	A drink. From a well. Like a man with no inn, no friends and sixty sheep, which is what I am.	
+GEN	2	drink	2	-1	1	cb4-drink-0	4	Piss and vinegar, water! Cold, honest, and utterly without alcohol, like everything else in my mumping life!	piss and vinegar mumping
+GEN	2	drink	3	-1	1	cb4-drink-1	4	Merciful Shears, I thank you for the well and I would thank you more for a barrel!!	merciful Shears
+GEN	2	lunch	0	-1	1	cb4-lunch-0	4	By the Ewe Mother, bread. Plain bread. It has not run from me. It has not bitten me. I love it!	by the Ewe Mother
+GEN	2	lunch	1	-1	1	cb4-lunch-1	4	Sit, Biscuit. No. That is my cheese. You herd nothing and you want my cheese!	
+GEN	2	lunch	2	-1	1	cb4-lunch-0	4	By the Patron of Lost Things, bread. Plain bread. It has not run from me. It has not bitten me. I love it!	by the Patron of Lost Things
+GEN	2	lunch	3	-1	1	cb4-lunch-0	4	By the Green Pasture, bread. Plain bread. It has not run from me. It has not bitten me. I love it.	by the Green Pasture
+GEN	2	scarecrow	0	-1	1	cb4-scarecrow-1	4	Scarecrow, you scurvy bundle, you have never carried a thing in your life, and you look happier than I have ever been!!	scurvy
+GEN	2	scarecrow	1	-1	1	cb4-scarecrow-1	4	Scarecrow, you full-gorged bundle, you have never carried a thing in your life, and you look happier than I have ever been!!	full-gorged
+GEN	2	scarecrow	2	-1	1	cb2-scarecrow-2	2	I envy the scarecrow. Nobody expects him to catch anything!!	
+GEN	2	scarecrow	3	-1	1	cb4-scarecrow-0	4	By the Green Pasture, look at him. Straw for brains and a better hat than mine, and not one sheep to his name!	by the Green Pasture
+GEN	2	reread	0	-1	1	cb4-reread-0	4	Holy Fleece, the same book. The valley has one book and passes it round like a cold.	Holy Fleece
+GEN	2	reread	1	-1	1	cb0-reread-2	0	Hm. This one!!	
+GEN	2	reread	2	-1	1	cb4-reread-0	4	Saint Woolgather preserve me, the same book. The valley has one book and passes it round like a cold!!	Saint Woolgather preserve me
+GEN	2	reread	3	-1	1	cb2-reread-1	2	This book again. It was wrong the first time. Let us see if it has improved!!	
+GEN	2	curious	0	-1	1	cb4-curious-1	4	By'r lady, one came to me. One. Out of sixty. I will take it.	by'r lady
+GEN	2	curious	1	-1	1	cb4-curious-1	4	Marry, one came to me. One. Out of sixty. I will take it.	marry
+GEN	2	curious	2	-1	1	cb0-curious-0	0	Oh. Hello.	
+GEN	2	curious	3	-1	1	cb4-curious-0	4	By the Ewe Mother, a sheep with manners. I shall carry you gently, you underlevelled little miracle!!	by the Ewe Mother underlevelled
+GEN	2	dozy	0	-1	1	cb4-dozy-0	4	Blessed Crook, it sleeps. It sleeps like a tallow candle in a gale. Carry it soft, herder; this is the one good thing today.	Blessed Crook a tallow candle in a gale
+GEN	2	dozy	1	-1	1	cb4-dozy-1	4	Dozing, you fawning bolster. I should charge you rent.	fawning
+GEN	2	dozy	2	-1	1	cb4-dozy-0	4	By the Green Pasture, it sleeps. It sleeps like a barren tree in a churchyard. Carry it soft, herder; this is the one good thing today.	by the Green Pasture a barren tree in a churchyard
+GEN	2	dozy	3	-1	1	cb4-dozy-1	4	Dozing, you bobbly bolster. I should charge you rent.	bobbly
+GEN	2	idle	0	5	1	t6-idle-8	6	Out, ham-fisted mud! Out, I say! The mud is impertinent and I am pribbling.	ham-fisted impertinent pribbling
+GEN	2	penned	0	3	1	t6-penned-1	6	In. Twenty-five. If there were sponsors they would have left by now!	
+GEN	3	idle	0	-1	1	t6-idle-1	6	Cáspita! Thou utterly muggy ambulatory gall bladder!	cáspita utterly muggy ambulatory gall bladder
+GEN	3	idle	1	-1	1	t9-idle-18	9	Thundering typhoons, tottering tups and one tired twerp: that is the crew, with the sun climbing!!	twerp
+GEN	3	idle	2	-1	1	t9-idle-20	9	Ahoy, sheep. You are in my way. You are always in my way. You are the sea.	
+GEN	3	idle	3	-1	1	t0-idle-0	0	Wine.	wine
+GEN	3	flee	0	-1	1	t9-flee-2	9	Belay that bolting, you footsore bilge-rat!	footsore
+GEN	3	flee	1	-1	1	t3-flee-4	3	Run, then! Run like a tutorial that will not end!	a tutorial that will not end
+GEN	3	flee	2	-1	1	t9-flee-4	9	Ten thousand thundering bridges! It runs like a walrus at a wedding!!	bridge a walrus at a wedding
+GEN	3	flee	3	-1	1	cb9-flee-0	9	Actionable ambulatory gall bladder! Come back here!	actionable ambulatory gall bladder
+GEN	3	caught	0	-1	1	t9-caught-2	9	Got you, you barnacle. Now hold fast or I shall knit you into a scarf.	knit you into a scarf
+GEN	3	caught	1	-1	1	t6-caught-2	6	Heavens above, thou weighest as a ladder with ideas. Up, absconder!!	heavens above a ladder with ideas absconder
+GEN	3	caught	2	-1	1	t8-caught-3	8	I lifted it and my legs said something and I did not listen.	legs
+GEN	3	caught	3	-1	1	cb6-caught-0	6	Got you, Donut, and I am entering you into evidence as EXHIBIT FIFTY-NINE!	
+GEN	3	penned	0	-1	1	t9-penned-4	9	Moored, you fuck-knuckle. Batten the gate!!	fuck-knuckle
+GEN	3	penned	1	-1	1	t5-penned-0	5	In you go, Donut, and may the pen IMPROVE YOU!!	
+GEN	3	penned	2	-1	1	t9-penned-2	9	Anchored, Donut. Anchored, and stay anchored!	
+GEN	3	penned	3	-1	1	t8-penned-1	8	I put it in the pen and closed the gate. The gate was clean. I stood there a while.	clean
+GEN	3	absurd	0	-1	1	t8-absurd-0	8	It was on a turnip. Sheep do not go on scuppers. This one had.	turnip scupper
+GEN	3	absurd	1	-1	1	t9-absurd-1	9	Blistering barnacles, Donut, that is not a deck, that IS SUN!	sun
+GEN	3	absurd	2	-1	1	t6-absurd-0	6	Oh, hell! A sheep upon a duodenum! What ruin IS THIS?	oh, hell duodenum ruin
+GEN	3	absurd	3	-1	1	t8-absurd-2	8	There is no reason for a sheep to be up there. There was a sheep up there.	
+GEN	3	repeatEscape	0	-1	1	t9-repeatEscape-0	9	Twelve bilge-brained goblins and fuck! Donut again, the greasy mutineer!	bilge-brained goblin fuck greasy
+GEN	3	repeatEscape	1	-1	1	t6-repeatEscape-3	6	I named thee Donut, and thou hast made a curse of it!!	
+GEN	3	repeatEscape	2	-1	1	t9-repeatEscape-3	9	Blow me down, Donut, and blow you further!!	
+GEN	3	repeatEscape	3	-1	1	t6-repeatEscape-1	6	Twice, Donut! Twice thou hast fled me, thou bloody-minded, dismal-dreaming FUCKING LIABILITY!!	bloody-minded dismal-dreaming fucking liability
+GEN	3	finished	0	-1	1	t7-finished-1	7	Od's bodikins. Done. Fini. Fertig. IN!!	od's bodikins
+GEN	3	finished	1	-1	1	t8-finished-0	8	They were all in. Fifty-nine. I stood at the gate and it was done and I did not feel what I thought I would feel.	
+GEN	3	finished	2	-1	1	t9-finished-0	9	All hands in the hold. Fifty-nine sheep, zero books, one beslubbering captain. Blast MY BALLAST!!	beslubbering blast my ballast
+GEN	3	finished	3	-1	1	t9-finished-1	9	Christ on a bike and zounds! The voyage is done, the crew is penned, and the captain IS RAIN-SOAKED.	Christ on a bike zounds rain-soaked
+GEN	3	book	0	-1	1	t5-book-1	5	Words, Donut. Some of them ABOUT YOU!	
+GEN	3	book	1	-1	1	t5-book-2	5	Loot box!. A book (the fifty-ninth of your kind today). Sit. Read. CURSE BETTER!!	Loot box!
+GEN	3	book	2	-1	1	t9-book-0	9	A book in a bottle! Well, a box. Great Scott, WORDS!	great Scott
+GEN	3	book	3	-1	1	t8-book-1	8	There was a book in the box. I read it because it was there. That is why anyone reads.	
+GEN	3	epitaph	0	-1	1	t9-epitaph-3	9	Here lies a landlubber. The sheep were the sea.	
+GEN	3	epitaph	1	-1	1	t8-epitaph-1	8	It was heavy. He went up.	
+GEN	3	epitaph	2	-1	1	t1-epitaph-3	1	Too insolent.	insolent
+GEN	3	epitaph	3	-1	1	t7-epitaph-2	7	Sea-cucumber, in every language.	sea-cucumber
+GEN	3	rain	0	-1	1	t8-rain-1	8	The rain came down on the sheep and on me. It did not choose.	
+GEN	3	rain	1	-1	1	t9-rain-0	9	Well, bugger me sideways and oh, come on, a squall! As if the sheep were not wet enough!!	well, bugger me sideways oh, come on
+GEN	3	rain	2	-1	1	t8-rain-1	8	The rain came down on the sheep and on me. It did not choose.	
+GEN	3	rain	3	-1	1	t9-rain-1	9	Rain, Donut! Rain on a man who was already AT SEA!	
+GEN	3	dusk	0	-1	1	t9-dusk-0	9	Red sky at night, one sheep in flight. BOTHER!!	bother
+GEN	3	dusk	1	-1	1	t6-dusk-0	6	The light doth fail, and one sheep does not.	
+GEN	3	dusk	2	-1	1	t9-dusk-1	9	The sun sinks like a barnacle on a bicycle, and one addle-headed pudding is still AT SEA!	a barnacle on a bicycle addle-headed pudding
+GEN	3	dusk	3	-1	1	t9-dusk-0	9	Red sky at night, one sheep in flight. Out, OUT.	out, out
+GEN	3	walkOfShame	0	-1	1	t9-walkOfShame-0	9	Past the harbour with an empty hold. Look away, you flotsam, jetsam and cold skainsmates.	cold skainsmate
+GEN	3	walkOfShame	1	-1	1	t6-walkOfShame-1	6	Bugger, I pass mine own pen with nothing. The sheep within do smirk.	bugger
+GEN	3	walkOfShame	2	-1	1	t6-walkOfShame-1	6	Thundering, blistering, bilious barnacles, I pass mine own pen with nothing. The sheep within DO SMIRK!!	thundering, blistering, bilious barnacles
+GEN	3	walkOfShame	3	-1	1	t0-walkOfShame-2	0	Pen. NO SHEEP!	
+GEN	3	breather	0	-1	1	t9-breather-1	9	Becalmed, and glad of it. Five minutes, then back to the sheep!!	
+GEN	3	breather	1	-1	1	t8-breather-1	8	I sat. That was all I did. It was enough for now.	
+GEN	3	breather	2	-1	1	t5-breather-1	5	I sit. The sheep does not. I am winning, in a sense!	
+GEN	3	breather	3	-1	1	t8-breather-1	8	I sat. That was all I did. It was enough for now.	
+GEN	3	bookPassed	0	-1	1	cb8-bookPassed-1	8	I saw the box. I kept walking. The sheep did not read either.	
+GEN	3	bookPassed	1	-1	1	cb8-bookPassed-1	8	I saw the box. I kept walking. The sheep did not read either.	
+GEN	3	bookPassed	2	-1	1	cb8-bookPassed-1	8	I saw the box. I kept walking. The sheep did not read either.	
+GEN	3	bookPassed	3	-1	1	cb4-bookPassed-1	4	Wait for me, little library. I am coming back, and I am BRINGING OPINIONS!	
+GEN	3	callback	0	-1	1	cb8-callback-1	8	It rained three times. Each time it was rain. I did not expect it to be anything else.	
+GEN	3	callback	1	-1	1	cb8-callback-1	8	It rained three times. Each time it was rain. I did not expect it to be anything else.	
+GEN	3	callback	2	-1	1	cb8-callback-0	8	Seven ran. I counted. Counting is what you do when you cannot do anything else.	
+GEN	3	callback	3	-1	1	cb8-callback-1	8	It rained three times. Each time it was rain. I did not expect it to be anything else.	
+GEN	3	rant	0	-1	1	cb6-rant-0	6	Thou sky! Thou great grey nothing! I have words for thee and none of them are thanks!!	
+GEN	3	rant	1	-1	1	cb8-rant-0	8	I stopped walking. I shook my fist at the sky. The sky did not notice. I felt better anyway.	
+GEN	3	rant	2	-1	1	cb8-rant-2	8	I put the sheep down. I said what I had to say to the weather. I picked the sheep up.	
+GEN	3	rant	3	-1	1	cb3-rant-0	3	Look at me. LOOK at me. I am a grown man shouting at A TYPHOONS!!	typhoons
+GEN	3	gaze	0	-1	1	cb8-gaze-0	8	I looked at the sky. It was a good sky. The sheep were still there when I looked down.	
+GEN	3	gaze	1	-1	1	cb0-gaze-2	0	Sky!	
+GEN	3	gaze	2	-1	1	cb8-gaze-0	8	I looked at the sky. It was a good sky. The sheep were still there when I looked down.	
+GEN	3	gaze	3	-1	1	cb4-gaze-0	4	By the Green Pasture, that is a handsome cloud. I shall hold it against nobody!!	by the Green Pasture
+GEN	3	nemesis	0	-1	1	cb8-nemesis-0	8	Three times it ran. I stopped counting sheep and started counting that one.	
+GEN	3	nemesis	1	-1	1	cb4-nemesis-1	4	Blessed Crook, mark this one. Not for me. I want it marked for later!	Blessed Crook
+GEN	3	nemesis	2	-1	1	cb8-nemesis-0	8	Three times it ran. I stopped counting sheep and started counting that one.	
+GEN	3	nemesis	3	-1	1	cb4-nemesis-0	4	Blessed Crook, maudit! Three flights! Hear me, Donut: of sixty sheep on this hill you are the only one I would describe AS PERSONAL.	Blessed Crook maudit
+GEN	3	nemesisCaught	0	-1	1	cb2-nemesisCaught-2	2	Say goodbye to the hill, Donut. Say it. I WILL WAIT!!	
+GEN	3	nemesisCaught	1	-1	1	cb6-nemesisCaught-0	6	Caught. Hold still, Donut; I want to remember the exact weight of you for when I am old and need something to SMILE ABOUT!	
+GEN	3	nemesisCaught	2	-1	1	cb8-nemesisCaught-0	8	I had it. It did not struggle. It knew, the way they know.	
+GEN	3	nemesisCaught	3	-1	1	cb8-nemesisCaught-0	8	I had it. It did not struggle. It knew, the way they know.	
+GEN	3	jailbreak	0	-1	1	cb8-jailbreak-0	8	It had been in. Now it was out. I had not thought a sheep could do that. I know better now, and it does not help.	
+GEN	3	jailbreak	1	-1	1	cb8-jailbreak-0	8	It had been in. Now it was out. I had not thought a sheep could do that. I know better now, and it does not help.	
+GEN	3	jailbreak	2	-1	1	cb4-jailbreak-0	4	Damme! It has JUMPED THE FENCE! A sheep! The fence I built! FOR SHEEP!!	damme
+GEN	3	jailbreak	3	-1	1	cb8-jailbreak-0	8	It had been in. Now it was out. I had not thought a sheep could do that. I know better now, and it does not help.	
+GEN	3	streak	0	-1	1	cb2-streak-0	2	Five in a row. Something is wrong. I can feel it in MY LUNGS!	lungs
+GEN	3	streak	1	-1	1	cb8-streak-0	8	Five went in and none of them ran. I did not trust it. I was right not to.	
+GEN	3	streak	2	-1	1	cb4-streak-1	4	Eight. EIGHT in a row. I am not going to say anything. I am not going to say ANYTHING. …EIGHT.	
+GEN	3	streak	3	-1	1	cb2-streak-1	2	That is five without a single one running. I do not like it. This is how the bad ONES START!!	
+GEN	3	halfway	0	-1	1	cb8-halfway-0	8	Thirty in. Thirty out. It was noon and the arithmetic was even and it would not stay that way.	
+GEN	3	halfway	1	-1	1	cb8-halfway-0	8	Thirty in. Thirty out. It was noon and the arithmetic was even and it would not stay that way.	
+GEN	3	halfway	2	-1	1	cb2-halfway-0	2	Thirty. Halfway. The other half are the ones that run.	
+GEN	3	halfway	3	-1	1	cb8-halfway-0	8	Thirty in. Thirty out. It was noon and the arithmetic was even and it would not stay that way.	
+GEN	3	lastone	0	-1	1	cb4-lastone-1	4	Tarred and feathered, câline de bine and damme, one left, and the day is nearly done, and my ankles are nearly done, and so, nearly, AM I!	tarred and feathered câline de bine damme ankles
+GEN	3	lastone	1	-1	1	cb8-lastone-0	8	One left. I went to get it. That is all there is to say about the last one until it is in.	
+GEN	3	lastone	2	-1	1	cb8-lastone-0	8	One left. I went to get it. That is all there is to say about the last one until it is in.	
+GEN	3	lastone	3	-1	1	cb8-lastone-0	8	One left. I went to get it. That is all there is to say about the last one until it is in.	
+GEN	3	rival	0	-1	1	cb8-rival-0	8	He walked past. His sheep walked behind him. Nobody said anything. That was the worst of it.	
+GEN	3	rival	1	-1	1	cb8-rival-0	8	He walked past. His sheep walked behind him. Nobody said anything. That was the worst of it.	
+GEN	3	rival	2	-1	1	cb0-rival-1	0	Him again. HATE HIM!	
+GEN	3	rival	3	-1	1	cb8-rival-0	8	He walked past. His sheep walked behind him. Nobody said anything. That was the worst of it.	
+GEN	3	drink	0	-1	1	cb6-drink-0	6	I drink from the village well, Donut, and I want it recorded that I did not spit in it, though the thought was there and it was a good one!	
+GEN	3	drink	1	-1	1	cb8-drink-0	8	The water was cold. It was good. It was not ale. I drank it anyway and went back out.	
+GEN	3	drink	2	-1	1	cb2-drink-2	2	Nobody look. A man is drinking from a well and he does not want to be greeted!	
+GEN	3	drink	3	-1	1	cb2-drink-0	2	A drink. From a well. Like a man with no inn, no friends and sixty sheep, which is what I am.	
+GEN	3	lunch	0	-1	1	cb4-lunch-0	4	Saint Woolgather preserve me, bread. Plain bread. It has not run from me. It has not bitten me. I love it.	Saint Woolgather preserve me
+GEN	3	lunch	1	-1	1	cb2-lunch-2	2	The bread is hard. The cheese is harder. I have never been happier!!	
+GEN	3	lunch	2	-1	1	cb8-lunch-0	8	I sat down and ate the bread. The dog watched the bread. Neither of us watched the sheep. It was the best part of the day.	
+GEN	3	lunch	3	-1	1	cb8-lunch-0	8	I sat down and ate the bread. The dog watched the bread. Neither of us watched the sheep. It was the best part of the day.	
+GEN	3	scarecrow	0	-1	1	cb2-scarecrow-2	2	I envy the scarecrow. Nobody expects him to CATCH ANYTHING!	
+GEN	3	scarecrow	1	-1	1	cb8-scarecrow-0	8	The scarecrow stood in the field. He had stood there all day. He did not have to carry anything. I looked at him for a while.	
+GEN	3	scarecrow	2	-1	1	cb8-scarecrow-0	8	The scarecrow stood in the field. He had stood there all day. He did not have to carry anything. I looked at him for a while.	
+GEN	3	scarecrow	3	-1	1	cb8-scarecrow-0	8	The scarecrow stood in the field. He had stood there all day. He did not have to carry anything. I looked at him for a while.	
+GEN	3	reread	0	-1	1	cb8-reread-0	8	I had read it. I read it again. It said the same things. So did the sheep.	
+GEN	3	reread	1	-1	1	cb8-reread-0	8	I had read it. I read it again. It said the same things. So did the sheep.	
+GEN	3	reread	2	-1	1	cb4-reread-1	4	Again? Fine. A man may reread. A sheep cannot even read once!	
+GEN	3	reread	3	-1	1	cb4-reread-1	4	Again? Fine. A man may reread. A sheep cannot even read once!	
+GEN	3	curious	0	-1	1	cb8-curious-0	8	It came to me. I did not know what to do with that. I picked it up. That was the right thing.	
+GEN	3	curious	1	-1	1	cb0-curious-2	0	Hm. SENSIBLE SHEEP.	
+GEN	3	curious	2	-1	1	cb8-curious-0	8	It came to me. I did not know what to do with that. I picked it up. That was the right thing.	
+GEN	3	curious	3	-1	1	cb8-curious-0	8	It came to me. I did not know what to do with that. I picked it up. That was the right thing.	
+GEN	3	dozy	0	-1	1	cb4-dozy-0	4	By all the lambs of March, it sleeps. It sleeps like a puffball in the rain. Carry it soft, herder; this is the one good thing today.	by all the lambs of March a puffball in the rain
+GEN	3	dozy	1	-1	1	cb8-dozy-0	8	It was asleep. I carried it asleep. It woke at the pen and did not know it had moved. That is a good life.	
+GEN	3	dozy	2	-1	1	cb0-dozy-2	0	Sleeping. Fine.	
+GEN	3	dozy	3	-1	1	cb8-dozy-0	8	It was asleep. I carried it asleep. It woke at the pen and did not know it had moved. That is a good life.	
+GEN	3	idle	0	5	1	t7-idle-4	7	Cáspita, God's bread, give me strength. There. Three languages, one sheep!!	cáspita God's bread give me strength
+GEN	3	penned	0	3	1	t9-penned-4	9	Moored, you fuck-knuckle. Batten the gate!!	fuck-knuckle
+GEN	4	idle	0	-1	1	t11-idle-32	11	Hey diddle diddle, the sheep and the hill, / The herder went up and the sheep stayed still; / The herder came down with the sheep on his back, / And the hill, being vain, put another one back.	vain
+GEN	4	idle	1	-1	1	t11-idle-15	11	Mud to the ankle. / Mud to the knee. Mud to the / Place where hope had been.	
+GEN	4	idle	2	-1	1	t11-idle-16	11	The herder, that blistering and ungrateful beast, / Has made of my whole day a movable feast.	blistering
+GEN	4	idle	3	-1	1	cb11-idle-2	11	The heap is cruel. / The sheep is tedious. / I am crass. So.	heap cruel tedious crass
+GEN	4	flee	0	-1	1	t0-flee-0	0	No.	
+GEN	4	flee	1	-1	1	t7-flee-3	7	Run, you fopdoodle! I have oaths in four languages and legs in none!	fopdoodle
+GEN	4	flee	2	-1	1	cb11-flee-0	11	It runs. Of course. / Jarring, mundane hog. / I follow. Hah.	jarring mundane hog hah
+GEN	4	flee	3	-1	1	t9-flee-4	9	Ten thousand thundering bumps! It runs like a tinker's dog at a christening!	bump a tinker's dog at a christening
+GEN	4	caught	0	-1	1	t11-caught-2	11	Hush, little sheep, don't say a word; / You're a muggy joithead of the distance, and the whole field heard.	muggy joithead the distance
+GEN	4	caught	1	-1	1	t0-caught-7	0	Got you.	
+GEN	4	caught	2	-1	1	t11-caught-3	11	Got you. Rhymes with: not you. / Also: forgot you. Also: I ought to.	
+GEN	4	caught	3	-1	1	t11-caught-1	11	I have you now, you woolly kettle; / The pen is there. My back is gone.	kettle
+GEN	4	penned	0	-1	1	t11-penned-1	11	One more in, and the gate swings shut; / Twelve still out. My verses: cut.	
+GEN	4	penned	1	-1	1	t11-penned-3	11	The forty-eighth is penned. / Rhyme for forty-eighth? None. / Like this day: undone.	
+GEN	4	penned	2	-1	1	t11-penned-0	11	In you go, you calamitous reprobate; / Twelve to go, and I'm the vessel.	calamitous reprobate
+GEN	4	penned	3	-1	1	t6-penned-3	6	Get thee in, thou sporulating dingbat, and mind the gate.	sporulating dingbat
+GEN	4	absurd	0	-1	1	t11-absurd-1	11	A sheep upon a stain! / How very like a sheep. / I'd write a better rhyme / But the drop is rather steep.	stain
+GEN	4	absurd	1	-1	1	t11-absurd-0	11	Herder, on the roof. / How. I say again: how. How. / The roof says nothing.	
+GEN	4	absurd	2	-1	1	t11-absurd-1	11	A sheep upon a frock! / How very like a sheep. / I'd write a better rhyme / But the drop is rather steep.	frock
+GEN	4	absurd	3	-1	1	t11-absurd-1	11	A sheep upon a hand-me-down! / How very like a sheep. / I'd write a better rhyme / But the drop is rather steep.	hand-me-down
+GEN	4	repeatEscape	0	-1	1	t9-repeatEscape-2	9	You blistering, blithering, barnacled sesquipedalian nuisance, herder! Mutiny! Mutiny with wool on!	sesquipedalian nuisance
+GEN	4	repeatEscape	1	-1	1	t10-repeatEscape-0	10	Herder. Again. I have footnotes on you, herder, and the footnotes have footnotes.	
+GEN	4	repeatEscape	2	-1	1	t11-repeatEscape-0	11	Herder, herder, twice today; / Once was a whim, and twice is a way.	
+GEN	4	repeatEscape	3	-1	1	t6-repeatEscape-0	6	Herder! Thou again! Thou goddamn gormless jellied eel, I know thee!	goddamn gormless jellied eel
+GEN	4	finished	0	-1	1	t8-finished-0	8	They were all in. Forty-eight. I stood at the gate and it was done and I did not feel what I thought I would feel.	
+GEN	4	finished	1	-1	1	t11-finished-1	11	The last is in. The gate is shut. / I have a rhyme, and here it is: / Arse.	arse
+GEN	4	finished	2	-1	1	t11-finished-1	11	The last is in. The gate is shut. / I have a rhyme, and here it is: / Blimey.	blimey
+GEN	4	finished	3	-1	1	t9-finished-1	9	Seven lazy seats and od's fish! The voyage is done, the crew is penned, and the captain is soppy.	lazy seat od's fish soppy
+GEN	4	book	0	-1	1	t11-book-0	11	A book! A box! A rhyme for 'box'? / 'Socks.' I have wet socks. Read on.	
+GEN	4	book	1	-1	1	t5-book-0	5	A book! Porca miseria, I shall learn a word and misuse it before dusk.	porca miseria
+GEN	4	book	2	-1	1	t11-book-1	11	New words in a little wooden house; / I take them out as quiet as a mouse, / Then shout them at a sheep.	
+GEN	4	book	3	-1	1	t11-book-1	11	New words in a little wooden house; / I take them out as quiet as a mouse, / Then shout them at a sheep.	
+GEN	4	epitaph	0	-1	1	t11-epitaph-2	11	Wollknäuel. (It scans.)	Wollknäuel
+GEN	4	epitaph	1	-1	1	cb11-epitaph-0	11	Spleeny hock. Arcane man. / Sixty sheep. The end.	spleeny hock arcane
+GEN	4	epitaph	2	-1	1	t11-epitaph-4	11	Roses are red. He is not.	
+GEN	4	epitaph	3	-1	1	t11-epitaph-1	11	Here lies a man who ran out of rhymes before sheep.	
+GEN	4	rain	0	-1	1	t11-rain-1	11	The rain it raineth every day / Upon the herder and the hay; / The sheep, at least, are made of wool. / I am not. My boots are full.	
+GEN	4	rain	1	-1	1	t11-rain-0	11	Rain, rain, go away; / Come again some other day; / Preferably a day / When I am not the one out in it, hey.	
+GEN	4	rain	2	-1	1	t11-rain-1	11	The rain it raineth every day / Upon the herder and the hay; / The sheep, at least, are made of wool. / I am not. My boots are full.	
+GEN	4	rain	3	-1	1	t11-rain-1	11	The rain it raineth every day / Upon the herder and the hay; / The sheep, at least, are made of wool. / I am not. My boots are full.	
+GEN	4	dusk	0	-1	1	t1-dusk-1	1	Sun going. Sheep staying.	
+GEN	4	dusk	1	-1	1	t11-dusk-0	11	The sun goes down, the sheep stay up, / And I have neither bed nor cup; / Twelve sheep, one man, no light, / And every one of them is right.	
+GEN	4	dusk	2	-1	1	t11-dusk-0	11	The sun goes down, the sheep stay up, / And I have neither bed nor cup; / Twelve sheep, one man, no light, / And every one of them is right.	
+GEN	4	dusk	3	-1	1	t11-dusk-1	11	Dusk. Twelve sheep. / A rhyme for dusk is 'musk'. / I do not smell of musk.	
+GEN	4	walkOfShame	0	-1	1	t11-walkOfShame-0	11	Past the pen with empty arms, / Before the flock's assembled charms; / They chew, they stare, they judge, they bleat; / I feel it, friends, in both my feet.	
+GEN	4	walkOfShame	1	-1	1	t11-walkOfShame-1	11	Empty-handed past the fold. / A rhyme for that is 'growing old'.	
+GEN	4	walkOfShame	2	-1	1	t11-walkOfShame-0	11	Past the pen with empty arms, / Before the flock's assembled charms; / They chew, they stare, they judge, they bleat; / I feel it, friends, in both my feet.	
+GEN	4	walkOfShame	3	-1	1	t11-walkOfShame-0	11	Past the pen with empty arms, / Before the flock's assembled charms; / They chew, they stare, they judge, they bleat; / I feel it, friends, in both my feet.	
+GEN	4	breather	0	-1	1	t11-breather-0	11	Sit on a stump, / Have a small grump, / Rise like a lump. / Poetry.	
+GEN	4	breather	1	-1	1	t10-breather-1	10	A pause, most earned, on a stump flaming damp.	most flaming
+GEN	4	breather	2	-1	1	t11-breather-0	11	Sit on a stump, / Have a small grump, / Rise like a lump. / Poetry.	
+GEN	4	breather	3	-1	1	t11-breather-0	11	Sit on a stump, / Have a small grump, / Rise like a lump. / Poetry.	
+GEN	4	bookPassed	0	-1	1	cb2-bookPassed-0	2	A book. And my arms are full of sheep. Later, book.	
+GEN	4	bookPassed	1	-1	1	cb8-bookPassed-1	8	I saw the box. I kept walking. The sheep did not read either.	
+GEN	4	bookPassed	2	-1	1	cb8-bookPassed-0	8	There was a book. I was carrying a sheep. You cannot read with a sheep. That is a rule.	
+GEN	4	bookPassed	3	-1	1	cb2-bookPassed-2	2	Of course there is a book here. Of course I am carrying a rantipoling sheep.	rantipoling
+GEN	4	callback	0	-1	1	cb2-callback-4	2	Zero runners, zero climbers, twelve still out. I keep a tally now. It does not help.	
+GEN	4	callback	1	-1	1	cb8-callback-0	8	Zero ran. I counted. Counting is what you do when you cannot do anything else.	
+GEN	4	callback	2	-1	1	cb4-callback-2	4	Saint Woolgather preserve me, zero of them have run. Zero! And I have the legs of one man.	Saint Woolgather preserve me
+GEN	4	callback	3	-1	1	cb6-callback-0	6	Thou art the first sheep to flee me this day, and I say to thee what I said to the others: dam'me.	dam'me
+GEN	4	rant	0	-1	1	cb11-rant-1	11	I shook my fist. I shook it twice. / The hill said nothing. Very nice.	
+GEN	4	rant	1	-1	1	cb11-rant-0	11	Sky above and mud below, / Sixty sheep and one to go, / One herder, hoarse, who used to grunt, / Now shouting couplets at the front!	
+GEN	4	rant	2	-1	1	cb11-rant-1	11	I shook my fist. I shook it twice. / The hill said nothing. Very nice.	
+GEN	4	rant	3	-1	1	cb10-rant-0	10	Let the record reflect, O Curse, that on this day, at this hour, in front of these interminably arcane mistakes, I raised my fists to heaven and heaven RAISED NOTHING BACK.	interminably arcane mistake
+GEN	4	gaze	0	-1	1	cb11-gaze-0	11	A cloud, a hill, a moment's ease; / Then sixty sheep. Oh, well. As you please.	
+GEN	4	gaze	1	-1	1	cb0-gaze-0	0	Cloud.	
+GEN	4	gaze	2	-1	1	cb11-gaze-0	11	A cloud, a hill, a moment's ease; / Then sixty sheep. Oh, well. As you please.	
+GEN	4	gaze	3	-1	1	cb11-gaze-0	11	A cloud, a hill, a moment's ease; / Then sixty sheep. Oh, well. As you please.	
+GEN	4	nemesis	0	-1	1	cb0-nemesis-0	0	THREE. You. Enemy.	
+GEN	4	nemesis	1	-1	1	cb0-nemesis-2	0	Three times. Remember face.	
+GEN	4	nemesis	2	-1	1	cb2-nemesis-1	2	Right. You have a name now and I am going to use it in a tone of voice.	
+GEN	4	nemesis	3	-1	1	cb8-nemesis-0	8	Three times it ran. I stopped counting sheep and started counting that one.	
+GEN	4	nemesisCaught	0	-1	1	cb6-nemesisCaught-0	6	Caught. Hold still, herder; I want to remember the exact weight of you for when I am old and need something to smile about.	
+GEN	4	nemesisCaught	1	-1	1	cb8-nemesisCaught-0	8	I had it. It did not struggle. It knew, the way they know.	
+GEN	4	nemesisCaught	2	-1	1	cb2-nemesisCaught-2	2	Say goodbye to the hill, herder. Say it. I will wait.	
+GEN	4	nemesisCaught	3	-1	1	cb8-nemesisCaught-0	8	I had it. It did not struggle. It knew, the way they know.	
+GEN	4	jailbreak	0	-1	1	cb11-jailbreak-0	11	It was in the pen at three; / At half past it was running free; / I do not know the how or why; / I only know I want to cry.	
+GEN	4	jailbreak	1	-1	1	cb10-jailbreak-0	10	Let the record reflect that the pen, which is a closed system, has produced an open sheep, and that the laws of the universe have been amended without consulting the herder.	
+GEN	4	jailbreak	2	-1	1	cb11-jailbreak-0	11	It was in the pen at three; / At half past it was running free; / I do not know the how or why; / I only know I want to cry.	
+GEN	4	jailbreak	3	-1	1	cb11-jailbreak-0	11	It was in the pen at three; / At half past it was running free; / I do not know the how or why; / I only know I want to cry.	
+GEN	4	streak	0	-1	1	cb4-streak-0	4	Blessed Crook, five in a row. I know what this is. This is the quiet before the sheep.	Blessed Crook
+GEN	4	streak	1	-1	1	cb2-streak-2	2	Five sheep, no trouble. Biscuit, are you seeing this? Biscuit. You are asleep. Of course.	
+GEN	4	streak	2	-1	1	cb8-streak-0	8	Five went in and none of them ran. I did not trust it. I was right not to.	
+GEN	4	streak	3	-1	1	cb8-streak-0	8	Five went in and none of them ran. I did not trust it. I was right not to.	
+GEN	4	halfway	0	-1	1	cb10-halfway-0	10	Let the ledger note the equinox of this profane day: thirty sheep in the pen, thirty at large, and one herder precisely half as patient as he was at dawn.	profane
+GEN	4	halfway	1	-1	1	cb10-halfway-0	10	Let the ledger note the equinox of this ill day: thirty sheep in the pen, thirty at large, and one herder precisely half as patient as he was at dawn.	ill
+GEN	4	halfway	2	-1	1	cb10-halfway-0	10	Let the ledger note the equinox of this moonstruck day: thirty sheep in the pen, thirty at large, and one herder precisely half as patient as he was at dawn.	moonstruck
+GEN	4	halfway	3	-1	1	cb8-halfway-0	8	Thirty in. Thirty out. It was noon and the arithmetic was even and it would not stay that way.	
+GEN	4	lastone	0	-1	1	cb8-lastone-0	8	One left. I went to get it. That is all there is to say about the last one until it is in.	
+GEN	4	lastone	1	-1	1	cb8-lastone-0	8	One left. I went to get it. That is all there is to say about the last one until it is in.	
+GEN	4	lastone	2	-1	1	cb8-lastone-0	8	One left. I went to get it. That is all there is to say about the last one until it is in.	
+GEN	4	lastone	3	-1	1	cb8-lastone-0	8	One left. I went to get it. That is all there is to say about the last one until it is in.	
+GEN	4	rival	0	-1	1	cb6-rival-0	6	Observe him, all of you: a man whose flock obeys him without a single putrescent word spoken. I do not trust it. Nothing that quiet is honest.	putrescent
+GEN	4	rival	1	-1	1	cb0-rival-0	0	Look. LOOK. His sheep. Walk BEHIND him.	
+GEN	4	rival	2	-1	1	cb2-rival-0	2	Oh, here comes Tom. Look at him. Look at his sheep. In a line. Like they LIKE him.	
+GEN	4	rival	3	-1	1	cb2-rival-1	2	Good morning to you too. No, no, they are all accounted for, I am carrying this one for FUN.	
+GEN	4	drink	0	-1	1	cb0-drink-0	0	Water. Not ale. WATER.	
+GEN	4	drink	1	-1	1	cb0-drink-1	0	Drink. Cold. Good. Sheep.	
+GEN	4	drink	2	-1	1	cb2-drink-1	2	Cold water, straight from the ground, honest and free and tasting faintly of bucket. Better than the sheep. Lower bar than you would think.	
+GEN	4	drink	3	-1	1	cb0-drink-2	0	Well. Bucket. Gah, cold.	
+GEN	4	lunch	0	-1	1	cb0-lunch-1	0	Sit. Eat.	
+GEN	4	lunch	1	-1	1	cb10-lunch-0	10	Let the ledger record a brief intermission, in which a herder, a heel of bread, and a wedge of something that had once been cheese achieved a perfect and temporary understanding.	
+GEN	4	lunch	2	-1	1	cb10-lunch-0	10	Let the ledger record a brief intermission, in which a herder, a heel of bread, and a wedge of something that had once been cheese achieved a perfect and temporary understanding.	
+GEN	4	lunch	3	-1	1	cb4-lunch-0	4	By the Green Pasture, bread. Plain bread. It has not run from me. It has not bitten me. I love it.	by the Green Pasture
+GEN	4	scarecrow	0	-1	1	cb8-scarecrow-0	8	The scarecrow stood in the field. He had stood there all day. He did not have to carry anything. I looked at him for a while.	
+GEN	4	scarecrow	1	-1	1	cb11-scarecrow-0	11	O scarecrow, thou stuffed and steadfast man, / Thou dost thy job the way that I never can.	
+GEN	4	scarecrow	2	-1	1	cb11-scarecrow-0	11	O scarecrow, thou stuffed and steadfast man, / Thou dost thy job the way that I never can.	
+GEN	4	scarecrow	3	-1	1	cb2-scarecrow-2	2	I envy the scarecrow. Nobody expects him to catch anything.	
+GEN	4	reread	0	-1	1	cb0-reread-1	0	Same book. Fine.	
+GEN	4	reread	1	-1	1	cb0-reread-0	0	Read it. Reading again.	
+GEN	4	reread	2	-1	1	cb0-reread-2	0	Hm. This one.	
+GEN	4	reread	3	-1	1	cb8-reread-0	8	I had read it. I read it again. It said the same things. So did the sheep.	
+GEN	4	curious	0	-1	1	cb2-curious-0	2	At least one of you has sense. Come here. You are my favourite. Do not tell the others.	
+GEN	4	curious	1	-1	1	cb0-curious-2	0	Hm. Sensible sheep.	
+GEN	4	curious	2	-1	1	cb4-curious-1	4	By thunder, one came to me. One. Out of sixty. I will take it.	by thunder
+GEN	4	curious	3	-1	1	cb2-curious-0	2	At least one of you has sense. Come here. You are my favourite. Do not tell the others.	
+GEN	4	dozy	0	-1	1	cb4-dozy-0	4	Merciful Shears, it sleeps. It sleeps like a wheelbarrow with one wheel. Carry it soft, herder; this is the one good thing today.	merciful Shears a wheelbarrow with one wheel
+GEN	4	dozy	1	-1	1	cb4-dozy-0	4	By the Long Fence, it sleeps. It sleeps like gravy on a hill. Carry it soft, herder; this is the one good thing today.	by the Long Fence gravy on a hill
+GEN	4	dozy	2	-1	1	cb0-dozy-1	0	Zzz. Good. Up.	
+GEN	4	dozy	3	-1	1	cb0-dozy-1	0	Zzz. Good. Up.	
+GEN	4	idle	0	5	1	t11-idle-32	11	Hey diddle diddle, the sheep and the hill, / The herder went up and the sheep stayed still; / The herder came down with the sheep on his back, / And the hill, being vain, put another one back.	vain
+GEN	4	penned	0	3	1	t11-penned-1	11	One more in, and the gate swings shut; / Twelve still out. My verses: cut.	
+GEN	5	idle	0	-1	1	t12-idle-18	12	The trouble with a thousand words, rain, is that every one of them means you!	
+GEN	5	idle	1	-1	1	t11-idle-16	11	The rain, that tardy-gaited and ungrateful beast, / Has made of my whole day a movable feast.	tardy-gaited
+GEN	5	idle	2	-1	1	cb5-idle-5	5	I have carried fifty-two of you and not one was fit for the table. Or the field. Or anywhere!	
+GEN	5	idle	3	-1	1	t11-idle-10	11	The pen has a gate on the south, / And a sheep with a burr in its mouth; / It went in, it went out, / It went in with a shout, / And the shout, I admit, was my mouth.	
+GEN	5	flee	0	-1	1	t12-flee-1	12	Rain flees. Note the present tense. Note that it is always the present tense with rain!	
+GEN	5	flee	1	-1	1	t9-flee-2	9	Belay that bolting, you loquacious bilge-rat!	loquacious
+GEN	5	flee	2	-1	1	t12-flee-4	12	Go, then. Go the way of all sheep, which is up, and away, and back, eventually, on my shoulders, in the dark!	
+GEN	5	flee	3	-1	1	t12-flee-4	12	Go, then. Go the way of all sheep, which is up, and away, and back, eventually, on my shoulders, in the dark.	
+GEN	5	caught	0	-1	1	t11-caught-1	11	I have you now, you woolly river; / The pen is there. My back is gone.	river
+GEN	5	caught	1	-1	1	t12-caught-0	12	Caught. Annotated. Carried. In that order, rain, and the annotation was clean nut-hook of idleness.	clean nut-hook idleness
+GEN	5	caught	2	-1	1	t6-caught-1	6	Thou art caught, rain, and I am surly; we are neither of us pleased!	surly
+GEN	5	caught	3	-1	1	t12-caught-3	12	You are heavy, rain, in the way that a thesaurus is heavy: full of words for the same thing!	
+GEN	5	penned	0	-1	1	cb11-penned-0	11	Fifty-second one in. / Rancid twit, stay put. / Eight to go. Bah.	rancid twit bah
+GEN	5	penned	1	-1	1	t11-penned-1	11	One more in, and the gate swings shut; / Eight still out. My verses: cut.	
+GEN	5	penned	2	-1	1	t11-penned-1	11	One more in, and the gate swings shut; / Eight still out. My verses: cut.	
+GEN	5	penned	3	-1	1	t11-penned-0	11	In you go, you bollock-brained cheat; / Eight to go, and I'm the vessel.	bollock-brained cheat
+GEN	5	absurd	0	-1	1	t10-absurd-0	10	A sheep, who is looking at me as if I were the problem, upon dripping: I have read zero books and not one of them prepared me!	dripping
+GEN	5	absurd	1	-1	1	t11-absurd-2	11	There once was a ewe on a roof / Who considered herself very proof / Against gravity's pull, / Being exasperating and full; / I climbed up. She was not. I have proof.	exasperating
+GEN	5	absurd	2	-1	1	t11-absurd-1	11	A sheep upon a knife! / How very like a sheep. / I'd write a better rhyme / But the drop is rather steep.	knife
+GEN	5	absurd	3	-1	1	t12-absurd-1	12	There you are, rain, on a participle, and I, with a thousand words, say: no!	participle
+GEN	5	repeatEscape	0	-1	1	t0-repeatEscape-3	0	Rain!	
+GEN	5	repeatEscape	1	-1	1	t2-repeatEscape-5	2	You are the lugubrious one. I remember.	lugubrious
+GEN	5	repeatEscape	2	-1	1	t12-repeatEscape-3	12	Rain, you old friend, you fucking brouhaha: a second time, as foretold, as always, as I said!	fucking brouhaha
+GEN	5	repeatEscape	3	-1	1	t10-repeatEscape-0	10	Rain. Again. I have footnotes on you, rain, and the footnotes have footnotes!	
+GEN	5	finished	0	-1	1	t0-finished-2	0	All of them. In.	
+GEN	5	finished	1	-1	1	t12-finished-2	12	Sixty sheep. One curse. Every register. In. Sweet Saint Bleat, in!	sweet Saint Bleat
+GEN	5	finished	2	-1	1	t11-finished-1	11	The last is in. The gate is shut. / I have a rhyme, and here it is: / Bugger.	bugger
+GEN	5	finished	3	-1	1	t0-finished-0	0	All. In!	
+GEN	5	book	0	-1	1	t12-book-2	12	I read now the way I curse: fluently, and at sheep!	
+GEN	5	book	1	-1	1	t12-book-1	12	Another book. I am, at this point, more footnote than man!	
+GEN	5	book	2	-1	1	t9-book-0	9	A book in a bottle! Well, a box. Quod erat demonstrandum, words!	quod erat demonstrandum
+GEN	5	book	3	-1	1	t12-book-2	12	I read now the way I curse: fluently, and at sheep.	
+GEN	5	epitaph	0	-1	1	t12-epitaph-15	12	One herder. Sixty sheep. Ten thousand words. Zero listeners.	
+GEN	5	epitaph	1	-1	1	t12-epitaph-23	12	Sixty sheep taught him nothing. Twenty books taught him how to say so.	
+GEN	5	epitaph	2	-1	1	t12-epitaph-12	12	He said what he meant. He meant skein of trouble of nothing.	skein of trouble nothing
+GEN	5	epitaph	3	-1	1	t12-epitaph-23	12	Sixty sheep taught him nothing. Twenty books taught him how to say so.	
+GEN	5	rain	0	-1	1	t10-rain-0	10	Rain, before noon: the sky's contribution to the hill, the mud, the rain and the principle of the thing!	
+GEN	5	rain	1	-1	1	t11-rain-0	11	Rain, rain, go away; / Come again some other day; / Preferably a day / When I am not the one out in it, hey.	
+GEN	5	rain	2	-1	1	t12-rain-0	12	Rain. I have a hundred words for it and they are all wet.	
+GEN	5	rain	3	-1	1	t11-rain-0	11	Rain, rain, go away; / Come again some other day; / Preferably a day / When I am not the one out in it, hey.	
+GEN	5	dusk	0	-1	1	t12-dusk-1	12	The sun is finishing its sentence. I am finishing mine. The sheep has no sentence, and that is the joke!	
+GEN	5	dusk	1	-1	1	t0-dusk-0	0	Dark soon!	
+GEN	5	dusk	2	-1	1	t11-dusk-0	11	The sun goes down, the sheep stay up, / And I have neither bed nor cup; / Eight sheep, one man, no light, / And every one of them is right.	
+GEN	5	dusk	3	-1	1	t9-dusk-2	9	Dusk, great heavens, and no harbour but the pen!	great heavens
+GEN	5	walkOfShame	0	-1	1	t12-walkOfShame-2	12	Empty-handed, full-worded, past fifty-two critics!	
+GEN	5	walkOfShame	1	-1	1	t12-walkOfShame-0	12	Past the pen with nothing but vocabulary. The sheep inside have neither and are happier!	
+GEN	5	walkOfShame	2	-1	1	t12-walkOfShame-2	12	Empty-handed, full-worded, past fifty-two critics!	
+GEN	5	walkOfShame	3	-1	1	t11-walkOfShame-0	11	Past the pen with empty arms, / Before the flock's assembled charms; / They chew, they stare, they judge, they bleat; / I feel it, friends, in both my feet.	
+GEN	5	breather	0	-1	1	t12-breather-1	12	A pause, parenthetical, on a stump. (The stump does not judge. The sheep do.)	
+GEN	5	breather	1	-1	1	t2-breather-1	2	My legs. Just a moment.	legs
+GEN	5	breather	2	-1	1	t8-breather-0	8	I sat down. The apostrophe was true under me. I did not get up for a while.	apostrophe true
+GEN	5	breather	3	-1	1	t12-breather-0	12	I sit. This is the denouement. It is a stump!	
+GEN	5	bookPassed	0	-1	1	cb8-bookPassed-0	8	There was a book. I was carrying a sheep. You cannot read with a sheep. That is a rule.	
+GEN	5	bookPassed	1	-1	1	cb2-bookPassed-1	2	I see you, book. I will come back for you!	
+GEN	5	bookPassed	2	-1	1	cb2-bookPassed-2	2	Of course there is a book here. Of course I am carrying an ungrateful sheep.	ungrateful
+GEN	5	bookPassed	3	-1	1	cb4-bookPassed-0	4	By thunder, a library, and I with a sheep on my shoulders like a lubberly scarf!	by thunder lubberly
+GEN	5	callback	0	-1	1	cb6-callback-0	6	Thou art the ninth sheep to flee me this day, and I say to thee what I said to the others: as foretold.	as foretold
+GEN	5	callback	1	-1	1	cb2-callback-4	2	Nine runners, four climbers, eight still out. I keep a tally now. It does not help!	
+GEN	5	callback	2	-1	1	cb4-callback-2	4	By every tomorrow, nine of them have run. Nine! And I have the legs of one man!	by every tomorrow
+GEN	5	callback	3	-1	1	cb2-callback-2	2	Three times past the pen with nothing. The sheep in the pen know!	
+GEN	5	rant	0	-1	1	cb11-rant-1	11	I shook my fist. I shook it twice. / The hill said nothing. Very nice.	
+GEN	5	rant	1	-1	1	cb12-rant-0	12	O Curse, if you are taking notes: this is the part where the herder stops walking. You have seen it before. You will see it again. I know. I KNOW!	
+GEN	5	rant	2	-1	1	cb8-rant-0	8	I stopped walking. I shook my fist at the sky. The sky did not notice. I felt better anyway.	
+GEN	5	rant	3	-1	1	cb12-rant-0	12	O Curse, if you are taking notes: this is the part where the herder stops walking. You have seen it before. You will see it again. I know. I KNOW!	
+GEN	5	gaze	0	-1	1	cb2-gaze-1	2	A moment of peace. I will remember this when the rest of the day happens!	
+GEN	5	gaze	1	-1	1	cb1-gaze-0	1	Nice cloud. Shaped like a sheep. Of course!	
+GEN	5	gaze	2	-1	1	cb1-gaze-2	1	Good sky today. Shame about the ground.	
+GEN	5	gaze	3	-1	1	cb2-gaze-1	2	A moment of peace. I will remember this when the rest of the day happens!	
+GEN	5	nemesis	0	-1	1	cb0-nemesis-0	0	THREE. You. Enemy.	
+GEN	5	nemesis	1	-1	1	cb8-nemesis-0	8	Three times it ran. I stopped counting sheep and started counting that one.	
+GEN	5	nemesis	2	-1	1	cb6-nemesis-0	6	I have herded sheep for a lifetime and I have never before hated one by name. Congratulations, rain. You are a first!	
+GEN	5	nemesis	3	-1	1	cb4-nemesis-1	4	By the stone I will not see, mark this one. Not for me. I want it marked for later!	by the stone I will not see
+GEN	5	nemesisCaught	0	-1	1	cb8-nemesisCaught-0	8	I had it. It did not struggle. It knew, the way they know.	
+GEN	5	nemesisCaught	1	-1	1	cb0-nemesisCaught-0	0	GOT. YOU!	
+GEN	5	nemesisCaught	2	-1	1	cb2-nemesisCaught-0	2	Got you. GOT you. The charm, rain, was patience, and I am going to enjoy every step of this walk.	
+GEN	5	nemesisCaught	3	-1	1	cb2-nemesisCaught-0	2	Got you. GOT you. The charm, rain, was patience, and I am going to enjoy every step of this walk!	
+GEN	5	jailbreak	0	-1	1	cb11-jailbreak-0	11	It was in the pen at three; / At half past it was running free; / I do not know the how or why; / I only know I want to cry.	
+GEN	5	jailbreak	1	-1	1	cb11-jailbreak-0	11	It was in the pen at three; / At half past it was running free; / I do not know the how or why; / I only know I want to cry.	
+GEN	5	jailbreak	2	-1	1	cb11-jailbreak-0	11	It was in the pen at three; / At half past it was running free; / I do not know the how or why; / I only know I want to cry.	
+GEN	5	jailbreak	3	-1	1	cb0-jailbreak-1	0	Pen. Out. HOW!	
+GEN	5	streak	0	-1	1	cb2-streak-2	2	Five sheep, no trouble. Biscuit, are you seeing this? Biscuit. You are asleep. Of course!	
+GEN	5	streak	1	-1	1	cb12-streak-0	12	A run of luck, O Curse, is your favourite joke, and I have laughed at it every time, and I am laughing now, and I hate you!	
+GEN	5	streak	2	-1	1	cb2-streak-0	2	Five in a row. Something is wrong. I can feel it in my ears!	ears
+GEN	5	streak	3	-1	1	cb12-streak-0	12	A run of luck, O Curse, is your favourite joke, and I have laughed at it every time, and I am laughing now, and I hate you.	
+GEN	5	halfway	0	-1	1	cb10-halfway-0	10	Let the ledger note the equinox of this farcical day: thirty sheep in the pen, thirty at large, and one herder precisely half as patient as he was at dawn.	farcical
+GEN	5	halfway	1	-1	1	cb2-halfway-2	2	Halfway, Biscuit. Halfway. Do not get up. You never do!	
+GEN	5	halfway	2	-1	1	cb10-halfway-0	10	Let the ledger note the equinox of this capricious day: thirty sheep in the pen, thirty at large, and one herder precisely half as patient as he was at dawn!	capricious
+GEN	5	halfway	3	-1	1	cb10-halfway-0	10	Let the ledger note the equinox of this hare-brained day: thirty sheep in the pen, thirty at large, and one herder precisely half as patient as he was at dawn!	hare-brained
+GEN	5	lastone	0	-1	1	cb12-lastone-0	12	One sheep between me and the stone. I have never wanted a sheep so much, or a stone!	
+GEN	5	lastone	1	-1	1	cb12-lastone-0	12	One sheep between me and the stone. I have never wanted a sheep so much, or a stone!	
+GEN	5	lastone	2	-1	1	cb12-lastone-0	12	One sheep between me and the stone. I have never wanted a sheep so much, or a stone!	
+GEN	5	lastone	3	-1	1	cb2-lastone-1	2	One more. One. I could cry. I will not. There is a sheep watching.	
+GEN	5	rival	0	-1	1	cb2-rival-0	2	Oh, here comes Tom. Look at him. Look at his sheep. In a line. Like they LIKE him!	
+GEN	5	rival	1	-1	1	cb2-rival-3	2	He does not even have a dog. He does not NEED a dog. I want to lie down in the river!	
+GEN	5	rival	2	-1	1	cb0-rival-1	0	Him again. Hate him!	
+GEN	5	rival	3	-1	1	cb2-rival-3	2	He does not even have a dog. He does not NEED a dog. I want to lie down in the river.	
+GEN	5	drink	0	-1	1	cb8-drink-0	8	The water was cold. It was good. It was not ale. I drank it anyway and went back out.	
+GEN	5	drink	1	-1	1	cb2-drink-0	2	A drink. From a well. Like a man with no inn, no friends and sixty sheep, which is what I am!	
+GEN	5	drink	2	-1	1	cb4-drink-0	4	Fiddlesticks, water! Cold, honest, and utterly without alcohol, like everything else in my footnoted life!	fiddlesticks footnoted
+GEN	5	drink	3	-1	1	cb0-drink-1	0	Drink. Cold. Good. Sheep!	
+GEN	5	lunch	0	-1	1	cb10-lunch-0	10	Let the ledger record a brief intermission, in which a herder, a heel of bread, and a wedge of something that had once been cheese achieved a perfect and temporary understanding!	
+GEN	5	lunch	1	-1	1	cb0-lunch-3	0	Lunch. Finally.	
+GEN	5	lunch	2	-1	1	cb4-lunch-1	4	Sit, Biscuit. No. That is my cheese. You herd nothing and you want my cheese!	
+GEN	5	lunch	3	-1	1	cb2-lunch-1	2	Lunch. Biscuit has noticed. Biscuit has done nothing all day and has noticed lunch!	
+GEN	5	scarecrow	0	-1	1	cb11-scarecrow-0	11	O scarecrow, thou stuffed and steadfast man, / Thou dost thy job the way that I never can.	
+GEN	5	scarecrow	1	-1	1	cb8-scarecrow-0	8	The scarecrow stood in the field. He had stood there all day. He did not have to carry anything. I looked at him for a while.	
+GEN	5	scarecrow	2	-1	1	cb2-scarecrow-1	2	Evening, scarecrow. No? Fine. You and the sheep can not-talk together!	
+GEN	5	scarecrow	3	-1	1	cb2-scarecrow-0	2	The scarecrow has the better job. He stands in one place and nothing runs from him!	
+GEN	5	reread	0	-1	1	cb0-reread-2	0	Hm. This one.	
+GEN	5	reread	1	-1	1	cb8-reread-0	8	I had read it. I read it again. It said the same things. So did the sheep.	
+GEN	5	reread	2	-1	1	cb0-reread-0	0	Read it. Reading again!	
+GEN	5	reread	3	-1	1	cb8-reread-0	8	I had read it. I read it again. It said the same things. So did the sheep.	
+GEN	5	curious	0	-1	1	cb4-curious-0	4	In the name of the epilogue, a sheep with manners. I shall carry you gently, you aforesaid little miracle!	in the name of the epilogue aforesaid
+GEN	5	curious	1	-1	1	cb0-curious-0	0	Oh. Hello!	
+GEN	5	curious	2	-1	1	cb2-curious-1	2	It walked up to me. It just walked up. I could weep.	
+GEN	5	curious	3	-1	1	cb0-curious-1	0	You. Came. Good.	
+GEN	5	dozy	0	-1	1	cb2-dozy-0	2	It did not even wake up. I have carried furniture with more opinions!	
+GEN	5	dozy	1	-1	1	cb0-dozy-2	0	Sleeping. Fine!	
+GEN	5	dozy	2	-1	1	cb0-dozy-2	0	Sleeping. Fine!	
+GEN	5	dozy	3	-1	1	cb0-dozy-1	0	Zzz. Good. Up.	
+GEN	5	idle	0	5	1	t12-idle-19	12	Every word I learned today was a small stone, and I have built a wall, and you are on the wrong side of it, rain, chewing!	
+GEN	5	penned	0	3	1	cb11-penned-0	11	Fifty-second one in. / Rancid twit, stay put. / Eight to go. Bah.	rancid twit bah
