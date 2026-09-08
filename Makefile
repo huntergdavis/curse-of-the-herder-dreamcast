@@ -1,6 +1,6 @@
 # Curse of the Herder (Dreamcast). Build inside the KallistiOS Docker image: ./scripts/dc-build.sh
 TARGET   = herder.elf
-OBJS     = src/main.o src/core/rng.o src/core/noise.o src/core/map/terrain.o src/core/map/path.o src/core/map/generate.o src/core/progression.o src/core/names.o src/core/sim/flock.o src/core/sim/book.o src/core/sim/step.o src/core/lang/morphology.o src/core/lang/banned.o src/core/lang/grammar.o src/core/lang/speech.o src/data/lang_data.o
+OBJS     = src/main.o src/core/rng.o src/core/noise.o src/core/map/terrain.o src/core/map/path.o src/core/map/generate.o src/core/progression.o src/core/names.o src/core/sim/flock.o src/core/sim/book.o src/core/sim/step.o src/core/lang/morphology.o src/core/lang/banned.o src/core/lang/grammar.o src/core/lang/speech.o src/render/fb.o src/data/lang_data.o
 KOS_CFLAGS += -std=gnu11 -Wall -Wextra -O2 -Isrc
 KOS_LOCAL_LDFLAGS = -lm
 
