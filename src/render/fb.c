@@ -190,7 +190,10 @@ static void draw_house(uint16_t *fb,int px,int py,int red){
 static void draw_rival(uint16_t *fb, const HerderWorld *w);
 void herder_fb_draw_world(uint16_t *fb, const HerderWorld *w){
     const HerderMap *m=w->map;
-    if(g_camx<0){ g_camx=w->h.x; g_camy=w->h.y; } else { g_camx+=(w->h.x-g_camx)*0.12; g_camy+=(w->h.y-g_camy)*0.12; }
+    /* lead the camera toward where he is going (web: +0.25 * toward path[min(4,rem-1)]) */
+    double _tx=w->h.x, _ty=w->h.y; int _rem=w->h.path_len - w->h.path_head;
+    if(_rem>0){ int _k=(_rem-1<4)?(_rem-1):4; int _wx=w->h.path[(w->h.path_head+_k)*2], _wy=w->h.path[(w->h.path_head+_k)*2+1]; _tx+=(_wx-w->h.x)*0.25; _ty+=(_wy-w->h.y)*0.25; }
+    if(g_camx<0){ g_camx=_tx; g_camy=_ty; } else { g_camx+=(_tx-g_camx)*0.12; g_camy+=(_ty-g_camy)*0.12; }
     int cx=(int)(g_camx+0.5), cy=(int)(g_camy+0.5);
     int ox=cx-VIEWW/2, oy=cy-VIEWH/2;
     int vh=(HERDER_SCRH-HERDER_TOP);
