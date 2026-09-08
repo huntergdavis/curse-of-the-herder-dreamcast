@@ -18,6 +18,7 @@
 KOS_INIT_FLAGS(INIT_DEFAULT);
 
 static uint16 *fb;
+static int g_fast=1;
 
 static void draw_hud(const HerderWorld *w){
     herder_fb_fill(fb,0,0,HERDER_SCRW,HERDER_TOP,HERDER_C_hud);
@@ -25,7 +26,8 @@ static void draw_hud(const HerderWorld *w){
     double hours=w->tick/14400.0;
     int hh=9+(int)hours, mm=(int)((hours-(int)hours)*60);
     int level=herder_level_for(herder_erudition(w->booksRead,w->sheepPenned,hours));
-    snprintf(line,sizeof(line),"%02d:%02d  Lv%d %s  Pen %d/%d  Books %d", hh,mm,level,HERDER_LEVEL_NAMES[level],w->sheepPenned,w->sheep_count,w->booksRead);
+    if(g_fast>1) snprintf(line,sizeof(line),"%02d:%02d  Lv%d %s  Pen %d/%d  Books %d  x%d", hh,mm,level,HERDER_LEVEL_NAMES[level],w->sheepPenned,w->sheep_count,w->booksRead,g_fast);
+    else snprintf(line,sizeof(line),"%02d:%02d  Lv%d %s  Pen %d/%d  Books %d", hh,mm,level,HERDER_LEVEL_NAMES[level],w->sheepPenned,w->sheep_count,w->booksRead);
     bfont_set_foreground_color(0xef7b);
     bfont_set_background_color(HERDER_C_hud);
     bfont_draw_str(fb+2*HERDER_SCRW+6, HERDER_SCRW, 0, line);
@@ -186,18 +188,22 @@ int main(int argc, char **argv){
     int nextIdle=g_world.tick + herder_next_idle_curse_ticks(&g_world);
     int lastSeq=-1, frame=0, recorded=0, lastSignpost=-100000, lastHat=-100000;
     int wasRaining=0, rainbowUntil=-1;
-    const int TPF=10;
+    static const int SPEEDS[6]={1,2,5,20,60,300}; int spi=0; g_fast=SPEEDS[spi];
+    uint64 lastms=timer_ms_gettime64(); double tickAccum=0;
 
     for(;;){
         maple_device_t *cont=maple_enum_type(0,MAPLE_FUNC_CONTROLLER);
         int btns=0; if(cont){ cont_state_t *st=(cont_state_t*)maple_dev_status(cont); if(st) btns=st->buttons; }
         if(btns & CONT_START){ prevBtns=btns; goto restart; }
         int pressed=btns & ~prevBtns; prevBtns=btns;
-        if(pressed & CONT_DPAD_RIGHT){ seed_idx=(seed_idx+1)%5; new_day(); lastSeq=-1; nextIdle=herder_next_idle_curse_ticks(&g_world); snprintf(curline,sizeof(curline),"A new day: %s.",SEEDS[seed_idx]); lineUntil=frame+180; }
-        if(pressed & CONT_DPAD_LEFT){ seed_idx=(seed_idx+4)%5; new_day(); lastSeq=-1; nextIdle=herder_next_idle_curse_ticks(&g_world); snprintf(curline,sizeof(curline),"A new day: %s.",SEEDS[seed_idx]); lineUntil=frame+180; }
+        if(pressed & CONT_DPAD_RIGHT){ seed_idx=(seed_idx+1)%5; new_day(); lastSeq=-1; nextIdle=herder_next_idle_curse_ticks(&g_world); snprintf(curline,sizeof(curline),"A new day: %s.",SEEDS[seed_idx]); lineUntil=frame+180; lastms=timer_ms_gettime64(); tickAccum=0; }
+        if(pressed & CONT_A){ spi=(spi+1)%6; g_fast=SPEEDS[spi]; }
+        if(pressed & CONT_DPAD_LEFT){ seed_idx=(seed_idx+4)%5; new_day(); lastSeq=-1; nextIdle=herder_next_idle_curse_ticks(&g_world); snprintf(curline,sizeof(curline),"A new day: %s.",SEEDS[seed_idx]); lineUntil=frame+180; lastms=timer_ms_gettime64(); tickAccum=0; }
 
+        { uint64 nowms=timer_ms_gettime64(); tickAccum += (double)(nowms-lastms)*g_fast/250.0; lastms=nowms; }
+        int steps=(int)tickAccum; tickAccum-=steps; if(steps>240) steps=240;
         if(!g_world.finished){
-            for(int k=0;k<TPF && !g_world.finished;k++){
+            for(int k=0;k<steps && !g_world.finished;k++){
                 herder_step(&g_world);
                 while(g_world.event_count > lastSeq+1){
                     int seq=++lastSeq;
