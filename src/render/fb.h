@@ -35,6 +35,7 @@ void herder_fb_hud(uint16_t *fb, const HerderWorld *w, int fast);
 void herder_fb_curse_banner(uint16_t *fb, const char *line);
 void herder_fb_toast(uint16_t *fb, const char *text);
 void herder_fb_lastheard(uint16_t *fb, const char *text);
+void herder_fb_forecast(uint16_t *fb, const char *text);
 
 extern uint16_t HERDER_C_hud, HERDER_C_panel, HERDER_C_ink, HERDER_C_bar_bg, HERDER_C_bar;
 #endif

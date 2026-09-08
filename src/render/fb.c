@@ -495,3 +495,13 @@ void herder_fb_lastheard(uint16_t *fb, const char *text){
     if(text[i]){ if(i>2){ buf[i-1]='.'; buf[i-2]='.'; } }
     herder_fb_text(fb,16,py+20,buf,HERDER_C_ink,1);
 }
+
+
+/* the day-start forecast, a wrapped cream card centred under the HUD */
+void herder_fb_forecast(uint16_t *fb, const char *text){
+    if(!text||!text[0]) return;
+    int bw=HERDER_SCRW-160, bx=(HERDER_SCRW-bw)/2, by=132, bh=58;
+    herder_fb_fill(fb,bx-2,by-2,bw+4,bh+4,HERDER_C_ink);
+    herder_fb_fill(fb,bx,by,bw,bh,HERDER_C_panel);
+    herder_fb_text_wrap(fb,bx+8,by+8,text,HERDER_C_ink,1,bw-16,4);
+}

@@ -182,7 +182,7 @@ int main(int argc, char **argv){
     int wasRaining=0, rainbowUntil=-1;
     char curseLine[160]=""; int curseUntil=-1, lastCurse=-100000;
     char toastLine[96]=""; int toastUntil=-1;
-    char lastHeard[512]="";
+    char lastHeard[512]=""; char forecast[256]=""; int forecastUntil=frame+8*60; herder_forecast(g_world.seed,g_world.season,forecast,sizeof(forecast));
     static const int SPEEDS[6]={1,2,5,20,60,300}; int spi=0; g_fast=SPEEDS[spi];
     uint64 lastms=timer_ms_gettime64(); double tickAccum=0;
 
@@ -191,9 +191,9 @@ int main(int argc, char **argv){
         int btns=0; if(cont){ cont_state_t *st=(cont_state_t*)maple_dev_status(cont); if(st) btns=st->buttons; }
         if(btns & CONT_START){ prevBtns=btns; goto restart; }
         int pressed=btns & ~prevBtns; prevBtns=btns;
-        if(pressed & CONT_DPAD_RIGHT){ seed_idx=(seed_idx+1)%5; new_day(); lastSeq=-1; nextIdle=herder_next_idle_curse_ticks(&g_world); snprintf(curline,sizeof(curline),"A new day: %s.",SEEDS[seed_idx]); lineUntil=frame+180; lastms=timer_ms_gettime64(); tickAccum=0; }
+        if(pressed & CONT_DPAD_RIGHT){ seed_idx=(seed_idx+1)%5; new_day(); lastSeq=-1; nextIdle=herder_next_idle_curse_ticks(&g_world); snprintf(curline,sizeof(curline),"A new day: %s.",SEEDS[seed_idx]); lineUntil=frame+180; lastms=timer_ms_gettime64(); tickAccum=0; herder_forecast(g_world.seed,g_world.season,forecast,sizeof(forecast)); forecastUntil=frame+8*60; }
         if(pressed & CONT_A){ spi=(spi+1)%6; g_fast=SPEEDS[spi]; }
-        if(pressed & CONT_DPAD_LEFT){ seed_idx=(seed_idx+4)%5; new_day(); lastSeq=-1; nextIdle=herder_next_idle_curse_ticks(&g_world); snprintf(curline,sizeof(curline),"A new day: %s.",SEEDS[seed_idx]); lineUntil=frame+180; lastms=timer_ms_gettime64(); tickAccum=0; }
+        if(pressed & CONT_DPAD_LEFT){ seed_idx=(seed_idx+4)%5; new_day(); lastSeq=-1; nextIdle=herder_next_idle_curse_ticks(&g_world); snprintf(curline,sizeof(curline),"A new day: %s.",SEEDS[seed_idx]); lineUntil=frame+180; lastms=timer_ms_gettime64(); tickAccum=0; herder_forecast(g_world.seed,g_world.season,forecast,sizeof(forecast)); forecastUntil=frame+8*60; }
 
         { uint64 nowms=timer_ms_gettime64(); tickAccum += (double)(nowms-lastms)*g_fast/250.0; lastms=nowms; }
         int steps=(int)tickAccum; tickAccum-=steps; if(steps>240) steps=240;
@@ -242,6 +242,7 @@ int main(int argc, char **argv){
         if(frame<rainbowUntil){ int left=rainbowUntil-frame; herder_fb_rainbow(fb, left>120?200:left*200/120); }
         herder_fb_minimap(fb,&g_world);
         herder_fb_hud(fb,&g_world,g_fast);
+        if(frame<forecastUntil) herder_fb_forecast(fb,forecast);
         if(frame<curseUntil) herder_fb_curse_banner(fb,curseLine);
         if(frame<toastUntil) herder_fb_toast(fb,toastLine);
         if(frame<lineUntil) herder_fb_bubble(fb,&g_world,curline);

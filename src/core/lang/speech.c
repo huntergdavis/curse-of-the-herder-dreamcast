@@ -228,3 +228,12 @@ const char *herder_curse_remark(const char *seed, int tick, const char *kind, in
   int idx=(int)(kui(seed,"curse-remark-line",tick)*n); if(idx>=n)idx=n-1;
   return pool[idx];
 }
+
+void herder_forecast(const char *seed, const char *season, char *out, int cap){
+    static const char *skies[6]={"overcast, with opinions","bright, then not","changeable, like the sheep","fair, which the sheep will not honour","grey, with grey later","sunny spells, mostly on the sheep"};
+    static const char *later[6]={"rain by lunch","a wind that knows your name","fog where the sheep are","a bog that has been waiting","one wasp, personal","dusk, eventually"};
+    const char *sky=skies[(int)(ku(seed,"sky")*6)];
+    const char *lat=later[(int)(ku(seed,"later")*6)];
+    const char *dog=HERDER_DOGS[herder_dog_name(seed)];
+    snprintf(out,cap,"Forecast (The Sad Almanac, %s): %s; %s. Outlook: sheep. Dog on duty: %s (no help expected).", season?season:"summer", sky, lat, dog);
+}
