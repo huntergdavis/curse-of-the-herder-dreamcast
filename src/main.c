@@ -12,6 +12,7 @@
 #include "core/lang/speech.h"
 #include "core/lang/grammar.h"
 #include "core/progression.h"
+#include "core/names.h"
 #include "render/fb.h"
 
 KOS_INIT_FLAGS(INIT_DEFAULT);
@@ -60,6 +61,74 @@ static void new_day(void){
     herder_world_init(&g_world,&g_map,SEEDS[seed_idx]);
 }
 
+
+
+typedef struct { int used; char name[48]; char clock[8]; int sheep, books, level; char epitaph[120]; char seed[32]; } HallRec;
+static HallRec g_hall[8];
+static int g_hall_n=0;
+
+/* Best-effort VMU persistence of the Hall (compact). Unverified without a card. */
+static void herder_vmu_save(void){
+    maple_device_t *vmu=maple_enum_type(0, MAPLE_FUNC_MEMCARD);
+    if(!vmu) return;
+    /* store the raw records; a real build would wrap this in a vmu_pkg with an icon. */
+    file_t f=fs_open("/vmu/a1/HERDERHALL", O_WRONLY);
+    if(f<0) return;
+    fs_write(f,&g_hall_n,sizeof(g_hall_n));
+    fs_write(f,g_hall,sizeof(g_hall));
+    fs_close(f);
+}
+static void herder_vmu_load(void){
+    file_t f=fs_open("/vmu/a1/HERDERHALL", O_RDONLY);
+    if(f<0) return;
+    fs_read(f,&g_hall_n,sizeof(g_hall_n));
+    if(g_hall_n<0||g_hall_n>8){ g_hall_n=0; fs_close(f); return; }
+    fs_read(f,g_hall,sizeof(g_hall));
+    fs_close(f);
+}
+
+
+static void herder_full_name(const char *seed, char *out, int cap){
+    snprintf(out,cap,"%s%s %s", herder_name_old(seed)?"Old ":"", HERDER_FIRST[herder_name_first(seed)], HERDER_EPITHET[herder_name_epithet(seed)]);
+}
+static void record_day(const HerderWorld *w){
+    HallRec r; r.used=1;
+    herder_full_name(w->seed, r.name, sizeof(r.name));
+    double hours = w->finishedTick/14400.0;
+    int hh=9+(int)hours, mm=(int)((hours-(int)hours)*60);
+    snprintf(r.clock,sizeof(r.clock),"%02d:%02d",hh,mm);
+    r.sheep=w->sheepPenned; r.books=w->booksRead;
+    r.level=herder_level_for(herder_erudition(w->booksRead,w->sheepPenned,hours));
+    HerderUtterance ep=herder_speak_epitaph(w,4); snprintf(r.epitaph,sizeof(r.epitaph),"%s",ep.text);
+    snprintf(r.seed,sizeof(r.seed),"%s",w->seed);
+    /* newest first, keep 8, dedupe by seed */
+    for(int i=0;i<g_hall_n;i++) if(strcmp(g_hall[i].seed,r.seed)==0){ for(int j=i;j<g_hall_n-1;j++) g_hall[j]=g_hall[j+1]; g_hall_n--; break; }
+    for(int i=(g_hall_n<8?g_hall_n:7);i>0;i--) g_hall[i]=g_hall[i-1];
+    g_hall[0]=r; if(g_hall_n<8) g_hall_n++;
+    herder_vmu_save();
+}
+
+static void hall_screen(int *prevBtns){
+    for(;;){
+        maple_device_t *cont=maple_enum_type(0,MAPLE_FUNC_CONTROLLER);
+        int btns=0; if(cont){ cont_state_t *st=(cont_state_t*)maple_dev_status(cont); if(st) btns=st->buttons; }
+        int pressed=btns & ~*prevBtns; *prevBtns=btns;
+        if(pressed & (CONT_START|CONT_A|CONT_B)) return;
+        herder_fb_fill(fb,0,0,HERDER_SCRW,HERDER_SCRH,HERDER_C_hud);
+        bfont_set_background_color(HERDER_C_hud); bfont_set_foreground_color(0xffff);
+        bfont_draw_str(fb+20*HERDER_SCRW+180, HERDER_SCRW, 0, "THE HALL OF HERDERS");
+        if(g_hall_n==0) bfont_draw_str(fb+120*HERDER_SCRW+120, HERDER_SCRW, 0, "No days yet. Go and suffer one.");
+        for(int i=0;i<g_hall_n;i++){ char l[80]; HallRec *r=&g_hall[i];
+            snprintf(l,sizeof(l),"%-22s %s  %2d sheep  Lv%d", r->name, r->clock, r->sheep, r->level);
+            bfont_draw_str(fb+(70+i*46)*HERDER_SCRW+30, HERDER_SCRW, 0, l);
+            char e[64]; snprintf(e,sizeof(e),"  \"%.44s\"", r->epitaph);
+            bfont_set_foreground_color(0xce59); bfont_draw_str(fb+(70+i*46+22)*HERDER_SCRW+30, HERDER_SCRW, 0, e); bfont_set_foreground_color(0xffff);
+        }
+        bfont_draw_str(fb+450*HERDER_SCRW+220, HERDER_SCRW, 0, "B: back");
+        vid_waitvbl();
+    }
+}
+
 static void title_screen(int *prevBtns){
     int frame=0;
     for(;;){
@@ -68,6 +137,7 @@ static void title_screen(int *prevBtns){
         int pressed=btns & ~*prevBtns; *prevBtns=btns;
         if(pressed & CONT_DPAD_RIGHT) seed_idx=(seed_idx+1)%5;
         if(pressed & CONT_DPAD_LEFT) seed_idx=(seed_idx+4)%5;
+        if(pressed & CONT_Y){ hall_screen(prevBtns); continue; }
         if(pressed & (CONT_START|CONT_A)) return;
         herder_fb_title(fb);
         bfont_set_background_color(HERDER_C_ink);
@@ -76,6 +146,7 @@ static void title_screen(int *prevBtns){
         char sl[64]; snprintf(sl,sizeof(sl),"< pasture: %s >", SEEDS[seed_idx]);
         bfont_draw_str(fb+420*HERDER_SCRW+180, HERDER_SCRW, 0, sl);
         if((frame/30)%2==0) bfont_draw_str(fb+445*HERDER_SCRW+230, HERDER_SCRW, 0, "Press START");
+        bfont_draw_str(fb+445*HERDER_SCRW+20, HERDER_SCRW, 0, "Y: Hall");
         vid_waitvbl(); frame++;
     }
 }
@@ -86,6 +157,7 @@ int main(int argc, char **argv){
     fb=vram_s;
     herder_fb_palette_init();
     herder_grammar_init();
+    herder_vmu_load();
 
     int prevBtns=0;
   restart:
@@ -95,7 +167,7 @@ int main(int argc, char **argv){
     char curline[512]="The Curse of the Herder.";
     int lineUntil=240;
     int nextIdle=g_world.tick + herder_next_idle_curse_ticks(&g_world);
-    int lastSeq=-1, frame=0;
+    int lastSeq=-1, frame=0, recorded=0;
     const int TPF=10;
 
     for(;;){
@@ -120,8 +192,9 @@ int main(int argc, char **argv){
                     if(u.ok){ snprintf(curline,sizeof(curline),"%s",u.text); lineUntil=frame+(int)(u.seconds*60); }
                 }
             }
-        } else if(frame>lineUntil){
-            HerderUtterance u=herder_speak_epitaph(&g_world,4); snprintf(curline,sizeof(curline),"%s",u.text); lineUntil=frame+600;
+        } else {
+            if(!recorded){ record_day(&g_world); recorded=1; }
+            if(frame>lineUntil){ HerderUtterance u=herder_speak_epitaph(&g_world,4); snprintf(curline,sizeof(curline),"%s",u.text); lineUntil=frame+600; }
         }
 
         herder_fb_set_anim(frame);
