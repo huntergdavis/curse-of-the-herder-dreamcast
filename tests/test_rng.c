@@ -2,6 +2,7 @@
 #include "core/rng.h"
 #include "core/noise.h"
 #include "core/map/terrain.h"
+#include "core/map/path.h"
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -31,7 +32,8 @@ int main(int argc, char **argv) {
     const char *path = argc > 1 ? argv[1] : "tests/golden/rng.txt";
     FILE *f = fopen(path, "r");
     if (!f) { printf("cannot open %s\n", path); return 2; }
-    char line[512]; char *fld[8];
+    static char line[65536]; char *fld[10];
+    static uint8_t gterr[64*64]; int gn = 0; char gid[32] = {0};
     while (fgets(line, sizeof(line), f)) {
         char *nl = strchr(line, '\n'); if (nl) *nl = 0;
         if (line[0] == 0) continue;
@@ -64,6 +66,28 @@ int main(int argc, char **argv) {
             double x = dbl_of(fld[2]), y = dbl_of(fld[3]), sc = dbl_of(fld[4]);
             char w[64]; snprintf(w, sizeof(w), "FBM(%u,%.2f,%.2f,%.1f)", seed, x, y, sc);
             expect_bits(w, herder_fbm(seed, x, y, sc), fld[5]);
+        } else if (strcmp(fld[0], "GRID") == 0 && n >= 4) {
+            snprintf(gid, sizeof(gid), "%s", fld[1]);
+            gn = atoi(fld[2]);
+            for (int t = 0; t < gn * gn; t++) { char ch = fld[3][t]; gterr[t] = (uint8_t)(ch <= '9' ? ch - '0' : ch - 'a' + 10); }
+        } else if (strcmp(fld[0], "DIST") == 0 && n >= 5) {
+            HerderGrid g = { gn, gterr };
+            double *df = herder_distance_field(&g, atoi(fld[2]), atoi(fld[3]), NULL, NULL);
+            char *tok = strtok(fld[4], ","); int idx = 0; int bad = 0;
+            for (; tok && idx < gn * gn; idx++, tok = strtok(NULL, ",")) {
+                if (bits_of(df[idx]) != (uint64_t)strtoull(tok, NULL, 16)) bad++;
+            }
+            checks++; if (bad) { failures++; printf("FAIL DIST(%s): %d/%d tiles differ\n", gid, bad, gn*gn); }
+            free(df);
+        } else if (strcmp(fld[0], "PATH") == 0 && n >= 6) {
+            HerderGrid g = { gn, gterr };
+            static int out[64*64*2];
+            int cnt = herder_find_path(&g, atoi(fld[2]), atoi(fld[3]), atoi(fld[4]), atoi(fld[5]), NULL, NULL, out);
+            char got[4096]; int gp = 0;
+            if (cnt < 0) gp += snprintf(got, sizeof(got), "null");
+            else for (int t = 0; t < cnt; t++) gp += snprintf(got + gp, sizeof(got) - (size_t)gp, "%s%d.%d", t ? "," : "", out[t*2], out[t*2+1]);
+            checks++;
+            if (strcmp(got, fld[6]) != 0) { failures++; printf("FAIL PATH(%s): got %s want %s\n", gid, got, fld[6]); }
         } else if (strcmp(fld[0], "CLASSIFY") == 0 && n >= 4) {
             double e = dbl_of(fld[1]), m = dbl_of(fld[2]);
             checks++;
