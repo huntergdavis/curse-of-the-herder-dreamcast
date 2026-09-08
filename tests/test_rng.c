@@ -7,6 +7,7 @@
 #include "core/progression.h"
 #include "core/names.h"
 #include "core/sim/flock.h"
+#include "core/sim/world.h"
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -39,6 +40,20 @@ static int split_tabs(char *line, char **out, int max) {
     int n = 0; out[n++] = line;
     for (char *p = line; *p && n < max; p++) if (*p == '\t') { *p = 0; out[n++] = p + 1; }
     return n;
+}
+
+
+static HerderWorld *ev_world(const char *seed) {
+    static HerderWorld *cache[4]; static char cseed[4][32]; static HerderMap cmap[4]; static int ncache = 0;
+    for (int i = 0; i < ncache; i++) if (strcmp(cseed[i], seed) == 0) return cache[i];
+    int i = ncache++;
+    snprintf(cseed[i], 32, "%s", seed);
+    herder_generate_map(cseed[i], 576, &cmap[i]);
+    cache[i] = malloc(sizeof(HerderWorld));
+    herder_world_init(cache[i], &cmap[i], cseed[i]);
+    int guard = 0;
+    while (!cache[i]->finished && guard++ < 9*3600*4 + 10000) herder_step(cache[i]);
+    return cache[i];
 }
 
 int main(int argc, char **argv) {
@@ -124,7 +139,7 @@ int main(int argc, char **argv) {
             flags[fp] = 0;
             const char *tp = s->temper >= 0 ? TEMPERN[s->temper] : "-";
             char got[128], want[128];
-            snprintf(got, sizeof(got), "%d\t%d\t%016llx\t%s\t%d\t%d\t%s\t%d", s->x, s->y, (unsigned long long)bits_of(s->skittish), tp, s->absurd, s->ring, flags, s->black);
+            snprintf(got, sizeof(got), "%d\t%d\t%016llx\t%s\t%d\t%d\t%s\t%d", (int)s->x, (int)s->y, (unsigned long long)bits_of(s->skittish), tp, s->absurd, s->ring, flags, s->black);
             snprintf(want, sizeof(want), "%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s", fld[3], fld[4], fld[5], fld[6], fld[7], fld[8], fld[9], fld[10]);
             checks++; if (strcmp(got, want) != 0) { failures++; printf("FAIL FLOCKS(%s,%d):\n  got  %s\n  want %s\n", fld[1], id, got, want); }
         } else if (strcmp(fld[0], "PROG_ER") == 0 && n >= 6) {
@@ -202,6 +217,25 @@ int main(int argc, char **argv) {
             checks++;
             int got = herder_classify(e, m), want = atoi(fld[3]);
             if (got != want) { failures++; printf("FAIL CLASSIFY(%.3f,%.3f): got %d want %d\n", e, m, got, want); }
+        } else if (strcmp(fld[0], "EV") == 0 && n >= 6) {
+            HerderWorld *w = ev_world(fld[1]);
+            int seq = atoi(fld[2]);
+            checks++;
+            if (seq >= w->event_count) { failures++; if (failures < 40) printf("FAIL EV(%s,%d): missing (only %d events)\n", fld[1], seq, w->event_count); }
+            else {
+                HerderEvent *e = &w->events[seq];
+                char got[96], want[96];
+                snprintf(got, sizeof(got), "%d\t%s\t%d\t%s\t%s", e->tick, e->kind, e->sheep_id, e->detail, e->book);
+                snprintf(want, sizeof(want), "%s\t%s\t%s\t%s\t%s", fld[3], fld[4], fld[5], n>=7?fld[6]:"", n>=8?fld[7]:"");
+                if (strcmp(got, want) != 0) { failures++; if (failures < 40) printf("FAIL EV(%s,seq%d):\n  got  %s\n  want %s\n", fld[1], seq, got, want); }
+            }
+        } else if (strcmp(fld[0], "EVEND") == 0 && n >= 5) {
+            HerderWorld *w = ev_world(fld[1]);
+            char got[64], want[64];
+            snprintf(got, sizeof(got), "%d\t%d\t%d", w->tick, w->finished ? 1 : 0, w->event_count);
+            snprintf(want, sizeof(want), "%s\t%s\t%s", fld[2], fld[3], fld[4]);
+            checks++;
+            if (strcmp(got, want) != 0) { failures++; printf("FAIL EVEND(%s):\n  got  %s\n  want %s\n", fld[1], got, want); }
         } else if (strcmp(fld[0], "KEYED") == 0 && n >= 3) {
             uint32_t st = herder_fnv1a(fld[1]);
             char w[160]; snprintf(w, sizeof(w), "KEYED(%s)", fld[1]);

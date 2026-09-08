@@ -11,5 +11,5 @@ run_one() {
   "./build/host/$name"
 }
 fail=0
-run_one test_rng tests/test_rng.c src/core/rng.c src/core/noise.c src/core/map/terrain.c src/core/map/path.c src/core/map/generate.c src/core/progression.c src/core/names.c src/core/sim/flock.c -lm || fail=1
+run_one test_rng tests/test_rng.c src/core/rng.c src/core/noise.c src/core/map/terrain.c src/core/map/path.c src/core/map/generate.c src/core/progression.c src/core/names.c src/core/sim/flock.c src/core/sim/book.c src/core/sim/step.c -lm || fail=1
 exit $fail

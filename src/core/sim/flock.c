@@ -152,9 +152,9 @@ int herder_place_libraries(const HerderMap *map, const HerderSheep *sheep, int s
     /* byDistance: stable sort of sheep indices by pen distance (ties keep order). */
     int order[128]; for (int i = 0; i < sheepN; i++) order[i] = i;
     for (int i = 1; i < sheepN; i++) { /* insertion sort = stable */
-        int key = order[i]; double kd = map->pen_distance[sheep[key].y * n + sheep[key].x];
+        int key = order[i]; double kd = map->pen_distance[(int)sheep[key].y * n + (int)sheep[key].x];
         int j = i - 1;
-        while (j >= 0) { double jd = map->pen_distance[sheep[order[j]].y * n + sheep[order[j]].x]; if (jd <= kd) break; order[j+1] = order[j]; j--; }
+        while (j >= 0) { double jd = map->pen_distance[(int)sheep[order[j]].y * n + (int)sheep[order[j]].x]; if (jd <= kd) break; order[j+1] = order[j]; j--; }
         order[j+1] = key;
     }
     int count = LIBRARY_COUNT < sheepN ? LIBRARY_COUNT : sheepN;

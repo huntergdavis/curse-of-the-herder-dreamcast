@@ -5,19 +5,21 @@
 #include "core/map/generate.h"
 
 typedef struct {
-    int id, x, y, home_x, home_y;
+    int id; double x, y, home_x, home_y;
     double skittish;
     int flees, ring;
     int absurd, seen, named;
-    int tx, ty;
+    double tx, ty;
     double speed;
     int on_roof, in_river, on_boulder, black;
     int temper; /* 0 plain,1 skittish,2 stubborn,3 dozy,4 curious, -1 none */
+    int mode;   /* 0 loose, 1 carried, 2 penned */
+    int thief, escapee, greeted, nemesis;
 } HerderSheep;
 
 int herder_create_flock(const HerderMap *map, const char *seed, HerderSheep *out, int max);
 
-typedef struct { int x, y; int taken; } HerderLib;
+typedef struct { int x, y; int taken; int book; /* catalog index */ } HerderLib;
 /* Full deterministic world setup: flock then libraries, sharing one rng.
  * Returns sheep count; writes library count to *lib_count. */
 int herder_place_libraries(const HerderMap *map, const HerderSheep *sheep, int sheepN,

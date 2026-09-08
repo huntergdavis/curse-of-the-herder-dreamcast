@@ -17,33 +17,34 @@ raw 64-bit pattern; arrays by hash and, where useful, tile by tile.
 | Progression | core/progression | erudition, level, filth, frustration curves | bit-exact |
 | Names | core/names | herder/sheep/dog/rival keyed picks | index parity |
 | Flock | core/sim/flock | createWorld sheep placement | 60 sheep exact |
+| Libraries | core/sim/flock | placeLibraries (shared rng, stable sort) | count + positions |
+| Books | core/sim/book | catalogue ids, when-order, pack flags | table parity |
+| Sim step | core/sim/{world,step} | the whole day: modes, tempers, mishaps, weather, streaks, nemesis, jailbreaks, lunch, rival, dog, milestones, progression, governor | full-day event transcript, 2 seeds |
 
-Host tests: **879 checks, 0 failures.** Every file also compiles for the SH-4.
+Host tests: **1605 checks, 0 failures** (including a full-day, tick-exact event
+transcript of 626 events across two seeds). Every file also compiles for the SH-4.
 
 ## Remaining (in dependency order)
 
-1. **Libraries** (small): the last piece of world setup; same method.
-2. **Sim step** (`step.ts`, ~840 lines): the whole day. Herder modes, sheep
-   temperaments, mishaps, weather, streaks, nemesis, jailbreaks, lunch, the
-   rival, the dog's moments, milestones, progression, frustration, the
-   governor, wall-clock catch-up. Golden: a full-day event transcript per seed.
-   The critical path; its RNG-draw ordering is unforgiving.
-3. **Grammar**: morphology, the rule engine (bands × levels, registers, repeat
+The entire deterministic simulation is done and byte-exact. What is left is the
+language layer and the presentation layer.
+
+1. **Grammar**: morphology, the rule engine (bands × levels, registers, repeat
    memory, modifiers, gates), speech (event → line). Golden: generated line per
    (event, context, tick, seed).
-4. **Data**: export the lexicon (~2,500 words), grammar templates (~1,000),
+2. **Data**: export the lexicon (~2,500 words), grammar templates (~1,000),
    29 books, banned list from the web repo to C tables / a romdisk blob.
    Independent of the sim engine; the natural parallel track.
-5. **Main-loop glue**: what he says and when (queue, remarks, flyting, diary).
-6. **Renderer on PowerVR**: terrain chunks, sprites, text, bubbles, day tint,
+3. **Main-loop glue**: what he says and when (queue, remarks, flyting, diary).
+4. **Renderer on PowerVR**: terrain chunks, sprites, text, bubbles, day tint,
    weather, the delighters. No parity constraint; the largest raw effort; can
    proceed against the already-ported map in parallel.
-7. **Menu, VMU saves, Hall, persistence.**
+5. **Menu, VMU saves, Hall, persistence.**
 
 ## Parallelisation
 
-The sim step and the grammar engine are cohesive and order-sensitive — best
-driven sequentially by one owner with golden transcripts. The clean, low-risk
-parallel seams are: the data-export pipeline (4), the renderer foundation (6),
-and morphology (a leaf of 3). Those can be separate agents; the rest should not
-be split, because sub-systems share the world state and the exact draw order.
+The grammar engine is cohesive and order-sensitive — best driven sequentially
+by one owner with golden transcripts. The clean, low-risk parallel seams are:
+the data-export pipeline (2), the renderer foundation (4), and morphology (a
+leaf of 1). Those can be separate agents; the rest should not be split, because
+sub-systems share the world state and the exact draw order.

@@ -947,3 +947,629 @@ LIBS	curse-of-the-herder	20	433	441
 LIBS	curse-of-the-herder	21	522	362
 LIBS	curse-of-the-herder	22	532	288
 LIBS	curse-of-the-herder	23	450	458
+EV	seed	0	0	started	-1		
+EV	seed	1	150	bookFound	-1		first-words
+EV	seed	2	424	book	-1		first-words
+EV	seed	3	432	caught	5		
+EV	seed	4	478	gaze	-1		
+EV	seed	5	595	mishap	-1	molehill	
+EV	seed	6	638	penned	5		
+EV	seed	7	805	caught	1		
+EV	seed	8	1003	penned	1		
+EV	seed	9	1184	caught	10		
+EV	seed	10	1400	penned	10		
+EV	seed	11	1597	caught	3		
+EV	seed	12	1823	penned	3		
+EV	seed	13	2008	caught	2		
+EV	seed	14	2229	penned	2		
+EV	seed	15	2229	streak	-1	5	
+EV	seed	16	2407	curious	7		
+EV	seed	17	2434	caught	7		
+EV	seed	18	2696	mishap	-1	molehill	
+EV	seed	19	2704	penned	7		
+EV	seed	20	2962	bookFound	-1		sad-almanac
+EV	seed	21	3263	book	-1		sad-almanac
+EV	seed	22	3268	caught	6		
+EV	seed	23	3274	gaze	-1		
+EV	seed	24	3594	penned	6		
+EV	seed	25	3855	caught	9		
+EV	seed	26	3856	bookPassed	-1		
+EV	seed	27	4156	penned	9		
+EV	seed	28	4156	streak	-1	8	
+EV	seed	29	4294	mishap	-1	wasp	
+EV	seed	30	4427	dozy	0		
+EV	seed	31	4742	penned	0		
+EV	seed	32	5037	caught	13		
+EV	seed	33	5408	penned	13		
+EV	seed	34	5733	caught	11		
+EV	seed	35	5770	gaze	-1		
+EV	seed	36	6084	mishap	-1	dogUnderfoot	
+EV	seed	37	6148	penned	11		
+EV	seed	38	6530	caught	12		
+EV	seed	39	6968	penned	12		
+EV	seed	40	7366	caught	4		
+EV	seed	41	7881	penned	4		
+EV	seed	42	8367	bookFound	-1		grumbles
+EV	seed	43	8711	book	-1		grumbles
+EV	seed	44	8724	caught	8		
+EV	seed	45	9309	penned	8		
+EV	seed	46	9879	absurd	42		
+EV	seed	47	10292	gaze	-1		
+EV	seed	48	10635	penned	42		
+EV	seed	49	11163	mishap	-1	molehill	
+EV	seed	50	11240	rival	-1	1	
+EV	seed	51	11377	flee	22		
+EV	seed	52	11466	caught	22		
+EV	seed	53	12508	penned	22		
+EV	seed	54	13337	bookFound	-1		slow-things
+EV	seed	55	13717	book	-1		slow-things
+EV	seed	56	13718	flee	21		
+EV	seed	57	13719	repeatEscape	21		
+EV	seed	58	13803	caught	21		
+EV	seed	59	14967	penned	21		
+EV	seed	60	15267	mishap	-1	cowpat	
+EV	seed	61	15820	absurd	14		
+EV	seed	62	15824	bookPassed	-1		
+EV	seed	63	16870	penned	14		
+EV	seed	64	17497	mishap	-1	dogUnderfoot	
+EV	seed	65	17789	dozy	17		
+EV	seed	66	18918	penned	17		
+EV	seed	67	19630	mishap	-1	molehill	
+EV	seed	68	19849	curious	25		
+EV	seed	69	19865	bookFound	-1		manners
+EV	seed	70	20116	book	-1		manners
+EV	seed	71	20117	caught	25		
+EV	seed	72	20204	gaze	-1		
+EV	seed	73	21303	penned	25		
+EV	seed	74	22292	flee	19		
+EV	seed	75	22359	repeatEscape	19		
+EV	seed	76	22448	caught	19		
+EV	seed	77	22657	mishap	-1	molehill	
+EV	seed	78	22771	scarecrow	-1		
+EV	seed	79	23733	penned	19		
+EV	seed	80	24784	mishap	-1	nettles	
+EV	seed	81	24822	absurd	40		
+EV	seed	82	26168	penned	40		
+EV	seed	83	27147	mishap	-1	molehill	
+EV	seed	84	27298	bookFound	-1		knitting
+EV	seed	85	27606	book	-1		knitting
+EV	seed	86	27624	caught	24		
+EV	seed	87	29031	penned	24		
+EV	seed	88	29282	gaze	-1		
+EV	seed	89	30192	dozy	18		
+EV	seed	90	31621	penned	18		
+EV	seed	91	31689	gaze	-1		
+EV	seed	92	32817	caught	16		
+EV	seed	93	34268	penned	16		
+EV	seed	94	34560	rain	-1		
+EV	seed	95	34835	mishap	-1	wasp	
+EV	seed	96	35560	bookFound	-1		cattle-market
+EV	seed	97	35980	book	-1		cattle-market
+EV	seed	98	36002	caught	23		
+EV	seed	99	36680	rival	-1	2	
+EV	seed	100	37678	penned	23		
+EV	seed	101	37804	rainStops	-1		
+EV	seed	102	37837	mishap	-1	wasp	
+EV	seed	103	38934	caught	26		
+EV	seed	104	40460	penned	26		
+EV	seed	105	40460	streak	-1	5	
+EV	seed	106	41748	bookFound	-1		vulgar-tongue
+EV	seed	107	42132	book	-1		vulgar-tongue
+EV	seed	108	42133	streakBroken	20	5	
+EV	seed	109	42133	flee	20		
+EV	seed	110	42232	caught	20		
+EV	seed	111	42946	mishap	-1	cowpat	
+EV	seed	112	43824	penned	20		
+EV	seed	113	45142	caught	27		
+EV	seed	114	45142	mishap	27	bite	
+EV	seed	115	45438	jailbreak	21		
+EV	seed	116	46747	penned	27		
+EV	seed	117	46848	recaptured	21		
+EV	seed	118	46940	penned	21		
+EV	seed	119	48526	absurd	28		
+EV	seed	120	49064	wind	-1		
+EV	seed	121	50498	penned	28		
+EV	seed	122	50498	milestone	-1	halfway	
+EV	seed	123	50507	lunch	-1		
+EV	seed	124	50577	lunchStolen	56		
+EV	seed	125	50594	mishap	-1	cowpat	
+EV	seed	126	50605	thiefCaught	56		
+EV	seed	127	50617	penned	56		
+EV	seed	128	51100	windDrops	-1		
+EV	seed	129	52259	bookFound	-1		fungi
+EV	seed	130	52625	book	-1		fungi
+EV	seed	131	52626	flee	39		
+EV	seed	132	52714	repeatEscape	39		
+EV	seed	133	52788	nemesis	39		
+EV	seed	134	52788	repeatEscape	39		
+EV	seed	135	52872	repeatEscape	39		
+EV	seed	136	52979	nemesisCaught	39	4	
+EV	seed	137	55118	penned	39		
+EV	seed	138	55127	breather	-1		
+EV	seed	139	56757	mishap	-1	cowpat	
+EV	seed	140	56872	dozy	32		
+EV	seed	141	58946	penned	32		
+EV	seed	142	59594	mishap	-1	wasp	
+EV	seed	143	60624	dozy	36		
+EV	seed	144	61973	mishap	-1	dogUnderfoot	
+EV	seed	145	62280	rival	-1	3	
+EV	seed	146	62306	rivalBolt	-1		
+EV	seed	147	62694	penned	36		
+EV	seed	148	64372	bookFound	-1		bard
+EV	seed	149	64827	book	-1		bard
+EV	seed	150	64847	caught	37		
+EV	seed	151	65770	mishap	-1	molehill	
+EV	seed	152	66871	penned	37		
+EV	seed	153	68068	jailbreak	9		
+EV	seed	154	68457	flee	34		
+EV	seed	155	68552	caught	34		
+EV	seed	156	69017	mishap	-1	cowpat	
+EV	seed	157	69046	rant	-1		
+EV	seed	158	70415	penned	34		
+EV	seed	159	70424	breather	-1		
+EV	seed	160	70535	repeatEscape	9		
+EV	seed	161	70611	recaptured	9		
+EV	seed	162	70737	mishap	-1	gate	
+EV	seed	163	70750	penned	9		
+EV	seed	164	71436	bookFound	-1		cooks-oracle
+EV	seed	165	71835	book	-1		cooks-oracle
+EV	seed	166	72466	absurd	52		
+EV	seed	167	72472	bookPassed	-1		
+EV	seed	168	72895	mishap	-1	nettles	
+EV	seed	169	73970	penned	52		
+EV	seed	170	74785	mishap	-1	crook	
+EV	seed	171	75163	scarecrow	-1		
+EV	seed	172	75208	drink	-1		
+EV	seed	173	75251	absurd	30		
+EV	seed	174	76579	rant	-1		
+EV	seed	175	76771	penned	30		
+EV	seed	176	77124	mishap	-1	wasp	
+EV	seed	177	77922	bookFound	-1		drover
+EV	seed	178	78377	book	-1		drover
+EV	seed	179	78401	dozy	33		
+EV	seed	180	79794	mishap	-1	gate	
+EV	seed	181	79807	penned	33		
+EV	seed	182	80905	absurd	15		
+EV	seed	183	82224	penned	15		
+EV	seed	184	83056	mishap	-1	molehill	
+EV	seed	185	83319	bookFound	-1		blacks-law
+EV	seed	186	83696	book	-1		blacks-law
+EV	seed	187	83709	caught	31		
+EV	seed	188	85012	penned	31		
+EV	seed	189	86015	mishap	-1	wasp	
+EV	seed	190	86111	dogHelps	38		
+EV	seed	191	86133	caught	38		
+EV	seed	192	86133	mishap	38	heave	
+EV	seed	193	86533	rain	-1		
+EV	seed	194	87615	penned	38		
+EV	seed	195	87920	rival	-1	4	
+EV	seed	196	88642	mishap	-1	molehill	
+EV	seed	197	88672	rant	-1		
+EV	seed	198	88880	flee	35		
+EV	seed	199	88931	caught	35		
+EV	seed	200	90339	penned	35		
+EV	seed	201	90348	breather	-1		
+EV	seed	202	90389	rainStops	-1		
+EV	seed	203	91260	bookFound	-1		crawler-notes
+EV	seed	204	91525	book	-1		crawler-notes
+EV	seed	205	91541	absurd	41		
+EV	seed	206	91586	mishap	-1	molehill	
+EV	seed	207	92389	rant	-1		
+EV	seed	208	92594	penned	41		
+EV	seed	209	93679	caught	51		
+EV	seed	210	93680	bookPassed	-1		
+EV	seed	211	94046	mishap	-1	nettles	
+EV	seed	212	95006	penned	51		
+EV	seed	213	96048	flee	58		
+EV	seed	214	96083	repeatEscape	58		
+EV	seed	215	96118	repeatEscape	58		
+EV	seed	216	96164	black	58		
+EV	seed	217	96390	mishap	-1	molehill	
+EV	seed	218	96398	rant	-1		
+EV	seed	219	96527	rain	-1		
+EV	seed	220	97415	penned	58		
+EV	seed	221	97424	breather	-1		
+EV	seed	222	98480	mishap	-1	nettles	
+EV	seed	223	98592	bookFound	-1		french
+EV	seed	224	98941	book	-1		french
+EV	seed	225	98951	caught	54		
+EV	seed	226	99721	rant	-1		
+EV	seed	227	100333	penned	54		
+EV	seed	228	100389	rainStops	-1		
+EV	seed	229	101191	mishap	-1	nettles	
+EV	seed	230	101310	caught	57		
+EV	seed	231	102476	penned	57		
+EV	seed	232	102864	mishap	-1	nettles	
+EV	seed	233	103461	bookFound	-1		german
+EV	seed	234	103750	book	-1		german
+EV	seed	235	103751	breather	-1		
+EV	seed	236	103839	caught	44		
+EV	seed	237	103880	bookPassed	-1		
+EV	seed	238	104759	mishap	-1	cowpat	
+EV	seed	239	105062	penned	44		
+EV	seed	240	105855	absurd	29		
+EV	seed	241	106830	penned	29		
+EV	seed	242	106830	milestone	-1	tentogo	
+EV	seed	243	107597	mishap	-1	nettles	
+EV	seed	244	107765	bookFound	-1		three-men
+EV	seed	245	108150	book	-1		three-men
+EV	seed	246	108193	caught	59		
+EV	seed	247	108193	mishap	59	heave	
+EV	seed	248	109396	penned	59		
+EV	seed	249	110106	mishap	-1	nettles	
+EV	seed	250	110273	rant	-1		
+EV	seed	251	110376	flee	45		
+EV	seed	252	110377	repeatEscape	45		
+EV	seed	253	110415	caught	45		
+EV	seed	254	111460	penned	45		
+EV	seed	255	111787	mishap	-1	cowpat	
+EV	seed	256	112340	flee	50		
+EV	seed	257	112381	caught	50		
+EV	seed	258	112497	rain	-1		
+EV	seed	259	113240	rival	-1	5	
+EV	seed	260	113632	mishap	-1	gate	
+EV	seed	261	113645	penned	50		
+EV	seed	262	113654	breather	-1		
+EV	seed	263	114761	bookFound	-1		grays
+EV	seed	264	115088	book	-1		grays
+EV	seed	265	115095	caught	53		
+EV	seed	266	115095	mishap	53	heave	
+EV	seed	267	115120	rant	-1		
+EV	seed	268	115356	rainStops	-1		
+EV	seed	269	116344	penned	53		
+EV	seed	270	116990	mishap	-1	nettles	
+EV	seed	271	117287	curious	47		
+EV	seed	272	117308	caught	47		
+EV	seed	273	118398	penned	47		
+EV	seed	274	118874	mishap	-1	nettles	
+EV	seed	275	119114	bookFound	-1		porca
+EV	seed	276	119370	book	-1		porca
+EV	seed	277	119607	dozy	49		
+EV	seed	278	120350	mishap	-1	nettles	
+EV	seed	279	120422	wind	-1		
+EV	seed	280	120772	penned	49		
+EV	seed	281	120781	breather	-1		
+EV	seed	282	121856	dozy	46		
+EV	seed	283	121864	bookPassed	-1		
+EV	seed	284	122445	mishap	-1	nettles	
+EV	seed	285	123048	penned	46		
+EV	seed	286	123048	streak	-1	5	
+EV	seed	287	123362	windDrops	-1		
+EV	seed	288	123985	mishap	-1	cowpat	
+EV	seed	289	124079	dozy	48		
+EV	seed	290	125103	rant	-1		
+EV	seed	291	125257	penned	48		
+EV	seed	292	126198	mishap	-1	molehill	
+EV	seed	293	126307	bookFound	-1		geology
+EV	seed	294	126699	book	-1		geology
+EV	seed	295	126708	caught	55		
+EV	seed	296	127797	mishap	-1	wasp	
+EV	seed	297	128004	penned	55		
+EV	seed	298	128004	milestone	-1	lastone	
+EV	seed	299	128267	rant	-1		
+EV	seed	300	129104	caught	43		
+EV	seed	301	129336	mishap	-1	nettles	
+EV	seed	302	130459	penned	43		
+EV	seed	303	130459	streak	-1	8	
+EV	seed	304	130468	breather	-1		
+EV	seed	305	130549	finished	-1		
+EVEND	seed	130549	1	306
+EV	grudge	0	0	started	-1		
+EV	grudge	1	171	bookFound	-1		first-words
+EV	grudge	2	572	book	-1		first-words
+EV	grudge	3	573	flee	1		
+EV	grudge	4	615	caught	1		
+EV	grudge	5	615	mishap	1	bite	
+EV	grudge	6	702	gaze	-1		
+EV	grudge	7	851	penned	1		
+EV	grudge	8	1053	flee	13		
+EV	grudge	9	1091	caught	13		
+EV	grudge	10	1358	penned	13		
+EV	grudge	11	1578	dozy	9		
+EV	grudge	12	1843	penned	9		
+EV	grudge	13	2075	dozy	0		
+EV	grudge	14	2355	penned	0		
+EV	grudge	15	2447	mishap	-1	wasp	
+EV	grudge	16	2615	dozy	5		
+EV	grudge	17	2924	penned	5		
+EV	grudge	18	3204	bookFound	-1		sad-almanac
+EV	grudge	19	3678	book	-1		sad-almanac
+EV	grudge	20	3700	black	11		
+EV	grudge	21	3867	gaze	-1		
+EV	grudge	22	4024	penned	11		
+EV	grudge	23	4024	streak	-1	5	
+EV	grudge	24	4280	caught	2		
+EV	grudge	25	4583	penned	2		
+EV	grudge	26	4877	dozy	7		
+EV	grudge	27	4970	mishap	-1	molehill	
+EV	grudge	28	5298	penned	7		
+EV	grudge	29	5657	caught	4		
+EV	grudge	30	6095	penned	4		
+EV	grudge	31	6095	streak	-1	8	
+EV	grudge	32	6144	gaze	-1		
+EV	grudge	33	6440	streakBroken	12	8	
+EV	grudge	34	6440	flee	12		
+EV	grudge	35	6481	repeatEscape	12		
+EV	grudge	36	6526	nemesis	12		
+EV	grudge	37	6526	repeatEscape	12		
+EV	grudge	38	6578	nemesisCaught	12	3	
+EV	grudge	39	6870	mishap	-1	wasp	
+EV	grudge	40	6968	penned	12		
+EV	grudge	41	7338	caught	3		
+EV	grudge	42	7836	penned	3		
+EV	grudge	43	8247	caught	10		
+EV	grudge	44	8576	mishap	-1	wasp	
+EV	grudge	45	8745	penned	10		
+EV	grudge	46	9114	bookFound	-1		grumbles
+EV	grudge	47	9357	book	-1		grumbles
+EV	grudge	48	9366	caught	8		
+EV	grudge	49	9366	mishap	8	heave	
+EV	grudge	50	9866	penned	8		
+EV	grudge	51	10325	caught	6		
+EV	grudge	52	10872	penned	6		
+EV	grudge	53	10872	streak	-1	5	
+EV	grudge	54	10880	rival	-1	1	
+EV	grudge	55	11448	absurd	42		
+EV	grudge	56	11798	mishap	-1	wasp	
+EV	grudge	57	12184	penned	42		
+EV	grudge	58	12927	scarecrow	-1		
+EV	grudge	59	12943	absurd	15		
+EV	grudge	60	13881	penned	15		
+EV	grudge	61	14234	mishap	-1	cowpat	
+EV	grudge	62	14701	absurd	52		
+EV	grudge	63	15750	penned	52		
+EV	grudge	64	16535	bookFound	-1		slow-things
+EV	grudge	65	16860	book	-1		slow-things
+EV	grudge	66	16861	flee	24		
+EV	grudge	67	16908	mishap	-1	nettles	
+EV	grudge	68	16991	caught	24		
+EV	grudge	69	18159	penned	24		
+EV	grudge	70	19080	dozy	23		
+EV	grudge	71	20254	penned	23		
+EV	grudge	72	21177	curious	21		
+EV	grudge	73	21264	bookFound	-1		manners
+EV	grudge	74	21695	book	-1		manners
+EV	grudge	75	21696	caught	21		
+EV	grudge	76	22763	gaze	-1		
+EV	grudge	77	22986	penned	21		
+EV	grudge	78	23209	mishap	-1	cowpat	
+EV	grudge	79	24063	caught	16		
+EV	grudge	80	24882	mishap	-1	molehill	
+EV	grudge	81	25379	penned	16		
+EV	grudge	82	26106	gaze	-1		
+EV	grudge	83	26577	caught	17		
+EV	grudge	84	28062	penned	17		
+EV	grudge	85	28062	streak	-1	5	
+EV	grudge	86	28371	mishap	-1	cowpat	
+EV	grudge	87	29211	streakBroken	22	5	
+EV	grudge	88	29211	flee	22		
+EV	grudge	89	29368	caught	22		
+EV	grudge	90	29902	mishap	-1	nettles	
+EV	grudge	91	30915	penned	22		
+EV	grudge	92	31803	mishap	-1	nettles	
+EV	grudge	93	32130	bookFound	-1		knitting
+EV	grudge	94	32417	book	-1		knitting
+EV	grudge	95	32494	dozy	27		
+EV	grudge	96	33968	penned	27		
+EV	grudge	97	34560	rain	-1		
+EV	grudge	98	35303	caught	20		
+EV	grudge	99	36360	rival	-1	2	
+EV	grudge	100	37069	penned	20		
+EV	grudge	101	37441	rainStops	-1		
+EV	grudge	102	37512	mishap	-1	wasp	
+EV	grudge	103	38385	dozy	26		
+EV	grudge	104	38957	mishap	-1	nettles	
+EV	grudge	105	39950	penned	26		
+EV	grudge	106	40449	mishap	-1	wasp	
+EV	grudge	107	41247	bookFound	-1		cattle-market
+EV	grudge	108	41488	book	-1		cattle-market
+EV	grudge	109	41510	caught	19		
+EV	grudge	110	43132	penned	19		
+EV	grudge	111	43132	streak	-1	5	
+EV	grudge	112	44091	mishap	-1	wasp	
+EV	grudge	113	44433	jailbreak	21		
+EV	grudge	114	44446	caught	25		
+EV	grudge	115	46065	penned	25		
+EV	grudge	116	46116	recaptured	21		
+EV	grudge	117	46170	penned	21		
+EV	grudge	118	47469	streakBroken	18	7	
+EV	grudge	119	47469	flee	18		
+EV	grudge	120	47558	repeatEscape	18		
+EV	grudge	121	47634	repeatEscape	18		
+EV	grudge	122	47732	caught	18		
+EV	grudge	123	47732	mishap	18	heave	
+EV	grudge	124	49617	penned	18		
+EV	grudge	125	50265	mishap	-1	nettles	
+EV	grudge	126	51248	bookFound	-1		vulgar-tongue
+EV	grudge	127	51715	book	-1		vulgar-tongue
+EV	grudge	128	51716	lunch	-1		
+EV	grudge	129	51786	lunchStolen	38		
+EV	grudge	130	51799	breather	-1		
+EV	grudge	131	51880	flee	38		
+EV	grudge	132	51974	thiefCaught	38		
+EV	grudge	133	52287	mishap	-1	molehill	
+EV	grudge	134	53770	mishap	-1	dogUnderfoot	
+EV	grudge	135	53928	penned	38		
+EV	grudge	136	53928	milestone	-1	halfway	
+EV	grudge	137	54842	scarecrow	-1		
+EV	grudge	138	55565	absurd	40		
+EV	grudge	139	57592	penned	40		
+EV	grudge	140	59181	flee	35		
+EV	grudge	141	59285	caught	35		
+EV	grudge	142	59724	mishap	-1	wasp	
+EV	grudge	143	61240	penned	35		
+EV	grudge	144	61800	rival	-1	3	
+EV	grudge	145	61826	rivalBolt	-1		
+EV	grudge	146	62442	mishap	-1	molehill	
+EV	grudge	147	62667	curious	39		
+EV	grudge	148	62705	bookFound	-1		fungi
+EV	grudge	149	63177	book	-1		fungi
+EV	grudge	150	63185	caught	39		
+EV	grudge	151	64862	penned	39		
+EV	grudge	152	64880	mishap	-1	cowpat	
+EV	grudge	153	66018	flee	36		
+EV	grudge	154	66081	caught	36		
+EV	grudge	155	66081	mishap	36	heave	
+EV	grudge	156	66588	jailbreak	10		
+EV	grudge	157	67537	penned	36		
+EV	grudge	158	67556	recaptured	10		
+EV	grudge	159	67556	mishap	10	bite	
+EV	grudge	160	67577	penned	10		
+EV	grudge	161	67586	breather	-1		
+EV	grudge	162	68686	bookFound	-1		bard
+EV	grudge	163	68706	wind	-1		
+EV	grudge	164	69000	book	-1		bard
+EV	grudge	165	69024	dozy	32		
+EV	grudge	166	69303	mishap	-1	molehill	
+EV	grudge	167	70255	penned	32		
+EV	grudge	168	70782	mishap	-1	cowpat	
+EV	grudge	169	70864	windDrops	-1		
+EV	grudge	170	71245	curious	37		
+EV	grudge	171	71285	caught	37		
+EV	grudge	172	72499	penned	37		
+EV	grudge	173	72864	mishap	-1	wasp	
+EV	grudge	174	72928	drink	-1		
+EV	grudge	175	73354	absurd	29		
+EV	grudge	176	74355	penned	29		
+EV	grudge	177	75412	bookFound	-1		cooks-oracle
+EV	grudge	178	75664	book	-1		cooks-oracle
+EV	grudge	179	75665	flee	34		
+EV	grudge	180	75729	caught	34		
+EV	grudge	181	76958	penned	34		
+EV	grudge	182	77439	mishap	-1	nettles	
+EV	grudge	183	77958	absurd	28		
+EV	grudge	184	79178	mishap	-1	cowpat	
+EV	grudge	185	79193	penned	28		
+EV	grudge	186	80255	bookFound	-1		drover
+EV	grudge	187	80634	book	-1		drover
+EV	grudge	188	80660	dozy	31		
+EV	grudge	189	81412	mishap	-1	nettles	
+EV	grudge	190	81935	penned	31		
+EV	grudge	191	82946	caught	33		
+EV	grudge	192	83007	mishap	-1	wasp	
+EV	grudge	193	84165	penned	33		
+EV	grudge	194	84174	breather	-1		
+EV	grudge	195	84853	mishap	-1	wasp	
+EV	grudge	196	85275	absurd	30		
+EV	grudge	197	85758	rant	-1		
+EV	grudge	198	86526	mishap	-1	molehill	
+EV	grudge	199	86534	penned	30		
+EV	grudge	200	87120	rival	-1	4	
+EV	grudge	201	87596	bookFound	-1		blacks-law
+EV	grudge	202	87626	curious	50		
+EV	grudge	203	87890	book	-1		blacks-law
+EV	grudge	204	87898	caught	50		
+EV	grudge	205	88164	mishap	-1	nettles	
+EV	grudge	206	89009	rant	-1		
+EV	grudge	207	89281	penned	50		
+EV	grudge	208	89651	mishap	-1	nettles	
+EV	grudge	209	90437	flee	58		
+EV	grudge	210	90515	repeatEscape	58		
+EV	grudge	211	90579	repeatEscape	58		
+EV	grudge	212	90618	dogHelps	58		
+EV	grudge	213	90697	caught	58		
+EV	grudge	214	91847	penned	58		
+EV	grudge	215	91856	breather	-1		
+EV	grudge	216	92825	mishap	-1	bog	
+EV	grudge	217	93030	bookFound	-1		crawler-notes
+EV	grudge	218	93351	book	-1		crawler-notes
+EV	grudge	219	93352	flee	55		
+EV	grudge	220	93353	repeatEscape	55		
+EV	grudge	221	93354	repeatEscape	55		
+EV	grudge	222	93408	caught	55		
+EV	grudge	223	93777	rant	-1		
+EV	grudge	224	94583	penned	55		
+EV	grudge	225	94923	mishap	-1	nettles	
+EV	grudge	226	95571	flee	49		
+EV	grudge	227	95605	repeatEscape	49		
+EV	grudge	228	95643	caught	49		
+EV	grudge	229	96735	rant	-1		
+EV	grudge	230	96824	penned	49		
+EV	grudge	231	97086	mishap	-1	nettles	
+EV	grudge	232	97769	bookFound	-1		french
+EV	grudge	233	98049	book	-1		french
+EV	grudge	234	98066	dozy	56		
+EV	grudge	235	98960	mishap	-1	nettles	
+EV	grudge	236	99290	penned	56		
+EV	grudge	237	99299	breather	-1		
+EV	grudge	238	100392	caught	43		
+EV	grudge	239	100400	bookPassed	-1		
+EV	grudge	240	100612	mishap	-1	molehill	
+EV	grudge	241	100884	rant	-1		
+EV	grudge	242	101026	rain	-1		
+EV	grudge	243	101663	penned	43		
+EV	grudge	244	102833	bookFound	-1		german
+EV	grudge	245	103115	book	-1		german
+EV	grudge	246	103124	caught	48		
+EV	grudge	247	103194	rainStops	-1		
+EV	grudge	248	103687	mishap	-1	molehill	
+EV	grudge	249	104368	penned	48		
+EV	grudge	250	105362	caught	45		
+EV	grudge	251	106579	penned	45		
+EV	grudge	252	106579	streak	-1	5	
+EV	grudge	253	106579	milestone	-1	tentogo	
+EV	grudge	254	106588	breather	-1		
+EV	grudge	255	106959	mishap	-1	nettles	
+EV	grudge	256	107678	bookFound	-1		three-men
+EV	grudge	257	108121	book	-1		three-men
+EV	grudge	258	108122	streakBroken	51	5	
+EV	grudge	259	108122	flee	51		
+EV	grudge	260	108172	caught	51		
+EV	grudge	261	108721	mishap	-1	molehill	
+EV	grudge	262	108782	rant	-1		
+EV	grudge	263	109439	penned	51		
+EV	grudge	264	110435	caught	53		
+EV	grudge	265	111662	penned	53		
+EV	grudge	266	112047	scarecrow	-1		
+EV	grudge	267	112164	mishap	-1	cowpat	
+EV	grudge	268	112320	rival	-1	5	
+EV	grudge	269	112594	bookFound	-1		grays
+EV	grudge	270	113019	book	-1		grays
+EV	grudge	271	113020	breather	-1		
+EV	grudge	272	113127	absurd	14		
+EV	grudge	273	113796	mishap	-1	cowpat	
+EV	grudge	274	114286	penned	14		
+EV	grudge	275	114393	rant	-1		
+EV	grudge	276	115299	caught	59		
+EV	grudge	277	115299	mishap	59	bite	
+EV	grudge	278	116443	penned	59		
+EV	grudge	279	116794	scarecrow	-1		
+EV	grudge	280	117090	mishap	-1	nettles	
+EV	grudge	281	117370	bookFound	-1		porca
+EV	grudge	282	117801	book	-1		porca
+EV	grudge	283	117823	absurd	47		
+EV	grudge	284	118945	mishap	-1	gate	
+EV	grudge	285	118958	penned	47		
+EV	grudge	286	119791	wind	-1		
+EV	grudge	287	119906	caught	54		
+EV	grudge	288	119912	bookPassed	-1		
+EV	grudge	289	120359	rant	-1		
+EV	grudge	290	120392	mishap	-1	nettles	
+EV	grudge	291	121086	penned	54		
+EV	grudge	292	121095	breather	-1		
+EV	grudge	293	121586	windDrops	-1		
+EV	grudge	294	121859	mishap	-1	molehill	
+EV	grudge	295	122017	bookFound	-1		geology
+EV	grudge	296	122354	book	-1		geology
+EV	grudge	297	122377	absurd	41		
+EV	grudge	298	123214	rant	-1		
+EV	grudge	299	123356	penned	41		
+EV	grudge	300	123632	mishap	-1	nettles	
+EV	grudge	301	124351	caught	44		
+EV	grudge	302	125507	penned	44		
+EV	grudge	303	125741	mishap	-1	wasp	
+EV	grudge	304	126469	bookFound	-1		sacres
+EV	grudge	305	126478	curious	46		
+EV	grudge	306	126489	curious	57		
+EV	grudge	307	126826	book	-1		sacres
+EV	grudge	308	126830	caught	46		
+EV	grudge	309	127304	rant	-1		
+EV	grudge	310	127345	mishap	-1	nettles	
+EV	grudge	311	128030	penned	46		
+EV	grudge	312	128030	milestone	-1	lastone	
+EV	grudge	313	128983	caught	57		
+EV	grudge	314	129056	mishap	-1	molehill	
+EV	grudge	315	129950	rant	-1		
+EV	grudge	316	130137	penned	57		
+EV	grudge	317	130146	finished	-1		
+EVEND	grudge	130146	1	318
