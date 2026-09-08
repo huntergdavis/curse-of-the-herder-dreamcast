@@ -167,6 +167,7 @@ int main(int argc, char **argv){
     int lineUntil=240;
     int nextIdle=g_world.tick + herder_next_idle_curse_ticks(&g_world);
     int lastSeq=-1, frame=0, recorded=0, lastSignpost=-100000, lastHat=-100000;
+    int wasRaining=0, rainbowUntil=-1;
     const int TPF=10;
 
     for(;;){
@@ -196,6 +197,7 @@ int main(int argc, char **argv){
             if(frame>lineUntil){ HerderUtterance u=herder_speak_epitaph(&g_world,4); snprintf(curline,sizeof(curline),"%s",u.text); lineUntil=frame+600; }
         }
 
+        { int nowRain = g_world.rainUntilTick > g_world.tick; if(wasRaining && !nowRain) rainbowUntil=frame+8*60; wasRaining=nowRain; }
         /* render-layer delighters: a signpost he can read, his hat in the wind */
         if(!g_world.finished){
             int hx=(int)(g_world.h.x+0.5), hy=(int)(g_world.h.y+0.5), N=g_world.map->size;
@@ -211,6 +213,7 @@ int main(int argc, char **argv){
         herder_fb_set_tint(9.0 + g_world.tick/14400.0);
         herder_fb_draw_world(fb,&g_world);
         herder_fb_weather(fb,&g_world);
+        if(frame<rainbowUntil){ int left=rainbowUntil-frame; herder_fb_rainbow(fb, left>120?200:left*200/120); }
         herder_fb_minimap(fb,&g_world);
         draw_hud(&g_world);
         if(frame<lineUntil) herder_fb_bubble(fb,&g_world,curline);

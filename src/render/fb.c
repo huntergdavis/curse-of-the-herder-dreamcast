@@ -283,3 +283,19 @@ void herder_fb_bubble(uint16_t *fb, const HerderWorld *w, const char *text){
     /* text */
     for(int i=0;i<nl;i++) herder_fb_text(fb,bx+7,by+6+i*13,lines[i],HERDER_C_ink,1);
 }
+
+
+/* a rainbow arc in the upper viewport, for a while after the rain stops */
+void herder_fb_rainbow(uint16_t *fb, int alpha8){
+    if(alpha8<=0) return;
+    static const uint32_t band[7]={0xe0483a,0xe08a3a,0xe0c83a,0x4faa50,0x4f8fc9,0x5a5ac9,0x8a4fb0};
+    int cx=HERDER_SCRW/2, cy=HERDER_TOP+ (HERDER_SCRH-HERDER_TOP-HERDER_BOT); /* centre near horizon-ish */
+    int r0=210;
+    for(int b=0;b<7;b++){ int r=r0+b*6; uint16_t c=rgb565((band[b]>>16)&0xff,(band[b]>>8)&0xff,band[b]&0xff);
+        for(int a=0;a<180;a++){ double ang=a*3.14159265/180.0; int x=cx+(int)(r*__builtin_cos(ang)); int y=cy-(int)(r*__builtin_sin(ang));
+            if(x<0||x>=HERDER_SCRW||y<HERDER_TOP||y>=HERDER_SCRH-HERDER_BOT) continue;
+            /* dithered alpha */
+            if(((x+y+b)&3) < (alpha8>>6)) fb[y*HERDER_SCRW+x]=c;
+        }
+    }
+}

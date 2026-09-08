@@ -17,6 +17,7 @@ void herder_fb_set_anim(int frame);
 void herder_fb_draw_world(uint16_t *fb, const HerderWorld *w);
 void herder_fb_minimap(uint16_t *fb, const HerderWorld *w);
 void herder_fb_weather(uint16_t *fb, const HerderWorld *w);
+void herder_fb_rainbow(uint16_t *fb, int alpha8);
 void herder_fb_title(uint16_t *fb);
 int herder_fb_text(uint16_t *fb, int x, int y, const char *str, uint16_t color, int scale);
 int herder_fb_text_w(const char *str, int scale);
