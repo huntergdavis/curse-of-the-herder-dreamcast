@@ -108,8 +108,13 @@ static void draw_herder(uint16_t *fb,int cx,int cy,int facing,int carrying,int m
     herder_fb_fill(fb,cx-4,cy+5,8,2,belt);          /* belt */
     if(level>=8||winter){ herder_fb_fill(fb,cx-4,cy-2,8,2,HEX(0xb03a3a)); herder_fb_fill(fb,cx+2,cy-1,2,6,HEX(0xb03a3a)); } /* scarf */
     disc(fb,cx,cy-8,4,skin);                        /* head */
+    /* facing: front shows two eyes, profile one, back none */
+    if(facing==1){ herder_fb_fill(fb,cx-2,cy-8,1,1,HERDER_C_ink); herder_fb_fill(fb,cx+1,cy-8,1,1,HERDER_C_ink); }
+    else if(facing==0){ herder_fb_fill(fb,cx+1,cy-8,1,1,HERDER_C_ink); }
+    else if(facing==2){ herder_fb_fill(fb,cx-2,cy-8,1,1,HERDER_C_ink); }
     herder_fb_fill(fb,cx-5,cy-11,10,2,hat);         /* hat brim */
     herder_fb_fill(fb,cx-3,cy-14,6,3,hat);          /* hat crown */
+    if(facing==3) herder_fb_fill(fb,cx-4,cy-12,8,1,HEX(0x4a4438)); /* back of hat band */
     if(carrying){ herder_fb_fill(fb,cx-6,cy-9,3,6,skin); herder_fb_fill(fb,cx+3,cy-9,3,6,skin); disc(fb,cx,cy-13,5,C_sheep); herder_fb_fill(fb,cx-2,cy-13,1,1,HERDER_C_ink); }
     else { int px=facing==0?5:facing==2?-6:-1; herder_fb_fill(fb,cx+px,cy-10,2,18,HEX(0x8a6a3a)); herder_fb_fill(fb,cx+px-1,cy-11,4,2,HEX(0x8a6a3a)); } /* crook */
 }
@@ -170,8 +175,8 @@ void herder_fb_draw_world(uint16_t *fb, const HerderWorld *w){
       int lvl=herder_level_for(herder_erudition(w->booksRead,w->sheepPenned,w->tick/14400.0));
       int winter=(w->season && strcmp(w->season,"winter")==0);
       /* the sheepdog trots a step behind, on the side away from his facing */
-      int dogoff = w->h.facing==2?HERDER_TS:-HERDER_TS;
-      draw_dog(fb,sx+dogoff,sy+HERDER_TS/2, w->h.facing, hmv);
+      int ddx=w->h.facing==0?1:w->h.facing==2?-1:0, ddy=w->h.facing==1?1:w->h.facing==3?-1:0;
+      draw_dog(fb,sx-ddx*HERDER_TS,sy-ddy*HERDER_TS+HERDER_TS/2, w->h.facing, hmv);
       draw_herder(fb,sx,sy,w->h.facing,w->h.carrying>=0,hmv,lvl,winter); }
 }
 
@@ -343,3 +348,9 @@ void herder_fb_gravestone(uint16_t *fb){
     disc(fb,cx,top+184,120,rgb565(0x5a,0x6a,0x36));
     herder_fb_fill(fb,cx+96,top+70,3,110,rgb565(0x8a,0x6a,0x3a));
 }
+
+
+/* dev helper: draw one herder / sheep for the sprite sheet. */
+void herder_fb_test_herder(uint16_t *fb,int x,int y,int facing,int carrying,int moving,int level){ draw_herder(fb,x,y,facing,carrying,moving,level,0); }
+void herder_fb_test_sheep(uint16_t *fb,int x,int y,int black,int facing,int moving,int named,int crowned){ draw_sheep(fb,x,y,black,facing,moving,named,crowned); }
+void herder_fb_test_dog(uint16_t *fb,int x,int y,int facing,int moving){ draw_dog(fb,x,y,facing,moving); }
