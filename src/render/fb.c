@@ -15,6 +15,7 @@ static uint16_t C_sheep, C_black, C_herder;
 uint16_t HERDER_C_hud, HERDER_C_panel, HERDER_C_ink, HERDER_C_bar_bg, HERDER_C_bar;
 static int g_anim = 0;
 void herder_fb_set_anim(int frame){ g_anim = frame; }
+static double g_shadow_skew = 0;
 static double g_camx=-1, g_camy=-1;
 void herder_fb_reset_camera(void){ g_camx=-1; g_camy=-1; }
 
@@ -109,8 +110,9 @@ static void tex_fleck(uint16_t *fb,int px,int py,int mx,int my,int t){
     } else if(t==T_Mud||t==T_Farm){ if(h%5==0){ int ox=(int)(h%7)%(HERDER_TS-2), oy=(int)((h/7)%7)%(HERDER_TS-2); uint16_t base=fb[(py+oy)*HERDER_SCRW+px+ox]; uint16_t d=(uint16_t)((base>>1)&0x7bef); herder_fb_fill(fb,px+ox,py+oy,2,2,d); } }
 }
 
-static void shadow(uint16_t *fb,int cx,int cy,int rx){ /* cheap dark ellipse */
-    for(int dx=-rx;dx<=rx;dx++){ int w=(int)(rx*0.5*(1.0-(double)dx*dx/(rx*rx))); if(w<0)continue; int x=cx+dx,y=cy; for(int dy=-1;dy<=1;dy++){ int yy=y+dy; if((unsigned)x<HERDER_SCRW&&(unsigned)yy<HERDER_SCRH){ uint16_t c=fb[yy*HERDER_SCRW+x]; fb[yy*HERDER_SCRW+x]=(uint16_t)((c>>1)&0x7bef);} } }
+static void shadow(uint16_t *fb,int cx,int cy,int rx){ /* cheap dark ellipse, drifting with the sun */
+    int off=(int)(g_shadow_skew*HERDER_TS); int rr=(int)(rx*(1.0+ (g_shadow_skew<0?-g_shadow_skew:g_shadow_skew)*0.83)); cx+=off;
+    for(int dx=-rr;dx<=rr;dx++){ int w=(int)(rr*0.5*(1.0-(double)dx*dx/(double)(rr*rr))); if(w<0)continue; int x=cx+dx,y=cy; for(int dy=-1;dy<=1;dy++){ int yy=y+dy; if((unsigned)x<HERDER_SCRW&&(unsigned)yy<HERDER_SCRH){ uint16_t c=fb[yy*HERDER_SCRW+x]; fb[yy*HERDER_SCRW+x]=(uint16_t)((c>>1)&0x7bef);} } }
 }
 static void draw_sheep(uint16_t *fb,int cx,int cy,int black,int facing,int moving,int named,int crowned,int pose){
     /* pose: 0 idle/walk, 1 graze (head down), 2 asleep */
@@ -190,6 +192,7 @@ static void draw_house(uint16_t *fb,int px,int py,int red){
 static void draw_rival(uint16_t *fb, const HerderWorld *w);
 void herder_fb_draw_world(uint16_t *fb, const HerderWorld *w){
     const HerderMap *m=w->map;
+    { double hr=9.0+w->tick/14400.0; double sk=(hr-13.5)*0.14; if(sk<-0.6)sk=-0.6; if(sk>0.6)sk=0.6; g_shadow_skew=sk; }
     /* lead the camera toward where he is going (web: +0.25 * toward path[min(4,rem-1)]) */
     double _tx=w->h.x, _ty=w->h.y; int _rem=w->h.path_len - w->h.path_head;
     if(_rem>0){ int _k=(_rem-1<4)?(_rem-1):4; int _wx=w->h.path[(w->h.path_head+_k)*2], _wy=w->h.path[(w->h.path_head+_k)*2+1]; _tx+=(_wx-w->h.x)*0.25; _ty+=(_wy-w->h.y)*0.25; }
