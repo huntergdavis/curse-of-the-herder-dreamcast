@@ -32,13 +32,6 @@ static void draw_hud(const HerderWorld *w){
     herder_fb_bar(fb, HERDER_SCRW-180, 8, 150, 12, w->frustration/100.0);
 }
 
-static void draw_speech(const char *text){
-    int panelY=HERDER_SCRH-HERDER_BOT;
-    herder_fb_fill(fb,0,panelY,HERDER_SCRW,HERDER_BOT,HERDER_C_panel);
-    herder_fb_fill(fb,0,panelY,HERDER_SCRW,2,HERDER_C_ink);
-    if(!text||!text[0]) return;
-    herder_fb_text_wrap(fb,12,panelY+12,text,HERDER_C_ink,2,HERDER_SCRW-24,2);
-}
 
 static const char *SEEDS[]={"seed","grudge","payoff","curse-of-the-herder","tom"};
 static int seed_idx=0;
@@ -220,7 +213,7 @@ int main(int argc, char **argv){
         herder_fb_weather(fb,&g_world);
         herder_fb_minimap(fb,&g_world);
         draw_hud(&g_world);
-        draw_speech(frame<lineUntil?curline:"");
+        if(frame<lineUntil) herder_fb_bubble(fb,&g_world,curline);
         vid_waitvbl();
         frame++;
     }

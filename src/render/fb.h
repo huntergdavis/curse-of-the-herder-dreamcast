@@ -21,6 +21,7 @@ void herder_fb_title(uint16_t *fb);
 int herder_fb_text(uint16_t *fb, int x, int y, const char *str, uint16_t color, int scale);
 int herder_fb_text_w(const char *str, int scale);
 void herder_fb_text_wrap(uint16_t *fb, int x, int y, const char *str, uint16_t color, int scale, int maxw, int maxlines);
+void herder_fb_bubble(uint16_t *fb, const HerderWorld *w, const char *text);
 void herder_fb_fill(uint16_t *fb, int x, int y, int w, int h, uint16_t c);
 void herder_fb_bar(uint16_t *fb, int x, int y, int w, int h, double frac);
 

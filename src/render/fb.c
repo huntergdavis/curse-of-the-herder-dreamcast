@@ -251,3 +251,35 @@ void herder_fb_text_wrap(uint16_t *fb, int x, int y, const char *str, uint16_t c
         line++;
     }
 }
+
+
+/* a floating speech bubble above the herder, with a tail. Text wraps inside. */
+void herder_fb_bubble(uint16_t *fb, const HerderWorld *w, const char *text){
+    if(!text||!text[0]) return;
+    /* herder screen position (same camera as draw_world) */
+    int cx=(int)(w->h.x+0.5), cy=(int)(w->h.y+0.5);
+    int ox=cx-VIEWW/2, oy=cy-VIEWH/2;
+    int ax=(int)((w->h.x-ox)*HERDER_TS)+HERDER_TS/2;
+    int ay=HERDER_TOP+(int)((w->h.y-oy)*HERDER_TS)+HERDER_TS/2 - 18;
+    /* wrap to lines */
+    int per=34; char lines[3][40]; int nl=0;
+    int len=(int)0; for(const char*p=text;*p;p++) len++;
+    int start=0;
+    while(start<len && nl<3){ int end=start+per; if(end>=len) end=len; else { int cut=end; while(cut>start&&text[cut]!=' ')cut--; if(cut>start)end=cut; }
+        int L=end-start; if(L>39)L=39; for(int i=0;i<L;i++) lines[nl][i]=text[start+i]; lines[nl][L]=0; nl++;
+        start=(end<len&&text[end]==' ')?end+1:end; }
+    int maxw=0; for(int i=0;i<nl;i++){ int wdt=herder_fb_text_w(lines[i],1); if(wdt>maxw)maxw=wdt; }
+    int bw=maxw+14, bh=nl*13+10;
+    int bx=ax-bw/2, by=ay-bh;
+    if(bx<4)bx=4;
+    if(bx>HERDER_SCRW-bw-4)bx=HERDER_SCRW-bw-4;
+    if(by<HERDER_TOP+4)by=HERDER_TOP+4;
+    /* bubble */
+    herder_fb_fill(fb,bx-1,by-1,bw+2,bh+2,HERDER_C_ink);
+    rrect(fb,bx,by,bw,bh,HERDER_C_panel);
+    /* tail toward the herder */
+    for(int t=0;t<8;t++){ int ty=by+bh+t; int half=8-t; if(half<1)half=1; herder_fb_fill(fb,ax-half,ty,half*2,1,(t==7)?HERDER_C_ink:HERDER_C_panel); }
+    herder_fb_fill(fb,ax-9,by+bh,18,1,HERDER_C_panel);
+    /* text */
+    for(int i=0;i<nl;i++) herder_fb_text(fb,bx+7,by+6+i*13,lines[i],HERDER_C_ink,1);
+}

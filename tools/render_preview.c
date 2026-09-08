@@ -24,8 +24,7 @@ int main(int argc, char **argv){
     snprintf(hud,sizeof(hud),"%02d:%02d  Lv%d %s  Pen %d/%d  Books %d",9+(int)hrs,(int)((hrs-(int)hrs)*60),lv,HERDER_LEVEL_NAMES[lv],w.sheepPenned,w.sheep_count,w.booksRead);
     herder_fb_text(fb,8,10,hud,0xffff,1);
     herder_fb_bar(fb,HERDER_SCRW-180,8,150,12,w.frustration/100.0);
-    int py=HERDER_SCRH-HERDER_BOT; herder_fb_fill(fb,0,py,HERDER_SCRW,HERDER_BOT,HERDER_C_panel); herder_fb_fill(fb,0,py,HERDER_SCRW,2,HERDER_C_ink);
-    herder_fb_text_wrap(fb,12,py+12,line,HERDER_C_ink,2,HERDER_SCRW-24,2);
+    herder_fb_bubble(fb,&w,line);
     FILE*f=fopen(argc>3?argv[3]:"/tmp/preview.rgb565","wb"); fwrite(fb,2,HERDER_SCRW*HERDER_SCRH,f); fclose(f);
     fprintf(stderr,"%s tick %d penned %d/%d\n",seed,w.tick,w.sheepPenned,w.sheep_count);
     return 0;
