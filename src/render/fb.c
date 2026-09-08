@@ -8,6 +8,8 @@ static uint16_t TERRAIN_COL[16];
 static uint16_t C_pen, C_penground, C_tree, C_boulder, C_house, C_houseR, C_lib, C_well, C_scare, C_stump;
 static uint16_t C_sheep, C_black, C_herder;
 uint16_t HERDER_C_hud, HERDER_C_panel, HERDER_C_ink, HERDER_C_bar_bg, HERDER_C_bar;
+static int g_anim = 0;
+void herder_fb_set_anim(int frame){ g_anim = frame; }
 
 /* base (untinted) world colours, 0xRRGGBB */
 static uint32_t bT[16];
@@ -72,24 +74,36 @@ static void tex_fleck(uint16_t *fb,int px,int py,int mx,int my,int t){
     if(h%5==0){ int ox=(int)(h%7)%(HERDER_TS-2), oy=(int)((h/7)%7)%(HERDER_TS-2); uint16_t base=fb[(py+oy)*HERDER_SCRW+px+ox]; uint16_t d=(uint16_t)((base>>1)&0x7bef); herder_fb_fill(fb,px+ox,py+oy,2,2,d); }
 }
 
-static void draw_sheep(uint16_t *fb,int cx,int cy,int black,int facing){
+static void draw_sheep(uint16_t *fb,int cx,int cy,int black,int facing,int moving){
     uint16_t wool=black?C_black:C_sheep; uint16_t face=black?HEX(0xe8e2d4):HEX(0x3a2f2a);
-    /* legs */
-    herder_fb_fill(fb,cx-5,cy+5,2,4,face); herder_fb_fill(fb,cx+3,cy+5,2,4,face);
-    /* body */
+    int sw = moving ? ((g_anim/4)%2 ? 1 : -1) : 0;   /* leg swing */
+    herder_fb_fill(fb,cx-5,cy+5, 2, 4+sw, face); herder_fb_fill(fb,cx+3,cy+5, 2, 4-sw, face);
     disc(fb,cx,cy+1,7,wool); disc(fb,cx-4,cy,5,wool); disc(fb,cx+4,cy,5,wool);
-    /* head to the facing side */
     int hx=facing==2?-8:8; disc(fb,cx+hx,cy-1,3,face);
+    herder_fb_fill(fb,cx+hx+(facing==2?-1:1),cy-2,1,1,HERDER_C_ink); /* eye */
 }
-static void draw_herder(uint16_t *fb,int cx,int cy,int facing,int carrying){
-    uint16_t coat=C_herder, skin=HEX(0xe8b98a), hat=HERDER_C_ink;
+static void draw_herder(uint16_t *fb,int cx,int cy,int facing,int carrying,int moving){
+    uint16_t coat=C_herder, skin=HEX(0xe8b98a), hat=HERDER_C_ink, boot=HEX(0x3a2a1a);
+    int sw = moving ? ((g_anim/4)%2 ? 2 : -2) : 0;  /* stride */
+    herder_fb_fill(fb,cx-4,cy+8, 3, 5, boot); herder_fb_fill(fb,cx+1,cy+8, 3, 5, boot); /* legs */
+    if(moving){ herder_fb_fill(fb,cx-4+sw,cy+11,3,2,boot); herder_fb_fill(fb,cx+1-sw,cy+11,3,2,boot); }
     herder_fb_fill(fb,cx-4,cy-2,8,12,coat);         /* body */
     disc(fb,cx,cy-8,4,skin);                        /* head */
     herder_fb_fill(fb,cx-5,cy-11,10,3,hat);         /* hat brim */
     herder_fb_fill(fb,cx-3,cy-14,6,3,hat);          /* hat crown */
-    int px=facing==0?4:facing==2?-6:-1;             /* crook / facing */
-    herder_fb_fill(fb,cx+px,cy-6,2,12,HEX(0x8a6a3a));
-    if(carrying) disc(fb,cx,cy-3,4,C_sheep);        /* a sheep on the shoulders */
+    int px=facing==0?5:facing==2?-6:-1;             /* crook */
+    herder_fb_fill(fb,cx+px,cy-8,2,16,HEX(0x8a6a3a));
+    if(carrying){ disc(fb,cx,cy-4,5,C_sheep); herder_fb_fill(fb,cx+(facing==2?-5:4),cy-5,1,1,HERDER_C_ink); }
+}
+static void draw_dog(uint16_t *fb,int cx,int cy,int facing,int moving){
+    uint16_t body=HEX(0x7a5a3a), dark=HEX(0x2a2018), white=HEX(0xf0ead8);
+    int sw = moving ? ((g_anim/3)%2 ? 1 : -1) : 0;
+    herder_fb_fill(fb,cx-4,cy+2,2,3+sw,dark); herder_fb_fill(fb,cx+2,cy+2,2,3-sw,dark); /* legs */
+    disc(fb,cx,cy,4,body);                          /* body */
+    int hx=facing==2?-5:5; disc(fb,cx+hx,cy-2,3,body); /* head */
+    herder_fb_fill(fb,cx+hx+(facing==2?-1:0),cy-4,1,2,dark); /* ear */
+    herder_fb_fill(fb,cx,cy,2,2,white);             /* a patch */
+    herder_fb_fill(fb,cx-(facing==2?-6:6),cy+1,3,1,body); /* tail */
 }
 static void draw_tree(uint16_t *fb,int cx,int cy){ herder_fb_fill(fb,cx-1,cy,3,7,HEX(0x6b4a2b)); disc(fb,cx,cy-3,7,C_tree); }
 static void draw_house(uint16_t *fb,int px,int py,int red){
@@ -127,9 +141,14 @@ void herder_fb_draw_world(uint16_t *fb, const HerderWorld *w){
     /* library book-boxes */
     for(int i=0;i<w->lib_count;i++){ if(w->lib[i].taken) continue; int sx=(w->lib[i].x-ox)*HERDER_TS+HERDER_TS/2, sy=HERDER_TOP+(w->lib[i].y-oy)*HERDER_TS+HERDER_TS/2; rrect(fb,sx-6,sy-5,12,10,C_lib); herder_fb_fill(fb,sx-6,sy-1,12,2,HEX(0x9a6a2a)); }
     /* sheep */
-    for(int i=0;i<w->sheep_count;i++){ const HerderSheep*s=&w->sheep[i]; if(s->mode==2) continue; int sx=(int)((s->x-ox)*HERDER_TS)+HERDER_TS/2, sy=HERDER_TOP+(int)((s->y-oy)*HERDER_TS)+HERDER_TS/2; if(sx<-20||sy<HERDER_TOP-20||sx>HERDER_SCRW+20||sy>HERDER_SCRH-HERDER_BOT+20) continue; draw_sheep(fb,sx,sy,s->black,s->x<w->h.x?2:0); }
+    for(int i=0;i<w->sheep_count;i++){ const HerderSheep*s=&w->sheep[i]; if(s->mode==2) continue; int sx=(int)((s->x-ox)*HERDER_TS)+HERDER_TS/2, sy=HERDER_TOP+(int)((s->y-oy)*HERDER_TS)+HERDER_TS/2; if(sx<-20||sy<HERDER_TOP-20||sx>HERDER_SCRW+20||sy>HERDER_SCRH-HERDER_BOT+20) continue; int smv=(s->tx!=s->x)||(s->ty!=s->y); draw_sheep(fb,sx,sy,s->black,s->x<w->h.x?2:0,smv); }
     /* herder */
-    { int sx=(int)((w->h.x-ox)*HERDER_TS)+HERDER_TS/2, sy=HERDER_TOP+(int)((w->h.y-oy)*HERDER_TS)+HERDER_TS/2; draw_herder(fb,sx,sy,w->h.facing,w->h.carrying>=0); }
+    { int sx=(int)((w->h.x-ox)*HERDER_TS)+HERDER_TS/2, sy=HERDER_TOP+(int)((w->h.y-oy)*HERDER_TS)+HERDER_TS/2;
+      int hmv=(w->h.mode==HM_TOSHEEP||w->h.mode==HM_TOPEN||w->h.mode==HM_TOLIBRARY);
+      /* the sheepdog trots a step behind, on the side away from his facing */
+      int dogoff = w->h.facing==2?HERDER_TS:-HERDER_TS;
+      draw_dog(fb,sx+dogoff,sy+HERDER_TS/2, w->h.facing, hmv);
+      draw_herder(fb,sx,sy,w->h.facing,w->h.carrying>=0,hmv); }
 }
 
 
@@ -153,4 +172,22 @@ void herder_fb_minimap(uint16_t *fb, const HerderWorld *w){
     for(int i=0;i<w->sheep_count;i++){ const HerderSheep*s=&w->sheep[i]; if(s->mode==2) continue; int px=(int)(s->x*MM_SZ/n), py=(int)(s->y*MM_SZ/n); if((unsigned)px<MM_SZ&&(unsigned)py<MM_SZ) fb[(MM_Y+py)*HERDER_SCRW+(MM_X+px)]= s->black?C_black:C_sheep; }
     /* herder */
     { int px=(int)(w->h.x*MM_SZ/n), py=(int)(w->h.y*MM_SZ/n); herder_fb_fill(fb,MM_X+px-1,MM_Y+py-1,3,3,HEX(0x2a4086)); }
+}
+
+
+/* rain and fog overlays, keyed to the world's weather ticks */
+void herder_fb_weather(uint16_t *fb, const HerderWorld *w){
+    int vy0=HERDER_TOP, vy1=HERDER_SCRH-HERDER_BOT;
+    if(w->fogUntilTick > w->tick){
+        /* fog: lighten every few pixels toward white (cheap dithered veil) */
+        for(int y=vy0;y<vy1;y+=2) for(int x=(y&2)?0:2;x<HERDER_SCRW;x+=4){ uint16_t c=fb[y*HERDER_SCRW+x]; int r=((c>>11)&0x1f),g=((c>>5)&0x3f),b=(c&0x1f); r+=(31-r)/2; g+=(63-g)/2; b+=(31-b)/2; fb[y*HERDER_SCRW+x]=(uint16_t)((r<<11)|(g<<5)|b); }
+    }
+    if(w->rainUntilTick > w->tick){
+        uint16_t drop=rgb565(0xb8,0xc8,0xe0);
+        for(int k=0;k<260;k++){
+            int x=(k*61 + g_anim*4) % HERDER_SCRW;
+            int y=vy0 + (int)((unsigned)(k*137 + g_anim*9) % (unsigned)(vy1-vy0-6));
+            for(int t=0;t<5;t++){ int xx=x+t, yy=y+t*2; if((unsigned)xx<HERDER_SCRW && yy<vy1) fb[yy*HERDER_SCRW+xx]=drop; }
+        }
+    }
 }

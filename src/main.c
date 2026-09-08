@@ -100,8 +100,10 @@ int main(int argc, char **argv){
             HerderUtterance u=herder_speak_epitaph(&g_world,4); snprintf(curline,sizeof(curline),"%s",u.text); lineUntil=frame+600;
         }
 
+        herder_fb_set_anim(frame);
         herder_fb_set_tint(9.0 + g_world.tick/14400.0);
         herder_fb_draw_world(fb,&g_world);
+        herder_fb_weather(fb,&g_world);
         herder_fb_minimap(fb,&g_world);
         draw_hud(&g_world);
         draw_speech(frame<lineUntil?curline:"");

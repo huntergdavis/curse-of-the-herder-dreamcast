@@ -17,8 +17,10 @@ int main(int argc, char **argv){
     /* HUD + panel backgrounds so the framing reads like the game */
     herder_fb_fill(fb,0,0,HERDER_SCRW,HERDER_TOP,HERDER_C_hud);
     herder_fb_bar(fb,HERDER_SCRW-180,8,150,12,w.frustration/100.0);
+    herder_fb_set_anim(argc>4?atoi(argv[4]):0);
     herder_fb_set_tint(9.0 + w.tick/14400.0);
     herder_fb_draw_world(fb,&w);
+    herder_fb_weather(fb,&w);
     herder_fb_minimap(fb,&w);
     herder_fb_fill(fb,0,HERDER_SCRH-HERDER_BOT,HERDER_SCRW,HERDER_BOT,HERDER_C_panel);
     herder_fb_fill(fb,0,HERDER_SCRH-HERDER_BOT,HERDER_SCRW,2,HERDER_C_ink);
