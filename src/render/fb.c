@@ -2,7 +2,9 @@
 #include "core/map/terrain.h"
 #include "render/font.h"
 #include "core/progression.h"
+#include "core/names.h"
 #include <string.h>
+#include <stdio.h>
 
 static uint16_t rgb565(int r, int g, int b){ return (uint16_t)(((r>>3)<<11)|((g>>2)<<5)|(b>>3)); }
 #define HEX(h) rgb565(((h)>>16)&0xff, ((h)>>8)&0xff, (h)&0xff)
@@ -401,4 +403,25 @@ static void draw_rival(uint16_t *fb, const HerderWorld *w){
     herder_fb_fill(fb,rx-5,ry-11,10,2,HERDER_C_ink);
     herder_fb_fill(fb,rx-3,ry-14,6,3,HERDER_C_ink);
     int px=dir==2?-6:5; herder_fb_fill(fb,rx+px,ry-10,2,18,HEX(0x8a6a3a));
+}
+
+
+void herder_fb_hud(uint16_t *fb, const HerderWorld *w, int fast){
+    const int px=16, py=16, pw=250, ph=98;
+    herder_fb_fill(fb, px-2, py-2, pw+4, ph+4, HERDER_C_ink);
+    herder_fb_fill(fb, px, py, pw, ph, HERDER_C_panel);
+    double hours=w->tick/14400.0;
+    int hh=9+(int)hours, mm=(int)((hours-(int)hours)*60);
+    int level=herder_level_for(herder_erudition(w->booksRead,w->sheepPenned,hours));
+    double fr=w->frustration;
+    const char *mood = fr<20?"Muttering": fr<40?"Grumbling": fr<60?"Cursing": fr<80?"Swearing":"Unhinged";
+    char nm[64]; snprintf(nm,sizeof(nm),"%s%s %s", herder_name_old(w->seed)?"Old ":"", HERDER_FIRST[herder_name_first(w->seed)], HERDER_EPITHET[herder_name_epithet(w->seed)]);
+    char row[80];
+    herder_fb_text(fb, px+8, py+6, nm, HERDER_C_ink, 1);
+    if(fast>1){ char sp[16]; snprintf(sp,sizeof(sp),"x%d",fast); herder_fb_text(fb, px+pw-herder_fb_text_w(sp,1)-8, py+6, sp, HERDER_C_ink, 1); }
+    snprintf(row,sizeof(row),"Day    %02d:%02d", hh,mm);                        herder_fb_text(fb, px+8, py+22, row, HERDER_C_ink, 1);
+    snprintf(row,sizeof(row),"Flock  %d / %d", w->sheepPenned, w->sheep_count);  herder_fb_text(fb, px+8, py+35, row, HERDER_C_ink, 1);
+    snprintf(row,sizeof(row),"Level  %d \xC2\xB7 %s", level, HERDER_LEVEL_NAMES[level]); herder_fb_text(fb, px+8, py+48, row, HERDER_C_ink, 1);
+    snprintf(row,sizeof(row),"Mood   %s %d", mood, (int)(fr+0.5));              herder_fb_text(fb, px+8, py+61, row, HERDER_C_ink, 1);
+    herder_fb_bar(fb, px+8, py+78, pw-16, 10, fr/100.0);
 }

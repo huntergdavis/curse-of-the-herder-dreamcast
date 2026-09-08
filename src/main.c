@@ -20,19 +20,6 @@ KOS_INIT_FLAGS(INIT_DEFAULT);
 static uint16 *fb;
 static int g_fast=1;
 
-static void draw_hud(const HerderWorld *w){
-    herder_fb_fill(fb,0,0,HERDER_SCRW,HERDER_TOP,HERDER_C_hud);
-    char line[96];
-    double hours=w->tick/14400.0;
-    int hh=9+(int)hours, mm=(int)((hours-(int)hours)*60);
-    int level=herder_level_for(herder_erudition(w->booksRead,w->sheepPenned,hours));
-    if(g_fast>1) snprintf(line,sizeof(line),"%02d:%02d  Lv%d %s  Pen %d/%d  Books %d  x%d", hh,mm,level,HERDER_LEVEL_NAMES[level],w->sheepPenned,w->sheep_count,w->booksRead,g_fast);
-    else snprintf(line,sizeof(line),"%02d:%02d  Lv%d %s  Pen %d/%d  Books %d", hh,mm,level,HERDER_LEVEL_NAMES[level],w->sheepPenned,w->sheep_count,w->booksRead);
-    bfont_set_foreground_color(0xef7b);
-    bfont_set_background_color(HERDER_C_hud);
-    bfont_draw_str(fb+2*HERDER_SCRW+6, HERDER_SCRW, 0, line);
-    herder_fb_bar(fb, HERDER_SCRW-172, 11, 150, 12, w->frustration/100.0);
-}
 
 
 static const char *SEEDS[]={"seed","grudge","payoff","curse-of-the-herder","tom"};
@@ -240,7 +227,7 @@ int main(int argc, char **argv){
         herder_fb_weather(fb,&g_world);
         if(frame<rainbowUntil){ int left=rainbowUntil-frame; herder_fb_rainbow(fb, left>120?200:left*200/120); }
         herder_fb_minimap(fb,&g_world);
-        draw_hud(&g_world);
+        herder_fb_hud(fb,&g_world,g_fast);
         if(frame<lineUntil) herder_fb_bubble(fb,&g_world,curline);
         vid_waitvbl();
         frame++;
