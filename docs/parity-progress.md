@@ -69,15 +69,16 @@ confirmed. The port is a faithful, playable, byte-exact rendering of the game:
 - **Structure** — title -> play -> gravestone induction -> Hall of Herders ->
   title, with signpost/hat delighters and a proper vmu_pkg save.
 
-**A fully polished, hardware-confirmed 1:1 build is roughly 90% there.** The last
+**A fully polished, hardware-confirmed 1:1 build is roughly 92% there.** The last
 stretch is not more logic and mostly cannot be finished blind:
 
 1. **Hardware/emulator confirmation** — no Flycast or Dreamcast on this machine.
    The world, sprites, and all text are host-verified, but the **VMU save
    round-trip** has never run against a real card and nothing has been seen on a
    TV. This is the one real gate.
-2. **Diminishing polish** — four-directional (up/down) sprite facings, more
-   animation frames, camera easing; a couple more proximity delighters.
+2. **Diminishing polish** — grazing/asleep sheep poses and more animation
+   frames (four-directional facing, the eased camera, and the rival-and-flock
+   crossing are now done); a couple more proximity delighters (inn/hens/cow).
 
 Note on "1:1": the logic and generated text are literally byte-identical to the
 web. The *rendering* is a faithful reproduction, not a pixel copy — a 640x480
