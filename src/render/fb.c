@@ -9,19 +9,45 @@ static uint16_t C_pen, C_penground, C_tree, C_boulder, C_house, C_houseR, C_lib,
 static uint16_t C_sheep, C_black, C_herder;
 uint16_t HERDER_C_hud, HERDER_C_panel, HERDER_C_ink, HERDER_C_bar_bg, HERDER_C_bar;
 
+/* base (untinted) world colours, 0xRRGGBB */
+static uint32_t bT[16];
+static uint32_t bpen,bpeng,btree,bboul,bhouse,bhouseR,blib,bwell,bscare,bstump,bsheep,bblack,bherder;
+
+/* the web's day tint keyframes (palette.ts TINT_KEYS): hour -> (r,g,b,a) */
+static void day_tint(double hour, int *tr, int *tg, int *tb, double *ta){
+    static const double H[7]={9.0,10.5,15.0,16.5,17.6,18.3,19.5};
+    static const int    R[7]={120,255,255,255,255,70,20}, G[7]={160,255,255,190,130,60,24}, B[7]={255,255,255,110,70,140,70};
+    static const double A[7]={0.10,0.0,0.0,0.10,0.22,0.40,0.55};
+    double h=hour; if(h<H[0])h=H[0]; if(h>H[6])h=H[6];
+    for(int i=0;i<6;i++){ if(h>=H[i]&&h<=H[i+1]){ double t=(h-H[i])/(H[i+1]-H[i]);
+        *tr=(int)(R[i]+(R[i+1]-R[i])*t); *tg=(int)(G[i]+(G[i+1]-G[i])*t); *tb=(int)(B[i]+(B[i+1]-B[i])*t); *ta=A[i]+(A[i+1]-A[i])*t; return; } }
+    *tr=0;*tg=0;*tb=0;*ta=0;
+}
+static uint16_t blend565(uint32_t base, int tr, int tg, int tb, double a){
+    int r=(base>>16)&0xff, g=(base>>8)&0xff, b=base&0xff;
+    r=(int)(r+(tr-r)*a); g=(int)(g+(tg-g)*a); b=(int)(b+(tb-b)*a);
+    return rgb565(r,g,b);
+}
+void herder_fb_set_tint(double hour){
+    int tr,tg,tb; double ta; day_tint(hour,&tr,&tg,&tb,&ta);
+    for(int i=0;i<16;i++) TERRAIN_COL[i]=blend565(bT[i],tr,tg,tb,ta);
+    C_pen=blend565(bpen,tr,tg,tb,ta); C_penground=blend565(bpeng,tr,tg,tb,ta);
+    C_tree=blend565(btree,tr,tg,tb,ta); C_boulder=blend565(bboul,tr,tg,tb,ta);
+    C_house=blend565(bhouse,tr,tg,tb,ta); C_houseR=blend565(bhouseR,tr,tg,tb,ta);
+    C_lib=blend565(blib,tr,tg,tb,ta); C_well=blend565(bwell,tr,tg,tb,ta);
+    C_scare=blend565(bscare,tr,tg,tb,ta); C_stump=blend565(bstump,tr,tg,tb,ta);
+    C_sheep=blend565(bsheep,tr,tg,tb,ta); C_black=blend565(bblack,tr,tg,tb,ta); C_herder=blend565(bherder,tr,tg,tb,ta);
+}
 void herder_fb_palette_init(void){
-    TERRAIN_COL[T_Water]=HEX(0x4f8fc9); TERRAIN_COL[T_Sand]=HEX(0xe3d29a);
-    TERRAIN_COL[T_Grass]=HEX(0x7cb548); TERRAIN_COL[T_Meadow]=HEX(0x8fbf50);
-    TERRAIN_COL[T_Farm]=HEX(0xc9a35a); TERRAIN_COL[T_Forest]=HEX(0x5a9a44);
-    TERRAIN_COL[T_Mud]=HEX(0x8d6f4e); TERRAIN_COL[T_Rock]=HEX(0x9a958c);
-    TERRAIN_COL[T_Snow]=HEX(0xf2f4f7); TERRAIN_COL[T_Road]=HEX(0xd8c398);
-    TERRAIN_COL[T_Bridge]=HEX(0xa8804f);
-    C_pen=HEX(0x6b4a2b); C_penground=HEX(0x93894f); C_tree=HEX(0x2f6f3a); C_boulder=HEX(0x7a746b);
-    C_house=HEX(0x8c4a3a); C_houseR=HEX(0xb03a3a); C_lib=HEX(0xe0b33c);
-    C_well=HEX(0x8a8578); C_scare=HEX(0x8a6238); C_stump=HEX(0x7d5a35);
-    C_sheep=HEX(0xf6f2e6); C_black=HEX(0x3a3532); C_herder=HEX(0x7a5a3a);
+    bT[T_Water]=0x4f8fc9; bT[T_Sand]=0xe3d29a; bT[T_Grass]=0x7cb548; bT[T_Meadow]=0x8fbf50;
+    bT[T_Farm]=0xc9a35a; bT[T_Forest]=0x5a9a44; bT[T_Mud]=0x8d6f4e; bT[T_Rock]=0x9a958c;
+    bT[T_Snow]=0xf2f4f7; bT[T_Road]=0xd8c398; bT[T_Bridge]=0xa8804f;
+    bpen=0x6b4a2b; bpeng=0x93894f; btree=0x2f6f3a; bboul=0x7a746b;
+    bhouse=0x8c4a3a; bhouseR=0xb03a3a; blib=0xe0b33c; bwell=0x8a8578; bscare=0x8a6238; bstump=0x7d5a35;
+    bsheep=0xf6f2e6; bblack=0x3a3532; bherder=0x7a5a3a;
     HERDER_C_ink=HEX(0x2b2620); HERDER_C_hud=HEX(0x28241e); HERDER_C_panel=HEX(0xf2ecdc);
     HERDER_C_bar_bg=HEX(0x50483f); HERDER_C_bar=HEX(0xc05040);
+    herder_fb_set_tint(12.0);
 }
 
 void herder_fb_fill(uint16_t *fb, int x, int y, int w, int h, uint16_t c){

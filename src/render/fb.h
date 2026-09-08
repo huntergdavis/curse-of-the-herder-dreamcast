@@ -12,6 +12,7 @@
 #define HERDER_BOT  64                 /* speech panel height */
 
 void herder_fb_palette_init(void);
+void herder_fb_set_tint(double hour);
 void herder_fb_draw_world(uint16_t *fb, const HerderWorld *w);
 void herder_fb_fill(uint16_t *fb, int x, int y, int w, int h, uint16_t c);
 void herder_fb_bar(uint16_t *fb, int x, int y, int w, int h, double frac);
