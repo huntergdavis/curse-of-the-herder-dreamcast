@@ -74,9 +74,11 @@ static void rrect(uint16_t *fb,int x,int y,int w,int h,uint16_t c){ herder_fb_fi
 
 /* subtle per-tile texture fleck, echoing the web's grass/meadow speckle */
 static void tex_fleck(uint16_t *fb,int px,int py,int mx,int my,int t){
-    if(t!=T_Grass&&t!=T_Meadow&&t!=T_Mud&&t!=T_Farm) return;
     unsigned h=(unsigned)(mx*37+my*101);
-    if(h%5==0){ int ox=(int)(h%7)%(HERDER_TS-2), oy=(int)((h/7)%7)%(HERDER_TS-2); uint16_t base=fb[(py+oy)*HERDER_SCRW+px+ox]; uint16_t d=(uint16_t)((base>>1)&0x7bef); herder_fb_fill(fb,px+ox,py+oy,2,2,d); }
+    if(t==T_Grass||t==T_Meadow){ /* a small grass tuft, like the web */
+        if(h%3==0){ int ox=(int)(h%9)%(HERDER_TS-2)+1, oy=(int)((h/9)%9)%(HERDER_TS-4)+2; uint16_t tc=HEX(0x5f8a34);
+            herder_fb_fill(fb,px+ox,py+oy,1,3,tc); herder_fb_fill(fb,px+ox-1,py+oy+1,1,2,tc); herder_fb_fill(fb,px+ox+1,py+oy+1,1,2,tc); }
+    } else if(t==T_Mud||t==T_Farm){ if(h%5==0){ int ox=(int)(h%7)%(HERDER_TS-2), oy=(int)((h/7)%7)%(HERDER_TS-2); uint16_t base=fb[(py+oy)*HERDER_SCRW+px+ox]; uint16_t d=(uint16_t)((base>>1)&0x7bef); herder_fb_fill(fb,px+ox,py+oy,2,2,d); } }
 }
 
 static void shadow(uint16_t *fb,int cx,int cy,int rx){ /* cheap dark ellipse */
@@ -177,6 +179,8 @@ void herder_fb_draw_world(uint16_t *fb, const HerderWorld *w){
                     case D_Well: disc(fb,px+HERDER_TS/2,py+HERDER_TS/2,HERDER_TS/3,C_well); break;
                     case D_Scarecrow: herder_fb_fill(fb,px+HERDER_TS/2-1,py+2,2,HERDER_TS-4,C_scare); herder_fb_fill(fb,px+3,py+HERDER_TS/3,HERDER_TS-6,2,C_scare); break;
                     case D_Stump: disc(fb,px+HERDER_TS/2,py+HERDER_TS/2,4,C_stump); break;
+                    case D_Tuft: { uint16_t tc=HEX(0x3a6a24); int bx=px+HERDER_TS/2, by=py+HERDER_TS/2+3; for(int b=-3;b<=3;b+=3){ herder_fb_fill(fb,bx+b,by-4,1,5,tc); herder_fb_fill(fb,bx+b-1,by-4,1,2,tc); } } break;
+                    case D_Flowers: { static const uint32_t fl[4]={0xf2c14e,0xe86a92,0xf4f1e6,0xb58cf0}; unsigned h=(unsigned)(mx*29+my*71); for(int k=0;k<4;k++){ int fx=px+2+((h>>(k*2))&7)%(HERDER_TS-3), fy=py+2+((h>>(k*3))&7)%(HERDER_TS-3); uint16_t c=HEX(fl[(k+ (h&3))%4]); herder_fb_fill(fb,fx,fy,2,2,c); } } break;
                     default: break;
                 }
             }
