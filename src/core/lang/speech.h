@@ -22,5 +22,6 @@ HerderUtterance herder_speak_idle(const HerderWorld *w, int bandCap);
 HerderUtterance herder_speak_kind(const HerderWorld *w, int ev, int bandCap, double heatBump);
 HerderUtterance herder_speak_epitaph(const HerderWorld *w, int bandCap);
 int herder_next_idle_curse_ticks(const HerderWorld *w);
+const char *herder_curse_remark(const char *seed, int tick, const char *kind, int level);
 
 #endif

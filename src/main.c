@@ -175,6 +175,7 @@ int main(int argc, char **argv){
     int nextIdle=g_world.tick + herder_next_idle_curse_ticks(&g_world);
     int lastSeq=-1, frame=0, recorded=0, lastSignpost=-100000, lastHat=-100000;
     int wasRaining=0, rainbowUntil=-1;
+    char curseLine[160]=""; int curseUntil=-1, lastCurse=-100000;
     static const int SPEEDS[6]={1,2,5,20,60,300}; int spi=0; g_fast=SPEEDS[spi];
     uint64 lastms=timer_ms_gettime64(); double tickAccum=0;
 
@@ -194,8 +195,13 @@ int main(int argc, char **argv){
                 herder_step(&g_world);
                 while(g_world.event_count > lastSeq+1){
                     int seq=++lastSeq;
-                    HerderUtterance u=herder_speak_for_event(&g_world,&g_world.events[seq],4);
+                    HerderEvent *ev=&g_world.events[seq];
+                    HerderUtterance u=herder_speak_for_event(&g_world,ev,4);
                     if(u.ok){ snprintf(curline,sizeof(curline),"%s",u.text); lineUntil=frame+(int)(u.seconds*60); }
+                    if(frame-lastCurse>1200){ int lv=herder_level_for(herder_erudition(g_world.booksRead,g_world.sheepPenned,g_world.tick/14400.0));
+                        const char *ck = (strcmp(ev->kind,"mishap")==0||strcmp(ev->kind,"milestone")==0)&&ev->detail[0]?ev->detail:ev->kind;
+                        const char *cr=herder_curse_remark(g_world.seed,g_world.tick,ck,lv);
+                        if(cr){ snprintf(curseLine,sizeof(curseLine),"%s",cr); curseUntil=frame+7*60; lastCurse=frame; } }
                 }
                 if(g_world.tick>=nextIdle){
                     HerderUtterance u=herder_speak_idle(&g_world,4);
@@ -228,6 +234,7 @@ int main(int argc, char **argv){
         if(frame<rainbowUntil){ int left=rainbowUntil-frame; herder_fb_rainbow(fb, left>120?200:left*200/120); }
         herder_fb_minimap(fb,&g_world);
         herder_fb_hud(fb,&g_world,g_fast);
+        if(frame<curseUntil) herder_fb_curse_banner(fb,curseLine);
         if(frame<lineUntil) herder_fb_bubble(fb,&g_world,curline);
         vid_waitvbl();
         frame++;

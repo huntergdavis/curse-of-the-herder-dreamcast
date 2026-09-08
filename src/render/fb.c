@@ -142,14 +142,17 @@ static void draw_herder(uint16_t *fb,int cx,int cy,int facing,int carrying,int m
     (void)gazing;
 }
 static void draw_dog(uint16_t *fb,int cx,int cy,int facing,int moving){
-    uint16_t body=HEX(0x7a5a3a), dark=HEX(0x2a2018), white=HEX(0xf0ead8);
+    /* a black-and-white border collie, like the web */
+    uint16_t black=HEX(0x28241f), white=HEX(0xf0ead8);
     int sw = moving ? ((g_anim/3)%2 ? 1 : -1) : 0;
-    herder_fb_fill(fb,cx-4,cy+2,2,3+sw,dark); herder_fb_fill(fb,cx+2,cy+2,2,3-sw,dark); /* legs */
-    disc(fb,cx,cy,4,body);                          /* body */
-    int hx=facing==2?-5:5; disc(fb,cx+hx,cy-2,3,body); /* head */
-    herder_fb_fill(fb,cx+hx+(facing==2?-1:0),cy-4,1,2,dark); /* ear */
-    herder_fb_fill(fb,cx,cy,2,2,white);             /* a patch */
-    herder_fb_fill(fb,cx-(facing==2?-6:6),cy+1,3,1,body); /* tail */
+    herder_fb_fill(fb,cx-4,cy+2,2,3+sw,black); herder_fb_fill(fb,cx+2,cy+2,2,3-sw,black); /* legs */
+    herder_fb_fill(fb,cx-4,cy+4,2,1,white); herder_fb_fill(fb,cx+2,cy+4,2,1,white);       /* white socks */
+    disc(fb,cx,cy,4,black);                          /* body */
+    herder_fb_fill(fb,cx-1,cy,2,4,white);            /* white chest/belly stripe */
+    int hx=facing==2?-5:5; disc(fb,cx+hx,cy-2,3,black); /* head */
+    herder_fb_fill(fb,cx+hx+(facing==2?-2:1),cy-1,2,2,white); /* white muzzle */
+    herder_fb_fill(fb,cx+hx+(facing==2?-1:0),cy-4,1,2,black); /* ear */
+    int tx=cx-(facing==2?-6:6); herder_fb_fill(fb,tx,cy+1,3,1,black); herder_fb_fill(fb,tx+(facing==2?2:0),cy+1,1,1,white); /* tail w/ white tip */
 }
 static void draw_tree(uint16_t *fb,int cx,int cy){ herder_fb_fill(fb,cx-1,cy,3,7,HEX(0x6b4a2b)); disc(fb,cx,cy-3,7,C_tree); }
 static void draw_house(uint16_t *fb,int px,int py,int red){
@@ -424,4 +427,18 @@ void herder_fb_hud(uint16_t *fb, const HerderWorld *w, int fast){
     snprintf(row,sizeof(row),"Level  %d \xC2\xB7 %s", level, HERDER_LEVEL_NAMES[level]); herder_fb_text(fb, px+8, py+48, row, HERDER_C_ink, 1);
     snprintf(row,sizeof(row),"Mood   %s %d", mood, (int)(fr+0.5));              herder_fb_text(fb, px+8, py+61, row, HERDER_C_ink, 1);
     herder_fb_bar(fb, px+8, py+78, pw-16, 10, fr/100.0);
+}
+
+
+/* the Curse's dry meta-commentary banner, top-centre (below the HUD) */
+void herder_fb_curse_banner(uint16_t *fb, const char *line){
+    if(!line||!line[0]) return;
+    const char *lbl="THE CURSE:";
+    int lw=herder_fb_text_w(lbl,1), tw=herder_fb_text_w(line,1);
+    int bw=lw+8+tw+16; if(bw>HERDER_SCRW-40) bw=HERDER_SCRW-40;
+    int bx=(HERDER_SCRW-bw)/2, by=120;
+    herder_fb_fill(fb,bx-2,by-2,bw+4,26,HERDER_C_ink);
+    herder_fb_fill(fb,bx,by,bw,22,HERDER_C_hud);
+    herder_fb_text(fb,bx+8,by+7,lbl,rgb565(0xd8,0xb0,0x50),1);   /* dim gold label */
+    herder_fb_text(fb,bx+8+lw+8,by+7,line,0xffff,1);
 }

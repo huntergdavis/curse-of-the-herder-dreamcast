@@ -183,3 +183,48 @@ int herder_next_idle_curse_ticks(const HerderWorld *w){
   long v=lround(seconds*jitter/0.25);
   return v<20?20:(int)v;
 }
+
+/* The Curse's dry meta-commentary (main.ts CURSE_EARLY + CURSE_LINES). */
+static const char *CURSE_EARLY[]={
+  "He will learn words. Give him time. I have all of it.",
+  "That was a sentence. Technically.",
+  "Day one of forever. He is taking it well.",
+  "I have cursed better men. They also shouted at sheep.",
+  "He does not know yet that the sheep are the easy part.",
+  "There are libraries. He will find them. Then it gets worse.",
+};
+typedef struct { const char *kind; const char *const *lines; int n; } CurseSet;
+static const char *CL_rant[]={"Noted.","The Curse has heard this one before. In 1487.","Shouting is permitted. It is not, historically, effective.","The sky is not a party to your arrangement. I am."};
+static const char *CL_jailbreak[]={"The Curse did not do that. The Curse admires it.","Sixty is a courtesy figure.","Fences are a suggestion. I thought you knew."};
+static const char *CL_milestone[]={"Halfway is a word. It has never once been a place.","You are counting. I find that touching.","One left. You will remember this one. You always do."};
+static const char *CL_streak[]={"Enjoy it.","Five. The Curse is generous in small amounts.","I did that. You are welcome. It ends now."};
+static const char *CL_streakBroken[]={"Told you.","There. Better.","Balance restored."};
+static const char *CL_nemesisCaught[]={"Congratulations. It is a sheep.","Savour it. There are more.","I let you have that one."};
+static const char *CL_rival[]={"He is not cursed. He is simply good at it.","I offered him the job first.","His sheep like him. Imagine."};
+static const char *CL_rivalBolt[]={"Do not enjoy this.","That one is coming to live with you.","I had nothing to do with it. This time."};
+static const char *CL_drink[]={"Water. He is celebrating.","The well is not cursed. I checked that too.","He will want a lie-down next."};
+static const char *CL_signpost[]={"The sign is right. It usually is.","He argues with furniture now.","It points at the village. He points at nothing."};
+static const char *CL_levelUp[]={"It was in a book. He found it. Fine.","More words. Same sheep.","I gave him the books. Remember that."};
+static const char *CL_inn[]={"He is not allowed in. I checked.","The Cursed Ram. Named after me, in a way.","Sixty sheep, then ale. Those are the terms."};
+static const char *CL_cow[]={"He is talking to a cow now.","The cow is not listening either.","Sixty sheep and he stops for a cow."};
+static const char *CL_dogHelps[]={"I did not authorise that.","Do not get used to it.","Even I am surprised."};
+static const char *CL_lunchStolen[]={"That was the good cheese, too.","I did not arrange that. I would have, but I did not.","Lunch is for the uncursed."};
+static const char *CL_crook[]={"The crook was never the point.","Everything breaks. You are the exception, so far."};
+static const char *CL_finished[]={"Sleep. Tomorrow you will not remember the words. That is the part I enjoy.","Well done. Sincerely. Now: sixty."};
+static const char *CL_book[]={"Learn all the words you like. The sheep have heard them.","That one had a cat in it. The cat was doing better than he is.","That book was mine. They all were.","You will be eloquent at nobody. It suits you."};
+static const CurseSet CURSE_LINES[]={
+  {"rant",CL_rant,4},{"jailbreak",CL_jailbreak,3},{"milestone",CL_milestone,3},{"streak",CL_streak,3},
+  {"streakBroken",CL_streakBroken,3},{"nemesisCaught",CL_nemesisCaught,3},{"rival",CL_rival,3},{"rivalBolt",CL_rivalBolt,3},
+  {"drink",CL_drink,3},{"signpost",CL_signpost,3},{"levelUp",CL_levelUp,3},{"inn",CL_inn,3},{"cow",CL_cow,3},
+  {"dogHelps",CL_dogHelps,3},{"lunchStolen",CL_lunchStolen,3},{"crook",CL_crook,2},{"finished",CL_finished,2},{"book",CL_book,4},
+};
+
+const char *herder_curse_remark(const char *seed, int tick, const char *kind, int level){
+  const char *const *pool=NULL; int n=0;
+  if(level<4 && kui(seed,"curse-early",tick)<0.6){ pool=CURSE_EARLY; n=6; }
+  else { for(int i=0;i<(int)(sizeof(CURSE_LINES)/sizeof(CURSE_LINES[0]));i++) if(strcmp(CURSE_LINES[i].kind,kind)==0){ pool=CURSE_LINES[i].lines; n=CURSE_LINES[i].n; break; } }
+  if(!pool) return NULL;
+  if(kui(seed,"curse-remark",tick) > 0.45) return NULL;
+  int idx=(int)(kui(seed,"curse-remark-line",tick)*n); if(idx>=n)idx=n-1;
+  return pool[idx];
+}
