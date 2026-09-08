@@ -208,6 +208,17 @@ static void emote_at(uint16_t *fb,int sx,int sy,const char *glyph){
     herder_fb_text(fb,sx-w/2+4,sy+3,glyph,HERDER_C_ink,1);
 }
 
+static void draw_villager(uint16_t *fb,int cx,int cy,int state,int variant){
+    static const uint32_t coats[3]={0x9f6f8a,0x6f8f9f,0x8f9f6f};
+    uint16_t coat=HEX(coats[variant%3]), skin=HEX(0xe8b98a), leg=HEX(0x4a4438);
+    herder_fb_fill(fb,cx-3,cy+6,2,4,leg); herder_fb_fill(fb,cx+1,cy+6,2,4,leg); /* legs */
+    herder_fb_fill(fb,cx-3,cy-2,6,9,coat);          /* body */
+    disc(fb,cx,cy-6,3,skin);                        /* head */
+    if(state==2){ herder_fb_fill(fb,cx-5,cy-6,2,4,skin); herder_fb_fill(fb,cx+3,cy-6,2,4,skin); emote_at(fb,cx,cy-16,"!"); } /* shocked: hands up */
+    else if(state==1){ herder_fb_fill(fb,cx+3,cy-8,2,4,skin); herder_fb_fill(fb,cx-5,cy-1,2,4,skin); emote_at(fb,cx,cy-16,"hullo"); } /* wave */
+    else { herder_fb_fill(fb,cx-5,cy-1,2,4,skin); herder_fb_fill(fb,cx+3,cy-1,2,4,skin); }
+}
+
 static void draw_house(uint16_t *fb,int px,int py,int red){
     uint16_t wall=red?HEX(0xd8b28a):HEX(0xe8dcc3), roof=red?HEX(0xb03a3a):HEX(0x8c4a3a);
     herder_fb_fill(fb,px+3,py+HERDER_TS/2,HERDER_TS-6,HERDER_TS/2-1,wall);
@@ -244,7 +255,8 @@ void herder_fb_draw_world(uint16_t *fb, const HerderWorld *w){
                         /* a couple of hens scratching by the door */
                         unsigned hh=(unsigned)(mx*17+my*31); for(int k=0;k<2;k++){ int hx=px+2+((hh>>(k*3))&7)%(HERDER_TS-3), hy=py+HERDER_TS-4-(k*2); disc(fb,hx,hy,2,HEX(0xf0ead8)); herder_fb_fill(fb,hx,hy-2,1,1,HEX(0xc94f4f)); herder_fb_fill(fb,hx+(k?2:-2),hy,1,1,HEX(0xe0b33c)); } } break;
                     case D_Boulder: { int bx=px+HERDER_TS/2, by=py+HERDER_TS/2; disc(fb,bx,by,HERDER_TS/3,C_boulder); herder_fb_fill(fb,bx-2,by-3,3,2,HEX(0xb8b4ae)); } break;
-                    case D_Well: { int wx=px+HERDER_TS/2, wy=py+HERDER_TS/2+2; disc(fb,wx,wy,HERDER_TS/3,C_well); disc(fb,wx,wy,HERDER_TS/5,HEX(0x4f8fc9)); herder_fb_fill(fb,wx-4,py+2,8,3,HEX(0x8c4a3a)); } break;
+                    case D_Well: { int wx=px+HERDER_TS/2, wy=py+HERDER_TS/2+2; disc(fb,wx,wy,HERDER_TS/3,C_well); disc(fb,wx,wy,HERDER_TS/5,HEX(0x4f8fc9)); herder_fb_fill(fb,wx-4,py+2,8,3,HEX(0x8c4a3a));
+                        { double dd=(double)(mx-w->h.x)*(mx-w->h.x)+(double)(my-w->h.y)*(my-w->h.y); int stt=0; if(dd<36){ if(w->frustration>55) stt=2; else if(dd<49) stt=1; } draw_villager(fb, px+HERDER_TS+2, py+HERDER_TS/2, stt, (mx*7+my)%3); } } break;
                     case D_Scarecrow: { int cxp=px+HERDER_TS/2; herder_fb_fill(fb,cxp-1,py+4,2,HERDER_TS-6,C_scare); herder_fb_fill(fb,px+3,py+HERDER_TS/3,HERDER_TS-6,2,C_scare); herder_fb_fill(fb,cxp-3,py+HERDER_TS/3,6,6,HEX(0x8c6a3a)); disc(fb,cxp,py+5,3,HEX(0xe0b33c)); herder_fb_fill(fb,cxp-4,py+2,8,2,HEX(0x5b7a3a)); } break;
                     case D_Stump: disc(fb,px+HERDER_TS/2,py+HERDER_TS/2,4,C_stump); break;
                     case D_Fence: draw_fence(fb,px,py,mx,my,m); break;
