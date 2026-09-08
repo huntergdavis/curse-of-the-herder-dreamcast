@@ -183,7 +183,7 @@ int main(int argc, char **argv){
     char curline[512]="The Curse of the Herder.";
     int lineUntil=240;
     int nextIdle=g_world.tick + herder_next_idle_curse_ticks(&g_world);
-    int lastSeq=-1, frame=0, recorded=0, lastSignpost=-100000, lastHat=-100000, lastInn=-100000, lastHens=-100000;
+    int lastSeq=-1, frame=0, recorded=0, lastSignpost=-100000, lastHat=-100000, lastInn=-100000, lastHens=-100000, lastStick=-100000;
     int wasRaining=0, rainbowUntil=-1;
     char curseLine[160]=""; int curseUntil=-1, lastCurse=-100000;
     char toastLine[96]=""; int toastUntil=-1;
