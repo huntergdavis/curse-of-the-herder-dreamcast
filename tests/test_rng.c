@@ -6,6 +6,7 @@
 #include "core/map/generate.h"
 #include "core/progression.h"
 #include "core/names.h"
+#include "core/sim/flock.h"
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -19,6 +20,8 @@ static void expect_u32(const char *what, uint32_t got, uint32_t want) {
 
 /* Split `line` into up to `max` fields on single '\t' (empty fields kept). */
 static const char *HEXD = "0123456789abcde";
+static const char *const TEMPERN[5] = {"plain","skittish","stubborn","dozy","curious"};
+static HerderSheep g_flock[80]; static int g_flockn = 0; static char g_flockseed[64] = {0};
 static uint32_t byte_hash(const uint8_t *a, int len) {
     uint32_t h = 0x811c9dc5u;
     for (int i = 0; i < len; i++) { h ^= a[i]; h *= 0x01000193u; }
@@ -75,6 +78,34 @@ int main(int argc, char **argv) {
             double x = dbl_of(fld[2]), y = dbl_of(fld[3]), sc = dbl_of(fld[4]);
             char w[64]; snprintf(w, sizeof(w), "FBM(%u,%.2f,%.2f,%.1f)", seed, x, y, sc);
             expect_bits(w, herder_fbm(seed, x, y, sc), fld[5]);
+        } else if (strcmp(fld[0], "FLOCKN") == 0 && n >= 4) {
+            if (strcmp(g_flockseed, fld[1]) != 0) {
+                HerderMap m; herder_generate_map(fld[1], atoi(fld[2]), &m);
+                g_flockn = herder_create_flock(&m, fld[1], g_flock, 80);
+                snprintf(g_flockseed, sizeof(g_flockseed), "%s", fld[1]);
+                herder_map_free(&m);
+            }
+            checks++; if (g_flockn != atoi(fld[3])) { failures++; printf("FAIL FLOCKN(%s): got %d want %d\n", fld[1], g_flockn, atoi(fld[3])); }
+        } else if (strcmp(fld[0], "FLOCKS") == 0 && n >= 11) {
+            if (strcmp(g_flockseed, fld[1]) != 0) {
+                HerderMap m; herder_generate_map(fld[1], 576, &m);
+                g_flockn = herder_create_flock(&m, fld[1], g_flock, 80);
+                snprintf(g_flockseed, sizeof(g_flockseed), "%s", fld[1]);
+                herder_map_free(&m);
+            }
+            int id = atoi(fld[2]);
+            HerderSheep *s = &g_flock[id];
+            char flags[4]; int fp = 0;
+            if (s->on_roof) flags[fp++] = 'r';
+            if (s->in_river) flags[fp++] = 'v';
+            if (s->on_boulder) flags[fp++] = 'b';
+            if (fp == 0) flags[fp++] = '-';
+            flags[fp] = 0;
+            const char *tp = s->temper >= 0 ? TEMPERN[s->temper] : "-";
+            char got[128], want[128];
+            snprintf(got, sizeof(got), "%d\t%d\t%016llx\t%s\t%d\t%d\t%s\t%d", s->x, s->y, (unsigned long long)bits_of(s->skittish), tp, s->absurd, s->ring, flags, s->black);
+            snprintf(want, sizeof(want), "%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s", fld[3], fld[4], fld[5], fld[6], fld[7], fld[8], fld[9], fld[10]);
+            checks++; if (strcmp(got, want) != 0) { failures++; printf("FAIL FLOCKS(%s,%d):\n  got  %s\n  want %s\n", fld[1], id, got, want); }
         } else if (strcmp(fld[0], "PROG_ER") == 0 && n >= 6) {
             double er = herder_erudition(dbl_of(fld[1]), dbl_of(fld[2]), dbl_of(fld[3]));
             expect_bits("PROG_ER", er, fld[4]);
