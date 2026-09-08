@@ -480,3 +480,18 @@ void herder_fb_toast(uint16_t *fb, const char *text){
     herder_fb_fill(fb,bx,by,bw,20,HERDER_C_panel);
     herder_fb_text(fb,bx+10,by+6,text,HERDER_C_ink,1);
 }
+
+
+/* the persistent "Last heard" strip at the foot of the screen, as on the web */
+void herder_fb_lastheard(uint16_t *fb, const char *text){
+    if(!text||!text[0]) return;
+    int py=HERDER_SCRH-40;
+    herder_fb_fill(fb,0,py,HERDER_SCRW,40,HERDER_C_panel);
+    herder_fb_fill(fb,0,py,HERDER_SCRW,2,HERDER_C_ink);
+    herder_fb_text(fb,16,py+6,"Last heard",rgb565(0x90,0x88,0x74),1);
+    /* clip the line to the width */
+    char buf[100]; int per=(HERDER_SCRW-40)/HERDER_FONT_W; if(per>99)per=99;
+    int i=0; for(;text[i]&&i<per;i++) buf[i]=text[i]; buf[i]=0;
+    if(text[i]){ if(i>2){ buf[i-1]='.'; buf[i-2]='.'; } }
+    herder_fb_text(fb,16,py+20,buf,HERDER_C_ink,1);
+}

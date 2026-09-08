@@ -182,6 +182,7 @@ int main(int argc, char **argv){
     int wasRaining=0, rainbowUntil=-1;
     char curseLine[160]=""; int curseUntil=-1, lastCurse=-100000;
     char toastLine[96]=""; int toastUntil=-1;
+    char lastHeard[512]="";
     static const int SPEEDS[6]={1,2,5,20,60,300}; int spi=0; g_fast=SPEEDS[spi];
     uint64 lastms=timer_ms_gettime64(); double tickAccum=0;
 
@@ -203,7 +204,7 @@ int main(int argc, char **argv){
                     int seq=++lastSeq;
                     HerderEvent *ev=&g_world.events[seq];
                     HerderUtterance u=herder_speak_for_event(&g_world,ev,4);
-                    if(u.ok){ snprintf(curline,sizeof(curline),"%s",u.text); lineUntil=frame+(int)(u.seconds*60); }
+                    if(u.ok){ snprintf(curline,sizeof(curline),"%s",u.text); lineUntil=frame+(int)(u.seconds*60); snprintf(lastHeard,sizeof(lastHeard),"%s",u.text); }
                     if(strcmp(ev->kind,"bookFound")==0 && ev->book[0]){ const char *ti=ev->book; for(int bi=0;bi<HERDER_BOOKS_N;bi++) if(strcmp(HERDER_BOOKS[bi].id,ev->book)==0){ ti=HERDER_BOOKS[bi].title; break; } snprintf(toastLine,sizeof(toastLine),"Found: %s",ti); toastUntil=frame+5*60; }
                     if(frame-lastCurse>1200){ int lv=herder_level_for(herder_erudition(g_world.booksRead,g_world.sheepPenned,g_world.tick/14400.0));
                         const char *ck = (strcmp(ev->kind,"mishap")==0||strcmp(ev->kind,"milestone")==0)&&ev->detail[0]?ev->detail:ev->kind;
@@ -213,7 +214,7 @@ int main(int argc, char **argv){
                 if(g_world.tick>=nextIdle){
                     HerderUtterance u=herder_speak_idle(&g_world,4);
                     nextIdle=g_world.tick+herder_next_idle_curse_ticks(&g_world);
-                    if(u.ok){ snprintf(curline,sizeof(curline),"%s",u.text); lineUntil=frame+(int)(u.seconds*60); }
+                    if(u.ok){ snprintf(curline,sizeof(curline),"%s",u.text); lineUntil=frame+(int)(u.seconds*60); snprintf(lastHeard,sizeof(lastHeard),"%s",u.text); }
                 }
             }
         } else if(!recorded){
@@ -228,10 +229,10 @@ int main(int argc, char **argv){
             int hx=(int)(g_world.h.x+0.5), hy=(int)(g_world.h.y+0.5), N=g_world.map->size;
             if(g_world.tick-lastSignpost > 3600){
                 int found=0; for(int dy=-2;dy<=2&&!found;dy++) for(int dx=-2;dx<=2;dx++){ int x=hx+dx,y=hy+dy; if(x<0||y<0||x>=N||y>=N)continue; if(g_world.map->deco[y*N+x]==D_Signpost){ found=1; break; } }
-                if(found){ HerderUtterance u=herder_speak_kind(&g_world,EV_signpost,4,0.25); lastSignpost=g_world.tick; if(u.ok){ snprintf(curline,sizeof(curline),"%s",u.text); lineUntil=frame+(int)(u.seconds*60); } }
+                if(found){ HerderUtterance u=herder_speak_kind(&g_world,EV_signpost,4,0.25); lastSignpost=g_world.tick; if(u.ok){ snprintf(curline,sizeof(curline),"%s",u.text); lineUntil=frame+(int)(u.seconds*60); snprintf(lastHeard,sizeof(lastHeard),"%s",u.text); } }
             }
             if(g_world.windUntilTick>g_world.tick && g_world.tick-lastHat>14400){
-                HerderUtterance u=herder_speak_kind(&g_world,EV_hat,4,0.35); lastHat=g_world.tick; if(u.ok){ snprintf(curline,sizeof(curline),"%s",u.text); lineUntil=frame+(int)(u.seconds*60); }
+                HerderUtterance u=herder_speak_kind(&g_world,EV_hat,4,0.35); lastHat=g_world.tick; if(u.ok){ snprintf(curline,sizeof(curline),"%s",u.text); lineUntil=frame+(int)(u.seconds*60); snprintf(lastHeard,sizeof(lastHeard),"%s",u.text); }
             }
         }
         herder_fb_set_anim(frame);
@@ -244,6 +245,7 @@ int main(int argc, char **argv){
         if(frame<curseUntil) herder_fb_curse_banner(fb,curseLine);
         if(frame<toastUntil) herder_fb_toast(fb,toastLine);
         if(frame<lineUntil) herder_fb_bubble(fb,&g_world,curline);
+        herder_fb_lastheard(fb,lastHeard);
         vid_waitvbl();
         frame++;
     }

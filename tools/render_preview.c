@@ -22,6 +22,7 @@ int main(int argc, char **argv){
     herder_fb_draw_world(fb,&w); herder_fb_weather(fb,&w); herder_fb_minimap(fb,&w);
     herder_fb_hud(fb,&w,1);
     herder_fb_bubble(fb,&w,line);
+    herder_fb_lastheard(fb,line);
     FILE*f=fopen(argc>3?argv[3]:"/tmp/preview.rgb565","wb"); fwrite(fb,2,HERDER_SCRW*HERDER_SCRH,f); fclose(f);
     fprintf(stderr,"%s tick %d penned %d/%d\n",seed,w.tick,w.sheepPenned,w.sheep_count);
     return 0;
