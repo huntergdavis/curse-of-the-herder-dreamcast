@@ -40,23 +40,29 @@ produces the same day, event for event, and the herder says the same words,
 utterance for utterance, as the web. What remains is presentation and platform,
 none of it under a byte-exact constraint.
 
-1. **Main-loop glue** (`main.ts`, the non-DOM parts): the utterance queue and
-   recent-line memory, idle-curse scheduling (`nextIdleCurseTicks` is already
-   ported), flyting/curse replies, the diary. Mostly bookkeeping around the
-   already-ported speech calls.
-2. **Renderer on PowerVR**: terrain chunks, sprites and their animation, text,
-   speech bubbles, day tint, weather, the delighters, HUD. The largest raw
-   effort; proceeds against the already-ported map and sim. Can be built in
-   parallel now that the state it draws is fixed.
-3. **Menu, VMU saves, Hall of Shame, disc boot/packaging.**
+1. **Visual fidelity**: the game now runs on the Dreamcast and draws the real
+   world to the framebuffer (terrain by type, pen, libraries, sheep, herder with
+   facing), a HUD (clock, level, pen count, books, frustration), and the
+   herder's generated curses via the BIOS font. What is missing versus the web
+   is the *art*: proper sprites and animation, speech-bubble styling, day tint,
+   weather visuals, the delighters. Matching the web's look pixel-for-pixel means
+   porting the procedural drawing in `render/chunks.ts` and the sprite work; best
+   done where the output can actually be seen.
+2. **Real-time speech glue**: the queue, recent-line memory feedback, flyting
+   and curse replies, the diary — the wall-clock-gated parts of `main.ts`. Not
+   byte-exact-verifiable (they depend on frame timing), so they belong with the
+   app, not the golden suite.
+3. **Platform**: menu, VMU saves, the Hall of Shame, polished disc packaging.
 
 ## Where this stands (honest)
 
 The hard, exactness-critical two-thirds of the game — the simulation and the
 curse-writing brain — is **finished and proven** byte-exact end to end (3287
-checks). What is left is drawing it on the Dreamcast's PowerVR and the console
-platform layer (saves, menu, disc). That is a large amount of code, but it is
-conventional game-rendering and integration work with no parity constraint, and
-it can proceed against fixed, verified state. Overall a fully playable 1:1
-Dreamcast build is roughly **55%** there, and every remaining piece is
-presentation or platform, not logic.
+checks), and it now **runs on the Dreamcast**: the ELF builds clean for SH-4,
+the self-booting CDI builds, and main.c drives the real simulation and shows the
+real generated curses on a framebuffer renderer with a HUD. What is left is
+visual fidelity (art, sprites, animation to match the web look) and the platform
+layer (menu, VMU saves, Hall). Those are large but conventional, carry no parity
+constraint, and are best finished where the rendered output can be seen. Overall
+a fully polished 1:1 Dreamcast build is roughly **60%** there; all of the logic
+is done and running, and the remainder is presentation and platform.
