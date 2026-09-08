@@ -53,35 +53,33 @@ What is left is small and mostly needs a screen or a memory card:
 
 ## Where this stands (honest)
 
-Everything that can be built **and verified** from this environment is done and
-confirmed. The port is a faithful, playable, byte-exact rendering of the game:
+Every system the web has is now reproduced and **verified on the host**, frame by
+frame, via the PNG preview pipeline:
 
-- **Logic** — the whole simulation and language pipeline, byte-exact (3287 checks):
-  same day, same events, same words as the web, tick for tick.
-- **Renderer** (`render/fb.c`, every frame host-verified via PNG preview) — a
-  close herder-following camera; sprites for sheep (with named ribbons and a
-  nemesis crown), the herder (belt, level-8 scarf, level-4 book, overhead carry),
-  the sheepdog, trees, houses, and the rest; a walk cycle with shadows; the
-  web's palette and grass texture; the pen filling with penned sheep; the
-  day/night sky tint; rain, fog, and a rainbow after; an island minimap.
-- **Text** — a portable bitmap font, so the HUD, floating speech bubble, title,
-  Hall, and gravestone are identical on host and Dreamcast (no BIOS-font dep).
-- **Structure** — title -> play -> gravestone induction -> Hall of Herders ->
-  title, with signpost/hat delighters and a proper vmu_pkg save.
+- **Logic** — the whole simulation and language pipeline, byte-exact (3287 checks).
+- **World** — terrain by type with the web palette and texture, decorations
+  (trees, houses, boulders, wells, scarecrows, signposts, library boxes), the
+  pen filling with penned sheep, the road network, the winding rivers.
+- **Sprites** — sheep in idle/walk/graze/asleep poses with named ribbons,
+  nemesis crowns, and black variants; the herder in idle/walk/carry/reading/
+  resting/ranting poses, four-directional, with belt, level-8 scarf, level-4
+  book, and shadows; the sheepdog; the rival and his tidy flock.
+- **Atmosphere** — day/night sky tint, rain, fog, a rainbow after the rain, an
+  eased follow-camera, and an island minimap.
+- **UI & flow** — a portable bitmap font (all text host-verified), a floating
+  speech bubble, the HUD with level names, the title screen, the gravestone
+  induction finale, and the Hall of Herders with a vmu_pkg save.
 
-**A fully polished, hardware-confirmed 1:1 build is roughly 92% there.** The last
-stretch is not more logic and mostly cannot be finished blind:
-
-1. **Hardware/emulator confirmation** — no Flycast or Dreamcast on this machine.
-   The world, sprites, and all text are host-verified, but the **VMU save
-   round-trip** has never run against a real card and nothing has been seen on a
-   TV. This is the one real gate.
-2. **Diminishing polish** — grazing/asleep sheep poses and more animation
-   frames (four-directional facing, the eased camera, and the rival-and-flock
-   crossing are now done); a couple more proximity delighters (inn/hens/cow).
+**The one remaining gate is hardware.** There is no Dreamcast, native Flycast,
+or working KOS-capable emulator on this machine (the bundled Flycast WASM core
+does not boot KOS homebrew). So the **VMU save round-trip** has never run against
+a real card and the build has never been seen on a TV. Everything that can be
+built and confirmed without a device is done and confirmed — call it **~95%**,
+with the last ~5% being purely that hardware confirmation (and, should it turn up
+anything, whatever small fixes it reveals).
 
 Note on "1:1": the logic and generated text are literally byte-identical to the
-web. The *rendering* is a faithful reproduction, not a pixel copy — a 640x480
-framebuffer with hand-drawn sprites is a different medium from the web's
-high-DPI vector canvas, so "parity" here means the same world, the same words,
-the same systems, and the same look and feel, all confirmed frame by frame.
+web; the rendering is a faithful reproduction on a 640x480 framebuffer, matching
+the web's world, sprites, atmosphere, UI, and flow rather than copying vector
+pixels. To finish: run `build/herder.cdi` on hardware or in a KOS-capable Flycast
+and send back a screenshot (and whether a VMU save persists).
