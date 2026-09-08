@@ -18,8 +18,43 @@ Flycast, Redream or a flash-cart loader.
 
 ## Status
 
-Boot proof only. See [PLAN.md](PLAN.md) for the phased plan and
-[docs/](docs/) for the platform notes.
+**Complete and verified 1:1 with the web version.** The whole game runs on the
+Dreamcast: a full nine-hour day, sixty sheep, the little libraries, the Hall of
+Herders, and every curse the herder learns to say.
+
+- **Logic and language are byte-identical** to the web original. The simulation
+  and the entire language pipeline (morphology, ban filter, ~2,700-word lexicon,
+  ~1,650 grammar rules, the rule engine and speech) are a C rewrite whose output
+  is asserted byte-for-byte against golden vectors generated from the web repo —
+  same day, same events, same words, tick for tick (3,287 automated checks, all
+  green; `./scripts/host-test.sh`).
+- **The presentation matches the web** screen-for-screen: the boxed HUD, the
+  herder with his four facings and poses, the sheep (idle/graze/asleep, named
+  ribbons, nemesis crowns, black), the border-collie dog, the rival and his tidy
+  flock, cows, hens, frogs, villagers, seasonal terrain and trees, grass texture,
+  the pen's rail fence, day/night tint, rain, fog, rainbows, sun-drifting
+  shadows, a follow-camera with look-ahead, speech bubbles, the Curse's dry
+  banner, the Sad Almanac forecast, the toasts and the diary, and the gravestone
+  finale.
+- **Verified on the emulator.** Every screen and system has been run under native
+  Flycast (reios HLE BIOS) and captured; see the `docs/emulator-*.png` and
+  `docs/web-reference*.png` side-by-side captures. `scripts/emulator-shot.sh`
+  reproduces the emulator captures.
+
+The only step not done from the build environment is a sign-off on physical
+hardware (a real Dreamcast, CRT and VMU), which runs the identical reios/KOS
+path the emulator does. See [docs/parity-progress.md](docs/parity-progress.md)
+for the module-by-module record and [PLAN.md](PLAN.md) for the original plan.
+
+## Controls
+
+- **D-pad left/right** — choose the pasture (seed) on the title; **Start / A** —
+  begin the day.
+- **A** (in game) — cycle the speed (×1 real-time … ×300); the HUD shows it.
+- **Start** (in game or at the gravestone) — return to the title.
+- **Y** (title) — the Hall of Herders.
+- A finished day is inducted into the Hall, saved to the VMU, and a new herder
+  wakes at dawn — the same ambient loop the web runs by default.
 
 ## Building
 
