@@ -157,7 +157,10 @@ void herder_fb_draw_world(uint16_t *fb, const HerderWorld *w){
     /* library book-boxes */
     for(int i=0;i<w->lib_count;i++){ if(w->lib[i].taken) continue; int sx=(w->lib[i].x-ox)*HERDER_TS+HERDER_TS/2, sy=HERDER_TOP+(w->lib[i].y-oy)*HERDER_TS+HERDER_TS/2; rrect(fb,sx-6,sy-5,12,10,C_lib); herder_fb_fill(fb,sx-6,sy-1,12,2,HEX(0x9a6a2a)); }
     /* sheep */
-    for(int i=0;i<w->sheep_count;i++){ const HerderSheep*s=&w->sheep[i]; if(s->mode==2) continue; int sx=(int)((s->x-ox)*HERDER_TS)+HERDER_TS/2, sy=HERDER_TOP+(int)((s->y-oy)*HERDER_TS)+HERDER_TS/2; if(sx<-20||sy<HERDER_TOP-20||sx>HERDER_SCRW+20||sy>HERDER_SCRH-HERDER_BOT+20) continue; int smv=(s->tx!=s->x)||(s->ty!=s->y); draw_sheep(fb,sx,sy,s->black,s->x<w->h.x?2:0,smv,s->named,s->nemesis); }
+    for(int i=0;i<w->sheep_count;i++){ const HerderSheep*s=&w->sheep[i]; if(s->mode==1) continue; /* carried: drawn with herder */
+        int sx=(int)((s->x-ox)*HERDER_TS)+HERDER_TS/2, sy=HERDER_TOP+(int)((s->y-oy)*HERDER_TS)+HERDER_TS/2;
+        if(sx<-20||sy<HERDER_TOP-20||sx>HERDER_SCRW+20||sy>HERDER_SCRH-HERDER_BOT+20) continue;
+        int smv=(s->mode==0)&&((s->tx!=s->x)||(s->ty!=s->y)); draw_sheep(fb,sx,sy,s->black,s->x<w->h.x?2:0,smv,s->named,s->nemesis); }
     /* herder */
     { int sx=(int)((w->h.x-ox)*HERDER_TS)+HERDER_TS/2, sy=HERDER_TOP+(int)((w->h.y-oy)*HERDER_TS)+HERDER_TS/2;
       int hmv=(w->h.mode==HM_TOSHEEP||w->h.mode==HM_TOPEN||w->h.mode==HM_TOLIBRARY);
