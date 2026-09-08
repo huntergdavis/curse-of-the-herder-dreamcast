@@ -469,3 +469,14 @@ void herder_fb_curse_banner(uint16_t *fb, const char *line){
     herder_fb_text(fb,bx+8,by+7,lbl,rgb565(0xd8,0xb0,0x50),1);   /* dim gold label */
     herder_fb_text(fb,bx+8+lw+8,by+7,line,0xffff,1);
 }
+
+
+/* a light toast at the top-centre (e.g. a book found), like the web */
+void herder_fb_toast(uint16_t *fb, const char *text){
+    if(!text||!text[0]) return;
+    int tw=herder_fb_text_w(text,1); int bw=tw+20; if(bw>HERDER_SCRW-40)bw=HERDER_SCRW-40;
+    int bx=(HERDER_SCRW-bw)/2, by=96;
+    herder_fb_fill(fb,bx-2,by-2,bw+4,24,HERDER_C_ink);
+    herder_fb_fill(fb,bx,by,bw,20,HERDER_C_panel);
+    herder_fb_text(fb,bx+10,by+6,text,HERDER_C_ink,1);
+}

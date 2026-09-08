@@ -12,6 +12,7 @@
 #include "core/sim/world.h"
 #include "core/lang/speech.h"
 #include "core/lang/grammar.h"
+#include "data/lang_data.h"
 #include "core/progression.h"
 #include "core/names.h"
 #include "render/fb.h"
@@ -180,6 +181,7 @@ int main(int argc, char **argv){
     int lastSeq=-1, frame=0, recorded=0, lastSignpost=-100000, lastHat=-100000;
     int wasRaining=0, rainbowUntil=-1;
     char curseLine[160]=""; int curseUntil=-1, lastCurse=-100000;
+    char toastLine[96]=""; int toastUntil=-1;
     static const int SPEEDS[6]={1,2,5,20,60,300}; int spi=0; g_fast=SPEEDS[spi];
     uint64 lastms=timer_ms_gettime64(); double tickAccum=0;
 
@@ -202,6 +204,7 @@ int main(int argc, char **argv){
                     HerderEvent *ev=&g_world.events[seq];
                     HerderUtterance u=herder_speak_for_event(&g_world,ev,4);
                     if(u.ok){ snprintf(curline,sizeof(curline),"%s",u.text); lineUntil=frame+(int)(u.seconds*60); }
+                    if(strcmp(ev->kind,"bookFound")==0 && ev->book[0]){ const char *ti=ev->book; for(int bi=0;bi<HERDER_BOOKS_N;bi++) if(strcmp(HERDER_BOOKS[bi].id,ev->book)==0){ ti=HERDER_BOOKS[bi].title; break; } snprintf(toastLine,sizeof(toastLine),"Found: %s",ti); toastUntil=frame+5*60; }
                     if(frame-lastCurse>1200){ int lv=herder_level_for(herder_erudition(g_world.booksRead,g_world.sheepPenned,g_world.tick/14400.0));
                         const char *ck = (strcmp(ev->kind,"mishap")==0||strcmp(ev->kind,"milestone")==0)&&ev->detail[0]?ev->detail:ev->kind;
                         const char *cr=herder_curse_remark(g_world.seed,g_world.tick,ck,lv);
@@ -239,6 +242,7 @@ int main(int argc, char **argv){
         herder_fb_minimap(fb,&g_world);
         herder_fb_hud(fb,&g_world,g_fast);
         if(frame<curseUntil) herder_fb_curse_banner(fb,curseLine);
+        if(frame<toastUntil) herder_fb_toast(fb,toastLine);
         if(frame<lineUntil) herder_fb_bubble(fb,&g_world,curline);
         vid_waitvbl();
         frame++;
