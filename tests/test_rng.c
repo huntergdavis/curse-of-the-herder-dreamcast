@@ -4,6 +4,8 @@
 #include "core/map/terrain.h"
 #include "core/map/path.h"
 #include "core/map/generate.h"
+#include "core/progression.h"
+#include "core/names.h"
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -73,6 +75,31 @@ int main(int argc, char **argv) {
             double x = dbl_of(fld[2]), y = dbl_of(fld[3]), sc = dbl_of(fld[4]);
             char w[64]; snprintf(w, sizeof(w), "FBM(%u,%.2f,%.2f,%.1f)", seed, x, y, sc);
             expect_bits(w, herder_fbm(seed, x, y, sc), fld[5]);
+        } else if (strcmp(fld[0], "PROG_ER") == 0 && n >= 6) {
+            double er = herder_erudition(dbl_of(fld[1]), dbl_of(fld[2]), dbl_of(fld[3]));
+            expect_bits("PROG_ER", er, fld[4]);
+            checks++; if (herder_level_for(er) != atoi(fld[5])) { failures++; printf("FAIL PROG_ER level\n"); }
+        } else if (strcmp(fld[0], "PROG_FILTH") == 0 && n >= 3) {
+            checks++; if (herder_filth_ceiling(atof(fld[1])) != atoi(fld[2])) { failures++; printf("FAIL FILTH(%s)\n", fld[1]); }
+        } else if (strcmp(fld[0], "PROG_CI") == 0 && n >= 4) {
+            expect_bits("PROG_CI", herder_curse_interval_seconds(atoi(fld[1]), dbl_of(fld[2])), fld[3]);
+        } else if (strcmp(fld[0], "PROG_CLAMP") == 0 && n >= 3) {
+            expect_bits("PROG_CLAMP", herder_clamp_frustration(dbl_of(fld[1])), fld[2]);
+        } else if (strcmp(fld[0], "PROG_BASE") == 0 && n >= 3) {
+            expect_bits("PROG_BASE", herder_frustration_baseline(dbl_of(fld[1])), fld[2]);
+        } else if (strcmp(fld[0], "PROG_DRIFT") == 0 && n >= 5) {
+            expect_bits("PROG_DRIFT", herder_frustration_drift(dbl_of(fld[1]), dbl_of(fld[2]), dbl_of(fld[3])), fld[4]);
+        } else if (strcmp(fld[0], "NAME_HERDER") == 0 && n >= 3) {
+            char buf[64]; const char *seed = fld[1];
+            snprintf(buf, sizeof(buf), "%s%s %s", herder_name_old(seed) ? "Old " : "",
+                     HERDER_FIRST[herder_name_first(seed)], HERDER_EPITHET[herder_name_epithet(seed)]);
+            checks++; if (strcmp(buf, fld[2]) != 0) { failures++; printf("FAIL NAME_HERDER(%s): got %s want %s\n", seed, buf, fld[2]); }
+        } else if (strcmp(fld[0], "NAME_DOG") == 0 && n >= 3) {
+            checks++; if (strcmp(HERDER_DOGS[herder_dog_name(fld[1])], fld[2]) != 0) { failures++; printf("FAIL NAME_DOG(%s)\n", fld[1]); }
+        } else if (strcmp(fld[0], "NAME_RIVAL") == 0 && n >= 3) {
+            checks++; if (strcmp(HERDER_RIVALS[herder_rival_name(fld[1])], fld[2]) != 0) { failures++; printf("FAIL NAME_RIVAL(%s)\n", fld[1]); }
+        } else if (strcmp(fld[0], "NAME_SHEEP") == 0 && n >= 4) {
+            checks++; if (strcmp(HERDER_SHEEP[herder_sheep_name(fld[1], atoi(fld[2]))], fld[3]) != 0) { failures++; printf("FAIL NAME_SHEEP(%s,%s): got %s want %s\n", fld[1], fld[2], HERDER_SHEEP[herder_sheep_name(fld[1], atoi(fld[2]))], fld[3]); }
         } else if (strcmp(fld[0], "MAP") == 0 && n >= 9) {
             HerderMap m; herder_generate_map(fld[1], atoi(fld[2]), &m);
             char vs[512]; int vp = 0;
