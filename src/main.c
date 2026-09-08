@@ -4,6 +4,7 @@
  * generated curses shown through the BIOS font. Start exits; D-pad reseeds.
  */
 #include <kos.h>
+#include <time.h>
 #include <stdlib.h>
 #include <string.h>
 #include "core/map/generate.h"
@@ -33,6 +34,9 @@ static void new_day(void){
     g_inited=1;
     herder_generate_map(SEEDS[seed_idx],576,&g_map);
     herder_world_init(&g_world,&g_map,SEEDS[seed_idx]);
+    { time_t t=time(NULL); struct tm *lt=localtime(&t); int m=lt?lt->tm_mon:0;
+      const char *sn = (m>=2&&m<=4)?"spring":(m>=5&&m<=7)?"summer":(m>=8&&m<=10)?"autumn":"winter";
+      g_world.season=sn; herder_fb_set_season(sn); }
     herder_fb_reset_camera();
 }
 

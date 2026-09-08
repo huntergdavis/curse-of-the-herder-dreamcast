@@ -12,6 +12,7 @@ int main(int argc, char **argv){
     const char *seed=argc>1?argv[1]:"seed"; int ticks=argc>2?atoi(argv[2]):40000;
     static uint16_t fb[HERDER_SCRW*HERDER_SCRH];
     herder_fb_palette_init(); herder_grammar_init();
+    herder_fb_set_season(getenv("SEASON")?getenv("SEASON"):"autumn");
     HerderMap m; herder_generate_map(seed,576,&m);
     HerderWorld w; herder_world_init(&w,&m,seed);
     char line[512]="The Curse of the Herder."; int lastSeq=-1;

@@ -13,6 +13,7 @@
 
 void herder_fb_palette_init(void);
 void herder_fb_set_tint(double hour);
+void herder_fb_set_season(const char *season);
 void herder_fb_set_anim(int frame);
 void herder_fb_reset_camera(void);
 void herder_fb_test_herder(uint16_t *fb,int x,int y,int facing,int carrying,int moving,int level,int mode);

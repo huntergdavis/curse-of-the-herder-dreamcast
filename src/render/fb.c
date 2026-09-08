@@ -19,8 +19,31 @@ static double g_camx=-1, g_camy=-1;
 void herder_fb_reset_camera(void){ g_camx=-1; g_camy=-1; }
 
 /* base (untinted) world colours, 0xRRGGBB */
-static uint32_t bT[16];
+static uint32_t bT0[16];          /* original (summer-base) terrain */
+static uint32_t bT[16];           /* seasonal terrain (bT0 + season overrides) */
 static uint32_t bpen,bpeng,btree,bboul,bhouse,bhouseR,blib,bwell,bscare,bstump,bsheep,bblack,bherder;
+static uint32_t g_greens0[5]={0x3f8a3a,0x4b9a40,0x357a38,0x5aa34a,0x2f7a44}; /* seasonal tree foliage (base) */
+static uint16_t g_greens[5];      /* day-tinted */
+static uint16_t C_tree2;          /* the always-green short trees */
+static uint32_t btree2=0x2f6f3a;
+static char g_season[12]="summer";
+
+/* palette.ts seasonalTerrain + seasonalGreens */
+void herder_fb_set_season(const char *season){
+    snprintf(g_season,sizeof(g_season),"%s",season?season:"summer");
+    for(int i=0;i<16;i++) bT[i]=bT0[i];
+    if(!strcmp(g_season,"winter")){ bT[T_Grass]=0xb9c3ad; bT[T_Meadow]=0xc8cfb8; bT[T_Forest]=0x8e9b84; bT[T_Farm]=0xb8a882; bT[T_Mud]=0x8f7d69; bT[T_Rock]=0xb7b3aa; bT[T_Water]=0x6a8fb5; }
+    else if(!strcmp(g_season,"autumn")){ bT[T_Grass]=0x94ac4c; bT[T_Meadow]=0xb3b055; bT[T_Forest]=0x7a8c3e; bT[T_Farm]=0xc0955a; }
+    else if(!strcmp(g_season,"summer")){ bT[T_Grass]=0x86ba4c; bT[T_Meadow]=0xa9c25a; }
+    /* spring: keep base */
+    static const uint32_t GA[5]={0xd9822b,0xc9502f,0xe0b33c,0xb8652c,0xa8452a};
+    static const uint32_t GW[5]={0x6b7a66,0x5f6f5c,0x7a8a75,0x66765f,0x586a55};
+    static const uint32_t GS[5]={0x5fb054,0x72c25f,0x4fa34a,0x86c96a,0x4b9a40};
+    static const uint32_t GD[5]={0x3f8a3a,0x4b9a40,0x357a38,0x5aa34a,0x2f7a44};
+    const uint32_t *g = !strcmp(g_season,"autumn")?GA: !strcmp(g_season,"winter")?GW: !strcmp(g_season,"spring")?GS: GD;
+    for(int i=0;i<5;i++) g_greens0[i]=g[i];
+    btree2 = !strcmp(g_season,"winter")?0x4d6a52:0x2f6f3a;
+}
 
 /* the web's day tint keyframes (palette.ts TINT_KEYS): hour -> (r,g,b,a) */
 static void day_tint(double hour, int *tr, int *tg, int *tb, double *ta){
@@ -46,11 +69,14 @@ void herder_fb_set_tint(double hour){
     C_lib=blend565(blib,tr,tg,tb,ta); C_well=blend565(bwell,tr,tg,tb,ta);
     C_scare=blend565(bscare,tr,tg,tb,ta); C_stump=blend565(bstump,tr,tg,tb,ta);
     C_sheep=blend565(bsheep,tr,tg,tb,ta); C_black=blend565(bblack,tr,tg,tb,ta); C_herder=blend565(bherder,tr,tg,tb,ta);
+    for(int i=0;i<5;i++) g_greens[i]=blend565(g_greens0[i],tr,tg,tb,ta);
+    C_tree2=blend565(btree2,tr,tg,tb,ta); C_tree=g_greens[0];
 }
 void herder_fb_palette_init(void){
-    bT[T_Water]=0x4f8fc9; bT[T_Sand]=0xe3d29a; bT[T_Grass]=0x7cb548; bT[T_Meadow]=0x8fbf50;
-    bT[T_Farm]=0xc9a35a; bT[T_Forest]=0x5a9a44; bT[T_Mud]=0x8d6f4e; bT[T_Rock]=0x9a958c;
-    bT[T_Snow]=0xf2f4f7; bT[T_Road]=0xd8c398; bT[T_Bridge]=0xa8804f;
+    bT0[T_Water]=0x4f8fc9; bT0[T_Sand]=0xe3d29a; bT0[T_Grass]=0x7cb548; bT0[T_Meadow]=0x8fbf50;
+    bT0[T_Farm]=0xc9a35a; bT0[T_Forest]=0x5a9a44; bT0[T_Mud]=0x8d6f4e; bT0[T_Rock]=0x9a958c;
+    bT0[T_Snow]=0xf2f4f7; bT0[T_Road]=0xd8c398; bT0[T_Bridge]=0xa8804f;
+    herder_fb_set_season("summer");
     bpen=0x6b4a2b; bpeng=0x93894f; btree=0x2f6f3a; bboul=0x7a746b;
     bhouse=0x8c4a3a; bhouseR=0xb03a3a; blib=0xe0b33c; bwell=0x8a8578; bscare=0x8a6238; bstump=0x7d5a35;
     bsheep=0xf6f2e6; bblack=0x3a3532; bherder=0x7a5a3a;
@@ -154,7 +180,7 @@ static void draw_dog(uint16_t *fb,int cx,int cy,int facing,int moving){
     herder_fb_fill(fb,cx+hx+(facing==2?-1:0),cy-4,1,2,black); /* ear */
     int tx=cx-(facing==2?-6:6); herder_fb_fill(fb,tx,cy+1,3,1,black); herder_fb_fill(fb,tx+(facing==2?2:0),cy+1,1,1,white); /* tail w/ white tip */
 }
-static void draw_tree(uint16_t *fb,int cx,int cy){ herder_fb_fill(fb,cx-1,cy,3,7,HEX(0x6b4a2b)); disc(fb,cx,cy-3,7,C_tree); }
+static void draw_tree(uint16_t *fb,int cx,int cy,uint16_t foliage){ herder_fb_fill(fb,cx-1,cy,3,7,HEX(0x6b4a2b)); disc(fb,cx,cy-3,7,foliage); }
 static void draw_house(uint16_t *fb,int px,int py,int red){
     uint16_t wall=red?HEX(0xd8b28a):HEX(0xe8dcc3), roof=red?HEX(0xb03a3a):HEX(0x8c4a3a);
     herder_fb_fill(fb,px+3,py+HERDER_TS/2,HERDER_TS-6,HERDER_TS/2-1,wall);
@@ -177,7 +203,8 @@ void herder_fb_draw_world(uint16_t *fb, const HerderWorld *w){
             herder_fb_fill(fb,px,py,HERDER_TS,HERDER_TS,c);
             if(mx>=0&&my>=0&&mx<m->size&&my<m->size){ tex_fleck(fb,px,py,mx,my,t);
                 switch(d){
-                    case D_Tree: case D_Tree2: draw_tree(fb,px+HERDER_TS/2,py+HERDER_TS/2); break;
+                    case D_Tree: draw_tree(fb,px+HERDER_TS/2,py+HERDER_TS/2, g_greens[(unsigned)(mx*7+my*13)%5]); break;
+                    case D_Tree2: draw_tree(fb,px+HERDER_TS/2,py+HERDER_TS/2, C_tree2); break;
                     case D_House: draw_house(fb,px,py,0); break;
                     case D_HouseRed: draw_house(fb,px,py,1); break;
                     case D_Boulder: disc(fb,px+HERDER_TS/2,py+HERDER_TS/2,HERDER_TS/3,C_boulder); break;
