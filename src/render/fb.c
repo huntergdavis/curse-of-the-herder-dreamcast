@@ -131,3 +131,26 @@ void herder_fb_draw_world(uint16_t *fb, const HerderWorld *w){
     /* herder */
     { int sx=(int)((w->h.x-ox)*HERDER_TS)+HERDER_TS/2, sy=HERDER_TOP+(int)((w->h.y-oy)*HERDER_TS)+HERDER_TS/2; draw_herder(fb,sx,sy,w->h.facing,w->h.carrying>=0); }
 }
+
+
+/* small overview map, top-right, echoing the web's minimap */
+#define MM_SZ 110
+#define MM_X (HERDER_SCRW - MM_SZ - 12)
+#define MM_Y (HERDER_TOP + 8)
+void herder_fb_minimap(uint16_t *fb, const HerderWorld *w){
+    const HerderMap *m=w->map; int n=m->size;
+    herder_fb_fill(fb, MM_X-2, MM_Y-2, MM_SZ+4, MM_SZ+4, HERDER_C_ink);
+    for(int py=0;py<MM_SZ;py++){ int my=py*n/MM_SZ;
+        for(int px=0;px<MM_SZ;px++){ int mx=px*n/MM_SZ; int i=my*n+mx;
+            uint16_t c=TERRAIN_COL[m->terrain[i]];
+            int d=m->deco[i]; if(d==D_PenGround||d==D_Fence) c=C_pen; else if(d==D_Tree||d==D_Tree2) c=C_tree;
+            fb[(MM_Y+py)*HERDER_SCRW+(MM_X+px)]=c;
+        }
+    }
+    /* pen marker */
+    { int px=m->pen_x*MM_SZ/n, py=m->pen_y*MM_SZ/n; herder_fb_fill(fb,MM_X+px-1,MM_Y+py-1,3,3,C_pen); }
+    /* loose sheep */
+    for(int i=0;i<w->sheep_count;i++){ const HerderSheep*s=&w->sheep[i]; if(s->mode==2) continue; int px=(int)(s->x*MM_SZ/n), py=(int)(s->y*MM_SZ/n); if((unsigned)px<MM_SZ&&(unsigned)py<MM_SZ) fb[(MM_Y+py)*HERDER_SCRW+(MM_X+px)]= s->black?C_black:C_sheep; }
+    /* herder */
+    { int px=(int)(w->h.x*MM_SZ/n), py=(int)(w->h.y*MM_SZ/n); herder_fb_fill(fb,MM_X+px-1,MM_Y+py-1,3,3,HEX(0x2a4086)); }
+}
