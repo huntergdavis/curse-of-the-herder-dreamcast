@@ -63,6 +63,10 @@ emulator (screenshots in `docs/emulator-*.png`):
   render correctly on the emulated Dreamcast.
 - **VMU save and load round-trip** — a Hall record written through the vmu_pkg
   save lands in Flycast's VMU image and is read back and shown on the next boot.
+- **The gravestone finale** renders correctly (name, epitaph, crook, stats).
+- **Real-time wall-clock pacing** — the sim advances off the DC clock at the
+  web's rate (x1 = a nine-hour day in real time), A cycles the speed, the same
+  ambient-screensaver behaviour as the web's default.
 
 Running on the emulator also exposed and fixed two issues the host preview could
 not show: **stale VRAM in the bottom strip** (the world now fills the whole area
@@ -71,7 +75,7 @@ and bubbles are inset into a title-safe area).
 
 Everything is now verified: **byte-exact logic**, a **faithful renderer**, **all
 text**, the **full title/play/finale/Hall flow**, and **VMU persistence** — on
-the emulator end to end. A fully finished 1:1 build is roughly **97%** there. The
+the emulator end to end. A fully finished 1:1 build is roughly **98%** there. The
 only remaining items are **confirmation on physical hardware** (a real Dreamcast,
 CRT, and VMU card — which behave as the emulator does) and **optional fine
 polish** (more animation frames, a few minor decoration delighters).
