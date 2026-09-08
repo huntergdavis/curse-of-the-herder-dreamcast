@@ -299,3 +299,24 @@ void herder_fb_rainbow(uint16_t *fb, int alpha8){
         }
     }
 }
+
+
+/* the induction scene: a dusk pasture and a gravestone. Text overlaid by caller. */
+void herder_fb_gravestone(uint16_t *fb){
+    herder_fb_set_tint(18.3); /* deep dusk palette */
+    herder_fb_fill(fb,0,0,HERDER_SCRW,150, rgb565(0x46,0x40,0x74));      /* dusk sky */
+    herder_fb_fill(fb,0,150,HERDER_SCRW,HERDER_SCRH-150, TERRAIN_COL[T_Grass]);
+    for(int x=0;x<HERDER_SCRW;x++){ int h=(int)(16*__builtin_sin(x*0.01)+20); herder_fb_fill(fb,x,150-h,1,h,TERRAIN_COL[T_Meadow]); }
+    /* a few distant trees */
+    for(int i=0;i<6;i++){ int tx=60+i*110, ty=140+((i*47)%30); herder_fb_fill(fb,tx-1,ty,3,7,rgb565(0x4a,0x33,0x1e)); disc(fb,tx,ty-3,8,C_tree); }
+    /* gravestone */
+    int cx=HERDER_SCRW/2, top=180;
+    uint16_t stone=rgb565(0x9a,0x98,0x92), shade=rgb565(0x7a,0x78,0x72), base=rgb565(0x6a,0x66,0x60);
+    herder_fb_fill(fb,cx-96,top+18,192,150,shade);
+    herder_fb_fill(fb,cx-92,top+14,184,150,stone);
+    disc(fb,cx,top+22,92,stone);
+    herder_fb_fill(fb,cx-110,top+168,220,16,base);
+    /* a little mound and the crook resting against it */
+    disc(fb,cx,top+184,120,rgb565(0x5a,0x6a,0x36));
+    herder_fb_fill(fb,cx+96,top+70,3,110,rgb565(0x8a,0x6a,0x3a));
+}
