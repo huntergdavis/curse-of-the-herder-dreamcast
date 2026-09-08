@@ -234,6 +234,9 @@ void herder_fb_draw_world(uint16_t *fb, const HerderWorld *w){
                    if(d==D_PenGround) c=C_penground; }
             herder_fb_fill(fb,px,py,HERDER_TS,HERDER_TS,c);
             if(mx>=0&&my>=0&&mx<m->size&&my<m->size){ tex_fleck(fb,px,py,mx,my,t,w->seed);
+                if((t==T_Grass||t==T_Meadow)){ double fu=ku_tex(w->seed,mx*3+1,my*3+2); if(fu<0.03){ int nx=mx,ny=my; int nearw=0; if(mx>0&&m->terrain[my*m->size+mx-1]==T_Water)nearw=1; else if(mx<m->size-1&&m->terrain[my*m->size+mx+1]==T_Water)nearw=1; else if(my>0&&m->terrain[(my-1)*m->size+mx]==T_Water)nearw=1; else if(my<m->size-1&&m->terrain[(my+1)*m->size+mx]==T_Water)nearw=1; (void)nx;(void)ny;
+                    if(nearw){ int fx=px+HERDER_TS/2, fy=py+HERDER_TS-4; uint16_t fg=HEX(0x3f8a3a); herder_fb_fill(fb,fx-2,fy,4,2,fg); herder_fb_fill(fb,fx-3,fy+1,1,1,fg); herder_fb_fill(fb,fx+2,fy+1,1,1,fg); herder_fb_fill(fb,fx-1,fy-1,1,1,HERDER_C_ink); herder_fb_fill(fb,fx+1,fy-1,1,1,HERDER_C_ink);
+                        if(((g_anim/40)+mx+my)%17==0 && (g_anim%40)<20) emote_at(fb,fx,fy-12,"ribbit"); } } }
                 switch(d){
                     case D_Tree: draw_tree(fb,px+HERDER_TS/2,py+HERDER_TS/2, g_greens[(unsigned)(mx*7+my*13)%5]); break;
                     case D_Tree2: draw_conifer(fb,px+HERDER_TS/2,py+HERDER_TS/2, C_tree2); break;
