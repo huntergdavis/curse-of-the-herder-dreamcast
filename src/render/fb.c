@@ -13,6 +13,8 @@ static uint16_t C_sheep, C_black, C_herder;
 uint16_t HERDER_C_hud, HERDER_C_panel, HERDER_C_ink, HERDER_C_bar_bg, HERDER_C_bar;
 static int g_anim = 0;
 void herder_fb_set_anim(int frame){ g_anim = frame; }
+static double g_camx=-1, g_camy=-1;
+void herder_fb_reset_camera(void){ g_camx=-1; g_camy=-1; }
 
 /* base (untinted) world colours, 0xRRGGBB */
 static uint32_t bT[16];
@@ -130,7 +132,8 @@ static void draw_house(uint16_t *fb,int px,int py,int red){
 
 void herder_fb_draw_world(uint16_t *fb, const HerderWorld *w){
     const HerderMap *m=w->map;
-    int cx=(int)(w->h.x+0.5), cy=(int)(w->h.y+0.5);
+    if(g_camx<0){ g_camx=w->h.x; g_camy=w->h.y; } else { g_camx+=(w->h.x-g_camx)*0.12; g_camy+=(w->h.y-g_camy)*0.12; }
+    int cx=(int)(g_camx+0.5), cy=(int)(g_camy+0.5);
     int ox=cx-VIEWW/2, oy=cy-VIEWH/2;
     int vh=(HERDER_SCRH-HERDER_TOP-HERDER_BOT);
     for(int ty=0;ty<VIEWH;ty++){ int my=oy+ty; int py=HERDER_TOP+ty*HERDER_TS; if(py>=HERDER_TOP+vh) break;
@@ -277,7 +280,7 @@ void herder_fb_text_wrap(uint16_t *fb, int x, int y, const char *str, uint16_t c
 void herder_fb_bubble(uint16_t *fb, const HerderWorld *w, const char *text){
     if(!text||!text[0]) return;
     /* herder screen position (same camera as draw_world) */
-    int cx=(int)(w->h.x+0.5), cy=(int)(w->h.y+0.5);
+    int cx=(int)(g_camx<0?w->h.x:g_camx)+0, cy=(int)(g_camy<0?w->h.y:g_camy)+0;
     int ox=cx-VIEWW/2, oy=cy-VIEWH/2;
     int ax=(int)((w->h.x-ox)*HERDER_TS)+HERDER_TS/2;
     int ay=HERDER_TOP+(int)((w->h.y-oy)*HERDER_TS)+HERDER_TS/2 - 18;

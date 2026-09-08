@@ -44,6 +44,7 @@ static void new_day(void){
     g_inited=1;
     herder_generate_map(SEEDS[seed_idx],576,&g_map);
     herder_world_init(&g_world,&g_map,SEEDS[seed_idx]);
+    herder_fb_reset_camera();
 }
 
 

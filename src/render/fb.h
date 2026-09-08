@@ -14,6 +14,7 @@
 void herder_fb_palette_init(void);
 void herder_fb_set_tint(double hour);
 void herder_fb_set_anim(int frame);
+void herder_fb_reset_camera(void);
 void herder_fb_draw_world(uint16_t *fb, const HerderWorld *w);
 void herder_fb_minimap(uint16_t *fb, const HerderWorld *w);
 void herder_fb_weather(uint16_t *fb, const HerderWorld *w);
