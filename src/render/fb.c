@@ -191,3 +191,26 @@ void herder_fb_weather(uint16_t *fb, const HerderWorld *w){
         }
     }
 }
+
+
+/* the title scene: a pasture, a big sheep, the herder and his dog. Text is
+ * overlaid by the caller (bfont on the Dreamcast). */
+void herder_fb_title(uint16_t *fb){
+    herder_fb_set_tint(11.0);
+    /* sky band, then grass */
+    herder_fb_fill(fb,0,0,HERDER_SCRW,160, rgb565(0x9f,0xc4,0xe8));
+    herder_fb_fill(fb,0,160,HERDER_SCRW,HERDER_SCRH-160, TERRAIN_COL[T_Grass]);
+    /* a low hill */
+    for(int x=0;x<HERDER_SCRW;x++){ int h=(int)(20*__builtin_sin(x*0.012)+24); herder_fb_fill(fb,x,160-h,1,h, TERRAIN_COL[T_Meadow]); }
+    /* trees dotted along */
+    for(int i=0;i<7;i++){ int tx=40+i*90, ty=150+((i*53)%40); herder_fb_fill(fb,tx-1,ty,3,8,rgb565(0x6b,0x4a,0x2b)); disc(fb,tx,ty-4,9,C_tree); }
+    /* a big hero sheep, centre */
+    int cx=HERDER_SCRW/2, cy=320;
+    herder_fb_fill(fb,cx-22,cy+16,7,16,rgb565(0x3a,0x2f,0x2a)); herder_fb_fill(fb,cx+15,cy+16,7,16,rgb565(0x3a,0x2f,0x2a));
+    disc(fb,cx,cy,34,C_sheep); disc(fb,cx-24,cy-4,22,C_sheep); disc(fb,cx+24,cy-4,22,C_sheep); disc(fb,cx,cy-20,24,C_sheep);
+    disc(fb,cx+34,cy-6,15,rgb565(0x3a,0x2f,0x2a)); /* face */
+    herder_fb_fill(fb,cx+40,cy-12,3,3,HERDER_C_ink); /* eye */
+    /* the herder to the left, dog beside */
+    draw_herder(fb,cx-90,cy+6,0,0,0);
+    draw_dog(fb,cx-70,cy+22,0,0);
+}

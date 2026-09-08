@@ -60,24 +60,48 @@ static void new_day(void){
     herder_world_init(&g_world,&g_map,SEEDS[seed_idx]);
 }
 
+static void title_screen(int *prevBtns){
+    int frame=0;
+    for(;;){
+        maple_device_t *cont=maple_enum_type(0,MAPLE_FUNC_CONTROLLER);
+        int btns=0; if(cont){ cont_state_t *st=(cont_state_t*)maple_dev_status(cont); if(st) btns=st->buttons; }
+        int pressed=btns & ~*prevBtns; *prevBtns=btns;
+        if(pressed & CONT_DPAD_RIGHT) seed_idx=(seed_idx+1)%5;
+        if(pressed & CONT_DPAD_LEFT) seed_idx=(seed_idx+4)%5;
+        if(pressed & (CONT_START|CONT_A)) return;
+        herder_fb_title(fb);
+        bfont_set_background_color(HERDER_C_ink);
+        bfont_set_foreground_color(0xffff);
+        bfont_draw_str(fb+70*HERDER_SCRW+150, HERDER_SCRW, 0, "CURSE OF THE HERDER");
+        char sl[64]; snprintf(sl,sizeof(sl),"< pasture: %s >", SEEDS[seed_idx]);
+        bfont_draw_str(fb+420*HERDER_SCRW+180, HERDER_SCRW, 0, sl);
+        if((frame/30)%2==0) bfont_draw_str(fb+445*HERDER_SCRW+230, HERDER_SCRW, 0, "Press START");
+        vid_waitvbl(); frame++;
+    }
+}
+
 int main(int argc, char **argv){
     (void)argc;(void)argv;
     vid_set_mode(DM_640x480, PM_RGB565);
     fb=vram_s;
     herder_fb_palette_init();
     herder_grammar_init();
+
+    int prevBtns=0;
+  restart:
+    title_screen(&prevBtns);
     new_day();
 
     char curline[512]="The Curse of the Herder.";
     int lineUntil=240;
     int nextIdle=g_world.tick + herder_next_idle_curse_ticks(&g_world);
-    int lastSeq=-1, frame=0, prevBtns=0;
+    int lastSeq=-1, frame=0;
     const int TPF=10;
 
     for(;;){
         maple_device_t *cont=maple_enum_type(0,MAPLE_FUNC_CONTROLLER);
         int btns=0; if(cont){ cont_state_t *st=(cont_state_t*)maple_dev_status(cont); if(st) btns=st->buttons; }
-        if(btns & CONT_START) break;
+        if(btns & CONT_START){ prevBtns=btns; goto restart; }
         int pressed=btns & ~prevBtns; prevBtns=btns;
         if(pressed & CONT_DPAD_RIGHT){ seed_idx=(seed_idx+1)%5; new_day(); lastSeq=-1; nextIdle=herder_next_idle_curse_ticks(&g_world); snprintf(curline,sizeof(curline),"A new day: %s.",SEEDS[seed_idx]); lineUntil=frame+180; }
         if(pressed & CONT_DPAD_LEFT){ seed_idx=(seed_idx+4)%5; new_day(); lastSeq=-1; nextIdle=herder_next_idle_curse_ticks(&g_world); snprintf(curline,sizeof(curline),"A new day: %s.",SEEDS[seed_idx]); lineUntil=frame+180; }
