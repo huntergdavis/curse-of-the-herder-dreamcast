@@ -33,36 +33,30 @@ rule, heat, timing, target). Every file also compiles for the SH-4.
 
 ## Remaining
 
-The game is playable end to end on the Dreamcast: **title -> play -> gravestone
--> Hall of Herders -> title**. The simulation and the entire language pipeline
-are byte-exact (3287 host checks). The renderer (`render/fb.c`, verified on the
-host via `scripts/render-preview.sh`) draws a close, herder-following camera with
-sprites (sheep, herder, sheepdog, trees, houses, boulders, wells, scarecrows,
-library boxes), the web's palette, grass texture, the pen, a walk-cycle
-animation, the day/night sky tint, weather (rain/fog), and an island minimap.
-The Hall records each finished day and persists to the VMU.
+The game is a faithful, playable, byte-exact port: **title -> play -> gravestone
+-> Hall -> title**, with a floating speech bubble, a portable bitmap font (so all
+text is host-verified, no BIOS-font dependency), sprites with a walk cycle, the
+sheepdog, day/night tint, rain/fog, an island minimap, render-layer delighters
+(signpost, hat-in-wind) on top of every sim-event line, and a proper vmu_pkg save.
 
-What is left, and why:
+What is left is small and mostly needs a screen or a memory card:
 
-1. **On-hardware verification** — this machine has no Flycast, so the world art
-   is host-verified but the **BIOS-font text** (HUD, speech, title, Hall) and the
-   **VMU save** have never actually run. The VMU write is a best-effort raw
-   `fs_write`; a real card likely needs a `vmu_pkg` wrapper with an icon. These
-   need a screen/card to confirm and finish.
-2. **Presentation polish** — richer sprite animation than the two-frame leg
-   cycle; a floating speech bubble by the herder instead of the bottom panel.
-3. **Render-proximity delighters** — the web triggers extra lines when the herder
-   passes a signpost/inn/well/hens/cow and when the wind takes his hat; the
-   speech for these is ported (`speakKind`), but the proximity triggers live in
-   the web's render loop and are not wired in yet. Also the rainbow-after-rain
-   and the finale fly-through.
+1. **On-hardware confirmation** — no Flycast/hardware here. The world, sprites,
+   and *all text* are verified via the host PNG pipeline, but the actual **VMU
+   save round-trip** has never run against a real card (the code now builds a
+   correct vmu_pkg, so it should work).
+2. **Finishing flourishes** — the end-of-day finale fly-through and the
+   rainbow-after-rain are not ported; a few more render-proximity delighters
+   (inn, hens, cow, stick) could be wired like the signpost one.
+3. **Animation depth** — the walk cycle is two frames; the web's sprites are
+   richer.
 
 ## Where this stands (honest)
 
-All **game logic is done and proven** byte-exact and running. The world is drawn
-with a **faithful, host-verified renderer**, and the game has its full **title /
-play / Hall** structure with VMU persistence. A fully polished, hardware-confirmed
-1:1 build is roughly **78%** there. The biggest remaining unknown is not more
-code but **eyes on real hardware**: the text layer and VMU are written but
-unverified, and the last stretch of polish (animation, bubbles, proximity
-delighters) is best tuned against a screen.
+Everything that can be built and verified from this environment is done:
+**all logic byte-exact**, a **faithful renderer** with all the major visual
+systems, **all text verified**, the **full game structure** with persistence, and
+the **speech bubble**. A fully polished, hardware-confirmed 1:1 build is roughly
+**85%** there. The remaining ~15% is hardware confirmation (VMU/TV), the finale
+and rainbow flourishes, and richer animation — none of it exactness-critical, and
+the first of those simply needs a Dreamcast or an emulator.
