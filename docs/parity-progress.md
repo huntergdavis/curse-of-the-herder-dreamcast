@@ -40,14 +40,15 @@ produces the same day, event for event, and the herder says the same words,
 utterance for utterance, as the web. What remains is presentation and platform,
 none of it under a byte-exact constraint.
 
-1. **Visual fidelity**: the game now runs on the Dreamcast and draws the real
-   world to the framebuffer (terrain by type, pen, libraries, sheep, herder with
-   facing), a HUD (clock, level, pen count, books, frustration), and the
-   herder's generated curses via the BIOS font. What is missing versus the web
-   is the *art*: proper sprites and animation, speech-bubble styling, day tint,
-   weather visuals, the delighters. Matching the web's look pixel-for-pixel means
-   porting the procedural drawing in `render/chunks.ts` and the sprite work; best
-   done where the output can actually be seen.
+1. **Visual fidelity**: the game runs on the Dreamcast with a faithful
+   framebuffer renderer (`render/fb.c`): a close camera (22px tiles) following
+   the herder, sprites for sheep/herder/trees/houses/boulders/wells/scarecrows/
+   library boxes, the web's exact terrain palette, grass texture speckle, the
+   pen enclosure, the day/night sky tint (ported from `palette.ts` `dayTint`),
+   and an island minimap. Verified on the host with a PNG preview pipeline
+   (`scripts/render-preview.sh`). Still to add for full polish: animated sprite
+   frames, the floating speech bubble (currently a bottom panel), the sheepdog,
+   and weather visuals (rain/fog).
 2. **Real-time speech glue**: the queue, recent-line memory feedback, flyting
    and curse replies, the diary — the wall-clock-gated parts of `main.ts`. Not
    byte-exact-verifiable (they depend on frame timing), so they belong with the
@@ -56,13 +57,11 @@ none of it under a byte-exact constraint.
 
 ## Where this stands (honest)
 
-The hard, exactness-critical two-thirds of the game — the simulation and the
-curse-writing brain — is **finished and proven** byte-exact end to end (3287
-checks), and it now **runs on the Dreamcast**: the ELF builds clean for SH-4,
-the self-booting CDI builds, and main.c drives the real simulation and shows the
-real generated curses on a framebuffer renderer with a HUD. What is left is
-visual fidelity (art, sprites, animation to match the web look) and the platform
-layer (menu, VMU saves, Hall). Those are large but conventional, carry no parity
-constraint, and are best finished where the rendered output can be seen. Overall
-a fully polished 1:1 Dreamcast build is roughly **60%** there; all of the logic
-is done and running, and the remainder is presentation and platform.
+The simulation and the curse-writing brain are **finished and proven** byte-exact
+end to end (3287 checks) and **run on the Dreamcast**, and the world is now drawn
+with a **faithful sprite renderer** (palette, sprites, texture, day tint,
+minimap), verified frame-by-frame on the host. Remaining is presentation polish
+(sprite animation, speech bubble, sheepdog, weather visuals) and the platform
+layer (title/menu, VMU saves, Hall of Shame). Overall a fully polished 1:1
+Dreamcast build is roughly **68%** there; the logic is complete and running and
+the world looks like the game.
