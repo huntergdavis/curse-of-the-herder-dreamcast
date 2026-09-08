@@ -65,7 +65,7 @@ void herder_fb_bar(uint16_t *fb, int x, int y, int w, int h, double frac){
 }
 
 #define VIEWW (HERDER_SCRW / HERDER_TS + 2)
-#define VIEWH ((HERDER_SCRH - HERDER_TOP - HERDER_BOT) / HERDER_TS + 2)
+#define VIEWH ((HERDER_SCRH - HERDER_TOP) / HERDER_TS + 2)
 
 static void disc(uint16_t *fb, int cx, int cy, int r, uint16_t c){
     for(int dy=-r;dy<=r;dy++) for(int dx=-r;dx<=r;dx++) if(dx*dx+dy*dy<=r*r){ int x=cx+dx,y=cy+dy; if((unsigned)x<HERDER_SCRW&&(unsigned)y<HERDER_SCRH) fb[y*HERDER_SCRW+x]=c; }
@@ -160,7 +160,7 @@ void herder_fb_draw_world(uint16_t *fb, const HerderWorld *w){
     if(g_camx<0){ g_camx=w->h.x; g_camy=w->h.y; } else { g_camx+=(w->h.x-g_camx)*0.12; g_camy+=(w->h.y-g_camy)*0.12; }
     int cx=(int)(g_camx+0.5), cy=(int)(g_camy+0.5);
     int ox=cx-VIEWW/2, oy=cy-VIEWH/2;
-    int vh=(HERDER_SCRH-HERDER_TOP-HERDER_BOT);
+    int vh=(HERDER_SCRH-HERDER_TOP);
     for(int ty=0;ty<VIEWH;ty++){ int my=oy+ty; int py=HERDER_TOP+ty*HERDER_TS; if(py>=HERDER_TOP+vh) break;
         for(int tx=0;tx<VIEWW;tx++){ int mx=ox+tx; int px=tx*HERDER_TS;
             uint16_t c; int t=T_Water,d=D_None;
@@ -187,7 +187,7 @@ void herder_fb_draw_world(uint16_t *fb, const HerderWorld *w){
     /* sheep */
     for(int i=0;i<w->sheep_count;i++){ const HerderSheep*s=&w->sheep[i]; if(s->mode==1) continue; /* carried: drawn with herder */
         int sx=(int)((s->x-ox)*HERDER_TS)+HERDER_TS/2, sy=HERDER_TOP+(int)((s->y-oy)*HERDER_TS)+HERDER_TS/2;
-        if(sx<-20||sy<HERDER_TOP-20||sx>HERDER_SCRW+20||sy>HERDER_SCRH-HERDER_BOT+20) continue;
+        if(sx<-20||sy<HERDER_TOP-20||sx>HERDER_SCRW+20||sy>HERDER_SCRH+20) continue;
         int smv=(s->mode==0)&&((s->tx!=s->x)||(s->ty!=s->y));
         int pose=0; if(!smv && s->mode==0){ if(s->temper==3 && ((s->id*7+w->tick/512)%5)==0) pose=2; else if(((s->id*13+w->tick/256)%3)==0) pose=1; }
         draw_sheep(fb,sx,sy,s->black,s->x<w->h.x?2:0,smv,s->named,s->nemesis,pose); }
@@ -206,8 +206,8 @@ void herder_fb_draw_world(uint16_t *fb, const HerderWorld *w){
 
 /* small overview map, top-right, echoing the web's minimap */
 #define MM_SZ 110
-#define MM_X (HERDER_SCRW - MM_SZ - 12)
-#define MM_Y (HERDER_TOP + 8)
+#define MM_X (HERDER_SCRW - MM_SZ - 22)
+#define MM_Y (HERDER_TOP + 14)
 void herder_fb_minimap(uint16_t *fb, const HerderWorld *w){
     const HerderMap *m=w->map; int n=m->size;
     herder_fb_fill(fb, MM_X-2, MM_Y-2, MM_SZ+4, MM_SZ+4, HERDER_C_ink);
@@ -229,7 +229,7 @@ void herder_fb_minimap(uint16_t *fb, const HerderWorld *w){
 
 /* rain and fog overlays, keyed to the world's weather ticks */
 void herder_fb_weather(uint16_t *fb, const HerderWorld *w){
-    int vy0=HERDER_TOP, vy1=HERDER_SCRH-HERDER_BOT;
+    int vy0=HERDER_TOP, vy1=HERDER_SCRH;
     if(w->fogUntilTick > w->tick){
         /* fog: lighten every few pixels toward white (cheap dithered veil) */
         for(int y=vy0;y<vy1;y+=2) for(int x=(y&2)?0:2;x<HERDER_SCRW;x+=4){ uint16_t c=fb[y*HERDER_SCRW+x]; int r=((c>>11)&0x1f),g=((c>>5)&0x3f),b=(c&0x1f); r+=(31-r)/2; g+=(63-g)/2; b+=(31-b)/2; fb[y*HERDER_SCRW+x]=(uint16_t)((r<<11)|(g<<5)|b); }
@@ -322,8 +322,8 @@ void herder_fb_bubble(uint16_t *fb, const HerderWorld *w, const char *text){
     int maxw=0; for(int i=0;i<nl;i++){ int wdt=herder_fb_text_w(lines[i],1); if(wdt>maxw)maxw=wdt; }
     int bw=maxw+14, bh=nl*13+10;
     int bx=ax-bw/2, by=ay-bh;
-    if(bx<4)bx=4;
-    if(bx>HERDER_SCRW-bw-4)bx=HERDER_SCRW-bw-4;
+    if(bx<22)bx=22;
+    if(bx>HERDER_SCRW-bw-22)bx=HERDER_SCRW-bw-22;
     if(by<HERDER_TOP+4)by=HERDER_TOP+4;
     /* bubble */
     herder_fb_fill(fb,bx-1,by-1,bw+2,bh+2,HERDER_C_ink);
@@ -340,11 +340,11 @@ void herder_fb_bubble(uint16_t *fb, const HerderWorld *w, const char *text){
 void herder_fb_rainbow(uint16_t *fb, int alpha8){
     if(alpha8<=0) return;
     static const uint32_t band[7]={0xe0483a,0xe08a3a,0xe0c83a,0x4faa50,0x4f8fc9,0x5a5ac9,0x8a4fb0};
-    int cx=HERDER_SCRW/2, cy=HERDER_TOP+ (HERDER_SCRH-HERDER_TOP-HERDER_BOT); /* centre near horizon-ish */
+    int cx=HERDER_SCRW/2, cy=HERDER_TOP+ (HERDER_SCRH-HERDER_TOP); /* centre near horizon-ish */
     int r0=210;
     for(int b=0;b<7;b++){ int r=r0+b*6; uint16_t c=rgb565((band[b]>>16)&0xff,(band[b]>>8)&0xff,band[b]&0xff);
         for(int a=0;a<180;a++){ double ang=a*3.14159265/180.0; int x=cx+(int)(r*__builtin_cos(ang)); int y=cy-(int)(r*__builtin_sin(ang));
-            if(x<0||x>=HERDER_SCRW||y<HERDER_TOP||y>=HERDER_SCRH-HERDER_BOT) continue;
+            if(x<0||x>=HERDER_SCRW||y<HERDER_TOP||y>=HERDER_SCRH) continue;
             /* dithered alpha */
             if(((x+y+b)&3) < (alpha8>>6)) fb[y*HERDER_SCRW+x]=c;
         }

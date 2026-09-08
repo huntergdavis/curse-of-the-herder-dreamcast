@@ -29,7 +29,7 @@ static void draw_hud(const HerderWorld *w){
     bfont_set_foreground_color(0xef7b);
     bfont_set_background_color(HERDER_C_hud);
     bfont_draw_str(fb+2*HERDER_SCRW+6, HERDER_SCRW, 0, line);
-    herder_fb_bar(fb, HERDER_SCRW-180, 8, 150, 12, w->frustration/100.0);
+    herder_fb_bar(fb, HERDER_SCRW-172, 11, 150, 12, w->frustration/100.0);
 }
 
 
