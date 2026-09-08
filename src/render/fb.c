@@ -135,6 +135,7 @@ static void draw_house(uint16_t *fb,int px,int py,int red){
     for(int r=0;r<HERDER_TS/2;r++) herder_fb_fill(fb,px+2+r/2,py+r,HERDER_TS-4-r,1,roof);
 }
 
+static void draw_rival(uint16_t *fb, const HerderWorld *w);
 void herder_fb_draw_world(uint16_t *fb, const HerderWorld *w){
     const HerderMap *m=w->map;
     if(g_camx<0){ g_camx=w->h.x; g_camy=w->h.y; } else { g_camx+=(w->h.x-g_camx)*0.12; g_camy+=(w->h.y-g_camy)*0.12; }
@@ -178,6 +179,7 @@ void herder_fb_draw_world(uint16_t *fb, const HerderWorld *w){
       int ddx=w->h.facing==0?1:w->h.facing==2?-1:0, ddy=w->h.facing==1?1:w->h.facing==3?-1:0;
       draw_dog(fb,sx-ddx*HERDER_TS,sy-ddy*HERDER_TS+HERDER_TS/2, w->h.facing, hmv);
       draw_herder(fb,sx,sy,w->h.facing,w->h.carrying>=0,hmv,lvl,winter); }
+    draw_rival(fb,w);
 }
 
 
@@ -354,3 +356,24 @@ void herder_fb_gravestone(uint16_t *fb){
 void herder_fb_test_herder(uint16_t *fb,int x,int y,int facing,int carrying,int moving,int level){ draw_herder(fb,x,y,facing,carrying,moving,level,0); }
 void herder_fb_test_sheep(uint16_t *fb,int x,int y,int black,int facing,int moving,int named,int crowned){ draw_sheep(fb,x,y,black,facing,moving,named,crowned); }
 void herder_fb_test_dog(uint16_t *fb,int x,int y,int facing,int moving){ draw_dog(fb,x,y,facing,moving); }
+
+static void draw_rival(uint16_t *fb, const HerderWorld *w){
+    if(!w->has_rival) return;
+    int cx=(int)(g_camx<0?w->h.x:g_camx), cy=(int)(g_camy<0?w->h.y:g_camy);
+    int ox=cx-VIEWW/2, oy=cy-VIEWH/2;
+    int rx=(int)((w->rival_x-ox)*HERDER_TS)+HERDER_TS/2;
+    int ry=HERDER_TOP+(int)((w->rival_y-oy)*HERDER_TS)+HERDER_TS/2;
+    if(rx<-60||rx>HERDER_SCRW+60) return;
+    int dir = w->rival_dx<0 ? 2 : 0;                 /* facing */
+    int back = w->rival_dx<0 ? 1 : -1;               /* his flock trails behind */
+    /* his tidy flock: a neat line, all facing the same way, none fleeing */
+    for(int i=1;i<=4;i++){ draw_sheep(fb, rx+back*i*(HERDER_TS+2), ry+2, 0, dir, 1, 0, 0); }
+    /* the rival: a herder in a different coat */
+    /* reuse draw_herder via test wrapper colour? draw a compact figure */
+    herder_fb_fill(fb,rx-4,ry-2,8,12,HEX(0x4a6a8a));   /* blue coat, unlike ours */
+    herder_fb_fill(fb,rx-4,ry+5,8,2,HEX(0x2a2f3a));
+    disc(fb,rx,ry-8,4,HEX(0xe8b98a));
+    herder_fb_fill(fb,rx-5,ry-11,10,2,HERDER_C_ink);
+    herder_fb_fill(fb,rx-3,ry-14,6,3,HERDER_C_ink);
+    int px=dir==2?-6:5; herder_fb_fill(fb,rx+px,ry-10,2,18,HEX(0x8a6a3a));
+}
