@@ -126,18 +126,19 @@ static void hall_screen(int *prevBtns){
 }
 
 
-static void induction_screen(const HallRec *r, int *prevBtns){
-    for(;;){
+static int induction_screen(const HallRec *r, int *prevBtns){
+    for(int f=0;;f++){
         maple_device_t *cont=maple_enum_type(0,MAPLE_FUNC_CONTROLLER);
         int btns=0; if(cont){ cont_state_t *st=(cont_state_t*)maple_dev_status(cont); if(st) btns=st->buttons; }
         int pressed=btns & ~*prevBtns; *prevBtns=btns;
-        if(pressed & (CONT_START|CONT_A)) return;
+        if(pressed & CONT_START) return 1;          /* to the title */
+        if((pressed & CONT_A) || f>15*60) return 0; /* a new herder wakes at dawn */
         herder_fb_gravestone(fb);
         herder_fb_text(fb,(HERDER_SCRW-herder_fb_text_w(r->name,2))/2,116,r->name,0xffff,2);
         herder_fb_text_wrap(fb,HERDER_SCRW/2-84,230,r->epitaph,HERDER_C_ink,1,168,4);
         char st[80]; snprintf(st,sizeof(st),"%d sheep  %d books  Lv%d  %s", r->sheep, r->books, r->level, r->clock);
         herder_fb_text(fb,(HERDER_SCRW-herder_fb_text_w(st,1))/2,392,st,0xffff,1);
-        herder_fb_text(fb,(HERDER_SCRW-herder_fb_text_w("Inducted into the Hall  -  Press START",1))/2,414,"Inducted into the Hall  -  Press START",0xffff,1);
+        herder_fb_text(fb,(HERDER_SCRW-herder_fb_text_w("A new herder wakes at dawn  -  START for the title",1))/2,414,"A new herder wakes at dawn  -  START for the title",0xffff,1);
         vid_waitvbl();
     }
 }
@@ -173,6 +174,7 @@ int main(int argc, char **argv){
     int prevBtns=0;
   restart:
     title_screen(&prevBtns);
+  newday:
     new_day();
 
     char curline[512]="The Curse of the Herder.";
@@ -227,8 +229,8 @@ int main(int argc, char **argv){
             }
         } else if(!recorded){
             record_day(&g_world); recorded=1;
-            induction_screen(&g_hall[0], &prevBtns);
-            goto restart;
+            if(induction_screen(&g_hall[0], &prevBtns)) goto restart; /* START -> title */
+            seed_idx=(seed_idx+1)%5; goto newday;                    /* else a new herder wakes */
         }
 
         { int nowRain = g_world.rainUntilTick > g_world.tick; if(wasRaining && !nowRain) rainbowUntil=frame+8*60; wasRaining=nowRain; }
