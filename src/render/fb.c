@@ -199,6 +199,15 @@ static uint16_t lighten(uint16_t c,int amt){ int r=((c>>11)&0x1f)*8+amt,g=((c>>5
 static void draw_tree(uint16_t *fb,int cx,int cy,uint16_t foliage){ herder_fb_fill(fb,cx-1,cy,3,7,HEX(0x6b4a2b)); disc(fb,cx,cy-3,7,foliage); disc(fb,cx-2,cy-5,2,lighten(foliage,40)); }
 static void draw_conifer(uint16_t *fb,int cx,int cy,uint16_t foliage){ herder_fb_fill(fb,cx-1,cy+4,2,4,HEX(0x6b4a2b)); uint16_t dark=(uint16_t)((foliage>>1)&0x7bef);
     for(int r=0;r<11;r++){ int w=r; herder_fb_fill(fb,cx-w,cy-6+r,(w?w*2:1),1,foliage); herder_fb_fill(fb,cx,cy-6+r,(w?w:1),1,dark); } }
+
+static void emote_at(uint16_t *fb,int sx,int sy,const char *glyph){
+    int w=herder_fb_text_w(glyph,1)+8; int h=13;
+    herder_fb_fill(fb,sx-w/2-1,sy-1,w+2,h+2,HERDER_C_ink);
+    herder_fb_fill(fb,sx-w/2,sy,w,h,HEX(0xfffdf5));
+    herder_fb_fill(fb,sx-1,sy+h,3,3,HEX(0xfffdf5)); /* little tail */
+    herder_fb_text(fb,sx-w/2+4,sy+3,glyph,HERDER_C_ink,1);
+}
+
 static void draw_house(uint16_t *fb,int px,int py,int red){
     uint16_t wall=red?HEX(0xd8b28a):HEX(0xe8dcc3), roof=red?HEX(0xb03a3a):HEX(0x8c4a3a);
     herder_fb_fill(fb,px+3,py+HERDER_TS/2,HERDER_TS-6,HERDER_TS/2-1,wall);
@@ -259,8 +268,11 @@ void herder_fb_draw_world(uint16_t *fb, const HerderWorld *w){
       int winter=(w->season && strcmp(w->season,"winter")==0);
       /* the sheepdog trots a step behind, on the side away from his facing */
       int ddx=w->h.facing==0?1:w->h.facing==2?-1:0, ddy=w->h.facing==1?1:w->h.facing==3?-1:0;
-      draw_dog(fb,sx-ddx*HERDER_TS,sy-ddy*HERDER_TS+HERDER_TS/2, w->h.facing, hmv);
+      int dogx=sx-ddx*HERDER_TS, dogy=sy-ddy*HERDER_TS+HERDER_TS/2;
+      draw_dog(fb,dogx,dogy, w->h.facing, hmv);
+      { int ph=(g_anim/40); const char *dg=NULL; int m=ph%23; if(m==7) dg="woof"; else if(m==11) dg="?"; else if(m==17) dg="hm."; if(dg && (g_anim%40)<20) emote_at(fb,dogx,dogy-12,dg); }
       draw_herder(fb,sx,sy,w->h.facing,w->h.carrying>=0,hmv,lvl,winter,w->h.mode); }
+    if(w->h.targetSheep>=0 && w->h.targetSheep<w->sheep_count){ const HerderSheep*ts=&w->sheep[w->h.targetSheep]; if(ts->mode==0){ double dxx=ts->x-w->h.x, dyy=ts->y-w->h.y; if(dxx*dxx+dyy*dyy<16){ int cxx=(int)(g_camx<0?w->h.x:g_camx), cyy=(int)(g_camy<0?w->h.y:g_camy); int oxx=cxx-VIEWW/2, oyy=cyy-VIEWH/2; int ssx=(int)((ts->x-oxx)*HERDER_TS)+HERDER_TS/2, ssy=HERDER_TOP+(int)((ts->y-oyy)*HERDER_TS)+HERDER_TS/2; emote_at(fb,ssx,ssy-14, ts->skittish>0.4?"!":"?"); } } }
     draw_rival(fb,w);
 }
 
