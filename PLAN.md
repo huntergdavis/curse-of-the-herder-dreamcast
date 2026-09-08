@@ -1,5 +1,9 @@
 # Porting plan
 
+> **STATUS: COMPLETE (v1.0).** This plan is kept for history. The port is a
+> finished, verified 1:1 of the web version; see the README and
+> docs/parity-progress.md for the current state.
+
 The web game is the source of truth for content and behaviour. The Dreamcast
 build is a rewrite of the engine in C with the data generated from the web
 repository, so a word banned there stays banned here and a transcript that
