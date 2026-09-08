@@ -59,24 +59,41 @@ typedef struct { int used; char name[48]; char clock[8]; int sheep, books, level
 static HallRec g_hall[8];
 static int g_hall_n=0;
 
-/* Best-effort VMU persistence of the Hall (compact). Unverified without a card. */
+/* VMU persistence of the Hall, wrapped in a proper vmu_pkg (header + icon). */
+#include <dc/vmu_pkg.h>
 static void herder_vmu_save(void){
-    maple_device_t *vmu=maple_enum_type(0, MAPLE_FUNC_MEMCARD);
-    if(!vmu) return;
-    /* store the raw records; a real build would wrap this in a vmu_pkg with an icon. */
+    if(!maple_enum_type(0, MAPLE_FUNC_MEMCARD)) return;
+    uint8 data[sizeof(int)+sizeof(g_hall)];
+    memcpy(data,&g_hall_n,sizeof(int));
+    memcpy(data+sizeof(int),g_hall,sizeof(g_hall));
+    vmu_pkg_t pkg; memset(&pkg,0,sizeof(pkg));
+    strncpy(pkg.desc_short,"Herder Hall",sizeof(pkg.desc_short)-1);
+    strncpy(pkg.desc_long,"Curse of the Herder",sizeof(pkg.desc_long)-1);
+    strncpy(pkg.app_id,"HERDER",sizeof(pkg.app_id)-1);
+    pkg.icon_cnt=1; pkg.icon_anim_speed=0; pkg.eyecatch_type=VMUPKG_EC_NONE;
+    static uint8 icon[512]; memset(icon,0x11,sizeof(icon)); /* a plain filled icon */
+    pkg.icon_data=icon;
+    pkg.data_len=sizeof(data); pkg.data=data;
+    uint8 *out=NULL; int outsz=0;
+    if(vmu_pkg_build(&pkg,&out,&outsz)<0) return;
+    fs_unlink("/vmu/a1/HERDERHALL");
     file_t f=fs_open("/vmu/a1/HERDERHALL", O_WRONLY);
-    if(f<0) return;
-    fs_write(f,&g_hall_n,sizeof(g_hall_n));
-    fs_write(f,g_hall,sizeof(g_hall));
-    fs_close(f);
+    if(f>=0){ fs_write(f,out,outsz); fs_close(f); }
+    free(out);
 }
 static void herder_vmu_load(void){
     file_t f=fs_open("/vmu/a1/HERDERHALL", O_RDONLY);
     if(f<0) return;
-    fs_read(f,&g_hall_n,sizeof(g_hall_n));
-    if(g_hall_n<0||g_hall_n>8){ g_hall_n=0; fs_close(f); return; }
-    fs_read(f,g_hall,sizeof(g_hall));
-    fs_close(f);
+    int sz=(int)fs_total(f);
+    if(sz<=0){ fs_close(f); return; }
+    uint8 *raw=malloc(sz); if(!raw){ fs_close(f); return; }
+    fs_read(f,raw,sz); fs_close(f);
+    vmu_pkg_t pkg;
+    if(vmu_pkg_parse(raw,&pkg)==0 && pkg.data_len>=(int)sizeof(int)){
+        int n; memcpy(&n,pkg.data,sizeof(int));
+        if(n>=0 && n<=8 && pkg.data_len>=(int)(sizeof(int)+sizeof(g_hall))){ g_hall_n=n; memcpy(g_hall,pkg.data+sizeof(int),sizeof(g_hall)); }
+    }
+    free(raw);
 }
 
 
@@ -156,7 +173,7 @@ int main(int argc, char **argv){
     char curline[512]="The Curse of the Herder.";
     int lineUntil=240;
     int nextIdle=g_world.tick + herder_next_idle_curse_ticks(&g_world);
-    int lastSeq=-1, frame=0, recorded=0;
+    int lastSeq=-1, frame=0, recorded=0, lastSignpost=-100000, lastHat=-100000;
     const int TPF=10;
 
     for(;;){
@@ -186,6 +203,17 @@ int main(int argc, char **argv){
             if(frame>lineUntil){ HerderUtterance u=herder_speak_epitaph(&g_world,4); snprintf(curline,sizeof(curline),"%s",u.text); lineUntil=frame+600; }
         }
 
+        /* render-layer delighters: a signpost he can read, his hat in the wind */
+        if(!g_world.finished){
+            int hx=(int)(g_world.h.x+0.5), hy=(int)(g_world.h.y+0.5), N=g_world.map->size;
+            if(g_world.tick-lastSignpost > 3600){
+                int found=0; for(int dy=-2;dy<=2&&!found;dy++) for(int dx=-2;dx<=2;dx++){ int x=hx+dx,y=hy+dy; if(x<0||y<0||x>=N||y>=N)continue; if(g_world.map->deco[y*N+x]==D_Signpost){ found=1; break; } }
+                if(found){ HerderUtterance u=herder_speak_kind(&g_world,EV_signpost,4,0.25); lastSignpost=g_world.tick; if(u.ok){ snprintf(curline,sizeof(curline),"%s",u.text); lineUntil=frame+(int)(u.seconds*60); } }
+            }
+            if(g_world.windUntilTick>g_world.tick && g_world.tick-lastHat>14400){
+                HerderUtterance u=herder_speak_kind(&g_world,EV_hat,4,0.35); lastHat=g_world.tick; if(u.ok){ snprintf(curline,sizeof(curline),"%s",u.text); lineUntil=frame+(int)(u.seconds*60); }
+            }
+        }
         herder_fb_set_anim(frame);
         herder_fb_set_tint(9.0 + g_world.tick/14400.0);
         herder_fb_draw_world(fb,&g_world);

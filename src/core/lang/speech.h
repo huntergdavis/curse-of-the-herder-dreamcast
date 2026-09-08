@@ -19,6 +19,7 @@ const char *herder_signature_word(const char *seed);
 void herder_build_context(HerderContext *c, const HerderWorld *w, const HerderEvent *e, int bandCap);
 HerderUtterance herder_speak_for_event(const HerderWorld *w, const HerderEvent *e, int bandCap);
 HerderUtterance herder_speak_idle(const HerderWorld *w, int bandCap);
+HerderUtterance herder_speak_kind(const HerderWorld *w, int ev, int bandCap, double heatBump);
 HerderUtterance herder_speak_epitaph(const HerderWorld *w, int bandCap);
 int herder_next_idle_curse_ticks(const HerderWorld *w);
 

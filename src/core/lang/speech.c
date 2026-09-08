@@ -139,6 +139,16 @@ HerderUtterance herder_speak_for_event(const HerderWorld *w, const HerderEvent *
   HerderUtterance u=make_utt(&g,&ctx); return u;
 }
 
+
+HerderUtterance herder_speak_kind(const HerderWorld *w, int ev, int bandCap, double heatBump){
+    HerderUtterance nul; memset(&nul,0,sizeof(nul)); nul.ok=0; nul.sheepId=-1;
+    HerderContext ctx; herder_build_context(&ctx,w,NULL,bandCap);
+    double b=ctx.heat+heatBump; if(b<0)b=0; if(b>1)b=1; ctx.heat=b;
+    HerderGen g=herder_generate(ev,&ctx,w->tick,-1);
+    if(!g.ok) return nul;
+    return make_utt(&g,&ctx);
+}
+
 HerderUtterance herder_speak_idle(const HerderWorld *w, int bandCap){
   HerderUtterance nul; memset(&nul,0,sizeof(nul)); nul.ok=0; nul.sheepId=-1;
   HerderContext ctx; herder_build_context(&ctx,w,NULL,bandCap);
