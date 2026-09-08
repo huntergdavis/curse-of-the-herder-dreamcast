@@ -1573,3 +1573,254 @@ EV	grudge	315	129950	rant	-1
 EV	grudge	316	130137	penned	57		
 EV	grudge	317	130146	finished	-1		
 EVEND	grudge	130146	1	318
+ART	apple	an
+ART	Apple	an
+ART	ewe	a
+ART	hour	an
+ART	honest	an
+ART	honour	an
+ART	honor	an
+ART	heir	an
+ART	herb	an
+ART	herbs	a
+ART	herbal	a
+ART	unicorn	a
+ART	umbrella	an
+ART	one	a
+ART	once	a
+ART	ouija	a
+ART	egg	an
+ART	yellow	a
+ART	universe	a
+ART	utopia	a
+ART	hero	a
+ART	idea	an
+ART	x	a
+PLUR	sheep	~	sheep
+PLUR	ewe	~	ewes
+PLUR	ox	~	oxen
+PLUR	hoof	~	hooves
+PLUR	foot	~	feet
+PLUR	tooth	~	teeth
+PLUR	goose	~	geese
+PLUR	mouse	~	mice
+PLUR	man	~	men
+PLUR	child	~	children
+PLUR	knife	~	knives
+PLUR	leaf	~	leaves
+PLUR	wolf	~	wolves
+PLUR	life	~	lives
+PLUR	potato	~	potatoes
+PLUR	hero	~	heroes
+PLUR	cactus	~	cacti
+PLUR	crisis	~	crises
+PLUR	mud	~	mud
+PLUR	woe	~	woes
+PLUR	cat	~	cats
+PLUR	box	~	boxes
+PLUR	church	~	churches
+PLUR	dish	~	dishes
+PLUR	fly	~	flies
+PLUR	lady	~	ladies
+PLUR	boy	~	boys
+PLUR	key	~	keys
+PLUR	wife	~	wives
+PLUR	bus	~	buses
+PLUR	axis	~	axises
+PLUR	cats	~	cats
+PLUR	typhoons	~	typhoons
+PLUR	barnacle	~	barnacles
+PLUR	glass	~	glasses
+PLUR	truffle nobody wanted	~	truffles nobody wanted
+PLUR	lump of regret	~	lumps of regret
+PLUR	mushroom with legs	~	mushrooms with legs
+PLUR	Sheep	~	Sheep
+PLUR	Wolf	~	Wolves
+PLUR	foo	bar	bar
+PLUR	foo	-	foo
+PLUR	quire	~	quires
+VERB	be	s	is
+VERB	be	ed	was
+VERB	be	ing	bing
+VERB	be	en	been
+VERB	have	s	has
+VERB	have	ed	had
+VERB	have	ing	having
+VERB	have	en	had
+VERB	do	s	does
+VERB	do	ed	did
+VERB	do	ing	doing
+VERB	do	en	done
+VERB	go	s	goes
+VERB	go	ed	went
+VERB	go	ing	going
+VERB	go	en	gone
+VERB	carry	s	carries
+VERB	carry	ed	carried
+VERB	carry	ing	carrying
+VERB	carry	en	carried
+VERB	run	s	runs
+VERB	run	ed	ran
+VERB	run	ing	running
+VERB	run	en	run
+VERB	eat	s	eats
+VERB	eat	ed	ate
+VERB	eat	ing	eating
+VERB	eat	en	eaten
+VERB	bite	s	bites
+VERB	bite	ed	bit
+VERB	bite	ing	biting
+VERB	bite	en	bitten
+VERB	flee	s	flees
+VERB	flee	ed	fled
+VERB	flee	ing	fleeing
+VERB	flee	en	fled
+VERB	rain	s	rains
+VERB	rain	ed	rained
+VERB	rain	ing	raining
+VERB	rain	en	rained
+VERB	smite	s	smites
+VERB	smite	ed	smote
+VERB	smite	ing	smiting
+VERB	smite	en	smitten
+VERB	wet	s	wets
+VERB	wet	ed	wet
+VERB	wet	ing	wetting
+VERB	wet	en	wet
+VERB	forget	s	forgets
+VERB	forget	ed	forgot
+VERB	forget	ing	forgeting
+VERB	forget	en	forgotten
+VERB	walk	s	walks
+VERB	walk	ed	walked
+VERB	walk	ing	walking
+VERB	walk	en	walked
+VERB	hop	s	hops
+VERB	hop	ed	hopped
+VERB	hop	ing	hopping
+VERB	hop	en	hopped
+VERB	tie	s	ties
+VERB	tie	ed	tied
+VERB	tie	ing	tying
+VERB	tie	en	tied
+VERB	make	s	makes
+VERB	make	ed	made
+VERB	make	ing	making
+VERB	make	en	made
+VERB	fix	s	fixes
+VERB	fix	ed	fixed
+VERB	fix	ing	fixing
+VERB	fix	en	fixed
+VERB	cry	s	cries
+VERB	cry	ed	cried
+VERB	cry	ing	crying
+VERB	cry	en	cried
+VERB	play	s	plays
+VERB	play	ed	played
+VERB	play	ing	playing
+VERB	play	en	played
+VERB	sit	s	sits
+VERB	sit	ed	sat
+VERB	sit	ing	sitting
+VERB	sit	en	sat
+VERB	hum	s	hums
+VERB	hum	ed	hummed
+VERB	hum	ing	humming
+VERB	hum	en	hummed
+VERB	free	s	frees
+VERB	free	ed	freed
+VERB	free	ing	freeing
+VERB	free	en	freed
+VERB	dye	s	dyes
+VERB	dye	ed	dyed
+VERB	dye	ing	dying
+VERB	dye	en	dyed
+VERB	panic	s	panics
+VERB	panic	ed	panicced
+VERB	panic	ing	paniccing
+VERB	panic	en	panicced
+VERB	tip	s	tips
+VERB	tip	ed	tipped
+VERB	tip	ing	tipping
+VERB	tip	en	tipped
+NUM	0	zero
+NUM	1	one
+NUM	7	seven
+NUM	10	ten
+NUM	11	eleven
+NUM	19	nineteen
+NUM	20	twenty
+NUM	21	twenty-one
+NUM	30	thirty
+NUM	42	forty-two
+NUM	99	ninety-nine
+NUM	100	one hundred
+NUM	101	one hundred and one
+NUM	113	one hundred and thirteen
+NUM	200	two hundred
+NUM	999	nine hundred and ninety-nine
+NUM	1000	1000
+NUM	-5	minus five
+NUM	-42	minus forty-two
+ORD	1	first
+ORD	2	second
+ORD	3	third
+ORD	4	fourth
+ORD	5	fifth
+ORD	6	sixth
+ORD	7	seventh
+ORD	8	eighth
+ORD	9	ninth
+ORD	11	eleventh
+ORD	12	twelfth
+ORD	13	thirteenth
+ORD	20	twentieth
+ORD	21	twenty-first
+ORD	22	twenty-second
+ORD	30	thirtieth
+ORD	40	fortieth
+ORD	42	forty-second
+ORD	100	one hundredth
+SYL	sheep	1
+SYL	apple	2
+SYL	table	2
+SYL	rhythm	1
+SYL	queue	1
+SYL	university	5
+SYL	the	1
+SYL	strengths	1
+SYL	mud	1
+SYL	area	2
+SYL	idea	2
+SYL	fire	1
+SYL	hour	1
+SYL	regret	2
+SYL	muddle	2
+SYL	cattle	2
+SYL	simple	2
+SYL	every	3
+SYL	business	3
+SYL		0
+SYL	aeiou	1
+SYL	bottle	2
+SYL	raced	1
+SYL	waded	1
+TIDY	hello world	Hello world.
+TIDY	he said  ,  quietly	He said, quietly.
+TIDY	a apple fell	An apple fell.
+TIDY	i think i am late	I think I am late.
+TIDY	it rains...	It rains…
+TIDY	(it scans.)	(It scans.)
+TIDY	wait...what	Wait…what.
+TIDY	the cat sat	The cat sat.
+TIDY	an unicorn	A unicorn.
+TIDY	A apple	An apple.
+TIDY	so, then;next	So, then; next.
+TIDY	  spaced  out  	Spaced out.
+TIDY	one ; two : three	One; two: three.
+TIDY	"quietly" he said	"Quietly" He said.
+TIDY	a honest man	An honest man.
+TIDY	the herb grew	The herb grew.
+TIDY	she has a egg	She has an egg.
+TIDY	why not?no	Why not?no.
+TIDY	done!	Done!

@@ -8,6 +8,7 @@
 #include "core/names.h"
 #include "core/sim/flock.h"
 #include "core/sim/world.h"
+#include "core/lang/morphology.h"
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -217,6 +218,28 @@ int main(int argc, char **argv) {
             checks++;
             int got = herder_classify(e, m), want = atoi(fld[3]);
             if (got != want) { failures++; printf("FAIL CLASSIFY(%.3f,%.3f): got %d want %d\n", e, m, got, want); }
+        } else if (strcmp(fld[0], "ART") == 0 && n >= 3) {
+            checks++; const char *g = herder_article(fld[1]);
+            if (strcmp(g, fld[2]) != 0) { failures++; printf("FAIL ART(%s): got %s want %s\n", fld[1], g, fld[2]); }
+        } else if (strcmp(fld[0], "PLUR") == 0 && n >= 4) {
+            char g[256]; const char *ov = strcmp(fld[2], "~") == 0 ? NULL : fld[2];
+            herder_pluralize(g, sizeof(g), fld[1], ov);
+            checks++; if (strcmp(g, fld[3]) != 0) { failures++; printf("FAIL PLUR(%s,%s): got %s want %s\n", fld[1], fld[2], g, fld[3]); }
+        } else if (strcmp(fld[0], "VERB") == 0 && n >= 4) {
+            char g[128]; herder_verb_form(g, sizeof(g), fld[1], fld[2], NULL, NULL, NULL);
+            checks++; if (strcmp(g, fld[3]) != 0) { failures++; printf("FAIL VERB(%s,%s): got %s want %s\n", fld[1], fld[2], g, fld[3]); }
+        } else if (strcmp(fld[0], "NUM") == 0 && n >= 3) {
+            char g[128]; herder_number_word(g, sizeof(g), atol(fld[1]));
+            checks++; if (strcmp(g, fld[2]) != 0) { failures++; printf("FAIL NUM(%s): got %s want %s\n", fld[1], g, fld[2]); }
+        } else if (strcmp(fld[0], "ORD") == 0 && n >= 3) {
+            char g[128]; herder_ordinal_word(g, sizeof(g), atol(fld[1]));
+            checks++; if (strcmp(g, fld[2]) != 0) { failures++; printf("FAIL ORD(%s): got %s want %s\n", fld[1], g, fld[2]); }
+        } else if (strcmp(fld[0], "SYL") == 0 && n >= 3) {
+            int g = herder_count_syllables(fld[1]);
+            checks++; if (g != atoi(fld[2])) { failures++; printf("FAIL SYL(%s): got %d want %s\n", fld[1], g, fld[2]); }
+        } else if (strcmp(fld[0], "TIDY") == 0 && n >= 3) {
+            char g[8192]; herder_tidy_sentence(g, sizeof(g), fld[1]);
+            checks++; if (strcmp(g, fld[2]) != 0) { failures++; if (failures < 40) printf("FAIL TIDY(%s):\n  got  [%s]\n  want [%s]\n", fld[1], g, fld[2]); }
         } else if (strcmp(fld[0], "EV") == 0 && n >= 6) {
             HerderWorld *w = ev_world(fld[1]);
             int seq = atoi(fld[2]);
