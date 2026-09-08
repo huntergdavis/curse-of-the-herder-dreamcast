@@ -186,7 +186,7 @@ int main(int argc, char **argv){
     char toastLine[96]=""; int toastUntil=-1;
     char lastHeard[512]="";
     char qtext[8][512]; int qat[8], qsecs[8]; int qn=0, qhead=0;
-    int lastDiaryHour=9; char diaryLine[160]=""; int diaryUntil=-1; char forecast[256]=""; int forecastUntil=frame+8*60; herder_forecast(g_world.seed,g_world.season,forecast,sizeof(forecast));
+    int lastDiaryHour=9; char diaryLine[160]=""; int diaryUntil=-1; int prevLevel=0; char forecast[256]=""; int forecastUntil=frame+8*60; herder_forecast(g_world.seed,g_world.season,forecast,sizeof(forecast));
     static const int SPEEDS[6]={1,2,5,20,60,300}; int spi=0; g_fast=SPEEDS[spi];
     uint64 lastms=timer_ms_gettime64(); double tickAccum=0;
 
@@ -216,6 +216,18 @@ int main(int argc, char **argv){
                                 if(bu.ok){ snprintf(qtext[(qhead+qn)%8],512,"%s",bu.text); qat[(qhead+qn)%8]=at; qsecs[(qhead+qn)%8]=(int)(bu.seconds*60); qn++; at+=(int)(bu.seconds*60)+36; } } }
                     }
                     if(strcmp(ev->kind,"bookFound")==0 && ev->book[0]){ const char *ti=ev->book; for(int bi=0;bi<HERDER_BOOKS_N;bi++) if(strcmp(HERDER_BOOKS[bi].id,ev->book)==0){ ti=HERDER_BOOKS[bi].title; break; } snprintf(toastLine,sizeof(toastLine),"Found: %s",ti); toastUntil=frame+5*60; }
+                    { const char *k=ev->kind; char *T=toastLine; int show=0;
+                      if(strcmp(k,"repeatEscape")==0 && ev->sheep_id>=0 && ev->sheep_id<g_world.sheep_count && g_world.sheep[ev->sheep_id].flees==2){ snprintf(T,96,"That one has earned a name. It is %s now.", HERDER_SHEEP[herder_sheep_name(g_world.seed,ev->sheep_id)]); show=1; }
+                      else if(strcmp(k,"dogHelps")==0){ snprintf(T,96,"%s herded a sheep. Once. It will not be repeated.", HERDER_DOGS[herder_dog_name(g_world.seed)]); show=1; }
+                      else if(strcmp(k,"jailbreak")==0 && ev->sheep_id>=0){ snprintf(T,96,"%s has jumped the fence. It was in. It was in.", HERDER_SHEEP[herder_sheep_name(g_world.seed,ev->sheep_id)]); show=1; }
+                      else if(strcmp(k,"nemesis")==0 && ev->sheep_id>=0){ snprintf(T,96,"Nemesis declared: %s, three flights and counting.", HERDER_SHEEP[herder_sheep_name(g_world.seed,ev->sheep_id)]); show=1; }
+                      else if(strcmp(k,"nemesisCaught")==0 && ev->sheep_id>=0){ snprintf(T,96,"Nemesis caught: %s, after %s flights.", HERDER_SHEEP[herder_sheep_name(g_world.seed,ev->sheep_id)], ev->detail[0]?ev->detail:"several"); show=1; }
+                      else if(strcmp(k,"lunchStolen")==0 && ev->sheep_id>=0){ snprintf(T,96,"Lunch: eaten by %s, while he watched. The cheese too.", HERDER_SHEEP[herder_sheep_name(g_world.seed,ev->sheep_id)]); show=1; }
+                      else if(strcmp(k,"rival")==0){ snprintf(T,96,"%s walks past with three sheep that follow him.", HERDER_RIVALS[herder_rival_name(g_world.seed)]); show=1; }
+                      else if(strcmp(k,"rivalBolt")==0){ snprintf(T,96,"A sheep has bolted from %s's tidy line. He is thrilled.", HERDER_RIVALS[herder_rival_name(g_world.seed)]); show=1; }
+                      else if(strcmp(k,"book")==0){ const char *ti=ev->book; for(int bi=0;bi<HERDER_BOOKS_N;bi++) if(strcmp(HERDER_BOOKS[bi].id,ev->book)==0){ ti=HERDER_BOOKS[bi].title; break; } HerderContext kc; herder_build_context(&kc,&g_world,NULL,4); snprintf(T,96,"Read %s. Vocabulary: %d words.", ti, herder_known_words(&kc)); show=1; }
+                      if(show) toastUntil=frame+5*60;
+                    }
                     if(frame-lastCurse>1200){ int lv=herder_level_for(herder_erudition(g_world.booksRead,g_world.sheepPenned,g_world.tick/14400.0));
                         const char *ck = (strcmp(ev->kind,"mishap")==0||strcmp(ev->kind,"milestone")==0)&&ev->detail[0]?ev->detail:ev->kind;
                         const char *cr=herder_curse_remark(g_world.seed,g_world.tick,ck,lv);
@@ -248,6 +260,9 @@ int main(int argc, char **argv){
         /* deliver queued flyting beats when the bubble is free */
         if(qn>0 && frame>=lineUntil && frame>=qat[qhead]){ snprintf(curline,sizeof(curline),"%s",qtext[qhead]); lineUntil=frame+qsecs[qhead]; snprintf(lastHeard,sizeof(lastHeard),"%s",qtext[qhead]); qhead=(qhead+1)%8; qn--; }
         /* hourly diary */
+        { int lvl=herder_level_for(herder_erudition(g_world.booksRead,g_world.sheepPenned,g_world.tick/14400.0));
+          if(lvl>prevLevel && prevLevel>0){ snprintf(toastLine,sizeof(toastLine),"Level %d - %s. New words have arrived.", lvl, HERDER_LEVEL_NAMES[lvl]); toastUntil=frame+5*60; }
+          prevLevel=lvl; }
         { double dh=9.0+g_world.tick/14400.0; int hr=(int)dh;
           if(hr!=lastDiaryHour && g_world.tick>=40 && hr!=9 && !g_world.finished){ lastDiaryHour=hr;
             int lv=herder_level_for(herder_erudition(g_world.booksRead,g_world.sheepPenned,g_world.tick/14400.0));
