@@ -233,3 +233,9 @@ void herder_map_free(HerderMap *m) {
     free(m->terrain); free(m->deco); free(m->pen_distance);
     m->terrain = m->deco = NULL; m->pen_distance = NULL;
 }
+
+const char *const HERDER_VILLAGE_NAMES[15] = {
+  "Lower Bleating","Upper Bleating","Wether Cross","Muttonham","Fleecebury",
+  "Dagsworth","Cudmarsh","Hoofley","Ramsbottom Minor","Ewe Hollow",
+  "Sheepwash","Woolpit","Lambton End","Tupsley","Shearing Green",
+};

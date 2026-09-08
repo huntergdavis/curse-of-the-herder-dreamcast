@@ -1,5 +1,6 @@
 #include "core/sim/world.h"
 #include "core/sim/book.h"
+#include "data/lang_data.h"
 #include "core/map/terrain.h"
 #include "core/map/path.h"
 #include "core/progression.h"
@@ -308,8 +309,15 @@ static void finish_reading(HerderWorld *w) {
         if (h->targetLibrary >= 0) w->lib[h->targetLibrary].taken = 1;
         int book = w->reading_book;
         w->booksRead++;
+        w->st_books++;
         w->readList[w->readList_count++] = book;
         add_frustration(w, FR_BOOK);
+        /* unlock pack and register from the book catalogue */
+        { const char *bid = HERDER_BOOK_ID[book]; const Book *bk = NULL;
+          for (int i = 0; i < HERDER_BOOKS_N; i++) if (strcmp(HERDER_BOOKS[i].id, bid) == 0) { bk = &HERDER_BOOKS[i]; break; }
+          if (bk && bk->pack) { int have = 0; for (int i = 0; i < w->knownPacks_n; i++) if (strcmp(w->knownPacks[i], bk->pack) == 0) have = 1; if (!have && w->knownPacks_n < 32) w->knownPacks[w->knownPacks_n++] = bk->pack; }
+          if (bk && bk->reg) { int o = 0; for (int i = 0; i < w->registers_n; i++) if (strcmp(w->registers[i].reg, bk->reg) != 0) w->registers[o++] = w->registers[i]; w->registers_n = o; if (w->registers_n < 16) { w->registers[w->registers_n].reg = bk->reg; w->registers[w->registers_n].untilTick = w->tick + 2400; w->registers_n++; } }
+        }
         push_event(w, w->tick, "book", -1, NULL, HERDER_BOOK_ID[book]);
     }
     w->reading_active = 0; w->lastReadTick = w->tick; h->targetLibrary = -1; h->mode = HM_IDLE;
@@ -328,7 +336,7 @@ static void step_weather(HerderWorld *w) {
         double u = kusi(w->seed, "weather", w->tick);
         if (u < 0.45 && !w->rainUntilTick) {
             w->rainUntilTick = w->tick + 8*60*4 + (int)floor(kusi(w->seed, "rain-len", w->tick) * 14*60*4);
-            push_event(w, w->tick, "rain", -1, NULL, NULL);
+            w->st_rains++; push_event(w, w->tick, "rain", -1, NULL, NULL);
         } else if (u < 0.62 && !w->fogUntilTick && !w->rainUntilTick) {
             w->fogUntilTick = w->tick + 6*60*4 + (int)floor(kusi(w->seed, "fog-len", w->tick) * 10*60*4);
             push_event(w, w->tick, "fog", -1, NULL, NULL);
@@ -352,7 +360,7 @@ static void step_jailbreak(HerderWorld *w);
 void herder_step(HerderWorld *w) {
     w->tick++;
     w->frustration = herder_clamp_frustration(herder_frustration_drift(w->frustration, herder_frustration_baseline((double)w->tick / TICKS_PER_HOUR), TICK_SECONDS / 60));
-    /* registers expiry: no events; skipped */
+    if (w->registers_n && w->tick % 40 == 0) { int o = 0; for (int i = 0; i < w->registers_n; i++) if (w->registers[i].untilTick > w->tick) w->registers[o++] = w->registers[i]; w->registers_n = o; }
     step_weather(w);
     step_jailbreak(w);
     step_rival(w);
@@ -405,7 +413,7 @@ static void step_herder(HerderWorld *w) {
         }
         if (w->frustration >= 60 && w->tick - w->lastBreatherTick > BREATHER_COOLDOWN && kusi(w->seed, "breather", w->tick) < 0.5) {
             w->lastBreatherTick = w->tick; h->mode = HM_RESTING; h->restUntilTick = w->tick + BREATHER_TICKS;
-            add_frustration(w, FR_BREATHER); push_event(w, w->tick, "breather", -1, NULL, NULL); return;
+            w->st_breathers++; add_frustration(w, FR_BREATHER); push_event(w, w->tick, "breather", -1, NULL, NULL); return;
         }
         int lib = reading_allowed(w) ? nearby_library(w) : -1;
         if (lib >= 0 && go_to_library(w, lib)) return;
@@ -454,7 +462,7 @@ static void step_herder(HerderWorld *w) {
             }
         }
         if (h->carrying < 0 && h->mode == HM_TOSHEEP && h->tripTiles > 30 && w->tick - w->lastShameTick > SHAME_COOLDOWN && H_hypot(tx - w->map->pen_x, ty - w->map->pen_y) <= SHAME_RADIUS && path_remaining(h) > 12) {
-            w->lastShameTick = w->tick; add_frustration(w, FR_WALK_OF_SHAME); push_event(w, w->tick, "walkOfShame", -1, NULL, NULL);
+            w->lastShameTick = w->tick; w->st_shames++; add_frustration(w, FR_WALK_OF_SHAME); push_event(w, w->tick, "walkOfShame", -1, NULL, NULL);
         }
         if (h->carrying >= 0) {
             h->carryOdometer += 1;
@@ -484,6 +492,7 @@ static void step_herder(HerderWorld *w) {
             int cap = s->nemesis ? MAX_FLEES + 2 : MAX_FLEES;
             if (s->flees < cap && kusiii(w->seed, "flee", s->id, s->flees, w->tick) < s->skittish * 0.5 * hourFactor * grudgeFactor) {
                 s->flees++;
+                w->st_flees++;
                 if (w->streak >= 5) { char db[16]; snprintf(db, sizeof(db), "%d", w->streak); push_event(w, w->tick, "streakBroken", s->id, db, NULL); }
                 int anyNem = 0; for (int q = 0; q < w->sheep_count; q++) if (w->sheep[q].nemesis) anyNem = 1;
                 if (s->flees == 3 && !anyNem) { s->nemesis = 1; push_event(w, w->tick, "nemesis", s->id, NULL, NULL); }
@@ -500,7 +509,7 @@ static void step_herder(HerderWorld *w) {
             if (d <= ((s->on_roof || s->in_river || s->on_boulder) ? 1.6 : 0.75)) {
                 s->on_roof = s->in_river = s->on_boulder = 0;
                 s->mode = 1; h->carrying = s->id; h->carryOdometer = 0;
-                if (s->absurd) { add_frustration(w, FR_ABSURD); push_event(w, w->tick, "absurd", s->id, NULL, NULL); }
+                if (s->absurd) { w->st_absurds++; add_frustration(w, FR_ABSURD); push_event(w, w->tick, "absurd", s->id, NULL, NULL); }
                 else if (s->nemesis) { char db[16]; snprintf(db, sizeof(db), "%d", s->flees); push_event(w, w->tick, "nemesisCaught", s->id, db, NULL); }
                 else if (s->thief) push_event(w, w->tick, "thiefCaught", s->id, NULL, NULL);
                 else if (s->escapee) push_event(w, w->tick, "recaptured", s->id, NULL, NULL);
@@ -556,7 +565,7 @@ static void break_out(HerderWorld *w, HerderSheep *s) {
     s->tx = gx + (kusi(w->seed, "jb-dx", w->tick) < 0.5 ? -4 : 4);
     s->ty = gy + 3; s->speed = 2.5;
     s->home_x = (int)floor(s->tx + 0.5); s->home_y = (int)floor(s->ty + 0.5);
-    s->flees++; s->named = 1; s->escapee = 1;
+    s->flees++; w->st_flees++; s->named = 1; s->escapee = 1;
     w->sheepPenned--; w->jailbreaks++; w->lastJailbreakTick = w->tick;
     add_frustration(w, 18);
     push_event(w, w->tick, "jailbreak", s->id, NULL, NULL);
@@ -666,6 +675,7 @@ void herder_world_init(HerderWorld *w, const HerderMap *map, const char *seed) {
     w->nextWeatherTick = (int)(4 * TICKS_PER_HOUR * 0.6);
     w->rivalLastTick = -100000; w->rivalsSeen = 0;
     w->readList = malloc(64 * sizeof(int)); w->readList_count = 0;
+    w->season = "winter"; /* overridable; web derives from wall clock */
     w->finished = 0; w->finishedTick = -1;
     w->event_cap = 1024; w->events = malloc((size_t)w->event_cap * sizeof(HerderEvent)); w->event_count = 0;
     w->eventCount = 0;

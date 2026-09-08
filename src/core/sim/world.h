@@ -48,6 +48,11 @@ typedef struct {
     int has_drankTick, drankTick, dogHelped, dogHelpedTick;
     /* readingList as book indices (for reread) */
     int *readList; int readList_count;
+    /* speech-facing state (no effect on the event stream) */
+    int st_flees, st_absurds, st_shames, st_rains, st_breathers, st_books, st_mishaps;
+    const char *knownPacks[32]; int knownPacks_n;
+    struct { const char *reg; int untilTick; } registers[16]; int registers_n;
+    const char *season;
     int finished, finishedTick, eventCount;
     /* event log (unbounded; the web reads its 16-ring every tick, same seq order) */
     HerderEvent *events; int event_count, event_cap;

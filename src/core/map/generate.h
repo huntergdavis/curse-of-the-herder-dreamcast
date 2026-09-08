@@ -6,6 +6,7 @@
 #include <stdint.h>
 
 typedef struct { int x, y; int name; /* index into VILLAGE_NAMES */ } HerderVillage;
+extern const char *const HERDER_VILLAGE_NAMES[15];
 
 typedef struct {
     int size;

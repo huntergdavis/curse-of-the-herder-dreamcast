@@ -11,6 +11,7 @@
 #include "core/lang/morphology.h"
 #include "core/lang/banned.h"
 #include "core/lang/grammar.h"
+#include "core/lang/speech.h"
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -46,18 +47,35 @@ static int split_tabs(char *line, char **out, int max) {
 }
 
 
+static char g_season_seed[8][32]; static char g_season_val[8][32]; static int g_season_n = 0;
+static void set_season(const char *seed, const char *val){ for(int i=0;i<g_season_n;i++) if(strcmp(g_season_seed[i],seed)==0){ snprintf(g_season_val[i],32,"%s",val); return; } snprintf(g_season_seed[g_season_n],32,"%s",seed); snprintf(g_season_val[g_season_n],32,"%s",val); g_season_n++; }
+static const char *get_season(const char *seed){ for(int i=0;i<g_season_n;i++) if(strcmp(g_season_seed[i],seed)==0) return g_season_val[i]; return "winter"; }
+
+#define MAX_SPK 4096
+static HerderUtterance *g_spk[4]; /* per cache: indexed by seq */
+
+static int g_ncache = 0;
+static HerderWorld *g_cache[4]; static char g_cseed[4][32]; static HerderMap g_cmap[4];
 static HerderWorld *ev_world(const char *seed) {
-    static HerderWorld *cache[4]; static char cseed[4][32]; static HerderMap cmap[4]; static int ncache = 0;
-    for (int i = 0; i < ncache; i++) if (strcmp(cseed[i], seed) == 0) return cache[i];
-    int i = ncache++;
-    snprintf(cseed[i], 32, "%s", seed);
-    herder_generate_map(cseed[i], 576, &cmap[i]);
-    cache[i] = malloc(sizeof(HerderWorld));
-    herder_world_init(cache[i], &cmap[i], cseed[i]);
-    int guard = 0;
-    while (!cache[i]->finished && guard++ < 9*3600*4 + 10000) herder_step(cache[i]);
-    return cache[i];
+    for (int i = 0; i < g_ncache; i++) if (strcmp(g_cseed[i], seed) == 0) return g_cache[i];
+    int i = g_ncache++;
+    snprintf(g_cseed[i], 32, "%s", seed);
+    herder_generate_map(g_cseed[i], 576, &g_cmap[i]);
+    g_cache[i] = malloc(sizeof(HerderWorld));
+    HerderWorld *w = g_cache[i];
+    herder_world_init(w, &g_cmap[i], g_cseed[i]);
+    w->season = get_season(seed);
+    g_spk[i] = calloc(MAX_SPK, sizeof(HerderUtterance));
+    int lastSeq = -1, guard = 0;
+    /* capture the started event (seq 0) at tick 0 */
+    while (w->event_count > lastSeq + 1) { int seq = ++lastSeq; if (seq < MAX_SPK) g_spk[i][seq] = herder_speak_for_event(w, &w->events[seq], 4); }
+    while (!w->finished && guard++ < 9*3600*4 + 10000) {
+        herder_step(w);
+        while (w->event_count > lastSeq + 1) { int seq = ++lastSeq; if (seq < MAX_SPK) g_spk[i][seq] = herder_speak_for_event(w, &w->events[seq], 4); }
+    }
+    return w;
 }
+static HerderUtterance *ev_spk(const char *seed, int seq){ for (int i = 0; i < g_ncache; i++) if (strcmp(g_cseed[i], seed) == 0) return &g_spk[i][seq]; ev_world(seed); for (int i = 0; i < g_ncache; i++) if (strcmp(g_cseed[i], seed) == 0) return &g_spk[i][seq]; return NULL; }
 
 
 static void build_ctx(int cid, HerderContext *c){
@@ -240,6 +258,21 @@ int main(int argc, char **argv) {
             checks++;
             int got = herder_classify(e, m), want = atoi(fld[3]);
             if (got != want) { failures++; printf("FAIL CLASSIFY(%.3f,%.3f): got %d want %d\n", e, m, got, want); }
+        } else if (strcmp(fld[0], "SEASON") == 0 && n >= 3) {
+            set_season(fld[1], fld[2]);
+        } else if (strcmp(fld[0], "SPK") == 0 && n >= 4) {
+            HerderUtterance *u = ev_spk(fld[1], atoi(fld[2]));
+            checks++;
+            int wantOk = atoi(fld[3]);
+            int bad = (u->ok != wantOk);
+            if (!bad && u->ok) {
+                if (strcmp(u->ruleId?u->ruleId:"", fld[4]) != 0) bad = 1;
+                else if (bits_of(u->heat) != (uint64_t)strtoull(fld[5], NULL, 16)) bad = 1;
+                else if (bits_of(u->seconds) != (uint64_t)strtoull(fld[6], NULL, 16)) bad = 1;
+                else if (strcmp(u->targetLabel, n>=8?fld[7]:"") != 0) bad = 1;
+                else if (strcmp(u->text, n>=9?fld[8]:"") != 0) bad = 1;
+            }
+            if (bad) { failures++; if (failures < 40) printf("FAIL SPK(%s,seq%s): got ok=%d id=%s [%s] tl[%s] want ok=%s id=%s [%s] tl[%s]\n", fld[1],fld[2], u->ok,u->ruleId?u->ruleId:"",u->text,u->targetLabel, fld[3],fld[4],n>=9?fld[8]:"",n>=8?fld[7]:""); }
         } else if (strcmp(fld[0], "GEN") == 0 && n >= 6) {
             HerderContext ctx; build_ctx(atoi(fld[1]), &ctx);
             int ev = event_id(fld[2]);

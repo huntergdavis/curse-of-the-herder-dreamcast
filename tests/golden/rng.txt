@@ -947,631 +947,1257 @@ LIBS	curse-of-the-herder	20	433	441
 LIBS	curse-of-the-herder	21	522	362
 LIBS	curse-of-the-herder	22	532	288
 LIBS	curse-of-the-herder	23	450	458
+SEASON	seed	winter
 EV	seed	0	0	started	-1		
+SPK	seed	0	1	cb0-dawn-0	3fb999999999999a	4003eb851eb851eb	the field	Right. Sheep.
 EV	seed	1	150	bookFound	-1		first-words
+SPK	seed	1	0					
 EV	seed	2	424	book	-1		first-words
+SPK	seed	2	1	t0-book-4	3f621735ee402bae	400387619f0fb38a	the sheep	Hm. Words.
 EV	seed	3	432	caught	5		
+SPK	seed	3	1	t0-caught-3	3f678d4fdf3b645a	400199999999999a	the sheep	Heavy.
 EV	seed	4	478	gaze	-1		
+SPK	seed	4	1	cb0-gaze-0	0000000000000000	400199999999999a	the hill	Cloud.
 EV	seed	5	595	mishap	-1	molehill	
+SPK	seed	5	1	cb0-molehill-1	3fdaa740da740da6	40088bbbbbbbbbbc	the sheep	Mole. Hole. Ankle.
 EV	seed	6	638	penned	5		
+SPK	seed	6	1	t0-penned-4	0000000000000000	400199999999999a	the sheep	There.
 EV	seed	7	805	caught	1		
+SPK	seed	7	1	t0-caught-5	3fbaac5f92c5f92d	400199999999999a	the sheep	Come.
 EV	seed	8	1003	penned	1		
+SPK	seed	8	1	t0-penned-6	0000000000000000	400199999999999a	the sheep	Two.
 EV	seed	9	1184	caught	10		
+SPK	seed	9	1	t0-caught-3	3fbb2dbd194237fb	400199999999999a	the sheep	Heavy.
 EV	seed	10	1400	penned	10		
+SPK	seed	10	1	t0-penned-2	0000000000000000	4003851eb851eb85	the sheep	Blast. One.
 EV	seed	11	1597	caught	3		
+SPK	seed	11	1	t0-caught-8	3fbbbab596de8ca1	400199999999999a	the sheep	Right.
 EV	seed	12	1823	penned	3		
+SPK	seed	12	1	t0-penned-0	0000000000000000	400199999999999a	the sheep	In.
 EV	seed	13	2008	caught	2		
+SPK	seed	13	1	t0-caught-7	3fbc46ff513cc1e1	4003f63ab596de8d	the sheep	Got you.
 EV	seed	14	2229	penned	2		
+SPK	seed	14	1	t0-penned-7	0000000000000000	4003851eb851eb85	the sheep	In. Good.
 EV	seed	15	2229	streak	-1	5	
+SPK	seed	15	1	cb0-streak-2	0000000000000000	400199999999999a	the sheep	Suspicious.
 EV	seed	16	2407	curious	7		
+SPK	seed	16	1	cb0-curious-1	0000000000000000	4006e147ae147ae2	the sheep	You. Came. Good.
 EV	seed	17	2434	caught	7		
+SPK	seed	17	1	t0-caught-1	3fbcd867c3ece2a5	400199999999999a	the sheep	Mine.
 EV	seed	18	2696	mishap	-1	molehill	
+SPK	seed	18	1	cb0-molehill-0	3fe0a11c47e8ba8c	40023d194b8c737a	the hill	Hole!
 EV	seed	19	2704	penned	7		
+SPK	seed	19	1	t0-penned-0	0000000000000000	4003851eb851eb85	the sheep	Bother. In.
 EV	seed	20	2962	bookFound	-1		sad-almanac
+SPK	seed	20	0					
 EV	seed	21	3263	book	-1		sad-almanac
+SPK	seed	21	1	t1-book-0	3fb1c946b79b7b38	4007286cc8f2e8cf	the sheep	A book. Hnng.
 EV	seed	22	3268	caught	6		
+SPK	seed	22	1	t0-caught-4	3fb1e49539506355	400199999999999a	the sheep	Up.
 EV	seed	23	3274	gaze	-1		
+SPK	seed	23	1	cb1-gaze-2	0000000000000000	401228f5c28f5c29	the sheep	Good sky today. Shame about the ground.
 EV	seed	24	3594	penned	6		
+SPK	seed	24	1	t1-penned-3	0000000000000000	4006e147ae147ae2	the sheep	One more in.
 EV	seed	25	3855	caught	9		
+SPK	seed	25	1	t0-caught-8	3fbe6a62b4e06dc6	400199999999999a	the sheep	Right.
 EV	seed	26	3856	bookPassed	-1		
+SPK	seed	26	0					
 EV	seed	27	4156	penned	9		
+SPK	seed	27	1	t0-penned-3	0000000000000000	400199999999999a	the sheep	Stay.
 EV	seed	28	4156	streak	-1	8	
+SPK	seed	28	1	cb0-streak-0	0000000000000000	400d99999999999a	the hill	Five. In a row. Hm.
 EV	seed	29	4294	mishap	-1	wasp	
+SPK	seed	29	1	cb0-wasp-0	3fe75276abdde7ca	40031344980b1922	the sheep	Wasp!
 EV	seed	30	4427	dozy	0		
+SPK	seed	30	1	cb0-dozy-2	3fc60ccbbbb3d82d	40043585162f8a46	the sheep	Sleeping. Fine.
 EV	seed	31	4742	penned	0		
+SPK	seed	31	1	t1-penned-2	3fa59f5577d3af1c	4003b05d634192e3	the sheep	Nine in.
 EV	seed	32	5037	caught	13		
+SPK	seed	32	1	t0-caught-0	3fcd50501d9ec031	40046fa1393ee187	the sheep	Crap, heavy.
 EV	seed	33	5408	penned	13		
+SPK	seed	33	1	t0-penned-7	0000000000000000	4003851eb851eb85	the sheep	In. Good.
 EV	seed	34	5733	caught	11		
+SPK	seed	34	1	t0-caught-6	3fc7514547daa805	400199999999999a	the sheep	Hnngh.
 EV	seed	35	5770	gaze	-1		
+SPK	seed	35	1	cb1-gaze-0	0000000000000000	4013d70a3d70a3d7	the road	Nice cloud. Shaped like a sheep. Of course.
 EV	seed	36	6084	mishap	-1	dogUnderfoot	
+SPK	seed	36	1	cb0-dogUnderfoot-0	3fd31b07ad5a4197	400812f828ea1efb	the sheep	DOG. Feet. MOVE.
 EV	seed	37	6148	penned	11		
+SPK	seed	37	0					
 EV	seed	38	6530	caught	12		
+SPK	seed	38	1	t1-caught-0	3fcfec81d425c00d	40048482c6f31985	the sheep	Got you.
 EV	seed	39	6968	penned	12		
+SPK	seed	39	1	t0-penned-4	3f92e6527693a738	400199999999999a	the sheep	There.
 EV	seed	40	7366	caught	4		
+SPK	seed	40	1	t0-caught-2	3fc9e094eabcb456	400199999999999a	the sheep	Right.
 EV	seed	41	7881	penned	4		
+SPK	seed	41	1	t0-penned-3	0000000000000000	400199999999999a	the sheep	Stay.
 EV	seed	42	8367	bookFound	-1		grumbles
+SPK	seed	42	0					
 EV	seed	43	8711	book	-1		grumbles
+SPK	seed	43	1	t0-book-3	3fa8302218842554	4003b57efc82f3d0	the hill	Book. Good.
 EV	seed	44	8724	caught	8		
+SPK	seed	44	1	t0-caught-6	3fa8be20bafda91d	400199999999999a	the sheep	Hnngh.
 EV	seed	45	9309	penned	8		
+SPK	seed	45	1	t1-penned-1	0000000000000000	4006e147ae147ae2	the sheep	Good sheep. Stay.
 EV	seed	46	9879	absurd	42		
+SPK	seed	46	1	cb1-roof-2	3fccbee457b52c68	40046b15db0f94e8	the sheep	Down. Now.
 EV	seed	47	10292	gaze	-1		
+SPK	seed	47	1	cb0-gaze-0	0000000000000000	400199999999999a	the Curse	Cloud.
 EV	seed	48	10635	penned	42		
+SPK	seed	48	1	t0-penned-4	3f71e0af33ae6bc0	400199999999999a	the sheep	There.
 EV	seed	49	11163	mishap	-1	molehill	
+SPK	seed	49	1	cb2-molehill-0	3fe263e1794a1af5	401bb59a408a643f	the Curse	A molehill. I have made a mountain of it, with my ankle!
 EV	seed	50	11240	rival	-1	1	
+SPK	seed	50	1	cb2-rival-3	3feaeb29b7029423	4025ae638b28b878	the sheep	He does not even have a dog. He does not NEED a dog. I want to lie down in the river!!
 EV	seed	51	11377	flee	22		
+SPK	seed	51	1	t2-flee-3	3fe49c5fcc4a29ca	40101692c9916f6a	the sheep	Do not make me walk!
 EV	seed	52	11466	caught	22		
+SPK	seed	52	1	t1-caught-2	3fd8e4e4bd25c737	40086f95f9e6d755	the sheep	Up we go.
 EV	seed	53	12508	penned	22		
+SPK	seed	53	1	t2-penned-0	3fbfedee649ac328	4010babd24774a01	the sheep	Stay in there. I mean it.
 EV	seed	54	13337	bookFound	-1		slow-things
+SPK	seed	54	0					
 EV	seed	55	13717	book	-1		slow-things
+SPK	seed	55	1	t2-book-0	3fc58c9cfc37aacf	40178965a72411df	the Curse	I did not know there was a word for that.
 EV	seed	56	13718	flee	21		
+SPK	seed	56	1	t1-flee-3	3fde9eb64208b80d	40056f0a1c727706	the sheep	Stop, sheep!
 EV	seed	57	13719	repeatEscape	21		
+SPK	seed	57	1	t2-repeatEscape-1	3fe7f2dfd0ca4c82	40104bfac9d97195	Reginald	I know your face, Reginald!
 EV	seed	58	13803	caught	21		
+SPK	seed	58	1	t0-caught-0	3fd6053ecd437b37	400b9dc490ab41f1	Reginald	Bloody buggering hell, heavy.
 EV	seed	59	14967	penned	21		
+SPK	seed	59	1	cb2-miscount-2	3fd2ca55baba6314	4017c985e109064d	Reginald	Seventeen in. Or forty-three. No. That is the other number.
 EV	seed	60	15267	mishap	-1	cowpat	
+SPK	seed	60	1	cb2-cowpat-1	3fe5c45c084ad7c6	401f47cadf3cff68	the Curse	That is not mud. I know what mud is. That is a cow's opinion.
 EV	seed	61	15820	absurd	14		
+SPK	seed	61	1	cb2-river-3	3fdb9800eaff2d6d	4019be07b56c744d	the sheep	Come out of the river, you mangy mattress, before you dissolve.
 EV	seed	62	15824	bookPassed	-1		
+SPK	seed	62	1	cb2-bookPassed-2	3fdb941f1f1fe0e4	40203b1d49494c51	the wood	Of course there is a book here. Of course I am carrying a wretched sheep.
 EV	seed	63	16870	penned	14		
+SPK	seed	63	1	t2-penned-2	3fc35306bb282c9a	40142456585d4489	the sheep	Stay. Sit. Be an impudent neck in there.
 EV	seed	64	17497	mishap	-1	dogUnderfoot	
+SPK	seed	64	1	cb2-dogUnderfoot-0	3fdb8dcc558c6cfc	4023972cf3e58ddd	the day	The dog. Lying there. In the one place on this entire hill I was about to put my FOOT.
 EV	seed	65	17789	dozy	17		
+SPK	seed	65	1	cb2-dozy-1	3fd4152ec62ce5c2	401981f12445e210	the sheep	Asleep. On a hill. In the rain. I envy this sheep.
 EV	seed	66	18918	penned	17		
+SPK	seed	66	1	t1-penned-5	3fc25386b75fe0b6	400ad00cd9920944	the sheep	Nineteen in, forty-one out.
 EV	seed	67	19630	mishap	-1	molehill	
+SPK	seed	67	1	cb2-molehill-0	3fe66728a9dd212a	401bf5ceb39394a3	the sheep	A molehill. I have made a mountain of it, with my ankle!
 EV	seed	68	19849	curious	25		
+SPK	seed	68	1	cb2-curious-0	0000000000000000	402251eb851eb852	the sheep	At least one of you has sense. Come here. You are my favourite. Do not tell the others.
 EV	seed	69	19865	bookFound	-1		manners
+SPK	seed	69	0					
 EV	seed	70	20116	book	-1		manners
+SPK	seed	70	1	t3-book-2	3fd192e4e1613e8f	400eb2c7e7afad83	the sheep	New words for old hedges.
 EV	seed	71	20117	caught	25		
+SPK	seed	71	1	t2-caught-0	3fd1923a91591f5e	400b56944cec9c34	the sheep	Got you, you tangle.
 EV	seed	72	20204	gaze	-1		
+SPK	seed	72	1	cb2-gaze-1	0000000000000000	401f99999999999a	the sheep	A moment of peace. I will remember this when the rest of the day happens.
 EV	seed	73	21303	penned	25		
+SPK	seed	73	1	cb2-penned-0	3fa19b2ff898b918	402408cd97fc4c5d	the sheep	Jiggit. That is what the old shepherds would have called you, sheep. It means twenty. It also means get IN.
 EV	seed	74	22292	flee	19		
+SPK	seed	74	1	t3-flee-3	3fe0d5d867c3ece2	4019eea53490b9b0	the sheep	Sheep, you have the loyalty of a bridge over dry land.
 EV	seed	75	22359	repeatEscape	19		
+SPK	seed	75	1	t1-repeatEscape-0	3fe9640b48faf53e	4006b1a021714a2d	Maureen	You again.
 EV	seed	76	22448	caught	19		
+SPK	seed	76	1	t2-caught-3	3fd8e3605021d397	40086f7db316981b	Maureen	Hold still, Maureen.
 EV	seed	77	22657	mishap	-1	molehill	
+SPK	seed	77	1	cb2-molehill-0	3fe895de774c6fa7	401c18ba106a898a	Maureen	A molehill. I have made a mountain of it, with my ankle!
 EV	seed	78	22771	scarecrow	-1		
+SPK	seed	78	1	cb0-scarecrow-2	3fd0bd7db52fdf50	4007ed1f896778d7	Maureen	Hat. Nice hat.
 EV	seed	79	23733	penned	19		
+SPK	seed	79	1	t2-penned-0	3fc85a55dc941e6c	4010dc4a9f2064f5	Maureen	Stay in there. I mean it.
 EV	seed	80	24784	mishap	-1	nettles	
+SPK	seed	80	1	cb2-nettles-0	3fe9ec2a211c34a2	401a800a50263e2c	the Curse	Nettles. Of course nettles. Where else would a sheep lead me.
 EV	seed	81	24822	absurd	40		
+SPK	seed	81	1	cb0-boulder-2	3fe1367ecc232ea6	400c64407d5b7013	the sheep	Jesus wept. Up there.
 EV	seed	82	26168	penned	40		
+SPK	seed	82	1	t3-penned-1	3fcdbb4c939b9f7e	401e62725106c06a	the sheep	Twenty-two in, thirty-eight out, and my heels like the wrong end of a cow.
 EV	seed	83	27147	mishap	-1	molehill	
+SPK	seed	83	1	cb2-molehill-0	3fe8b855be76d4e0	401c1ae184dd2fde	the day	A molehill. I have made a mountain of it, with my ankle!
 EV	seed	84	27298	bookFound	-1		knitting
+SPK	seed	84	0					
 EV	seed	85	27606	book	-1		knitting
+SPK	seed	85	1	t3-book-2	3fd632696f256b9f	400efcc0308bf054	the hill	New words for old wasps.
 EV	seed	86	27624	caught	24		
+SPK	seed	86	1	t3-caught-0	3fd6256dcd03f51a	400efbf07669d8ec	the sheep	Got you, you magnificently lummox.
 EV	seed	87	29031	penned	24		
+SPK	seed	87	1	t2-penned-0	3fb3d1d11f8892c4	4010a284e9ed25a1	the sheep	Stay in there. I mean it.
 EV	seed	88	29282	gaze	-1		
+SPK	seed	88	1	cb0-gaze-1	0000000000000000	4003851eb851eb85	the sheep	Nice cloud.
 EV	seed	89	30192	dozy	18		
+SPK	seed	89	1	cb0-dozy-2	3fc420c49ba5e355	40042624dd2f1aa0	the sheep	Sleeping. Fine.
 EV	seed	90	31621	penned	18		
+SPK	seed	90	1	t2-penned-4	3fa45f5339d01f74	400a662f4a4aaa7d	the sheep	In you go, sheep.
 EV	seed	91	31689	gaze	-1		
+SPK	seed	91	1	cb2-gaze-0	0000000000000000	401f99999999999a	the sheep	That cloud looks like a sheep. Everything looks like a sheep. That is the problem.
 EV	seed	92	32817	caught	16		
+SPK	seed	92	1	t1-caught-2	3fd156c8b4395810	4007f6b439581063	the sheep	Up we go.
 EV	seed	93	34268	penned	16		
+SPK	seed	93	1	t2-penned-5	3faad118f5453f20	401243c6db84a168	the sheep	That is twenty-five. That is not enough.
 EV	seed	94	34560	rain	-1		
+SPK	seed	94	1	t2-rain-0	3fd1b6fad7a9568e	401108991e6b5f2f	the sheep	Rain. Of course it is raining.
 EV	seed	95	34835	mishap	-1	wasp	
+SPK	seed	95	1	cb2-wasp-0	3fec869d0369d037	401fb3eeeeeeeeef	the sheep	A wasp. Now a wasp. Sixty sheep and a wasp with a personal grudge.
 EV	seed	96	35560	bookFound	-1		cattle-market
+SPK	seed	96	0					
 EV	seed	97	35980	book	-1		cattle-market
+SPK	seed	97	1	t1-book-3	3fd3dcc9b602a17a	4004c2eb53b2159d	the sheep	New words.
 EV	seed	98	36002	caught	23		
+SPK	seed	98	1	t1-caught-1	3fd3d6bf3b477a44	40081eb3a1c8f286	the sheep	Smelly. Wet sheep.
 EV	seed	99	36680	rival	-1	2	
+SPK	seed	99	1	cb0-rival-0	3fec2aa81f4067b0	4013eba0448362a4	the day	Look. LOOK. His sheep. Walk BEHIND him.
 EV	seed	100	37678	penned	23		
+SPK	seed	100	1	cb4-miscount-0	3fd5c1adda2f9164	401e99928d89ce77	the sheep	Horsefeathers, hold still, all of you, I am COUNTING. Twenty-six. …Twenty-six. Good. I think.
 EV	seed	101	37804	rainStops	-1		
+SPK	seed	101	1	cb2-rainStops-1	3fc1a29464705e0c	4015cba909e3acfd	the road	Dry, at last, apart from every part of me.
 EV	seed	102	37837	mishap	-1	wasp	
+SPK	seed	102	1	cb4-wasp-1	3fee4a05a1619c02	401fd02578ce6bac	the sheep	Great Ram above, call off your wasp. I have done nothing to ANY WASP.
 EV	seed	103	38934	caught	26		
+SPK	seed	103	1	t3-caught-4	3fdc354f09fc65e5	401ecd2f9708351b	the sheep	I have you, and you are as prickly as a letter to a fence.
 EV	seed	104	40460	penned	26		
+SPK	seed	104	1	t4-penned-1	3fc59374a48be32c	40142d581002d364	the sheep	Twenty-seven penned, thirty-three roaming, and balderdash, my teeth.
 EV	seed	105	40460	streak	-1	5	
+SPK	seed	105	1	cb4-streak-0	3fb18d4faf7e2cc0	4024118d4faf7e2d	the hill	By the Green Pasture, five in a row. I know what this is. This is the quiet before the sheep.
 EV	seed	106	41748	bookFound	-1		vulgar-tongue
+SPK	seed	106	0					
 EV	seed	107	42132	book	-1		vulgar-tongue
+SPK	seed	107	1	t2-book-1	3fcc16872b020c4a	4017a38d4fdf3b65	the hill	This book calls it a slough. I have other names.
 EV	seed	108	42133	streakBroken	20	5	
+SPK	seed	108	1	cb4-streakBroken-0	3fe5bea27983c132	4023d6ead65b7a33	the sheep	Gadzooks and devil take it! I called it! I called it at five and here it is at sheep!
 EV	seed	109	42133	flee	20		
+SPK	seed	109	1	t4-flee-4	3fe0f1d5acb6f465	401efaa27983c132	the sheep	Run, sheep, and I will make you into oven gloves when I catch you!
 EV	seed	110	42232	caught	20		
+SPK	seed	110	1	t3-caught-2	3fd26ad65b7a327c	4019749e60f04c76	the sheep	You smell like a stile with a grudge left in dilberry.
 EV	seed	111	42946	mishap	-1	cowpat	
+SPK	seed	111	1	cb4-cowpat-1	3fe7285cd7b900ae	402234242e6bdc80	the day	Great Ram above, there is bastard lumpy cow in my boot and none of it is cow!
 EV	seed	112	43824	penned	20		
+SPK	seed	112	1	t3-penned-0	3fc4fbfca2b5a84a	401c91609661e0df	the sheep	Stay in there like a sedan chair with one bearer. Do not move.
 EV	seed	113	45142	caught	27		
+SPK	seed	113	1	t4-caught-3	3fdf0c1e098ead66	4011734237fa89e6	the sheep	There, you blasted mildewed lump. Home.
 EV	seed	114	45142	mishap	27	bite	
+SPK	seed	114	1	cb2-bite-2	3fec52dbd1942380	401aa6756b2dbd1a	the sheep	Bitten. By a sheep. I will not be telling anyone this!!
 EV	seed	115	45438	jailbreak	21		
+SPK	seed	115	1	cb4-jailbreak-1	3ff0000000000000	4027851eb851eb85	Reginald	By the Ewe Mother, I carried that one home on my own two shoulders and it has let itself out like a lodger.
 EV	seed	116	46747	penned	27		
+SPK	seed	116	1	t2-penned-7	3fd53da59658e00b	401480f76a236ad7	the sheep	The pen is nice. Stay in the pen.
 EV	seed	117	46848	recaptured	21		
+SPK	seed	117	1	cb2-recaptured-1	3fea734153e4c056	401a887bc352c6e7	Reginald	Recaptured. I want that on the record. I want a plaque.
 EV	seed	118	46940	penned	21		
+SPK	seed	118	1	cb4-miscount-1	3fdd3835ac76f3b4	401ed546cc1c098a	Reginald	Blessed Crook, they shuffle when I count. It is the only exercise they get.
 EV	seed	119	48526	absurd	28		
+SPK	seed	119	1	cb4-boulder-0	3fde2b70e29dabed	401d2ecc2aebf79d	the sheep	Shit and bollocks! On a BOULDER! Like a bog-soaked statue of a ninnyhammer!
 EV	seed	120	49064	wind	-1		
+SPK	seed	120	1	cb2-wind-1	3fdd46e6136d4344	4019cb7edeafe4fc	the sheep	Wind. Now the sheep smell reaches me before the sheep do.
 EV	seed	121	50498	penned	28		
+SPK	seed	121	1	t4-penned-3	3fcc7bd759ea9fe8	4015f70e15b99605	the sheep	Blessed Crook, blast, another one in. Thirty to go.
 EV	seed	122	50498	milestone	-1	halfway	
+SPK	seed	122	1	cb4-halfway-1	3fdb0ab879c21cc1	401b67b1ecc3d376	the Curse	Damme, halfway! And the easy half is the half that is done!
 EV	seed	123	50507	lunch	-1		
+SPK	seed	123	1	cb4-lunch-1	0000000000000000	401f99999999999a	the field	Sit, Moss. No. That is my cheese. You herd nothing and you want my cheese.
 EV	seed	124	50577	lunchStolen	56		
+SPK	seed	124	1	cb2-lunchStolen-1	3ff0000000000000	402351eb851eb852	Percival	Give it back. You cannot give it back. I know you cannot give it back. GIVE IT BACK!!
 EV	seed	125	50594	mishap	-1	cowpat	
+SPK	seed	125	1	cb2-cowpat-1	3fee59aa492db59c	401fd11fc34b2d46	the day	That is not mud. I know what mud is. That is a cow's opinion!
 EV	seed	126	50605	thiefCaught	56		
+SPK	seed	126	1	cb0-thiefCaught-2	3feb22279c3d0c3a	4006e963abd98d0c	Percival	Thief. UP.
 EV	seed	127	50617	penned	56		
+SPK	seed	127	1	t5-penned-1	3fd77355efe3fc75	40245dcd57bf8ff2	Percival	Thirty-first sheep penned (I say this with love, and I am lying). Twenty-nine remain, each more shitty than the last.
 EV	seed	128	51100	windDrops	-1		
+SPK	seed	128	1	cb4-windDrops-0	3fd63a931453835f	40252ff489c1f1e4	the sheep	By the Bell of the First Wether, the wind has gone, and taken nothing I will miss, except my hat, twice.
 EV	seed	129	52259	bookFound	-1		fungi
+SPK	seed	129	0					
 EV	seed	130	52625	book	-1		fungi
+SPK	seed	130	1	t4-book-2	3fd7f4a91c828598	4012e89b0b737056	the sheep	Honestly. Literature. Just what my teeth needed.
 EV	seed	131	52626	flee	39		
+SPK	seed	131	1	t5-flee-1	3fe5e593b94d472d	4023011822e9228b	the sheep	Damn it! Come back here (and I use the word loosely) and be caught like a sensible moon-curser!
 EV	seed	132	52714	repeatEscape	39		
+SPK	seed	132	1	t5-repeatEscape-2	3fee6d03ab4eeb32	40241c5ddfe9d383	Cuthbert	I named you, Cuthbert, and now I regret it, for I must say your name when I CURSE YOU.
 EV	seed	133	52788	nemesis	39		
+SPK	seed	133	1	cb4-nemesis-0	3ff0000000000000	402c000000000000	Cuthbert	Holy haystacks, bloody buggering shit and the devil's in it! Three flights! Hear me, Cuthbert: of sixty sheep on this hill you are the only one I would describe as PERSONAL.
 EV	seed	134	52788	repeatEscape	39		
+SPK	seed	134	1	t1-repeatEscape-1	3ff0000000000000	4007851eb851eb85	Cuthbert	Cuthbert. Again.
 EV	seed	135	52872	repeatEscape	39		
+SPK	seed	135	1	t4-repeatEscape-0	3ff0000000000000	401c8f5c28f5c290	Cuthbert	Blast it, Cuthbert, we meet again, and I have not MISSED YOU.
 EV	seed	136	52979	nemesisCaught	39	4	
+SPK	seed	136	1	cb2-nemesisCaught-2	3fe58e4bca9eba12	401a3a2c6abe6683	Cuthbert	Say goodbye to the hill, Cuthbert. Say it. I will wait.
 EV	seed	137	55118	penned	39		
+SPK	seed	137	1	t2-penned-0	3fdaa079800aef4d	40114fe513ae6bf5	Cuthbert	Stay in there. I mean it.
 EV	seed	138	55127	breather	-1		
+SPK	seed	138	1	t4-breather-1	3fe218d2ba886efd	401854c05edbba24	the hill	By the Green Pasture, a stump. I love this stump!
 EV	seed	139	56757	mishap	-1	cowpat	
+SPK	seed	139	1	cb0-cowpat-3	3fec6d95aea9544a	400dcb2359ac34c7	the sheep	Plague take it. Pat!
 EV	seed	140	56872	dozy	32		
+SPK	seed	140	1	cb4-dozy-1	3fdedd959eda6976	40167c0b6548bed1	the sheep	Dozing, you shabby bolster. I should charge you rent.
 EV	seed	141	58946	penned	32		
+SPK	seed	141	1	t5-penned-3	3fd2f7882fea7bef	4017caef74b28713	the sheep	Stay in, you lump. The gate is not a suggestion.
 EV	seed	142	59594	mishap	-1	wasp	
+SPK	seed	142	1	cb2-wasp-0	3ff0000000000000	401feb851eb851ec	the sheep	A wasp. Now a wasp. Sixty sheep and a wasp with a PERSONAL GRUDGE.
 EV	seed	143	60624	dozy	36		
+SPK	seed	143	1	cb4-dozy-1	3fde68e2cb07e0d0	40167865ceaa2a8c	the sheep	Dozing, you mud-caked bolster. I should charge you rent.
 EV	seed	144	61973	mishap	-1	dogUnderfoot	
+SPK	seed	144	1	cb4-dogUnderfoot-0	3fe5721751c8a73a	402b63e2a61363f2	the sheep	Shit and bollocks, a fig for it and perdition, Moss, you are the only thing on this hill that follows me, and you use it to TRIP ME!
 EV	seed	145	62280	rival	-1	3	
+SPK	seed	145	1	cb4-rival-1	3ff0000000000000	402bb851eb851eb8	the road	Great Ram above, you gave that man sheep that follow him and you gave me THESE. I would like to speak to whoever is in charge of allocations.
 EV	seed	146	62306	rivalBolt	-1		
+SPK	seed	146	1	cb4-rivalBolt-0	3fdb8d57fdc39a31	4025453f9d67b240	the road	Pox take it, look at that! One of Silas' has RUN! It happens to him too! IT HAPPENS TO HIM TOO!
 EV	seed	147	62694	penned	36		
+SPK	seed	147	1	t3-penned-1	3fd66f9f03ca72b5	401cf0ed9bf55dd4	the sheep	Thirty-four in, twenty-six out, and my knees like a sermon in the rain.
 EV	seed	148	64372	bookFound	-1		bard
+SPK	seed	148	0					
 EV	seed	149	64827	book	-1		bard
+SPK	seed	149	1	t6-book-2	3fd73f548bdbc492	401ea57fc3173011	the sheep	Marry, a book. I shall learn a phrase and spend it on a sheep.
 EV	seed	150	64847	caught	37		
+SPK	seed	150	1	t5-caught-2	3fd75aa30d90acac	401ea65a3724d751	the sheep	You are venomed, you are heavy, and you are, beshrew me, coming with me.
 EV	seed	151	65770	mishap	-1	molehill	
+SPK	seed	151	1	cb0-molehill-2	3feae31ce554f22a	400d99d44081a883	the sheep	A pox on't! Hole!!
 EV	seed	152	66871	penned	37		
+SPK	seed	152	1	t6-penned-1	3fd19de1c20adbd2	401b1c4b3706196f	the sheep	In. Thirty-five. If there were sponsors they would have left by now.
 EV	seed	153	68068	jailbreak	9		
+SPK	seed	153	1	cb4-jailbreak-1	3ff0000000000000	4026ae147ae147ae	Hilda	Sweet Saint Bleat, I carried that one home on my own two shoulders and it has let itself out like a lodger!!
 EV	seed	154	68457	flee	34		
+SPK	seed	154	1	t5-flee-5	3fed972ef2e99576	40190ca62261cc8b	the sheep	Dash it all, the underlevelled clodhopper has legs after all!
 EV	seed	155	68552	caught	34		
+SPK	seed	155	1	cb4-caught-0	3fe56bca30fc8ae9	40214f355bc554fb	the sheep	Got you, you spore-laden yellow brain. You come off like a puffball and you smell worse!
 EV	seed	156	69017	mishap	-1	cowpat	
+SPK	seed	156	1	cb0-cowpat-0	3ff0000000000000	400428f5c28f5c29	the day	Pat!!
 EV	seed	157	69046	rant	-1		
+SPK	seed	157	1	cb6-rant-1	3ff0000000000000	4027851eb851eb85	the slope	Hear me, hill, thou contrary lump of the earth's bad temper: I am done being reasonable, and I was never good AT IT!!
 EV	seed	158	70415	penned	34		
+SPK	seed	158	1	t6-penned-1	3fdb70c464d008b7	401b6ae24c1c42d6	the sheep	In. Thirty-five. If there were sponsors they would have left by now.
 EV	seed	159	70424	breather	-1		
+SPK	seed	159	1	t4-breather-0	3fe2817bc44cac1b	4011a2f903f2df3d	the hill	Burn me. A sit-down. Crappy earned!
 EV	seed	160	70535	repeatEscape	9		
+SPK	seed	160	1	t4-repeatEscape-0	3ff0000000000000	401c8f5c28f5c290	Hilda	Holy shit, Hilda, we meet again, and I have not MISSED YOU.
 EV	seed	161	70611	recaptured	9		
+SPK	seed	161	1	cb4-recaptured-1	3fefa640eccbdc94	4021a10911a3cf89	Hilda	Blessed Crook, I have caught the same sheep twice today and I feel nothing BUT OLD!!
 EV	seed	162	70737	mishap	-1	gate	
+SPK	seed	162	1	cb0-gate-0	3ff0000000000000	400428f5c28f5c29	the field	Gate!
 EV	seed	163	70750	penned	9		
+SPK	seed	163	1	cb4-miscount-1	3fe66e546ed13173	401f526a65a56503	Hilda	Merciful Shears, they shuffle when I count. It is the only exercise they get.
 EV	seed	164	71436	bookFound	-1		cooks-oracle
+SPK	seed	164	0					
 EV	seed	165	71835	book	-1		cooks-oracle
+SPK	seed	165	1	t4-book-2	3fe159f46548ed31	40133e9508e3eafc	the sheep	Tsk. Literature. Just what my lungs needed.
 EV	seed	166	72466	absurd	52		
+SPK	seed	166	1	cb4-boulder-0	3fe31fec3c7971da	40213cd66c213c33	the sheep	Od's heartlikins, bastard and heavens above! On a BOULDER! Like a droning statue of a rabbit-sucker!
 EV	seed	167	72472	bookPassed	-1		
+SPK	seed	167	1	cb2-bookPassed-2	3fe31dab67d147c0	40213cc4657bfae2	the sheep	Of course there is a book here. Of course I am carrying an ultra vires sheep!
 EV	seed	168	72895	mishap	-1	nettles	
+SPK	seed	168	1	cb4-nettles-1	3ff0000000000000	4025d70a3d70a3d7	the day	By the Patron of Lost Things, I have been stung in places I will not name in front of the sheep!!
 EV	seed	169	73970	penned	52		
+SPK	seed	169	1	t5-penned-0	3fd9be1941eb7eb9	40180123fd428f2a	the sheep	In you go, sheep, and may the pen improve you.
 EV	seed	170	74785	mishap	-1	crook	
+SPK	seed	170	1	cb4-crook-0	3ff0000000000000	402351eb851eb852	the slope	Blessed Crook, case dismissed! The crook! The one goatish thing in this valley that was on MY SIDE!!
 EV	seed	171	75163	scarecrow	-1		
+SPK	seed	171	1	cb4-scarecrow-0	3fe20467c8081a3e	40263e37b9218880	the road	Great Ram above, look at him. Straw for brains and a better hat than mine, and not one sheep to his name.
 EV	seed	172	75208	drink	-1		
+SPK	seed	172	1	cb6-drink-0	3fd99e0d4535a905	402c000000000000	the road	I drink from the village well, road, and I want it recorded that I did not spit in it, though the thought was there and it was a good one.
 EV	seed	173	75251	absurd	30		
+SPK	seed	173	1	cb4-roof-2	3fe8e4a34248e497	401dcbbad7fb9887	the sheep	Come down, you sodding cat with a tiara, before the chimney gets ideas!
 EV	seed	174	76579	rant	-1		
+SPK	seed	174	1	cb4-rant-2	3ff0000000000000	4025d70a3d70a3d7	the Curse	You! Curse! I know you are watching! Is this FUNNY to you? It is a little funny. I am STILL ANGRY!!
 EV	seed	175	76771	penned	30		
+SPK	seed	175	1	cb4-miscount-0	3fe564e12d2d6668	40214efe13a6dbd7	the sheep	Bloody buggering shit, hold still, all of you, I am COUNTING. Thirty-eight. …Thirty-eight. Good. I think!
 EV	seed	176	77124	mishap	-1	wasp	
+SPK	seed	176	1	cb4-wasp-1	3ff0000000000000	4020cccccccccccd	the road	By the Long Fence, call off your wasp. I have done nothing to any wasp.
 EV	seed	177	77922	bookFound	-1		drover
+SPK	seed	177	0					
 EV	seed	178	78377	book	-1		drover
+SPK	seed	178	1	t7-book-0	3fe44cac1171927b	401bd426ea0cdbb8	the field	By thunder, a book! More words! More languages to be negligent in!
 EV	seed	179	78401	dozy	33		
+SPK	seed	179	1	cb4-dozy-0	3fe11058eb8109d3	40270da17fadf3d4	the sheep	Sweet Saint Bleat, it sleeps. It sleeps like a cabbage with opinions. Carry it soft, herder; this is the one good thing today.
 EV	seed	180	79794	mishap	-1	gate	
+SPK	seed	180	1	cb0-gate-1	3ff0000000000000	4007851eb851eb85	the hill	Open. OPEN!!
 EV	seed	181	79807	penned	33		
+SPK	seed	181	1	t6-penned-3	3fde3f6d5e175de7	4018252e9e23ee23	the sheep	Get thee in, thou base measle, and mind the gate.
 EV	seed	182	80905	absurd	15		
+SPK	seed	182	1	cb2-roof-1	3fe671c09b6eb873	401f52a1286f3d73	the sheep	How did you get onto the roof? No. Do not tell me. Come down.
 EV	seed	183	82224	penned	15		
+SPK	seed	183	1	t5-penned-3	3fdc2e181c9a458d	401814a3f4180560	the sheep	Stay in, you dalcop. The gate is not a suggestion.
 EV	seed	184	83056	mishap	-1	molehill	
+SPK	seed	184	1	cb2-molehill-2	3fefd3f8f0a2d750	401fe8c4adc27f61	the sheep	Tommyrot, the ground has a hole in it and my foot found IT FIRST!
 EV	seed	185	83319	bookFound	-1		blacks-law
+SPK	seed	185	0					
 EV	seed	186	83696	book	-1		blacks-law
+SPK	seed	186	1	t5-book-1	3fe20960232c95bf	4013498bc4c22585	the Curse	Words, Curse. Some of them about you!
 EV	seed	187	83709	caught	31		
+SPK	seed	187	1	t6-caught-1	3fe2058559146c3e	401a01a003a5c1a6	the sheep	Got you. Loot box, opened. Contents: you. I want a refund!
 EV	seed	188	85012	penned	31		
+SPK	seed	188	1	cb6-penned-0	3fd50f494747ff3f	40295e7a95c0f707	the sheep	Jiggit. The old word for forty-one. Twenty words for counting sheep and none for what the sheep do to a man; the dales had their priorities.
 EV	seed	189	86015	mishap	-1	wasp	
+SPK	seed	189	1	cb4-wasp-0	3ff0000000000000	402351eb851eb852	the sheep	Damn and double damn! A wasp, all afternoon, with a grudge and a confounded negligent sense OF TIMING!!
 EV	seed	190	86111	dogHelps	38		
+SPK	seed	190	1	cb6-dogHelps-0	3fcc928150e0b9cc	402a1a6cb0b63c55	the sheep	Mark the hour, sheep: Moss has done, for the first and I suspect the last time, the thing it is named for. Both halves of the name.
 EV	seed	191	86133	caught	38		
+SPK	seed	191	1	t5-caught-1	3fe6277716274025	401895aaa495a736	the sheep	There, you dead man's fingers. Caught, and not before time!
 EV	seed	192	86133	mishap	38	heave	
+SPK	seed	192	1	cb4-heave-1	3fefc110afc0d9be	4021a1df8fbb7772	the sheep	Great Ram above, it weighs like a sermon and it will not be lifted like one!!
 EV	seed	193	86533	rain	-1		
+SPK	seed	193	1	t4-rain-0	3fe62e7c16e4b1bf	40102fb48e3b17e9	the field	Bollocks, rain! Catastrophically bollocksed rain!
 EV	seed	194	87615	penned	38		
+SPK	seed	194	1	t6-penned-1	3fdcbb165a4647d7	401ed15dd18a842b	the sheep	Forty-second sheep penned. Oh, shit, eighteen yet roam, each one a dashed mutton-headed jolter-head.
 EV	seed	195	87920	rival	-1	4	
+SPK	seed	195	1	cb4-rival-1	3ff0000000000000	402c000000000000	the road	By the Patron of Lost Things, you gave that man sheep that follow him and you gave me THESE. I would like to speak to whoever is in charge OF ALLOCATIONS.
 EV	seed	196	88642	mishap	-1	molehill	
+SPK	seed	196	1	cb2-molehill-1	3ff0000000000000	4019333333333334	the Curse	Somewhere under here a mole is very pleased with itself!
 EV	seed	197	88672	rant	-1		
+SPK	seed	197	1	cb6-rant-0	3ff0000000000000	40227ae147ae147b	the sheep	Thou sky! Thou great grey nothing! I have words for thee and none of them ARE THANKS!
 EV	seed	198	88880	flee	35		
+SPK	seed	198	1	t0-flee-9	3ff0000000000000	4007851eb851eb85	the sheep	Oh no!!
 EV	seed	199	88931	caught	35		
+SPK	seed	199	1	t7-caught-3	3feaa0eef9ef2d72	401076dbbc6bbfa4	the sheep	Caught, you nut-hook. Blast. Home.
 EV	seed	200	90339	penned	35		
+SPK	seed	200	1	t7-penned-1	3fe20c0093ebcea0	4014f7ca46af60c1	the sheep	Forty-third penned. Hell, bless me, and stay in!
 EV	seed	201	90348	breather	-1		
+SPK	seed	201	1	t1-breather-2	3fe6d6e86fb47b8a	400d184db1cd99af	the Curse	Moment. Just a moment!
 EV	seed	202	90389	rainStops	-1		
+SPK	seed	202	1	cb2-rainStops-2	3fe067276218c83a	401ef1f794d9de70	the day	The rain has gone to bother someone else. Good. Take the sheep with you.
 EV	seed	203	91260	bookFound	-1		crawler-notes
+SPK	seed	203	0					
 EV	seed	204	91525	book	-1		crawler-notes
+SPK	seed	204	1	t8-book-1	3fe1f6e36a5bc97b	4023b8acdde23a75	the sheep	There was a book in the box. I read it because it was there. That is why anyone reads.
 EV	seed	205	91541	absurd	41		
+SPK	seed	205	1	cb8-river-1	3fe4912bc733827b	401f3497db2b8a14	the sheep	It was cold. The sheep did not mind. I minded for both of us.
 EV	seed	206	91586	mishap	-1	molehill	
+SPK	seed	206	1	cb8-molehill-0	3ff0000000000000	4021a3d70a3d70a4	the day	The mole had dug the hole. My foot had found it. Both had done their jobs.
 EV	seed	207	92389	rant	-1		
+SPK	seed	207	1	cb8-rant-2	3ff0000000000000	4025000000000000	the road	I put the sheep down. I said what I had to say to the weather. I picked the sheep up.
 EV	seed	208	92594	penned	41		
+SPK	seed	208	1	t7-penned-1	3fddcb252abe8d39	4014c56366c69841	the sheep	Forty-fourth penned. Oh, shit, codswallop, and stay in.
 EV	seed	209	93679	caught	51		
+SPK	seed	209	1	t7-caught-1	3fe3ed6f91e97783	401367ccbbadf3a1	the sheep	There, you lazy lobcock's apprentice. Arse. Up!
 EV	seed	210	93680	bookPassed	-1		
+SPK	seed	210	1	cb8-bookPassed-1	3fe3ed220f189804	401d7c42c4c893be	the hill	I saw the box. I kept walking. The sheep did not read either.
 EV	seed	211	94046	mishap	-1	nettles	
+SPK	seed	211	1	cb0-nettles-0	3ff0000000000000	400428f5c28f5c29	the sheep	Nettles!
 EV	seed	212	95006	penned	51		
+SPK	seed	212	1	cb8-penned-0	3fdd4e178784d2df	4022c723e33ccb9d	the sheep	In. The dog watched. The dog has watched all of them. The dog is very good at watching.
 EV	seed	213	96048	flee	58		
+SPK	seed	213	1	cb2-flee-0	3fedb880145d3bb6	4014047dc3d52fe4	the sheep	Moss! After it!… No. Of course not!!
 EV	seed	214	96083	repeatEscape	58		
+SPK	seed	214	1	t8-repeatEscape-2	3ff0000000000000	40227ae147ae147b	Doreen	Twice. I had a name for it. The name was Doreen and the name was not enough.
 EV	seed	215	96118	repeatEscape	58		
+SPK	seed	215	1	t8-repeatEscape-3	3ff0000000000000	4020cccccccccccd	Doreen	Doreen. I said the name out loud. The sheep heard it and did not care.
 EV	seed	216	96164	black	58		
+SPK	seed	216	1	cb0-black-2	3fed3270221d0253	400a8795b2581b2c	Doreen	You. Always you!
 EV	seed	217	96390	mishap	-1	molehill	
+SPK	seed	217	1	cb8-molehill-0	3ff0000000000000	4021a3d70a3d70a4	the day	The mole had dug the hole. My foot had found it. Both had done their jobs.
 EV	seed	218	96398	rant	-1		
+SPK	seed	218	1	cb2-rant-3	3ff0000000000000	401ae147ae147ae2	the Curse	Every one of you knows where the pen is. EVERY ONE!
 EV	seed	219	96527	rain	-1		
+SPK	seed	219	1	t1-rain-2	3fefc88b80ac255b	400ada591e29ff8d	the field	Of course. RAIN!
 EV	seed	220	97415	penned	58		
+SPK	seed	220	1	cb4-miscount-1	3febf9d08c8f61dc	402331ba09833361	Doreen	By all the lambs of March, they shuffle when I count. It is the only exercise they get.
 EV	seed	221	97424	breather	-1		
+SPK	seed	221	1	t8-breather-0	3fea5dc1b4fdb5a0	40224dcf55560228	the slope	I sat down. The shoulder was good under me. I did not get up for a while.
 EV	seed	222	98480	mishap	-1	nettles	
+SPK	seed	222	1	cb8-nettles-0	3ff0000000000000	4017851eb851eb85	the sheep	There were nettles. I found out the usual way.
 EV	seed	223	98592	bookFound	-1		french
+SPK	seed	223	0					
 EV	seed	224	98941	book	-1		french
+SPK	seed	224	1	t7-book-2	3fe9453f535ab738	4013bd49b7c5079c	the sheep	Words, bof. I collect them like burrs!
 EV	seed	225	98951	caught	54		
+SPK	seed	225	1	t6-caught-0	3fe942653c81991f	401a756e01dc9474	the sheep	Now, thou insupportable bollock-brain, I have thee, and thou art heavy.
 EV	seed	226	99721	rant	-1		
+SPK	seed	226	1	cb8-rant-1	3ff0000000000000	402351eb851eb852	the sheep	There is a point in every day where a man shouts at a hill. This was the point.
 EV	seed	227	100333	penned	54		
+SPK	seed	227	1	cb8-miscount-0	3fe6dc1933155697	4028ea13fccbdde8	the sheep	I counted them. I counted them again. The numbers were different. One of us was wrong and I did not think it was the sheep.
 EV	seed	228	100389	rainStops	-1		
+SPK	seed	228	1	cb2-rainStops-1	3fe06b9d1e6934ba	40168bd88a387ed1	the sheep	Dry, at last, apart from every part of me.
 EV	seed	229	101191	mishap	-1	nettles	
+SPK	seed	229	1	cb2-nettles-0	3ff0000000000000	401ae147ae147ae2	the sheep	Nettles. Of course nettles. Where else would a sheep lead me!!
 EV	seed	230	101310	caught	57		
+SPK	seed	230	1	cb9-caught-0	3fe96b4b834e38ea	401063818501b05c	the sheep	Got you, you beslubbered blowfish.
 EV	seed	231	102476	penned	57		
+SPK	seed	231	1	cb2-miscount-0	3fe68e439a2d0aea	40189c176cd603e3	the sheep	Forty-eight. No. Forty-eight. I counted one twice. Or once. Forty-eight!
 EV	seed	232	102864	mishap	-1	nettles	
+SPK	seed	232	1	cb8-nettles-0	3ff0000000000000	4017851eb851eb85	the sheep	There were nettles. I found out the usual way.
 EV	seed	233	103461	bookFound	-1		german
+SPK	seed	233	0					
 EV	seed	234	103750	book	-1		german
+SPK	seed	234	1	t7-book-0	3fe550a778f0fc2f	401f408f964761af	the sheep	For crying out loud, a book! More words! More languages to be cold in!
 EV	seed	235	103751	breather	-1		
+SPK	seed	235	1	t9-breather-0	3fe3b6c258f59b2a	40186e9f58c28ce7	the slope	Dropping anchor on this stump. Barnacles and brimstone, my ankles.
 EV	seed	236	103839	caught	44		
+SPK	seed	236	1	t9-caught-1	3fe3f2d576506696	401f2ab2761d5855	the sheep	Ten thousand full-gorged fences and codswallop, you are heavier than a wet hawser, sheep!
 EV	seed	237	103880	bookPassed	-1		
+SPK	seed	237	1	cb8-bookPassed-0	3fe40ed2bb436e16	4023c96c5869779a	the day	There was a book. I was carrying a sheep. You cannot read with a sheep. That is a rule.
 EV	seed	238	104759	mishap	-1	cowpat	
+SPK	seed	238	1	cb8-cowpat-0	3ff0000000000000	402428f5c28f5c29	the sheep	I stepped in it. There was a lot of it. The cow was long gone and had done well.
 EV	seed	239	105062	penned	44		
+SPK	seed	239	1	t7-penned-0	3fddd811d61c5f39	402477604758717d	the sheep	In. Another one in. I feel like a man who has packed the hamper and forgotten the tin-opener: complete, technically.
 EV	seed	240	105855	absurd	29		
+SPK	seed	240	1	cb1-river-3	3fe7670a3d70a3d7	4006720000000000	the sheep	Ugh. Swimming!
 EV	seed	241	106830	penned	29		
+SPK	seed	241	1	t6-penned-1	3fdf5fdfb5737033	401b8a5b26a15e12	the sheep	In. Fifty. If there were sponsors they would have left by now.
 EV	seed	242	106830	milestone	-1	tentogo	
+SPK	seed	242	1	cb8-tentogo-0	3fe6165641201e80	401bf0c18d07c478	the sheep	Ten. I said it out loud. It did not make them fewer.
 EV	seed	243	107597	mishap	-1	nettles	
+SPK	seed	243	1	cb8-nettles-0	3ff0000000000000	4017851eb851eb85	the day	There were nettles. I found out the usual way.
 EV	seed	244	107765	bookFound	-1		three-men
+SPK	seed	244	0					
 EV	seed	245	108150	book	-1		three-men
+SPK	seed	245	1	t10-book-1	3fe512799dff6e1d	401f3cacb89848ce	the field	Words, field. Words upon words. I shall use every one of them on you.
 EV	seed	246	108193	caught	59		
+SPK	seed	246	1	cb9-caught-1	3fe76d450d45bec5	4011f1b598827067	the sheep	There, you catastrophically beastly bugbear. Home!
 EV	seed	247	108193	mishap	59	heave	
+SPK	seed	247	1	cb4-heave-1	3ff0000000000000	4020cccccccccccd	the sheep	Holy Fleece, it weighs like a sermon and it will not be lifted LIKE ONE!!
 EV	seed	248	109396	penned	59		
+SPK	seed	248	1	t9-penned-3	3fdcd770f6a3848f	401b7617b0aadeb4	the sheep	Sod it! Beshrew me! Sod it! Another one docked. Nine still adrift!
 EV	seed	249	110106	mishap	-1	nettles	
+SPK	seed	249	1	cb4-nettles-1	3ff0000000000000	402351eb851eb852	the bramble	Great Ram above, I have been stung in places I will not name in front of THE SHEEP!!
 EV	seed	250	110273	rant	-1		
+SPK	seed	250	1	cb8-rant-0	3ff0000000000000	402428f5c28f5c29	the Curse	I stopped walking. I shook my fist at the sky. The sky did not notice. I felt better anyway.
 EV	seed	251	110376	flee	45		
+SPK	seed	251	1	t3-flee-5	3ff0000000000000	4021a3d70a3d70a4	the sheep	Every sheep runs, at the tail end of the day. Every one. Like an unlit lantern!
 EV	seed	252	110377	repeatEscape	45		
+SPK	seed	252	1	t9-repeatEscape-0	3ff0000000000000	401c8f5c28f5c290	Muriel	Cazzo! Blast my ballast! Bloody buggering shit! Muriel again, the ridiculous mutineer!!
 EV	seed	253	110415	caught	45		
+SPK	seed	253	1	t10-caught-0	3feeaecff3221a5a	401413e2c1c17dcf	Muriel	Apprehended, Muriel. Apprehended, catalogued and MAUDIT HARUM-SCARUM!
 EV	seed	254	111460	penned	45		
+SPK	seed	254	1	t9-penned-1	3fe4518f33a19c38	401f309e11f26bb0	Muriel	Fifty-two in the hold, eight on the waves, and a pox on't, my ankles!
 EV	seed	255	111787	mishap	-1	cowpat	
+SPK	seed	255	1	cb0-cowpat-3	3ff0000000000000	4007851eb851eb85	the field	Bollocks. PAT!
 EV	seed	256	112340	flee	50		
+SPK	seed	256	1	cb9-flee-1	3ff0000000000000	4010cccccccccccd	the sheep	Stop, you hare-brained, hopeless hobbledehoy!!
 EV	seed	257	112381	caught	50		
+SPK	seed	257	1	t9-caught-3	3fee41b348330bb3	401c73775d78f34b	the sheep	Salt and shingle, sheep, you are ballast and I am THE BOAT!!
 EV	seed	258	112497	rain	-1		
+SPK	seed	258	1	t10-rain-0	3fee08a40504c152	4024193ae2b78234	the sheep	Rain, with the light going: the sky's contribution to fifty-two sheep carried, eight uncarried, and one man UNCARED FOR.
 EV	seed	259	113240	rival	-1	5	
+SPK	seed	259	1	cb8-rival-0	3ff0000000000000	40227ae147ae147b	the day	He walked past. His sheep walked behind him. Nobody said anything. That was the worst of it.
 EV	seed	260	113632	mishap	-1	gate	
+SPK	seed	260	1	cb8-gate-0	3ff0000000000000	4020cccccccccccd	the sheep	The gate stuck. I held the sheep and looked at the gate. The gate held.
 EV	seed	261	113645	penned	50		
+SPK	seed	261	1	t8-penned-0	3fe5954c3e4dd666	40188c87f718109a	the sheep	In. Fifty-three now. I did not feel anything about it.
 EV	seed	262	113654	breather	-1		
+SPK	seed	262	1	t8-breather-0	3fea5f9ac91e5943	40224dde1df70745	the sheep	I sat down. The hoof was clean under me. I did not get up for a while.
 EV	seed	263	114761	bookFound	-1		grays
+SPK	seed	263	0					
 EV	seed	264	115088	book	-1		grays
+SPK	seed	264	1	t9-book-1	3fe61261295eaa26	40222b7450f909cc	the sheep	By my boots and a pox on't, a ship's log! Someone else's, but I shall read it!
 EV	seed	265	115095	caught	53		
+SPK	seed	265	1	t10-caught-0	3fe85547e726afa1	4013ae4a4101c723	the sheep	Apprehended, sheep. Apprehended, catalogued and damned wretched!
 EV	seed	266	115095	mishap	53	heave	
+SPK	seed	266	1	cb0-heave-2	3ff0000000000000	4007851eb851eb85	the sheep	Marry. HEAVY.
 EV	seed	267	115120	rant	-1		
+SPK	seed	267	1	cb8-rant-1	3ff0000000000000	402351eb851eb852	the field	There is a point in every day where a man shouts at a hill. This was the point.
 EV	seed	268	115356	rainStops	-1		
+SPK	seed	268	1	cb2-rainStops-2	3fe21845e2fbe046	401f0d097ce80ff0	the sheep	The rain has gone to bother someone else. Good. Take the sheep with you!
 EV	seed	269	116344	penned	53		
+SPK	seed	269	1	t9-penned-3	3fdfbbe5f7d21667	401d3b4fd3959af1	the sheep	Bosh, bollocks and ninety-nine impertinent gall bladders! Another one docked. Six still adrift!
 EV	seed	270	116990	mishap	-1	nettles	
+SPK	seed	270	1	cb8-nettles-0	3ff0000000000000	4017851eb851eb85	the sheep	There were nettles. I found out the usual way.
 EV	seed	271	117287	curious	47		
+SPK	seed	271	1	cb2-curious-1	3fda9ecacd97fc9a	401b64527f628275	the sheep	It walked up to me. It just walked up. I could weep.
 EV	seed	272	117308	caught	47		
+SPK	seed	272	1	cb9-caught-1	3fea149677a13724	40121c2aaf2827ed	the sheep	There, you bastard half-hitched herbivore. Home!!
 EV	seed	273	118398	penned	47		
+SPK	seed	273	1	cb7-miscount-0	3fe7b255da066bb8	4018ae5890d399f0	the sheep	Un, deux, trois… fifty-five. Where was I. Quatre. No. Fifty-five!
 EV	seed	274	118874	mishap	-1	nettles	
+SPK	seed	274	1	cb2-nettles-1	3ff0000000000000	401c8f5c28f5c290	the Curse	My legs are on fire and the sheep is eating A DAISY.
 EV	seed	275	119114	bookFound	-1		porca
+SPK	seed	275	0					
 EV	seed	276	119370	book	-1		porca
+SPK	seed	276	1	t11-book-0	3fe71770f2e8fb81	40215c9291d4b880	the sheep	A book! A box! A rhyme for 'box'? / 'Socks.' I have wet socks. Read on.
 EV	seed	277	119607	dozy	49		
+SPK	seed	277	1	cb4-dozy-1	3fe3ef3b645a1cac	4016c4126e978d50	the sheep	Dozing, you slow bolster. I should charge you rent.
 EV	seed	278	120350	mishap	-1	nettles	
+SPK	seed	278	1	cb4-nettles-1	3ff0000000000000	402428f5c28f5c29	the Curse	By the Long Fence, I have been stung in places I will not name in front of THE SHEEP!
 EV	seed	279	120422	wind	-1		
+SPK	seed	279	1	cb8-wind-0	3feb8086e1b91314	402256e57ebbdd14	the hill	The wind came up. I held my hat. The sheep did not hold anything. They never do.
 EV	seed	280	120772	penned	49		
+SPK	seed	280	1	cb4-miscount-0	3fe891c49d1606e0	40223f6f6c96c4b2	the sheep	Well, that is that, hold still, all of you, I am COUNTING. Fifty-six. …Fifty-six. Good. I think!
 EV	seed	281	120781	breather	-1		
+SPK	seed	281	1	t7-breather-0	3fe6f652ed13640d	402813db8d2b2a7c	the hill	I shall sit. I am told that idleness is a vice; I have always found it the only one I am any good at!
 EV	seed	282	121856	dozy	46		
+SPK	seed	282	1	cb4-dozy-0	3fe44fa4fa4fa4fb	4028d5b05b05b05b	the sheep	Saint Woolgather's knees, it sleeps. It sleeps like a sonnet addressed to a turnip. Carry it soft, herder; this is the one good thing today.
 EV	seed	283	121864	bookPassed	-1		
+SPK	seed	283	1	cb8-bookPassed-1	3fe7832f8f21e7e1	401db5a39cc928bc	the sheep	I saw the box. I kept walking. The sheep did not read either.
 EV	seed	284	122445	mishap	-1	nettles	
+SPK	seed	284	1	cb8-nettles-0	3ff0000000000000	4017851eb851eb85	the sheep	There were nettles. I found out the usual way.
 EV	seed	285	123048	penned	46		
+SPK	seed	285	1	t9-penned-4	3fe2aad56a4d8734	4011a58e9e52ecee	the sheep	Moored, you goosecap. Batten the gate!
 EV	seed	286	123048	streak	-1	5	
+SPK	seed	286	1	cb8-streak-0	3fdeef446e34a803	4022cda896d78af2	the sheep	Five went in and none of them ran. I did not trust it. I was right not to.
 EV	seed	287	123362	windDrops	-1		
+SPK	seed	287	1	cb2-windDrops-0	3fe26df8ea36b108	401bb63bb7992da0	the sheep	The wind has dropped. My hat and I would like an apology.
 EV	seed	288	123985	mishap	-1	cowpat	
+SPK	seed	288	1	cb0-cowpat-2	3ff0000000000000	400ae147ae147ae2	the sheep	Cow. Pat. Boot!!
 EV	seed	289	124079	dozy	48		
+SPK	seed	289	1	cb4-dozy-0	3fe7fa8b43b10881	4028f3078d50bb77	the sheep	By the Green Pasture, it sleeps. It sleeps like a sextant in a snowstorm. Carry it soft, herder; this is the one good thing today!
 EV	seed	290	125103	rant	-1		
+SPK	seed	290	1	cb11-rant-0	3ff0000000000000	402ae147ae147ae1	the field	Sky above and mud below, / Sixty sheep and one to go, / One herder, hoarse, who used to grunt, / Now shouting couplets at the front!
 EV	seed	291	125257	penned	48		
+SPK	seed	291	1	cb2-miscount-0	3fe8c7d68b994008	4018bfb09becc734	the sheep	Fifty-eight. No. Fifty-eight. I counted one twice. Or once. Fifty-eight!
 EV	seed	292	126198	mishap	-1	molehill	
+SPK	seed	292	1	cb2-molehill-0	3ff0000000000000	401c8f5c28f5c290	the slope	A molehill. I have made a mountain of it, with MY ANKLE!
 EV	seed	293	126307	bookFound	-1		geology
+SPK	seed	293	0					
 EV	seed	294	126699	book	-1		geology
+SPK	seed	294	1	t11-book-1	3fe6bb7e64615c6a	40281204e8e59a3f	the hill	New words in a little wooden house; / I take them out as quiet as a mouse, / Then shout them at a sheep.
 EV	seed	295	126708	caught	55		
+SPK	seed	295	1	t1-caught-0	3fe6c1a34190770f	40065d532083fa67	the sheep	Got you!
 EV	seed	296	127797	mishap	-1	wasp	
+SPK	seed	296	1	cb8-wasp-0	3ff0000000000000	4021a3d70a3d70a4	the road	The wasp went round me twice. It did not find what it wanted. Neither have I.
 EV	seed	297	128004	penned	55		
+SPK	seed	297	1	t11-penned-1	3fe4f8f1845ac73a	4020749458efa307	the sheep	One more in, and the gate swings shut; / One still out. My verses: cut.
 EV	seed	298	128004	milestone	-1	lastone	
+SPK	seed	298	1	cb8-lastone-0	3feb5f57eac12da1	4026890f3a37511b	the sheep	One left. I went to get it. That is all there is to say about the last one until it is in.
 EV	seed	299	128267	rant	-1		
+SPK	seed	299	1	cb11-rant-1	3ff0000000000000	4020cccccccccccd	the day	I shook my fist. I shook it twice. / The hill said nothing. Very nice.
 EV	seed	300	129104	caught	43		
+SPK	seed	300	1	t9-caught-3	3fe9dd2f4594350d	401c2d2f1d4f05e1	the sheep	Salt and shingle, sheep, you are ballast and I am the boat.
 EV	seed	301	129336	mishap	-1	nettles	
+SPK	seed	301	1	cb2-nettles-2	3ff0000000000000	401e3d70a3d70a3e	the sheep	Od's heartlikins, nettles to the knee. I hate every one of YOU INDIVIDUALLY.
 EV	seed	302	130459	penned	43		
+SPK	seed	302	1	t10-penned-0	3fe57b284231c27e	4024abd942118e14	the sheep	Deposited: one foot-licker, flea-bitten, who is looking at me as if I were the problem. Remaining: zero. Regret: sodding present.
 EV	seed	303	130459	streak	-1	8	
+SPK	seed	303	1	cb4-streak-0	3fe247f50efe8f4c	4024923fa877f47a	the sheep	By the Long Fence, five in a row. I know what this is. This is the quiet before the sheep!
 EV	seed	304	130468	breather	-1		
+SPK	seed	304	1	t5-breather-0	3fea447e2b041886	40209ef0be24ed91	the sheep	A sit-down, ach du liebe Zeit. My shoulders have earned it; the sheep has not!
 EV	seed	305	130549	finished	-1		
+SPK	seed	305	1	t11-finished-1	3ff0000000000000	4026ae147ae147ae	the Curse	The last is in. The gate is shut. / I have a rhyme, and here it is: / By Neptune's soggy beard.
 EVEND	seed	130549	1	306
+SEASON	grudge	winter
 EV	grudge	0	0	started	-1		
+SPK	grudge	0	1	cb0-dawn-2	3fb999999999999a	4003eb851eb851eb	the Curse	Honestly. Day.
 EV	grudge	1	171	bookFound	-1		first-words
+SPK	grudge	1	0					
 EV	grudge	2	572	book	-1		first-words
+SPK	grudge	2	1	t0-book-3	3f6867c3ece2a548	4003882bb0cf87da	the field	Book. Good.
 EV	grudge	3	573	flee	1		
+SPK	grudge	3	1	t0-flee-1	3fd409374bc6a7f0	400199999999999a	the sheep	Hey.
 EV	grudge	4	615	caught	1		
+SPK	grudge	4	1	t0-caught-0	3fcbb851eb851ebf	400199999999999a	the sheep	Got.
 EV	grudge	5	615	mishap	1	bite	
+SPK	grudge	5	1	cb0-bite-0	3fe3bae147ae147d	400958a3d70a3d72	the sheep	It BIT me!
 EV	grudge	6	702	gaze	-1		
+SPK	grudge	6	1	cb0-gaze-1	0000000000000000	4003851eb851eb85	the sheep	Nice cloud.
 EV	grudge	7	851	penned	1		
+SPK	grudge	7	1	t0-penned-2	0000000000000000	4003851eb851eb85	the sheep	Blast. One.
 EV	grudge	8	1053	flee	13		
+SPK	grudge	8	1	t0-flee-6	3fdf64ff479d2ad5	40021f45b7092ed6	the sheep	Wait!
 EV	grudge	9	1091	caught	13		
+SPK	grudge	9	1	t0-caught-1	3fce8f18f3587884	400199999999999a	the sheep	Mine.
 EV	grudge	10	1358	penned	13		
+SPK	grudge	10	1	t0-penned-2	3f7b50a3841c84e0	40038bf2e132f2a6	the sheep	Blast. One.
 EV	grudge	11	1578	dozy	9		
+SPK	grudge	11	1	cb0-dozy-2	3fb8e074657773d2	4003e8a089e7c954	the sheep	Sleeping. Fine.
 EV	grudge	12	1843	penned	9		
+SPK	grudge	12	1	t0-penned-6	0000000000000000	400199999999999a	the sheep	Three.
 EV	grudge	13	2075	dozy	0		
+SPK	grudge	13	1	cb0-dozy-2	3fb22196360268be	4003cda51129f528	the sheep	Sleeping. Fine.
 EV	grudge	14	2355	penned	0		
+SPK	grudge	14	1	t0-penned-0	0000000000000000	4003851eb851eb85	the sheep	Bother. In.
 EV	grudge	15	2447	mishap	-1	wasp	
+SPK	grudge	15	1	cb0-wasp-3	3fe8712b95a6de08	400693442b06c746	the road	Off. OFF!
 EV	grudge	16	2615	dozy	5		
+SPK	grudge	16	1	cb0-dozy-0	3fca365049966415	4007b2fa30612e03	the sheep	Asleep. Still asleep.
 EV	grudge	17	2924	penned	5		
+SPK	grudge	17	1	t0-penned-1	3fb1dfcd653e1b08	400199999999999a	the sheep	Good.
 EV	grudge	18	3204	bookFound	-1		sad-almanac
+SPK	grudge	18	0					
 EV	grudge	19	3678	book	-1		sad-almanac
+SPK	grudge	19	1	t1-book-1	3fc12adf66d627c4	40076a9ea94b2c20	the sheep	Words. Bleating words.
 EV	grudge	20	3700	black	11		
+SPK	grudge	20	1	cb0-black-1	3fc111c0442c0d29	400ac5fea5f86aa7	the sheep	Black one. Of course.
 EV	grudge	21	3867	gaze	-1		
+SPK	grudge	21	1	cb1-gaze-0	0000000000000000	4013d70a3d70a3d7	the sheep	Nice cloud. Shaped like a sheep. Of course.
 EV	grudge	22	4024	penned	11		
+SPK	grudge	22	1	t0-penned-2	0000000000000000	400199999999999a	the sheep	One.
 EV	grudge	23	4024	streak	-1	5	
+SPK	grudge	23	1	cb0-streak-1	0000000000000000	4006e147ae147ae2	the sheep	Easy. Too easy.
 EV	grudge	24	4280	caught	2		
+SPK	grudge	24	1	t0-caught-8	3fbf4e81b4e81b4e	400199999999999a	the sheep	Right.
 EV	grudge	25	4583	penned	2		
+SPK	grudge	25	1	t0-penned-2	0000000000000000	4003851eb851eb85	the sheep	Blast. One.
 EV	grudge	26	4877	dozy	7		
+SPK	grudge	26	1	cb0-dozy-0	3f9a02bb0cf87d98	4006fb4a69217360	the sheep	Asleep. Still asleep.
 EV	grudge	27	4970	mishap	-1	molehill	
+SPK	grudge	27	1	cb0-molehill-1	3fe0822222222222	4008f18bf258bf26	the Curse	Mole. Hole. Ankle.
 EV	grudge	28	5298	penned	7		
+SPK	grudge	28	1	t0-penned-7	0000000000000000	4003851eb851eb85	the sheep	In. Good.
 EV	grudge	29	5657	caught	4		
+SPK	grudge	29	1	t0-caught-0	3fc5f72fbe00a78f	400199999999999a	the sheep	Got.
 EV	grudge	30	6095	penned	4		
+SPK	grudge	30	1	t1-penned-4	0000000000000000	4003851eb851eb85	the sheep	Stay. Good.
 EV	grudge	31	6095	streak	-1	8	
+SPK	grudge	31	1	cb0-streak-2	0000000000000000	400199999999999a	the Curse	Suspicious.
 EV	grudge	32	6144	gaze	-1		
+SPK	grudge	32	1	cb1-gaze-2	0000000000000000	401228f5c28f5c29	the hill	Good sky today. Shame about the ground.
 EV	grudge	33	6440	streakBroken	12	8	
+SPK	grudge	33	1	cb0-streakBroken-0	3fe33d1fb5f99bb0	400948eba4d3ae58	the sheep	There. Knew it!
 EV	grudge	34	6440	flee	12		
+SPK	grudge	34	1	t1-flee-0	3fdce0a5d2599dc6	4005532915778561	the sheep	Bad sheep!
 EV	grudge	35	6481	repeatEscape	12		
+SPK	grudge	35	1	t1-repeatEscape-0	3fe706a1f495eb68	400665f2f6e4a8f2	Prudence	You again!
 EV	grudge	36	6526	nemesis	12		
+SPK	grudge	36	1	cb0-nemesis-2	3fedfd7fb063735e	400dfd2099e378aa	Prudence	Three times. Remember face!!
 EV	grudge	37	6526	repeatEscape	12		
+SPK	grudge	37	1	t1-repeatEscape-0	3feaca4c7d30402c	4006de6847f7f38a	Prudence	You again!!
 EV	grudge	38	6578	nemesisCaught	12	3	
+SPK	grudge	38	1	cb0-nemesisCaught-1	3fd55d72f6cfbd54	4004daf5e7bee75a	Prudence	Mine. MINE.
 EV	grudge	39	6870	mishap	-1	wasp	
+SPK	grudge	39	1	cb0-wasp-1	3ff0000000000000	400428f5c28f5c29	the day	WASP!
 EV	grudge	40	6968	penned	12		
+SPK	grudge	40	1	t0-penned-3	3fd417cec38c1a17	400199999999999a	Prudence	Stay.
 EV	grudge	41	7338	caught	3		
+SPK	grudge	41	1	t1-caught-5	3fdf35050d3abeaf	4005786f09259770	the sheep	Mine now.
 EV	grudge	42	7836	penned	3		
+SPK	grudge	42	1	t0-penned-8	3fcc8572f9775392	4004694a501da622	the sheep	Stay in.
 EV	grudge	43	8247	caught	10		
+SPK	grudge	43	1	t0-caught-7	3fd972e21aa1e32e	40051c4cd9fc09b8	the sheep	Got you.
 EV	grudge	44	8576	mishap	-1	wasp	
+SPK	grudge	44	1	cb0-wasp-2	3ff0000000000000	400ae147ae147ae2	the sheep	Blast it! WASP!
 EV	grudge	45	8745	penned	10		
+SPK	grudge	45	1	t0-penned-4	3fd24c41957b6dd6	400199999999999a	the sheep	There.
 EV	grudge	46	9114	bookFound	-1		grumbles
+SPK	grudge	46	0					
 EV	grudge	47	9357	book	-1		grumbles
+SPK	grudge	47	1	t0-book-3	3fd6180cda3a6077	4004e69f85f5918c	the sheep	Book. Good.
 EV	grudge	48	9366	caught	8		
+SPK	grudge	48	1	t1-caught-2	3fda8b002f5801ac	400889f7b109fafd	the sheep	Up we go.
 EV	grudge	49	9366	mishap	8	heave	
+SPK	grudge	49	1	cb0-heave-0	3fe6df19b1459a70	400304d8f8b80f77	the sheep	Hnngh!
 EV	grudge	50	9866	penned	8		
+SPK	grudge	50	1	t0-penned-7	3fc29eb65367b968	40041a146aed2950	the sheep	In. Good.
 EV	grudge	51	10325	caught	6		
+SPK	grudge	51	1	t1-caught-2	3fd493d2c6c1600d	40082a84da8090e3	the sheep	Up we go.
 EV	grudge	52	10872	penned	6		
+SPK	grudge	52	1	t0-penned-4	3fb0f7cbc7ef1908	400199999999999a	the sheep	There.
 EV	grudge	53	10872	streak	-1	5	
+SPK	grudge	53	1	cb0-streak-0	0000000000000000	400d99999999999a	the sheep	Five. In a row. Hm.
 EV	grudge	54	10880	rival	-1	1	
+SPK	grudge	54	1	cb0-rival-0	3feabfe1f2e96c75	4013d4f3e1bdf2f0	the day	Look. LOOK. His sheep. Walk BEHIND him.
 EV	grudge	55	11448	absurd	42		
+SPK	grudge	55	1	cb1-roof-1	3fd8c9efcaa4dad6	400f26389643e747	the sheep	A sheep. On a house.
 EV	grudge	56	11798	mishap	-1	wasp	
+SPK	grudge	56	1	cb0-wasp-0	3fef9a7781927874	40041c44b2c1ab38	the Curse	Wasp!!
 EV	grudge	57	12184	penned	42		
+SPK	grudge	57	1	t2-penned-3	3fd0dd579b6f4098	400ea76f13508da4	the sheep	Good. Now do not leave.
 EV	grudge	58	12927	scarecrow	-1		
+SPK	grudge	58	1	cb2-scarecrow-2	3fcbd631e757a07a	4017a28bfad091b6	the sheep	I envy the scarecrow. Nobody expects him to catch anything.
 EV	grudge	59	12943	absurd	15		
+SPK	grudge	59	1	cb1-roof-3	3fdfc70fe2259dc6	4008ddb8ac36d4be	the sheep	Tsk. A roof.
 EV	grudge	60	13881	penned	15		
+SPK	grudge	60	1	cb2-miscount-1	3fdb205f3c10713b	40180c362d13b6be	the sheep	One, two, three… sixteen. Where was I. Sixteen. Stop moving.
 EV	grudge	61	14234	mishap	-1	cowpat	
+SPK	grudge	61	1	cb0-cowpat-2	3fe9b43619359fb4	400a17ce713b2ed8	the sheep	Cow. Pat. Boot!!
 EV	grudge	62	14701	absurd	52		
+SPK	grudge	62	1	cb2-boulder-1	3fe1adf394d529c6	401d584fdd245cda	the sheep	A sheep on a rock, posing. Get down. You are not a monument!
 EV	grudge	63	15750	penned	52		
+SPK	grudge	63	1	cb2-penned-1	3fcf790e168ebeb2	40279b1b11efacd9	the sheep	Yan, tan, tethera, methera, pip, sethera…. That is the old counting. My grandfather did it, and it did not make him any happier either.
 EV	grudge	64	16535	bookFound	-1		slow-things
+SPK	grudge	64	0					
 EV	grudge	65	16860	book	-1		slow-things
+SPK	grudge	65	1	t1-book-2	3fd213a76bb31732	4004a6592f0d1cf8	the wood	Good book.
 EV	grudge	66	16861	flee	24		
+SPK	grudge	66	1	t2-flee-3	3fe2f4fe40acb5bd	400ff83961af3052	the sheep	Do not make me walk.
 EV	grudge	67	16908	mishap	-1	nettles	
+SPK	grudge	67	1	cb2-nettles-1	3fe9ec3fe1ebad59	401c2e2027147d66	the wood	My legs are on fire and the sheep is eating a daisy!
 EV	grudge	68	16991	caught	24		
+SPK	grudge	68	1	t2-caught-1	3fdd1e9fe6019ee0	401163d646de2172	the sheep	You weigh more than you should.
 EV	grudge	69	18159	penned	24		
+SPK	grudge	69	1	cb2-miscount-1	3fd752bd9f8e2f9b	4017edc9202fa4b1	the sheep	One, two, three… eighteen. Where was I. Eighteen. Stop moving.
 EV	grudge	70	19080	dozy	23		
+SPK	grudge	70	1	cb2-dozy-1	3fcc238f8203e47f	401951d5ec1c8a74	the sheep	Asleep. On a hill. In the rain. I envy this sheep.
 EV	grudge	71	20254	penned	23		
+SPK	grudge	71	1	t1-penned-5	3fb1a46cd27d4948	400a84025720ff63	the sheep	Nineteen in, forty-one out.
 EV	grudge	72	21177	curious	21		
+SPK	grudge	72	1	cb2-curious-2	0000000000000000	401c3d70a3d70a3e	the sheep	Look at this one. Look. This is how it is SUPPOSED to go.
 EV	grudge	73	21264	bookFound	-1		manners
+SPK	grudge	73	0					
 EV	grudge	74	21695	book	-1		manners
+SPK	grudge	74	1	t3-book-1	3fbdb29bf391e5ca	40191cace5fb9eae	the day	Reading. I had forgotten how. Like a bell with no clapper.
 EV	grudge	75	21696	caught	21		
+SPK	grudge	75	1	t2-caught-4	3fbdb8120d82e103	4010b6516bc91a3d	the sheep	Up you come, you good-for-nothing scarecrow.
 EV	grudge	76	22763	gaze	-1		
+SPK	grudge	76	1	cb2-gaze-3	0000000000000000	401a8f5c28f5c290	the road	Listen. Nothing. No bleating. This is what other people's jobs are like.
 EV	grudge	77	22986	penned	21		
+SPK	grudge	77	1	cb2-miscount-1	3fc9da6b60087604	40179a9ce0b3550c	the sheep	One, two, three… twenty. Where was I. Twenty. Stop moving.
 EV	grudge	78	23209	mishap	-1	cowpat	
+SPK	grudge	78	1	cb2-cowpat-1	3fe3dba3b7ec4510	401f293f5a37163d	the sheep	That is not mud. I know what mud is. That is a cow's opinion!
 EV	grudge	79	24063	caught	16		
+SPK	grudge	79	1	t0-caught-5	3fd23defba8ecfb9	400199999999999a	the sheep	Come.
 EV	grudge	80	24882	mishap	-1	molehill	
+SPK	grudge	80	1	cb0-molehill-0	3fe53cba193ae172	4002d08d05b6b857	the sheep	Hole!
 EV	grudge	81	25379	penned	16		
+SPK	grudge	81	1	t2-penned-7	3fbb598870ba7b18	40140dbd4e5218cd	the sheep	The pen is nice. Stay in the pen.
 EV	grudge	82	26106	gaze	-1		
+SPK	grudge	82	1	cb2-gaze-3	0000000000000000	401a8f5c28f5c290	the field	Listen. Nothing. No bleating. This is what other people's jobs are like.
 EV	grudge	83	26577	caught	17		
+SPK	grudge	83	1	t2-caught-1	3fd0b2b0283615dc	40110076c8efc52a	the sheep	You weigh more than you should.
 EV	grudge	84	28062	penned	17		
+SPK	grudge	84	1	t2-penned-7	3f9c058aa18df8c0	4013e50d02c16ad3	the sheep	The pen is nice. Stay in the pen.
 EV	grudge	85	28062	streak	-1	5	
+SPK	grudge	85	1	cb2-streak-0	0000000000000000	401deb851eb851ec	the sheep	Five in a row. Something is wrong. I can feel it in my knees.
 EV	grudge	86	28371	mishap	-1	cowpat	
+SPK	grudge	86	1	cb2-cowpat-2	3fe4ba7ef9db22d0	401f372d0e560419	the day	Bugger this, the cow is not even HERE and it has ruined my day!
 EV	grudge	87	29211	streakBroken	22	5	
+SPK	grudge	87	1	cb2-streakBroken-1	3fe8ba774ec2fcc6	402169aac4b3888a	the sheep	And the luck runs out, like everything else on this hill, downhill and away from me!
 EV	grudge	88	29211	flee	22		
+SPK	grudge	88	1	cb2-flee-0	3fe3edaa81f62ff8	401367d06aaebf28	the sheep	Nell! After it!… No. Of course not!
 EV	grudge	89	29368	caught	22		
+SPK	grudge	89	1	t3-caught-2	3fd766553553ef01	4017ee65dcddd2ac	the sheep	You smell like a ladder with ideas left in pat.
 EV	grudge	90	29902	mishap	-1	nettles	
+SPK	grudge	90	1	cb2-nettles-2	3fea4f67297b4045	401de267166ebe42	the wood	Good gravy, nettles to the knee. I hate every one of you individually!
 EV	grudge	91	30915	penned	22		
+SPK	grudge	91	1	cb2-miscount-0	3fd9110cc13f44fa	4017fbbb993d2d5c	the sheep	Twenty-three. No. Twenty-three. I counted one twice. Or once. Twenty-three.
 EV	grudge	92	31803	mishap	-1	nettles	
+SPK	grudge	92	1	cb2-nettles-2	3fea4e488b4627b4	401de2552c8b6cb9	the bramble	Bloody Nora, nettles to the knee. I hate every one of you individually!
 EV	grudge	93	32130	bookFound	-1		knitting
+SPK	grudge	93	0					
 EV	grudge	94	32417	book	-1		knitting
+SPK	grudge	94	1	t1-book-0	3fd5bb06ae090e3a	40083cf818f50bc6	the sheep	A book. No.
 EV	grudge	95	32494	dozy	27		
+SPK	grudge	95	1	cb2-dozy-1	3fce430627639e71	40195a53c6b2095c	the sheep	Asleep. On a hill. In the rain. I envy this sheep.
 EV	grudge	96	33968	penned	27		
+SPK	grudge	96	1	cb2-miscount-1	3fd162d3a37fc159	4017be49d04f313f	the sheep	One, two, three… twenty-four. Where was I. Twenty-four. Stop moving.
 EV	grudge	97	34560	rain	-1		
+SPK	grudge	97	1	t0-rain-0	3fd1ece2a53490ba	400199999999999a	the sheep	Rain.
 EV	grudge	98	35303	caught	20		
+SPK	grudge	98	1	t2-caught-0	3fd22aec33e1f672	400ebc485cd7b901	the sheep	Got you, you damned nuisance.
 EV	grudge	99	36360	rival	-1	2	
+SPK	grudge	99	1	cb2-rival-2	3febca294a2def24	402407470ce0cba2	the Curse	Three sheep. Cuthbert has three sheep and a smile. I have sixty and a hernia. Wave back. WAVE BACK!!
 EV	grudge	100	37069	penned	20		
+SPK	grudge	100	1	t0-penned-2	3fc14ff398b9bd70	40040f9e5517b970	the sheep	Crap. One.
 EV	grudge	101	37441	rainStops	-1		
+SPK	grudge	101	1	cb2-rainStops-0	3fc0872cd6654d56	401ad178dc4f57c5	the sheep	The rain has stopped. It will be back. It has my address.
 EV	grudge	102	37512	mishap	-1	wasp	
+SPK	grudge	102	1	cb2-wasp-0	3fedf7f2bd60592f	401fcb044a8e577f	the sheep	A wasp. Now a wasp. Sixty sheep and a wasp with a PERSONAL GRUDGE!!
 EV	grudge	103	38385	dozy	26		
+SPK	grudge	103	1	cb2-dozy-0	3fd5e7fdb7222588	401cecb091901b6a	the sheep	It did not even wake up. I have carried furniture with more opinions.
 EV	grudge	104	38957	mishap	-1	nettles	
+SPK	grudge	104	1	cb0-nettles-3	3feccf2d3292c294	40071f045ea443d8	the bramble	Stings. STINGS!
 EV	grudge	105	39950	penned	26		
+SPK	grudge	105	1	t3-penned-1	3fd08b65db820b41	401b13b757d1d2ea	the sheep	Twenty-six in, thirty-four out, and my ears like soup in a sieve.
 EV	grudge	106	40449	mishap	-1	wasp	
+SPK	grudge	106	1	cb2-wasp-1	3ff0000000000000	401ae147ae147ae2	the Curse	Go and bother the sheep! The sheep has more to offer!
 EV	grudge	107	41247	bookFound	-1		cattle-market
+SPK	grudge	107	0					
 EV	grudge	108	41488	book	-1		cattle-market
+SPK	grudge	108	1	t4-book-1	3fdbb742eab393a4	401810ed4a88cfd1	the sheep	A book, by the Long Fence. Words to stagger by.
 EV	grudge	109	41510	caught	19		
+SPK	grudge	109	1	t3-caught-3	3fdba6dfe1fb0888	4014b4413c807c1b	the sheep	Come here, monumentally mildewed stinkhorn, and be carried.
 EV	grudge	110	43132	penned	19		
+SPK	grudge	110	1	cb2-miscount-0	3fd795315775d2f8	4017efdcbdeee1cc	the sheep	Twenty-seven. No. Twenty-seven. I counted one twice. Or once. Twenty-seven.
 EV	grudge	111	43132	streak	-1	5	
+SPK	grudge	111	1	cb0-streak-1	3fb187f8910a7f14	400727679058a4de	the field	Easy. Too easy.
 EV	grudge	112	44091	mishap	-1	wasp	
+SPK	grudge	112	1	cb4-wasp-0	3fee3653bc364fee	402924e5d114e5b2	the sheep	Bollocking hell, sod it and Jesus wept! A wasp, in the heat of the day, with a grudge and a blinking shabby sense of timing!!
 EV	grudge	113	44433	jailbreak	21		
+SPK	grudge	113	1	cb4-jailbreak-1	3ff0000000000000	4025d70a3d70a3d7	Humphrey	Holy Fleece, I carried that one home on my own two shoulders and it has let itself out like A LODGER!!
 EV	grudge	114	44446	caught	25		
+SPK	grudge	114	1	t3-caught-2	3fe500ac7370a677	401a3152754b8549	the sheep	You smell like a bag of damp hammers left in bramble.
 EV	grudge	115	46065	penned	25		
+SPK	grudge	115	1	cb2-miscount-0	3fe0e495458bdd8f	4018417c878bf10d	the sheep	Twenty-seven. No. Twenty-seven. I counted one twice. Or once. Twenty-seven.
 EV	grudge	116	46116	recaptured	21		
+SPK	grudge	116	1	cb4-recaptured-0	3fea68239c240758	4029dd7e8d84f745	Humphrey	Damn and blast, oh, shit and bollocks! The escapee! Back on my shoulders where you began, you hellish shitehawk, and this time the pen has OPINIONS.
 EV	grudge	117	46170	penned	21		
+SPK	grudge	117	1	t0-penned-2	3fd0740abeb62127	40048c5f643d4d97	Humphrey	Bollocks. One.
 EV	grudge	118	47469	streakBroken	18	7	
+SPK	grudge	118	1	cb4-streakBroken-0	3feb97a56afc5448	4024dcbd2b57e2a2	the sheep	By the Patron of Lost Things! I called it! I called it at five and here it is at sheep!
 EV	grudge	119	47469	flee	18		
+SPK	grudge	119	1	t4-flee-4	3fe6cad89e2f877b	402231380c9f90b7	the sheep	Run, sheep, and I will sell you to a man who makes rugs when I catch you!
 EV	grudge	120	47558	repeatEscape	18		
+SPK	grudge	120	1	t2-repeatEscape-3	3fef4dd0e6c90512	40126fbe561aa4cc	Cuthbert	Cuthbert. Of course it is you!
 EV	grudge	121	47634	repeatEscape	18		
+SPK	grudge	121	1	t3-repeatEscape-1	3ff0000000000000	40127ae147ae147b	Cuthbert	You, Cuthbert, are exhaustion WITH LEGS!
 EV	grudge	122	47732	caught	18		
+SPK	grudge	122	1	t3-caught-0	3fe83a90a1d68c00	40105075d6ea358d	Cuthbert	Got you, you damp muck-spout!
 EV	grudge	123	47732	mishap	18	heave	
+SPK	grudge	123	1	cb4-heave-0	3ff0000000000000	402428f5c28f5c29	Cuthbert	Saint Woolgather's knees, Cuthbert, you have the density of a hapless anvil and the cooperation of a SAPROPHYTIC GATE!!
 EV	grudge	124	49617	penned	18		
+SPK	grudge	124	1	t4-penned-3	3fd8f8d3f9501965	4017faf9d2fdb3ff	Cuthbert	By the Ewe Mother, another one in. Thirty-one to go.
 EV	grudge	125	50265	mishap	-1	nettles	
+SPK	grudge	125	1	cb2-nettles-0	3ff0000000000000	401ae147ae147ae2	the bramble	Nettles. Of course nettles. Where else would a sheep lead me.
 EV	grudge	126	51248	bookFound	-1		vulgar-tongue
+SPK	grudge	126	0					
 EV	grudge	127	51715	book	-1		vulgar-tongue
+SPK	grudge	127	1	t3-book-1	3fdf1d2543338c21	4019da30d82e1743	the sheep	Reading. I had forgotten how. Like a scarf with no end.
 EV	grudge	128	51716	lunch	-1		
+SPK	grudge	128	1	cb2-lunch-0	0000000000000000	4020a3d70a3d70a4	the day	Bread. Cheese. A stump. For ten minutes, no sheep. This is the whole of my religion.
 EV	grudge	129	51786	lunchStolen	38		
+SPK	grudge	129	1	cb0-lunchStolen-1	3ff0000000000000	400ae147ae147ae2	Gwendolyn	No. NO. MINE.
 EV	grudge	130	51799	breather	-1		
+SPK	grudge	130	1	t1-breather-2	3fe1e3020d850766	400c79d0e587ab2b	the field	Moment. Just a moment!
 EV	grudge	131	51880	flee	38		
+SPK	grudge	131	1	cb4-flee-0	3febab7eadbd07df	401df8288eb2dabc	Gwendolyn	Bless me! Nell, THAT is a sheep, THAT is what you are FOR!
 EV	grudge	132	51974	thiefCaught	38		
+SPK	grudge	132	1	cb2-thiefCaught-2	3fe9e4dacf802bd6	402321125b9ab9b1	Gwendolyn	I can smell it on you, Gwendolyn. My cheese. On your breath. All the way to the pen!
 EV	grudge	133	52287	mishap	-1	molehill	
+SPK	grudge	133	1	cb4-molehill-0	3fefb8691f2ac422	4021a19a5336c6c5	Gwendolyn	Saint Woolgather preserve me! A mole, a hole, and my absolutely sporulating ankle in THAT ORDER!
 EV	grudge	134	53770	mishap	-1	dogUnderfoot	
+SPK	grudge	134	1	cb2-dogUnderfoot-2	3fe83e72b21c5638	40223cd4dd3ef72d	the road	Up. UP. You are a sheepdog, not a doormat, although I am beginning to see the resemblance.
 EV	grudge	135	53928	penned	38		
+SPK	grudge	135	1	t2-penned-1	3fdcfd548cfdf1e1	401162cbec16040a	Gwendolyn	Thirtieth one in. Thirty to go.
 EV	grudge	136	53928	milestone	-1	halfway	
+SPK	grudge	136	1	cb4-halfway-0	3fe4e510ace55f57	402073f55233f7c8	Gwendolyn	Saint Woolgather's knees, thirty in, thirty out, and the thirty out are the musty ones.
 EV	grudge	137	54842	scarecrow	-1		
+SPK	grudge	137	1	cb4-scarecrow-1	3fd98fe65c8dbc59	4026145414537e9f	the hill	Scarecrow, you chuckle-headed bundle, you have never carried a thing in your life, and you look happier than I have ever been.
 EV	grudge	138	55565	absurd	40		
+SPK	grudge	138	1	cb4-boulder-1	3fe4819b8b88bd0f	401bd775e1ae4e61	the sheep	Saint Woolgather preserve me, the sheep has ascended. Nobody asked it to!
 EV	grudge	139	57592	penned	40		
+SPK	grudge	139	1	t5-penned-1	3fd4ad9ed2b838b5	4021cd97c2f8f55e	the sheep	Thirty-first sheep penned (if that is your real name). Twenty-nine remain, each more moth-eaten than the last.
 EV	grudge	140	59181	flee	35		
+SPK	grudge	140	1	t5-flee-0	3fe8843e4585486f	401a698b926ccf69	the sheep	Stop, sheep, you shit-for-brains, you mooncalf, you damnable arse-backwards jelly ear!
 EV	grudge	141	59285	caught	35		
+SPK	grudge	141	1	t0-caught-8	3fe05e7eb6518b7f	400234c599598d99	the sheep	Right.
 EV	grudge	142	59724	mishap	-1	wasp	
+SPK	grudge	142	1	cb0-wasp-1	3ff0000000000000	400428f5c28f5c29	the hill	WASP!
 EV	grudge	143	61240	penned	35		
+SPK	grudge	143	1	t5-penned-1	3fd6ccef068a8307	4021d61503c83e87	the sheep	Thirty-second sheep penned (and the sheep agrees with me). Twenty-eight remain, each more obstinate than the last.
 EV	grudge	144	61800	rival	-1	3	
+SPK	grudge	144	1	cb4-rival-0	3ff0000000000000	402c000000000000	the Curse	Bloody hell, good grief and piss and vinegar, there goes Cuthbert, the indigestible gnashgab, with his three obedient sheep, and not one of them has ever been on A ROOF.
 EV	grudge	145	61826	rivalBolt	-1		
+SPK	grudge	145	1	cb4-rivalBolt-0	3fd3241e23794d80	402375863b1d415f	the Curse	Shit, look at that! One of Cuthbert's has RUN! It happens to him too! IT HAPPENS TO HIM TOO!
 EV	grudge	146	62442	mishap	-1	molehill	
+SPK	grudge	146	1	cb4-molehill-0	3feba9fd87cfad00	401df8107c54050e	the Curse	Crap! A mole, a hole, and my positively ham-fisted ankle in that order!!
 EV	grudge	147	62667	curious	39		
+SPK	grudge	147	1	cb4-curious-1	3fc3b22a30f87454	401c8c394c9aec0f	the sheep	Shite, one came to me. One. Out of sixty. I will take it.
 EV	grudge	148	62705	bookFound	-1		fungi
+SPK	grudge	148	0					
 EV	grudge	149	63177	book	-1		fungi
+SPK	grudge	149	1	t4-book-2	3fdb92137f2daa1c	401305865e88c97a	the Curse	Marvellous. Literature. Just what my shoulders needed.
 EV	grudge	150	63185	caught	39		
+SPK	grudge	150	1	cb4-caught-0	3fdb8daf69826d1f	40203b038a72d681	the sheep	Got you, you musty toadstool. You come off like a puffball and you smell worse.
 EV	grudge	151	64862	penned	39		
+SPK	grudge	151	1	cb4-miscount-0	3fd93c7e52408ff8	402031bec615cf0d	the sheep	Oh, hell, hold still, all of you, I am COUNTING. Thirty-three. …Thirty-three. Good. I think.
 EV	grudge	152	64880	mishap	-1	cowpat	
+SPK	grudge	152	1	cb4-cowpat-1	3fe97755b04b4a08	4022469bf5306ecb	the day	Great Ram above, there is goddamn wet cow in my boot and none of it is cow!
 EV	grudge	153	66018	flee	36		
+SPK	grudge	153	1	t4-flee-1	3fe871f28accc2a7	401f72a447651e16	the sheep	Stop, you soppy gaby, or I will enter you in a show and lose!
 EV	grudge	154	66081	caught	36		
+SPK	grudge	154	1	t1-caught-1	3fe29a7e77015d4f	400934977cf4a68c	the sheep	Bollocksed. Shit-eating sheep!
 EV	grudge	155	66081	mishap	36	heave	
+SPK	grudge	155	1	cb4-heave-1	3fec3418109af6e8	40225c820832ec32	the sheep	By the Green Pasture, it weighs like a sermon and it will not be lifted like one.
 EV	grudge	156	66588	jailbreak	10		
+SPK	grudge	156	1	cb4-jailbreak-2	3ff0000000000000	4020cccccccccccd	Nigel	Nigel! Back! You blasted muggy turnip, you were FINISHED, you were DONE, you were IN!
 EV	grudge	157	67537	penned	36		
+SPK	grudge	157	1	cb4-miscount-1	3fe4e997a1bb0dcd	401f3a1e98d402c9	the sheep	Holy Fleece, they shuffle when I count. It is the only exercise they get!
 EV	grudge	158	67556	recaptured	10		
+SPK	grudge	158	1	cb4-recaptured-0	3ff0000000000000	4025d70a3d70a3d7	Nigel	Damn! The escapee! Back on my shoulders where you began, you slubbering wet biscuit, and this time the pen has OPINIONS!!
 EV	grudge	159	67556	mishap	10	bite	
+SPK	grudge	159	1	cb4-bite-0	3ff0000000000000	402351eb851eb852	Nigel	Well, bugger me sideways! You bleeding badly cast on piss-pot, you have BITTEN the hand that CARRIES YOU!!
 EV	grudge	160	67577	penned	10		
+SPK	grudge	160	1	t5-penned-1	3fe0074b98d61cd0	4024803a5cc6b0e6	Nigel	Thirty-fourth sheep penned (I say this with love, and I am lying). Twenty-six remain, each more half-chewed than the last.
 EV	grudge	161	67586	breather	-1		
+SPK	grudge	161	1	t5-breather-0	3fe4cfba5bb0881c	401f3880c4735a6e	the hill	A sit-down, shit and bollocks. My thumbs have earned it; the hill has not!
 EV	grudge	162	68686	bookFound	-1		bard
+SPK	grudge	162	0					
 EV	grudge	163	68706	wind	-1		
+SPK	grudge	163	1	cb4-wind-1	3fe2fecb7a82380f	40256f009944b597	the hill	By the Long Fence, the wind has come to take my hat and my temper, and it may have the hat!
 EV	grudge	164	69000	book	-1		bard
+SPK	grudge	164	1	t6-book-0	3fdef8afc4ffeac8	401ee34a9ce05142	the day	A book! Bastard, I shall read, and be the more eloquent in my humdrudgery.
 EV	grudge	165	69024	dozy	32		
+SPK	grudge	165	1	cb0-dozy-2	3fd889a61d9e6d08	40050db91a2bd256	the sheep	Sleeping. Fine.
 EV	grudge	166	69303	mishap	-1	molehill	
+SPK	grudge	166	1	cb2-molehill-1	3fec12d8c158e95e	4018f460bf48c1ca	the sheep	Somewhere under here a mole is very pleased with itself.
 EV	grudge	167	70255	penned	32		
+SPK	grudge	167	1	t6-penned-2	3fd4a0adb875933d	4019864d1bd8277c	the sheep	There, sheep. Abide, and be froward where I cannot see thee.
 EV	grudge	168	70782	mishap	-1	cowpat	
+SPK	grudge	168	1	cb4-cowpat-1	3fed19e2989bcfaa	4025bfd952358254	the sheep	By the Bell of the First Wether, there is wondrous beslubbered cow in my boot and none of it IS COW!!
 EV	grudge	169	70864	windDrops	-1		
+SPK	grudge	169	1	cb2-windDrops-1	3fda05b73fe53931	402034e3a9cc61b2	the sheep	Still, at last. The sheep are still too. That is the only time they are.
 EV	grudge	170	71245	curious	37		
+SPK	grudge	170	1	cb4-curious-0	3fc82bbdb407c840	4020d42e85a58034	the sheep	Saint Woolgather's knees, a sheep with manners. I shall carry you gently, you venomed little miracle.
 EV	grudge	171	71285	caught	37		
+SPK	grudge	171	1	t6-caught-0	3fe2c8d3a6479508	401d69fdde3b838e	the sheep	Now, thou daft, bloody useless clod-pate, I have thee, and thou art heavy.
 EV	grudge	172	72499	penned	37		
+SPK	grudge	172	1	t5-penned-0	3fd4e636fcbc528d	4017da64eb1915c8	the sheep	In you go, sheep, and may the pen improve you.
 EV	grudge	173	72864	mishap	-1	wasp	
+SPK	grudge	173	1	cb0-wasp-3	3ff0000000000000	4007851eb851eb85	the sheep	Off. OFF.
 EV	grudge	174	72928	drink	-1		
+SPK	grudge	174	1	cb4-drink-0	3fd3cd67a6e5deef	4020f30ca8d90820	the sheep	Pissing hell, water! Cold, honest, and utterly without alcohol, like everything else in my greasy life!
 EV	grudge	175	73354	absurd	29		
+SPK	grudge	175	1	cb4-river-1	3fe57031e4aef0b6	40222662d6d38c01	the sheep	Blessed Crook, a sheep in the water, past teatime, looking at me like I put it there!
 EV	grudge	176	74355	penned	29		
+SPK	grudge	176	1	t0-penned-4	3fd923ca34c0f747	4001bb3265db6b9d	the sheep	There.
 EV	grudge	177	75412	bookFound	-1		cooks-oracle
+SPK	grudge	177	0					
 EV	grudge	178	75664	book	-1		cooks-oracle
+SPK	grudge	178	1	t5-book-1	3fdc18b92588d378	401309bb8bbba2c5	the sheep	Words, sheep. Some of them about you.
 EV	grudge	179	75665	flee	34		
+SPK	grudge	179	1	t2-flee-4	3fe7f89074badb0e	400d3c82b26e65a0	the sheep	You bootless hell-bound wool-sack!
 EV	grudge	180	75729	caught	34		
+SPK	grudge	180	1	cb6-caught-1	3fdfcdc3a02788d1	4021230e18be0ec7	the sheep	Caught, you yeasty attractive nuisance, and the court finds against you, with costs, payable in wool.
 EV	grudge	181	76958	penned	34		
+SPK	grudge	181	1	t6-penned-3	3fd1710acea6f746	4017bebb89a86aee	the sheep	Get thee in, thou gutfoundered absconder, and mind the gate.
 EV	grudge	182	77439	mishap	-1	nettles	
+SPK	grudge	182	1	cb4-nettles-1	3fef25810624dd2f	4022740d4fdf3b64	the sheep	Blessed Crook, I have been stung in places I will not name in front of THE SHEEP!!
 EV	grudge	183	77958	absurd	28		
+SPK	grudge	183	1	cb2-boulder-1	3fe5c48cd4d74c0f	401d99b971247eff	the sheep	A sheep on a rock, posing. Get down. You are not a monument!
 EV	grudge	184	79178	mishap	-1	cowpat	
+SPK	grudge	184	1	cb4-cowpat-1	3ff0000000000000	4025d70a3d70a3d7	the sheep	By the Patron of Lost Things, there is absolutely fucking sporulating cow in my boot and none of it is cow.
 EV	grudge	185	79193	penned	28		
+SPK	grudge	185	1	t6-penned-1	3fddafbd14f80295	401ed90307601201	the sheep	Thirty-ninth sheep penned. Od's fish, twenty-one yet roam, each one an absolutely fucking gawney.
 EV	grudge	186	80255	bookFound	-1		drover
+SPK	grudge	186	0					
 EV	grudge	187	80634	book	-1		drover
+SPK	grudge	187	1	t7-book-1	3fdfea66f0037194	401b8eaf6075de1d	the sand	A book. Hmph. I shall learn to swear in a fifth tongue.
 EV	grudge	188	80660	dozy	31		
+SPK	grudge	188	1	cb4-dozy-0	3fd9a780323b6c1c	402a47e5aedd6891	the sheep	By the Green Pasture, it sleeps. It sleeps like a jumper knitted by a distant aunt. Carry it soft, herder; this is the one good thing today.
 EV	grudge	189	81412	mishap	-1	nettles	
+SPK	grudge	189	1	cb2-nettles-0	3ff0000000000000	401ae147ae147ae2	the day	Nettles. Of course nettles. Where else would a sheep LEAD ME!!
 EV	grudge	190	81935	penned	31		
+SPK	grudge	190	1	t6-penned-0	3fd8d16f4c898d11	401b55e7a35a0ef9	the sheep	In, thou half-baked, warped dead man's fingers, and trouble me no more.
 EV	grudge	191	82946	caught	33		
+SPK	grudge	191	1	t7-caught-0	3fe1994951ba193e	4027e8f340506026	the sheep	Got you, you great lumbering duffer. There is a knack to this and I do not have it and neither, I notice, do you.
 EV	grudge	192	83007	mishap	-1	wasp	
+SPK	grudge	192	1	cb2-wasp-2	3ff0000000000000	401e3d70a3d70a3e	the hill	Consarn it, it is following me. It has picked me. Out of everyone!!
 EV	grudge	193	84165	penned	33		
+SPK	grudge	193	1	t5-penned-0	3fdb6c642ec98cd5	40180e9654a97f9b	the sheep	In you go, sheep, and may the pen improve you.
 EV	grudge	194	84174	breather	-1		
+SPK	grudge	194	1	t7-breather-0	3fe27fd8ed70ef10	4011a2ded685236c	the sheep	Bugger. A sit-down. Bene. Gut. Bon!
 EV	grudge	195	84853	mishap	-1	wasp	
+SPK	grudge	195	1	cb0-wasp-3	3ff0000000000000	4007851eb851eb85	the sheep	Off. OFF.
 EV	grudge	196	85275	absurd	30		
+SPK	grudge	196	1	cb2-roof-2	3fe8b8d972e8f7f3	401dc8fe3b0599bd	the sheep	The people who live here did not order a sheep for the roof.
 EV	grudge	197	85758	rant	-1		
+SPK	grudge	197	1	cb7-rant-0	3ff0000000000000	4020cccccccccccd	the sheep	Damn and blast! That is one language. God's bodykins! That is another. I have MORE.
 EV	grudge	198	86526	mishap	-1	molehill	
+SPK	grudge	198	1	cb2-molehill-1	3ff0000000000000	4019333333333334	the Curse	Somewhere under here a mole is very pleased WITH ITSELF!!
 EV	grudge	199	86534	penned	30		
+SPK	grudge	199	1	t1-penned-5	3fe2c7869428c356	400c9661765c22a9	the sheep	Forty-two in, eighteen out.
 EV	grudge	200	87120	rival	-1	4	
+SPK	grudge	200	1	cb0-rival-1	3ff0000000000000	400e3d70a3d70a3e	the sheep	Him again. Hate him.
 EV	grudge	201	87596	bookFound	-1		blacks-law
+SPK	grudge	201	0					
 EV	grudge	202	87626	curious	50		
+SPK	grudge	202	1	cb2-curious-2	3fd93394f18645a0	401d070d4b633c6b	the sheep	Look at this one. Look. This is how it is SUPPOSED to go.
 EV	grudge	203	87890	book	-1		blacks-law
+SPK	grudge	203	1	t3-book-0	3fe5b7ae5cac5da8	4022289eba937768	the sheep	A book, at this stage of the afternoon. Better than a steam launch on a quiet river.
 EV	grudge	204	87898	caught	50		
+SPK	grudge	204	1	t6-caught-2	3fe5b4ac228d4e73	401a3c92703d4fc9	the sheep	Damn, thou weighest as a bridge over dry land. Up, gudgeon!
 EV	grudge	205	88164	mishap	-1	nettles	
+SPK	grudge	205	1	cb4-nettles-0	3ff0000000000000	401e3d70a3d70a3e	the sheep	Shit on a stick! Nettles! A whole bendito ultra vires parliament of them!!
 EV	grudge	206	89009	rant	-1		
+SPK	grudge	206	1	cb6-rant-2	3ff0000000000000	4020cccccccccccd	the hill	Piss, and a fig for it, and, for the sheep who are listening, God's bread!!
 EV	grudge	207	89281	penned	50		
+SPK	grudge	207	1	cb4-miscount-0	3fe5a97dd7e85651	4022282d366d572e	the sheep	A murrain on it, hold still, all of you, I am COUNTING. Forty-three. …Forty-three. Good. I think.
 EV	grudge	208	89651	mishap	-1	nettles	
+SPK	grudge	208	1	cb2-nettles-1	3ff0000000000000	401c8f5c28f5c290	the day	My legs are on fire and the sheep is eating a daisy!!
 EV	grudge	209	90437	flee	58		
+SPK	grudge	209	1	t7-flee-0	3ff0000000000000	40227ae147ae147b	the sheep	Off it goes, at a pace it has never once shown in my direction. Hang it all!!
 EV	grudge	210	90515	repeatEscape	58		
+SPK	grudge	210	1	t6-repeatEscape-0	3ff0000000000000	4019333333333334	Donut	Donut! Thou again! Thou niaiseux, unseasoned vagrant, I know thee!
 EV	grudge	211	90579	repeatEscape	58		
+SPK	grudge	211	1	t5-repeatEscape-1	3ff0000000000000	401ae147ae147ae2	Donut	Bastard, Donut, twice in one day! You inconvenience! You misbegotten coxcomb!
 EV	grudge	212	90618	dogHelps	58		
+SPK	grudge	212	1	cb2-dogHelps-0	3fe08afdcf2db8f6	4022d6437398261a	Donut	Did the dog just… no. No. Nell, did you just do your JOB? Once? In front of me?
 EV	grudge	213	90697	caught	58		
+SPK	grudge	213	1	t7-caught-1	3fed2b2848509b9f	4026976dbd23cc8b	Donut	Up you come. Oh, bother, you are heavier than you have any right to be; I suspect you of eating on purpose!!
 EV	grudge	214	91847	penned	58		
+SPK	grudge	214	1	t7-penned-0	3fe26105104e7a54	40134f06139443ce	Donut	Pissing hell, in you go. Sixteen left!
 EV	grudge	215	91856	breather	-1		
+SPK	grudge	215	1	t7-breather-0	3fe729dbe4743ed8	4011ed7f05f55868	Donut	'Sblood. A sit-down. Bene. Gut. Bon!
 EV	grudge	216	92825	mishap	-1	bog	
+SPK	grudge	216	1	cb0-bog-1	3ff0000000000000	4007851eb851eb85	the sheep	Sinking. SINKING!!
 EV	grudge	217	93030	bookFound	-1		crawler-notes
+SPK	grudge	217	0					
 EV	grudge	218	93351	book	-1		crawler-notes
+SPK	grudge	218	1	t7-book-2	3fe61339ec2d9838	40138a29615235ac	the sheep	Words, zounds. I collect them like burrs!
 EV	grudge	219	93352	flee	55		
+SPK	grudge	219	1	t6-flee-1	3feffe627f4f27b8	4021a3ca1e37e9e2	the sheep	It ran. The announcer would call that a boss mechanic. I call it a piss-poor sheep!
 EV	grudge	220	93353	repeatEscape	55		
+SPK	grudge	220	1	t7-repeatEscape-2	3ff0000000000000	4015d70a3d70a3d7	Edith	Edith, you clod, you snudge, you clotpole. Twice!
 EV	grudge	221	93354	repeatEscape	55		
+SPK	grudge	221	1	t7-repeatEscape-0	3ff0000000000000	4017851eb851eb85	Edith	Fuck it, Edith! Again! You shitting beslubbering LOOSE VERTEBRA!!
 EV	grudge	222	93408	caught	55		
+SPK	grudge	222	1	t8-caught-3	3fef8a4c48f3dea6	401e361568664828	Edith	I lifted it and my fingers said something and I did not listen.
 EV	grudge	223	93777	rant	-1		
+SPK	grudge	223	1	cb6-rant-1	3ff0000000000000	4027851eb851eb85	the Curse	Hear me, hill, thou loose-knit lump of the earth's bad temper: I am done being reasonable, and I was never good at it!
 EV	grudge	224	94583	penned	55		
+SPK	grudge	224	1	t7-penned-0	3fe4edf17b28aa06	401377d4da41e6c9	Edith	Bugger me, in you go. Fifteen left!
 EV	grudge	225	94923	mishap	-1	nettles	
+SPK	grudge	225	1	cb8-nettles-0	3ff0000000000000	4017851eb851eb85	the sheep	There were nettles. I found out the usual way.
 EV	grudge	226	95571	flee	49		
+SPK	grudge	226	1	t6-flee-1	3ff0000000000000	4021a3d70a3d70a4	the sheep	It ran. The announcer would call that a boss mechanic. I call it a BOLLOCK-BRAINED SHEEP!
 EV	grudge	227	95605	repeatEscape	49		
+SPK	grudge	227	1	t6-repeatEscape-0	3ff0000000000000	401e3d70a3d70a3e	Agnes	Not you. Not AGAIN. Goddamnit, Donut, you are a boss fight WITH WOOL.
 EV	grudge	228	95643	caught	49		
+SPK	grudge	228	1	t7-caught-1	3fefe8a26acde424	4026ad598e37b6cf	Agnes	Up you come. Oh, bother, you are heavier than you have any right to be; I suspect you of eating on purpose!!
 EV	grudge	229	96735	rant	-1		
+SPK	grudge	229	1	cb8-rant-0	3ff0000000000000	402428f5c28f5c29	Agnes	I stopped walking. I shook my fist at the sky. The sky did not notice. I felt better anyway.
 EV	grudge	230	96824	penned	49		
+SPK	grudge	230	1	t7-penned-2	3fe4e7f9aadae66c	40152589d81e523e	Agnes	In, you dumpling. Piss and vinegar, my lungs!
 EV	grudge	231	97086	mishap	-1	nettles	
+SPK	grudge	231	1	cb8-nettles-0	3ff0000000000000	4017851eb851eb85	the sheep	There were nettles. I found out the usual way.
 EV	grudge	232	97769	bookFound	-1		french
+SPK	grudge	232	0					
 EV	grudge	233	98049	book	-1		french
+SPK	grudge	233	1	t8-book-1	3fe9691f473b9c8a	4023f43ebcc9390d	the sheep	There was a book in the box. I read it because it was there. That is why anyone reads.
 EV	grudge	234	98066	dozy	56		
+SPK	grudge	234	1	cb0-dozy-1	3fe62ea04a6c5a7e	4009a71bb7620632	the sheep	Zzz. Good. Up.
 EV	grudge	235	98960	mishap	-1	nettles	
+SPK	grudge	235	1	cb8-nettles-0	3ff0000000000000	4017851eb851eb85	the sheep	There were nettles. I found out the usual way.
 EV	grudge	236	99290	penned	56		
+SPK	grudge	236	1	t8-penned-1	3fe3c4c7004aa2b6	4023c71bfa91b13f	the sheep	I put it in the pen and closed the gate. The gate was true. I stood there a while.
 EV	grudge	237	99299	breather	-1		
+SPK	grudge	237	1	t5-breather-1	3fe88d94ab0ca717	401c183573a68d01	the day	I sit. The day does not. I am winning, in a sense!
 EV	grudge	238	100392	caught	43		
+SPK	grudge	238	1	t9-caught-1	3fe6f1b305887169	40215b64a269b42f	the sheep	Split me, Goddamnit, Donut! And forty puggled bumbastes, you are heavier than a wet hawser, sheep.
 EV	grudge	239	100400	bookPassed	-1		
+SPK	grudge	239	1	cb8-bookPassed-1	3fe6eedf953c1b36	401dac5e9d2acbf1	the sheep	I saw the box. I kept walking. The sheep did not read either.
 EV	grudge	240	100612	mishap	-1	molehill	
+SPK	grudge	240	1	cb8-molehill-0	3ff0000000000000	4021a3d70a3d70a4	the sheep	The mole had dug the hole. My foot had found it. Both had done their jobs.
 EV	grudge	241	100884	rant	-1		
+SPK	grudge	241	1	cb7-rant-1	3ff0000000000000	402c000000000000	the field	In every tongue I know, the word for this day is the same, and it is not a nice word, and I am going to say it: Fucking hell!!
 EV	grudge	242	101026	rain	-1		
+SPK	grudge	242	1	t7-rain-1	3fea1ba89c5452ea	401c3116b2bb07bf	the hill	Rain, fuck. Il pleut. Es regnet. It is all the same water!!
 EV	grudge	243	101663	penned	43		
+SPK	grudge	243	1	t6-penned-2	3fe140d7d7f7f18c	4019f5552b93f9fb	the sheep	There, sheep. Abide, and be unprincipled where I cannot see thee.
 EV	grudge	244	102833	bookFound	-1		german
+SPK	grudge	244	0					
 EV	grudge	245	103115	book	-1		german
+SPK	grudge	245	1	t7-book-2	3fe3705c12d34e98	40186a38f460681e	the hill	Words, ach du liebe Zeit. I collect them like burrs.
 EV	grudge	246	103124	caught	48		
+SPK	grudge	246	1	t9-caught-2	3fe3788d39bcc76d	40206891369ab308	the sheep	Got you, you barnacle. Now hold fast or I shall find against you, with costs.
 EV	grudge	247	103194	rainStops	-1		
+SPK	grudge	247	1	cb2-rainStops-2	3fda9b165ae61a15	401ec05dd18f82bd	the sheep	The rain has gone to bother someone else. Good. Take the sheep with you.
 EV	grudge	248	103687	mishap	-1	molehill	
+SPK	grudge	248	1	cb8-molehill-0	3ff0000000000000	4021a3d70a3d70a4	the Curse	The mole had dug the hole. My foot had found it. Both had done their jobs.
 EV	grudge	249	104368	penned	48		
+SPK	grudge	249	1	t9-penned-3	3fde52fc51963027	401b81f40b827411	the sheep	For fuck's sake and beshrew me! Another one docked. Eleven still adrift!
 EV	grudge	250	105362	caught	45		
+SPK	grudge	250	1	cb9-caught-1	3fe4c2a53490b9af	4016d1490b9af720	the sheep	There, you keelhaulingly misbegotten mainsail with no wind. Home!
 EV	grudge	251	106579	penned	45		
+SPK	grudge	251	1	t7-penned-2	3fda861c6e49000d	4016594f9bc43385	the sheep	In, you sodding nuisance. Salt and shingle, my elbows.
 EV	grudge	252	106579	streak	-1	5	
+SPK	grudge	252	1	cb4-streak-0	3fd41fb607e299a7	4025fe935300d215	the slope	By all the lambs of March, five in a row. I know what this is. This is the quiet before the sheep.
 EV	grudge	253	106579	milestone	-1	tentogo	
+SPK	grudge	253	1	cb8-tentogo-0	3fe3a9749d8ae66d	401bc9f372ce70f7	the slope	Ten. I said it out loud. It did not make them fewer.
 EV	grudge	254	106588	breather	-1		
+SPK	grudge	254	1	t9-breather-0	3fe215ffe1206773	40185493314539ab	the sheep	Dropping anchor on this stump. Blow me down, my knees.
 EV	grudge	255	106959	mishap	-1	nettles	
+SPK	grudge	255	1	cb8-nettles-0	3ff0000000000000	4017851eb851eb85	the day	There were nettles. I found out the usual way.
 EV	grudge	256	107678	bookFound	-1		three-men
+SPK	grudge	256	0					
 EV	grudge	257	108121	book	-1		three-men
+SPK	grudge	257	1	t10-book-0	3fe258008139560e	402640d47eeb125e	the Curse	A book, at the tail end of the day! Let me expand my vocabulary, that I may more precisely describe the Curse!
 EV	grudge	258	108122	streakBroken	51	5	
+SPK	grudge	258	1	cb8-streakBroken-0	3ff0000000000000	4020cccccccccccd	the sheep	The run ended. I had known it would. Knowing did not make the sheep slower.
 EV	grudge	259	108122	flee	51		
+SPK	grudge	259	1	t7-flee-3	3fec4434632fc761	401fafc864eb4e62	the sheep	Run, you tutorial boss! I have oaths in four languages and legs in none!!
 EV	grudge	260	108172	caught	51		
+SPK	grudge	260	1	t7-caught-1	3fe466568551e981	40136f5b2ae47ac1	the sheep	There, you thick-fleeced pumpion. Holy shit. Up!
 EV	grudge	261	108721	mishap	-1	molehill	
+SPK	grudge	261	1	cb0-molehill-1	3ff0000000000000	400ae147ae147ae2	the hill	Mole. Hole. ANKLE!
 EV	grudge	262	108782	rant	-1		
+SPK	grudge	262	1	cb10-rant-0	3ff0000000000000	402c000000000000	the sheep	Let the record reflect, O Curse, that on this day, at this hour, in front of these wamble-cropped reverend vices of damp, I raised my fists to heaven and heaven RAISED NOTHING BACK!!
 EV	grudge	263	109439	penned	51		
+SPK	grudge	263	1	t9-penned-2	3fdfad8584ceeaf3	4011784d73d48bd3	the sheep	Anchored, sheep. Anchored, and stay anchored.
 EV	grudge	264	110435	caught	53		
+SPK	grudge	264	1	t10-caught-1	3fe59b17e4b17e4a	402b652aaaaaaaaa	the sheep	You are heavier, sheep, than the thick-fleeced, the lardy, the sedentary, the clouted, the true, the stodgy and the merely sodden, and I have carried all of them.
 EV	grudge	265	111662	penned	53		
+SPK	grudge	265	1	t10-penned-3	3fdc659769ef5dd1	40203e632a748a44	the sheep	Fifty-two down. The ledger of my woes shortens by one line and lengthens by eight.
 EV	grudge	266	112047	scarecrow	-1		
+SPK	grudge	266	1	cb2-scarecrow-1	3fde733eaac9d3ab	4019d4e1a36ac97f	the Curse	Evening, scarecrow. No? Fine. You and the sheep can not-talk together.
 EV	grudge	267	112164	mishap	-1	cowpat	
+SPK	grudge	267	1	cb0-cowpat-1	3ff0000000000000	4007851eb851eb85	the Curse	Oh no.
 EV	grudge	268	112320	rival	-1	5	
+SPK	grudge	268	1	cb8-rival-0	3ff0000000000000	40227ae147ae147b	the hill	He walked past. His sheep walked behind him. Nobody said anything. That was the worst of it.
 EV	grudge	269	112594	bookFound	-1		grays
+SPK	grudge	269	0					
 EV	grudge	270	113019	book	-1		grays
+SPK	grudge	270	1	t9-book-2	3fe6d66a170d1a37	4013965c64002dcc	the sand	Charts! Or a book. Reading either way!
 EV	grudge	271	113020	breather	-1		
+SPK	grudge	271	1	t10-breather-0	3fe53c851e191823	402580ee66616c98	the day	I sit. Let it be recorded that I sit, and that the stump, unlike the sheep, bears my weight without complaint!
 EV	grudge	272	113127	absurd	14		
+SPK	grudge	272	1	cb4-river-1	3fe814ece205fb08	40281cd05cd2bf34	the sheep	By the Green Pasture, a sheep in the water, at the tail end of the day, looking at me like I put it there!
 EV	grudge	273	113796	mishap	-1	cowpat	
+SPK	grudge	273	1	cb2-cowpat-0	3ff0000000000000	401e3d70a3d70a3e	the sheep	Right in it. Right in the middle of it. With the good boot!!
 EV	grudge	274	114286	penned	14		
+SPK	grudge	274	1	t7-penned-3	3fe36e417f27db06	4016bc02d0446935	the sheep	Bugger me! For fuck's sake! That is fifty-three. Stay!
 EV	grudge	275	114393	rant	-1		
+SPK	grudge	275	1	cb10-rant-0	3ff0000000000000	402c000000000000	the sheep	Let the record reflect, O Curse, that on this day, at this hour, in front of these bastard gone off loose vertebras, I raised my fists to heaven and heaven RAISED NOTHING BACK!!
 EV	grudge	276	115299	caught	59		
+SPK	grudge	276	1	t10-caught-3	3fed414351fed58c	4028463310528608	the sheep	Behold: one ruminant laggard, with the burr in your left ear, captured at the tail end of the day by a man of letters.
 EV	grudge	277	115299	mishap	59	bite	
+SPK	grudge	277	1	cb2-bite-1	3ff0000000000000	4021a3d70a3d70a4	the sheep	Oh, fuck, sheep, that was my hand. I need that hand. I carry YOU WITH IT!!
 EV	grudge	278	116443	penned	59		
+SPK	grudge	278	1	cb7-miscount-0	3fea0e262ab84c80	4018d41595deb7fc	the sheep	Un, deux, trois… fifty-four. Where was I. Quatre. No. Fifty-four!!
 EV	grudge	279	116794	scarecrow	-1		
+SPK	grudge	279	1	cb0-scarecrow-1	3fe32a3509dec26e	400ca2b74512e28c	the Curse	Stands. All day. Lucky!
 EV	grudge	280	117090	mishap	-1	nettles	
+SPK	grudge	280	1	cb8-nettles-0	3ff0000000000000	4017851eb851eb85	the sheep	There were nettles. I found out the usual way.
 EV	grudge	281	117370	bookFound	-1		porca
+SPK	grudge	281	0					
 EV	grudge	282	117801	book	-1		porca
+SPK	grudge	282	1	t0-book-3	3fe8a17949c3c2b6	4006994de18a63dc	the sheep	Book. Good.
 EV	grudge	283	117823	absurd	47		
+SPK	grudge	283	1	t9-absurd-3	3ff0000000000000	4026ae147ae147ae	the sheep	Avast! A sheep with a sheep on it! I have sailed to the ends of this field and seen nothing LIKE IT.
 EV	grudge	284	118945	mishap	-1	gate	
+SPK	grudge	284	1	cb0-gate-3	3ff0000000000000	400e3d70a3d70a3e	the sheep	Stuck. Gate. Sheep. Heavy.
 EV	grudge	285	118958	penned	47		
+SPK	grudge	285	1	t9-penned-3	3fe593c673054308	40188c6f9a638764	the sheep	Fuck and hell's bells! Another one docked. Five still adrift!
 EV	grudge	286	119791	wind	-1		
+SPK	grudge	286	1	cb0-wind-1	3feab871ab9dd125	4006dc2cedc5a5aa	the Curse	Hat! Hat!!
 EV	grudge	287	119906	caught	54		
+SPK	grudge	287	1	t7-caught-3	3fea9b897365d158	40122499dee47190	the sheep	Caught, you imbroglio. Plague on't. Home!
 EV	grudge	288	119912	bookPassed	-1		
+SPK	grudge	288	1	cb8-bookPassed-0	3fea9a42f1561eef	4023fdc7da1a0d20	the mud	There was a book. I was carrying a sheep. You cannot read with a sheep. That is a rule.
 EV	grudge	289	120359	rant	-1		
+SPK	grudge	289	1	cb11-rant-1	3ff0000000000000	4020cccccccccccd	the Curse	I shook my fist. I shook it twice. / The hill said nothing. Very nice.
 EV	grudge	290	120392	mishap	-1	nettles	
+SPK	grudge	290	1	cb8-nettles-0	3ff0000000000000	4017851eb851eb85	the day	There were nettles. I found out the usual way.
 EV	grudge	291	121086	penned	54		
+SPK	grudge	291	1	t5-penned-3	3fe4ea97dcecb6f0	401881dcb101fea3	the sheep	Stay in, you lout. The gate is not a suggestion!
 EV	grudge	292	121095	breather	-1		
+SPK	grudge	292	1	t8-breather-1	3fe9b4e70985dfb7	401c2aaa998e208b	the hill	I sat. That was all I did. It was enough for now.
 EV	grudge	293	121586	windDrops	-1		
+SPK	grudge	293	1	cb2-windDrops-1	3fe2e53850bf4de6	402063f68f52c73c	the sheep	Still, at last. The sheep are still too. That is the only time they are!
 EV	grudge	294	121859	mishap	-1	molehill	
+SPK	grudge	294	1	cb0-molehill-0	3ff0000000000000	400428f5c28f5c29	the day	Hole!!
 EV	grudge	295	122017	bookFound	-1		geology
+SPK	grudge	295	0					
 EV	grudge	296	122354	book	-1		geology
+SPK	grudge	296	1	t8-book-1	3fe7e853a26f35b1	4023e8385fa2d5d7	the sheep	There was a book in the box. I read it because it was there. That is why anyone reads.
 EV	grudge	297	122377	absurd	41		
+SPK	grudge	297	1	cb4-river-2	3fea7138b32c93cd	401de4842f09d37b	the sheep	Out, you bollocking four-footed bolting-hutch! The river has enough in it without you!!
 EV	grudge	298	123214	rant	-1		
+SPK	grudge	298	1	cb3-rant-1	3ff0000000000000	4021a3d70a3d70a4	the day	You, day, are the confoundedest thing I have met today, and I have met FIFTY-SIX SHEEP!!
 EV	grudge	299	123356	penned	41		
+SPK	grudge	299	1	t8-penned-0	3fe20cc0215db8be	401853ff35490ec0	the sheep	In. Fifty-seven now. I did not feel anything about it.
 EV	grudge	300	123632	mishap	-1	nettles	
+SPK	grudge	300	1	cb0-nettles-3	3ff0000000000000	4007851eb851eb85	the sheep	Stings. STINGS!!
 EV	grudge	301	124351	caught	44		
+SPK	grudge	301	1	t10-caught-0	3feaedbd4c0422da	4013d7d1974f9e57	the sheep	Apprehended, sheep. Apprehended, catalogued and incalculably overboiled!!
 EV	grudge	302	125507	penned	44		
+SPK	grudge	302	1	cb11-penned-0	3fe27a7201eecbac	401d6517c3f5f6f9	the sheep	Fifty-eighth one in. / Wind-bagged lump, stay put. / Two to go. Hah.
 EV	grudge	303	125741	mishap	-1	wasp	
+SPK	grudge	303	1	cb2-wasp-1	3ff0000000000000	401ae147ae147ae2	the day	Go and bother the sheep! The sheep has more TO OFFER!!
 EV	grudge	304	126469	bookFound	-1		sacres
+SPK	grudge	304	0					
 EV	grudge	305	126478	curious	46		
+SPK	grudge	305	1	cb8-curious-0	3fdf7064fe7b87a6	40262bd60edb35cd	the sheep	It came to me. I did not know what to do with that. I picked it up. That was the right thing.
 EV	grudge	306	126489	curious	57		
+SPK	grudge	306	1	cb2-curious-0	3fdf678d6e2a7126	4022cf89bad76217	the sheep	At least one of you has sense. Come here. You are my favourite. Do not tell the others.
 EV	grudge	307	126826	book	-1		sacres
+SPK	grudge	307	1	t12-book-3	3fe8c85bb810e5e5	402c000000000000	the field	A book, in a box, by a road, read by a man with eleven words and two sheep. Somebody wrote this scene. I would like a word with them!
 EV	grudge	308	126830	caught	46		
+SPK	grudge	308	1	t12-caught-3	3fe8c7260996561c	4023ef2ef2dc0eda	the sheep	You are heavy, sheep, in the way that a thesaurus is heavy: full of words for the same thing.
 EV	grudge	309	127304	rant	-1		
+SPK	grudge	309	1	cb12-rant-0	3ff0000000000000	402c000000000000	the bramble	O Curse, if you are taking notes: this is the part where the herder stops walking. You have seen it before. You will see it again. I know. I KNOW!!
 EV	grudge	310	127345	mishap	-1	nettles	
+SPK	grudge	310	1	cb4-nettles-1	3ff0000000000000	402428f5c28f5c29	the wood	By the Ewe Mother, I have been stung in places I will not name in front of THE SHEEP.
 EV	grudge	311	128030	penned	46		
+SPK	grudge	311	1	cb11-penned-0	3fe41cf436b8eb2e	401d7f3fe74298f1	the sheep	Fifty-ninth one in. / Pig-headed oaf, stay put. / One to go. Hnng.
 EV	grudge	312	128030	milestone	-1	lastone	
+SPK	grudge	312	1	cb12-lastone-0	3fea835a9d1f5194	402326065a07b2df	the sheep	One sheep between me and the stone. I have never wanted a sheep so much, or a stone!
 EV	grudge	313	128983	caught	57		
+SPK	grudge	313	1	t10-caught-1	3fe94710b3922e78	4024ca38859c9174	the sheep	You are heavier, sheep, than tea, hawser, invective, rope, bramble, tree and sequel, and I have carried all of them!
 EV	grudge	314	129056	mishap	-1	molehill	
+SPK	grudge	314	1	cb0-molehill-2	3ff0000000000000	4007851eb851eb85	the sheep	Damn! Hole!!
 EV	grudge	315	129950	rant	-1		
+SPK	grudge	315	1	cb12-rant-0	3ff0000000000000	402c000000000000	the hill	O Curse, if you are taking notes: this is the part where the herder stops walking. You have seen it before. You will see it again. I know. I KNOW!
 EV	grudge	316	130137	penned	57		
+SPK	grudge	316	1	t12-penned-1	3fe364a4981c8c22	402216066c6ef8dc	the sheep	In, sheep. Zero remain, and zero is a number I have started to hear as a name!
 EV	grudge	317	130146	finished	-1		
+SPK	grudge	317	1	t12-finished-1	3ff0000000000000	40285c28f5c28f5c	the day	It is finished. The stone may have its word now. The word is: footnote to a bog of the work I am NOT DOING!!
 EVEND	grudge	130146	1	318
 ART	apple	an
 ART	Apple	an
