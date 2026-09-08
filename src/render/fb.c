@@ -1,11 +1,13 @@
 #include "render/fb.h"
 #include "core/map/terrain.h"
 #include "render/font.h"
+#include "core/rng.h"
 #include "core/progression.h"
 #include "core/names.h"
 #include <string.h>
 #include <stdio.h>
 
+static double ku_tex(const char *seed,int x,int y){ char b[96]; snprintf(b,sizeof(b),"%s|tex|%d|%d",seed,x,y); uint32_t st=herder_fnv1a(b); return herder_unit_from_u32(herder_mulberry32_u32(&st)); }
 static uint16_t rgb565(int r, int g, int b){ return (uint16_t)(((r>>3)<<11)|((g>>2)<<5)|(b>>3)); }
 #define HEX(h) rgb565(((h)>>16)&0xff, ((h)>>8)&0xff, (h)&0xff)
 
@@ -102,12 +104,14 @@ static void disc(uint16_t *fb, int cx, int cy, int r, uint16_t c){
 static void rrect(uint16_t *fb,int x,int y,int w,int h,uint16_t c){ herder_fb_fill(fb,x+1,y,w-2,h,c); herder_fb_fill(fb,x,y+1,w,h-2,c); }
 
 /* subtle per-tile texture fleck, echoing the web's grass/meadow speckle */
-static void tex_fleck(uint16_t *fb,int px,int py,int mx,int my,int t){
-    unsigned h=(unsigned)(mx*37+my*101);
-    if(t==T_Grass||t==T_Meadow){ /* a small grass tuft, like the web */
-        if(h%3==0){ int ox=(int)(h%9)%(HERDER_TS-2)+1, oy=(int)((h/9)%9)%(HERDER_TS-4)+2; uint16_t tc=HEX(0x5f8a34);
-            herder_fb_fill(fb,px+ox,py+oy,1,3,tc); herder_fb_fill(fb,px+ox-1,py+oy+1,1,2,tc); herder_fb_fill(fb,px+ox+1,py+oy+1,1,2,tc); }
-    } else if(t==T_Mud||t==T_Farm){ if(h%5==0){ int ox=(int)(h%7)%(HERDER_TS-2), oy=(int)((h/7)%7)%(HERDER_TS-2); uint16_t base=fb[(py+oy)*HERDER_SCRW+px+ox]; uint16_t d=(uint16_t)((base>>1)&0x7bef); herder_fb_fill(fb,px+ox,py+oy,2,2,d); } }
+static uint16_t shade565(uint16_t c,int amt){ int r=((c>>11)&0x1f)*8+amt, g=((c>>5)&0x3f)*4+amt, b=(c&0x1f)*8+amt; if(r<0)r=0;if(r>255)r=255;if(g<0)g=0;if(g>255)g=255;if(b<0)b=0;if(b>255)b=255; return rgb565(r,g,b); }
+static void tex_fleck(uint16_t *fb,int px,int py,int mx,int my,int t,const char *seed){
+    double u=ku_tex(seed,mx,my); int T=HERDER_TS;
+    if(t==T_Water && u<0.35){ uint16_t w=rgb565(200,215,235); int yy=py+(int)(T*(0.3+u)); for(int i=1;i<T-1;i++){ int x=px+i; int y=yy-(int)(2.0*__builtin_sin(i*3.14159/(T-1))); if((unsigned)y<HERDER_SCRH) fb[y*HERDER_SCRW+x]=w; } }
+    else if(t==T_Farm){ uint16_t d=shade565(TERRAIN_COL[T_Farm],-30); for(int k=1;k<4;k++){ int y=py+T*k/4; herder_fb_fill(fb,px+1,y,T-2,1,d); } }
+    else if(t==T_Rock && u<0.5){ uint16_t d=shade565(TERRAIN_COL[T_Rock],-25); for(int r=0;r<T/2;r++){ int w=r; herder_fb_fill(fb,px+T/2-w/1,py+T*3/4-r,w*2>0?w:1,1,d); } }
+    else if(t==T_Snow && u<0.3){ uint16_t l=rgb565(180,190,210); for(int r=0;r<T/2;r++){ int w=r; herder_fb_fill(fb,px+T/2-w,py+T*3/4-r,(w?w*2:1),1,l); } }
+    else if((t==T_Grass||t==T_Meadow) && u<0.18){ int ox=(int)(T*(0.3+u)), oy=T/2; uint16_t base=fb[(py+oy)*HERDER_SCRW+px+ox]; herder_fb_fill(fb,px+ox-2,py+oy-1,4,2, shade565(base,-14)); }
 }
 
 static void shadow(uint16_t *fb,int cx,int cy,int rx){ /* cheap dark ellipse, drifting with the sun */
@@ -216,7 +220,7 @@ void herder_fb_draw_world(uint16_t *fb, const HerderWorld *w){
             else { int i=my*m->size+mx; t=m->terrain[i]; d=m->deco[i]; c=TERRAIN_COL[t];
                    if(d==D_PenGround) c=C_penground; }
             herder_fb_fill(fb,px,py,HERDER_TS,HERDER_TS,c);
-            if(mx>=0&&my>=0&&mx<m->size&&my<m->size){ tex_fleck(fb,px,py,mx,my,t);
+            if(mx>=0&&my>=0&&mx<m->size&&my<m->size){ tex_fleck(fb,px,py,mx,my,t,w->seed);
                 switch(d){
                     case D_Tree: draw_tree(fb,px+HERDER_TS/2,py+HERDER_TS/2, g_greens[(unsigned)(mx*7+my*13)%5]); break;
                     case D_Tree2: draw_tree(fb,px+HERDER_TS/2,py+HERDER_TS/2, C_tree2); break;
