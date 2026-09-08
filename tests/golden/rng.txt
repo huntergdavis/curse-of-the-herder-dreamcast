@@ -1824,3 +1824,78 @@ TIDY	the herb grew	The herb grew.
 TIDY	she has a egg	She has an egg.
 TIDY	why not?no	Why not?no.
 TIDY	done!	Done!
+BAN	the soggy sheep	0
+BAN	a lump of regret	0
+BAN	mud and misery	0
+BAN	gormless clodhopper	0
+BAN	by the Ewe Mother	0
+BAN	idiot	1
+BAN	idi0t	1
+BAN	1d10t	1
+BAN	IDIOT!	0
+BAN	idiotically	0
+BAN	视	0
+BAN	an idiotic plan	1
+BAN	dumb luck	1
+BAN	dumbfounded	0
+BAN	you lame excuse	1
+BAN	blamed	0
+BAN	crazy weather	1
+BAN	scrandalous	0
+BAN	insanely	0
+BAN	insanity	0
+BAN	that is insane	1
+BAN	ugly duckling	1
+BAN	bugle	0
+BAN	cr@zy	1
+BAN	cr4zy	0
+BAN	n1gg3r	1
+BAN	chink in the armour	1
+BAN	spick and span	0
+BAN	spic	1
+BAN	damn	0
+BAN	drat	0
+BAN	blast	0
+BAN	bother	0
+BAN	codswallop	0
+BAN	cÙnt?	1
+BAN	tw@t	1
+BAN	fatty	1
+BAN	fat	1
+BAN	fatso	1
+BAN	great	0
+BAN	so gay	1
+BAN	that's gay	1
+BAN	scunthorpe	0
+BAN	classic	0
+BAN	assassin	0
+BAN	grape	0
+BAN	grapes	0
+BAN	therapist	0
+BAN	the rapist	1
+BAN	cocktail	0
+BAN	peacock	0
+BAN	shuttlecock	0
+BAN	molestation	1
+BAN	molester	1
+BAN	pedomancy	1
+BAN	incest	1
+BAN	incessant	0
+BAN	nazionale	0
+BAN	hitlerian	0
+BAN	jihadi	1
+BAN	terrorists	1
+BAN	suicide	1
+BAN	suicidal	0
+BAN	junkie	1
+BAN	crackhead	1
+BAN	naïve	0
+BAN	café	0
+NORM	IDIOT	idiot
+NORM	cr@zy	crazy
+NORM	n1gg3r	nigger
+NORM	fooo0o0d	food
+NORM	caféÀ	cafea
+NORM	traîner	trainer
+NORM	GREAT!!!	greatii
+NORM	a$$	ass

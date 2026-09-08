@@ -9,6 +9,7 @@
 #include "core/sim/flock.h"
 #include "core/sim/world.h"
 #include "core/lang/morphology.h"
+#include "core/lang/banned.h"
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -218,6 +219,12 @@ int main(int argc, char **argv) {
             checks++;
             int got = herder_classify(e, m), want = atoi(fld[3]);
             if (got != want) { failures++; printf("FAIL CLASSIFY(%.3f,%.3f): got %d want %d\n", e, m, got, want); }
+        } else if (strcmp(fld[0], "BAN") == 0 && n >= 3) {
+            int g = herder_find_banned(fld[1]) ? 1 : 0;
+            checks++; if (g != atoi(fld[2])) { failures++; printf("FAIL BAN(%s): got %d want %s\n", fld[1], g, fld[2]); }
+        } else if (strcmp(fld[0], "NORM") == 0 && n >= 3) {
+            char g[256]; herder_normalise_for_ban(g, sizeof(g), fld[1]);
+            checks++; if (strcmp(g, fld[2]) != 0) { failures++; printf("FAIL NORM(%s): got [%s] want [%s]\n", fld[1], g, fld[2]); }
         } else if (strcmp(fld[0], "ART") == 0 && n >= 3) {
             checks++; const char *g = herder_article(fld[1]);
             if (strcmp(g, fld[2]) != 0) { failures++; printf("FAIL ART(%s): got %s want %s\n", fld[1], g, fld[2]); }
