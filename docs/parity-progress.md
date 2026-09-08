@@ -31,37 +31,38 @@ event transcript (626 events, two seeds), 732 generated lines across six
 contexts, and a full-day, byte-exact stream of 624 spoken utterances (text,
 rule, heat, timing, target). Every file also compiles for the SH-4.
 
-## Remaining (in dependency order)
+## Remaining
 
-The entire deterministic game logic is done and byte-exact: the simulation and
-the whole language pipeline (morphology, ban gate, lexicon+grammar data, the
-rule engine, and speech). Given a seed and a wall-clock season, the C port
-produces the same day, event for event, and the herder says the same words,
-utterance for utterance, as the web. What remains is presentation and platform,
-none of it under a byte-exact constraint.
+The game is playable end to end on the Dreamcast: **title -> play -> gravestone
+-> Hall of Herders -> title**. The simulation and the entire language pipeline
+are byte-exact (3287 host checks). The renderer (`render/fb.c`, verified on the
+host via `scripts/render-preview.sh`) draws a close, herder-following camera with
+sprites (sheep, herder, sheepdog, trees, houses, boulders, wells, scarecrows,
+library boxes), the web's palette, grass texture, the pen, a walk-cycle
+animation, the day/night sky tint, weather (rain/fog), and an island minimap.
+The Hall records each finished day and persists to the VMU.
 
-1. **Visual fidelity**: the game runs on the Dreamcast with a faithful
-   framebuffer renderer (`render/fb.c`): a close camera (22px tiles) following
-   the herder, sprites for sheep/herder/trees/houses/boulders/wells/scarecrows/
-   library boxes, the web's exact terrain palette, grass texture speckle, the
-   pen enclosure, the day/night sky tint (ported from `palette.ts` `dayTint`),
-   and an island minimap. Verified on the host with a PNG preview pipeline
-   (`scripts/render-preview.sh`). Still to add for full polish: animated sprite
-   frames, the floating speech bubble (currently a bottom panel), the sheepdog,
-   and weather visuals (rain/fog).
-2. **Real-time speech glue**: the queue, recent-line memory feedback, flyting
-   and curse replies, the diary — the wall-clock-gated parts of `main.ts`. Not
-   byte-exact-verifiable (they depend on frame timing), so they belong with the
-   app, not the golden suite.
-3. **Platform**: menu, VMU saves, the Hall of Shame, polished disc packaging.
+What is left, and why:
+
+1. **On-hardware verification** — this machine has no Flycast, so the world art
+   is host-verified but the **BIOS-font text** (HUD, speech, title, Hall) and the
+   **VMU save** have never actually run. The VMU write is a best-effort raw
+   `fs_write`; a real card likely needs a `vmu_pkg` wrapper with an icon. These
+   need a screen/card to confirm and finish.
+2. **Presentation polish** — richer sprite animation than the two-frame leg
+   cycle; a floating speech bubble by the herder instead of the bottom panel.
+3. **Render-proximity delighters** — the web triggers extra lines when the herder
+   passes a signpost/inn/well/hens/cow and when the wind takes his hat; the
+   speech for these is ported (`speakKind`), but the proximity triggers live in
+   the web's render loop and are not wired in yet. Also the rainbow-after-rain
+   and the finale fly-through.
 
 ## Where this stands (honest)
 
-The simulation and the curse-writing brain are **finished and proven** byte-exact
-end to end (3287 checks) and **run on the Dreamcast**, and the world is now drawn
-with a **faithful sprite renderer** (palette, sprites, texture, day tint,
-minimap), verified frame-by-frame on the host. Remaining is presentation polish
-(sprite animation, speech bubble, sheepdog, weather visuals) and the platform
-layer (title/menu, VMU saves, Hall of Shame). Overall a fully polished 1:1
-Dreamcast build is roughly **68%** there; the logic is complete and running and
-the world looks like the game.
+All **game logic is done and proven** byte-exact and running. The world is drawn
+with a **faithful, host-verified renderer**, and the game has its full **title /
+play / Hall** structure with VMU persistence. A fully polished, hardware-confirmed
+1:1 build is roughly **78%** there. The biggest remaining unknown is not more
+code but **eyes on real hardware**: the text layer and VMU are written but
+unverified, and the last stretch of polish (animation, bubbles, proximity
+delighters) is best tuned against a screen.
