@@ -74,7 +74,8 @@ flock, level, mood word + meter), the **grass tufts and flowers**, the **Curse's
 meta-commentary banner** (THE CURSE: ...), the **black-and-white border-collie
 dog**, **real-time pacing** with a speed control, the **seasonal palette**
 (autumn trees and tinted terrain, from the DC clock), and the **book-found
-toast**. All confirmed on the emulator (docs/emulator-autumn-hero.png).
+toast**, the **Last heard** foot panel, and the day-start **Sad Almanac forecast**
+card. All confirmed on the emulator (docs/emulator-autumn-hero.png).
 
 Running on the emulator also exposed and fixed two issues the host preview could
 not show: **stale VRAM in the bottom strip** (the world now fills the whole area
