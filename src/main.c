@@ -12,6 +12,7 @@
 #include "core/sim/world.h"
 #include "core/lang/speech.h"
 #include "core/lang/grammar.h"
+#include "core/rng.h"
 #include "data/lang_data.h"
 #include "core/progression.h"
 #include "core/names.h"
@@ -20,6 +21,7 @@
 KOS_INIT_FLAGS(INIT_DEFAULT);
 
 static uint16 *fb;
+static double mku(const char *seed,const char *dom,int tick){ char b[128]; snprintf(b,sizeof(b),"%s|%s|%d",seed,dom,tick); uint32_t st=herder_fnv1a(b); return herder_unit_from_u32(herder_mulberry32_u32(&st)); }
 static int g_fast=1;
 
 
@@ -180,7 +182,7 @@ int main(int argc, char **argv){
     char curline[512]="The Curse of the Herder.";
     int lineUntil=240;
     int nextIdle=g_world.tick + herder_next_idle_curse_ticks(&g_world);
-    int lastSeq=-1, frame=0, recorded=0, lastSignpost=-100000, lastHat=-100000;
+    int lastSeq=-1, frame=0, recorded=0, lastSignpost=-100000, lastHat=-100000, lastInn=-100000, lastHens=-100000;
     int wasRaining=0, rainbowUntil=-1;
     char curseLine[160]=""; int curseUntil=-1, lastCurse=-100000;
     char toastLine[96]=""; int toastUntil=-1;
@@ -256,6 +258,8 @@ int main(int argc, char **argv){
             if(g_world.windUntilTick>g_world.tick && g_world.tick-lastHat>14400){
                 HerderUtterance u=herder_speak_kind(&g_world,EV_hat,4,0.35); lastHat=g_world.tick; if(u.ok){ snprintf(curline,sizeof(curline),"%s",u.text); lineUntil=frame+(int)(u.seconds*60); snprintf(lastHeard,sizeof(lastHeard),"%s",u.text); }
             }
+            if(g_world.tick-lastInn>90*60*4){ for(int v=0;v<g_world.map->village_count;v++){ int dx=g_world.map->villages[v].x-hx, dy=g_world.map->villages[v].y-hy; if(dx*dx+dy*dy<25){ lastInn=g_world.tick; HerderUtterance u=herder_speak_kind(&g_world,EV_inn,4,0.3); if(u.ok){ snprintf(curline,sizeof(curline),"%s",u.text); lineUntil=frame+(int)(u.seconds*60); snprintf(lastHeard,sizeof(lastHeard),"%s",u.text); } break; } } }
+            if(g_world.tick-lastHens>45*60*4 && mku(g_world.seed,"hens-say",g_world.tick)<0.5){ int found=0; for(int dy=-3;dy<=3&&!found;dy++) for(int dx=-3;dx<=3;dx++){ int x=hx+dx,y=hy+dy; if(x<0||y<0||x>=N||y>=N)continue; int dd=g_world.map->deco[y*N+x]; if(dd==D_House||dd==D_HouseRed){ found=1; break; } } if(found){ lastHens=g_world.tick; HerderUtterance u=herder_speak_kind(&g_world,EV_hens,4,0.3); if(u.ok){ snprintf(curline,sizeof(curline),"%s",u.text); lineUntil=frame+(int)(u.seconds*60); snprintf(lastHeard,sizeof(lastHeard),"%s",u.text); } } }
         }
         /* deliver queued flyting beats when the bubble is free */
         if(qn>0 && frame>=lineUntil && frame>=qat[qhead]){ snprintf(curline,sizeof(curline),"%s",qtext[qhead]); lineUntil=frame+qsecs[qhead]; snprintf(lastHeard,sizeof(lastHeard),"%s",qtext[qhead]); qhead=(qhead+1)%8; qn--; }

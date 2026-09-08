@@ -205,8 +205,9 @@ void herder_fb_draw_world(uint16_t *fb, const HerderWorld *w){
                 switch(d){
                     case D_Tree: draw_tree(fb,px+HERDER_TS/2,py+HERDER_TS/2, g_greens[(unsigned)(mx*7+my*13)%5]); break;
                     case D_Tree2: draw_tree(fb,px+HERDER_TS/2,py+HERDER_TS/2, C_tree2); break;
-                    case D_House: draw_house(fb,px,py,0); break;
-                    case D_HouseRed: draw_house(fb,px,py,1); break;
+                    case D_House: case D_HouseRed: { draw_house(fb,px,py,d==D_HouseRed);
+                        /* a couple of hens scratching by the door */
+                        unsigned hh=(unsigned)(mx*17+my*31); for(int k=0;k<2;k++){ int hx=px+2+((hh>>(k*3))&7)%(HERDER_TS-3), hy=py+HERDER_TS-4-(k*2); disc(fb,hx,hy,2,HEX(0xf0ead8)); herder_fb_fill(fb,hx,hy-2,1,1,HEX(0xc94f4f)); herder_fb_fill(fb,hx+(k?2:-2),hy,1,1,HEX(0xe0b33c)); } } break;
                     case D_Boulder: disc(fb,px+HERDER_TS/2,py+HERDER_TS/2,HERDER_TS/3,C_boulder); break;
                     case D_Well: disc(fb,px+HERDER_TS/2,py+HERDER_TS/2,HERDER_TS/3,C_well); break;
                     case D_Scarecrow: herder_fb_fill(fb,px+HERDER_TS/2-1,py+2,2,HERDER_TS-4,C_scare); herder_fb_fill(fb,px+3,py+HERDER_TS/3,HERDER_TS-6,2,C_scare); break;
