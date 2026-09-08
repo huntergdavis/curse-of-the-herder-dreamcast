@@ -182,6 +182,15 @@ static void draw_dog(uint16_t *fb,int cx,int cy,int facing,int moving){
     herder_fb_fill(fb,cx+hx+(facing==2?-1:0),cy-4,1,2,black); /* ear */
     int tx=cx-(facing==2?-6:6); herder_fb_fill(fb,tx,cy+1,3,1,black); herder_fb_fill(fb,tx+(facing==2?2:0),cy+1,1,1,white); /* tail w/ white tip */
 }
+static void draw_fence(uint16_t *fb,int px,int py,int mx,int my,const HerderMap *m){
+    int n=m->size; uint16_t rail=C_pen, post=HEX(0x8a6238);
+    #define HASF(dx,dy) ((mx+(dx))>=0&&(my+(dy))>=0&&(mx+(dx))<n&&(my+(dy))<n && m->deco[(my+(dy))*n+(mx+(dx))]==D_Fence)
+    int cxp=px+HERDER_TS/2, cyp=py+HERDER_TS/2;
+    if(HASF(1,0)||HASF(-1,0)){ int x0=HASF(-1,0)?px:cxp, x1=HASF(1,0)?px+HERDER_TS:cxp; herder_fb_fill(fb,x0,cyp-3,x1-x0,1,rail); herder_fb_fill(fb,x0,cyp+3,x1-x0,1,rail); }
+    if(HASF(0,1)||HASF(0,-1)){ int y0=HASF(0,-1)?py:cyp, y1=HASF(0,1)?py+HERDER_TS:cyp; herder_fb_fill(fb,cxp-3,y0,1,y1-y0,rail); herder_fb_fill(fb,cxp+3,y0,1,y1-y0,rail); }
+    herder_fb_fill(fb,cxp-2,cyp-6,4,13,post);
+    #undef HASF
+}
 static void draw_tree(uint16_t *fb,int cx,int cy,uint16_t foliage){ herder_fb_fill(fb,cx-1,cy,3,7,HEX(0x6b4a2b)); disc(fb,cx,cy-3,7,foliage); }
 static void draw_house(uint16_t *fb,int px,int py,int red){
     uint16_t wall=red?HEX(0xd8b28a):HEX(0xe8dcc3), roof=red?HEX(0xb03a3a):HEX(0x8c4a3a);
@@ -205,7 +214,7 @@ void herder_fb_draw_world(uint16_t *fb, const HerderWorld *w){
             uint16_t c; int t=T_Water,d=D_None;
             if(mx<0||my<0||mx>=m->size||my>=m->size) c=HERDER_C_ink;
             else { int i=my*m->size+mx; t=m->terrain[i]; d=m->deco[i]; c=TERRAIN_COL[t];
-                   if(d==D_PenGround) c=C_penground; else if(d==D_Fence) c=C_pen; }
+                   if(d==D_PenGround) c=C_penground; }
             herder_fb_fill(fb,px,py,HERDER_TS,HERDER_TS,c);
             if(mx>=0&&my>=0&&mx<m->size&&my<m->size){ tex_fleck(fb,px,py,mx,my,t);
                 switch(d){
@@ -218,6 +227,7 @@ void herder_fb_draw_world(uint16_t *fb, const HerderWorld *w){
                     case D_Well: disc(fb,px+HERDER_TS/2,py+HERDER_TS/2,HERDER_TS/3,C_well); break;
                     case D_Scarecrow: herder_fb_fill(fb,px+HERDER_TS/2-1,py+2,2,HERDER_TS-4,C_scare); herder_fb_fill(fb,px+3,py+HERDER_TS/3,HERDER_TS-6,2,C_scare); break;
                     case D_Stump: disc(fb,px+HERDER_TS/2,py+HERDER_TS/2,4,C_stump); break;
+                    case D_Fence: draw_fence(fb,px,py,mx,my,m); break;
                     case D_Tuft: { uint16_t tc=HEX(0x3a6a24); int bx=px+HERDER_TS/2, by=py+HERDER_TS/2+3; for(int b=-3;b<=3;b+=3){ herder_fb_fill(fb,bx+b,by-4,1,5,tc); herder_fb_fill(fb,bx+b-1,by-4,1,2,tc); } } break;
                     case D_Flowers: { static const uint32_t fl[4]={0xf2c14e,0xe86a92,0xf4f1e6,0xb58cf0}; unsigned h=(unsigned)(mx*29+my*71); for(int k=0;k<4;k++){ int fx=px+2+((h>>(k*2))&7)%(HERDER_TS-3), fy=py+2+((h>>(k*3))&7)%(HERDER_TS-3); uint16_t c=HEX(fl[(k+ (h&3))%4]); herder_fb_fill(fb,fx,fy,2,2,c); } } break;
                     default: break;
