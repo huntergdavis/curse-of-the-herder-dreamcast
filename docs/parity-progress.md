@@ -22,43 +22,41 @@ raw 64-bit pattern; arrays by hash and, where useful, tile by tile.
 | Sim step | core/sim/{world,step} | the whole day: modes, tempers, mishaps, weather, streaks, nemesis, jailbreaks, lunch, rival, dog, milestones, progression, governor | full-day event transcript, 2 seeds |
 | Morphology | core/lang/morphology | article, plural, verb forms, number/ordinal words, syllables, tidySentence | 251-case battery |
 | Ban filter | core/lang/banned | ~80 patterns, leet+diacritic normalise, mini regex matcher | 75-case battery |
+| Lang data | data/lang_data | 2715 lexicon entries, 1656 rules, 20 non-terminals, 29 books (generated) | compiles; consumed by engine |
+| Grammar | core/lang/grammar | rule picker, slot/gate/NT expansion, pools, weights, modifiers, contextual symbols, heat | 732 generated lines, 6 contexts |
+| Speech | core/lang/speech | world->context, target pick, heat bumps, speak for event/idle/epitaph | 624-utterance full-day stream |
 
-Host tests: **1931 checks, 0 failures** (including a full-day, tick-exact event
-transcript of 626 events across two seeds, and byte-exact morphology and ban
-checks). Every file also compiles for the SH-4.
+Host tests: **3287 checks, 0 failures.** This includes a full-day, tick-exact
+event transcript (626 events, two seeds), 732 generated lines across six
+contexts, and a full-day, byte-exact stream of 624 spoken utterances (text,
+rule, heat, timing, target). Every file also compiles for the SH-4.
 
 ## Remaining (in dependency order)
 
-The entire deterministic simulation is done and byte-exact, and so are the two
-self-contained language leaves (morphology and the ban gate). What is left is
-the grammar core, the data it reads, and the presentation layer.
+The entire deterministic game logic is done and byte-exact: the simulation and
+the whole language pipeline (morphology, ban gate, lexicon+grammar data, the
+rule engine, and speech). Given a seed and a wall-clock season, the C port
+produces the same day, event for event, and the herder says the same words,
+utterance for utterance, as the web. What remains is presentation and platform,
+none of it under a byte-exact constraint.
 
-1. **Data export**: emit the lexicon (~2,500 entries across the reviewed packs,
-   in order CORE_PACKS + PACKS_5_8 + PACKS_9_12), the grammar rules
-   (RULES + RULES_5_8 + RULES_9_12 + CALLBACK_RULES, in that order), the
-   non-terminals, and the 29 books to C tables. Order is parity-critical
-   because it fixes the byPos and rule lists the weighted picks walk. Best done
-   by a generator that imports the real TS data. Mechanical; the natural
-   parallel track.
-2. **Grammar engine** (`grammar.ts`): the rule picker, slot expansion, register
-   and band weighting, allit/syllable/own constraints, modifiers, contextual
-   symbols, heat. RNG-draw order is unforgiving, exactly as the sim step was.
-   Golden: generated line per (event, context, tick, seed).
-3. **Speech** (`speech.ts`): world -> context -> line; signature words,
-   target selection, timing.
-4. **Main-loop glue**: what he says and when (queue, remarks, flyting, diary).
-5. **Renderer on PowerVR**: terrain chunks, sprites, text, bubbles, day tint,
-   weather, the delighters. No parity constraint; the largest raw effort; can
-   proceed against the already-ported map in parallel.
-6. **Menu, VMU saves, Hall, persistence.**
+1. **Main-loop glue** (`main.ts`, the non-DOM parts): the utterance queue and
+   recent-line memory, idle-curse scheduling (`nextIdleCurseTicks` is already
+   ported), flyting/curse replies, the diary. Mostly bookkeeping around the
+   already-ported speech calls.
+2. **Renderer on PowerVR**: terrain chunks, sprites and their animation, text,
+   speech bubbles, day tint, weather, the delighters, HUD. The largest raw
+   effort; proceeds against the already-ported map and sim. Can be built in
+   parallel now that the state it draws is fixed.
+3. **Menu, VMU saves, Hall of Shame, disc boot/packaging.**
 
 ## Where this stands (honest)
 
-The deterministic **simulation is 100% ported and proven** byte-exact over a
-full day. The **language engine's foundations are done** (morphology, ban
-filter). The **grammar rule engine, speech, and the ~3,400 lines of word and
-template data** are the next large block — this is the heart of the game, the
-part that actually writes the curses, and it will take the same golden-transcript
-grind the sim did. Rendering and platform come after. Overall a fully playable
-1:1 Dreamcast build is roughly **40%** there; the hard, exactness-critical brain
-is the part that is furthest along.
+The hard, exactness-critical two-thirds of the game — the simulation and the
+curse-writing brain — is **finished and proven** byte-exact end to end (3287
+checks). What is left is drawing it on the Dreamcast's PowerVR and the console
+platform layer (saves, menu, disc). That is a large amount of code, but it is
+conventional game-rendering and integration work with no parity constraint, and
+it can proceed against fixed, verified state. Overall a fully playable 1:1
+Dreamcast build is roughly **55%** there, and every remaining piece is
+presentation or platform, not logic.
