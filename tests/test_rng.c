@@ -22,6 +22,7 @@ static void expect_u32(const char *what, uint32_t got, uint32_t want) {
 static const char *HEXD = "0123456789abcde";
 static const char *const TEMPERN[5] = {"plain","skittish","stubborn","dozy","curious"};
 static HerderSheep g_flock[80]; static int g_flockn = 0; static char g_flockseed[64] = {0};
+static HerderLib g_libs[32]; static int g_libn = 0; static char g_libseed[64] = {0};
 static uint32_t byte_hash(const uint8_t *a, int len) {
     uint32_t h = 0x811c9dc5u;
     for (int i = 0; i < len; i++) { h ^= a[i]; h *= 0x01000193u; }
@@ -78,6 +79,26 @@ int main(int argc, char **argv) {
             double x = dbl_of(fld[2]), y = dbl_of(fld[3]), sc = dbl_of(fld[4]);
             char w[64]; snprintf(w, sizeof(w), "FBM(%u,%.2f,%.2f,%.1f)", seed, x, y, sc);
             expect_bits(w, herder_fbm(seed, x, y, sc), fld[5]);
+        } else if (strcmp(fld[0], "LIBN") == 0 && n >= 3) {
+            if (strcmp(g_libseed, fld[1]) != 0) {
+                HerderMap m; herder_generate_map(fld[1], 576, &m);
+                static HerderSheep sh[80];
+                herder_create_world(&m, fld[1], sh, 80, g_libs, &g_libn);
+                snprintf(g_libseed, sizeof(g_libseed), "%s", fld[1]);
+                herder_map_free(&m);
+            }
+            checks++; if (g_libn != atoi(fld[2])) { failures++; printf("FAIL LIBN(%s): got %d want %d\n", fld[1], g_libn, atoi(fld[2])); }
+        } else if (strcmp(fld[0], "LIBS") == 0 && n >= 5) {
+            if (strcmp(g_libseed, fld[1]) != 0) {
+                HerderMap m; herder_generate_map(fld[1], 576, &m);
+                static HerderSheep sh[80];
+                herder_create_world(&m, fld[1], sh, 80, g_libs, &g_libn);
+                snprintf(g_libseed, sizeof(g_libseed), "%s", fld[1]);
+                herder_map_free(&m);
+            }
+            int k = atoi(fld[2]);
+            checks++;
+            if (g_libs[k].x != atoi(fld[3]) || g_libs[k].y != atoi(fld[4])) { failures++; printf("FAIL LIBS(%s,%d): got %d,%d want %s,%s\n", fld[1], k, g_libs[k].x, g_libs[k].y, fld[3], fld[4]); }
         } else if (strcmp(fld[0], "FLOCKN") == 0 && n >= 4) {
             if (strcmp(g_flockseed, fld[1]) != 0) {
                 HerderMap m; herder_generate_map(fld[1], atoi(fld[2]), &m);

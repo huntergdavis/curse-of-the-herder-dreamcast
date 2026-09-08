@@ -27,11 +27,10 @@ static int splice_at(int *arr, int *len, int idx) {
     return v;
 }
 
-int herder_create_flock(const HerderMap *map, const char *seed, HerderSheep *out, int max) {
-    (void)max;
+static int flock_core(const HerderMap *map, const char *seed, HerderSheep *out, int max, uint32_t *stp) {
+    (void)max; (void)seed;
     int n = map->size;
-    char fseed[128]; snprintf(fseed, sizeof(fseed), "%s|flock", seed);
-    uint32_t st = herder_fnv1a(fseed);
+    uint32_t st = *stp;
     #define RND() herder_unit_from_u32(herder_mulberry32_u32(&st))
     double scale = n / 512.0;
     Ring rings[5];
@@ -124,5 +123,84 @@ int herder_create_flock(const HerderMap *map, const char *seed, HerderSheep *out
 
     for (int r = 0; r < 5; r++) free(bucket[r]);
     free(taken); free(roofs); free(shallows); free(boulders);
+    *stp = st;
     return count;
+}
+
+int herder_create_flock(const HerderMap *map, const char *seed, HerderSheep *out, int max) {
+    char fseed[128]; snprintf(fseed, sizeof(fseed), "%s|flock", seed);
+    uint32_t st = herder_fnv1a(fseed);
+    return flock_core(map, seed, out, max, &st);
+}
+
+/* isPlaceable (generate.ts): reachable plain ground, not built on. */
+static int lib_placeable(const HerderMap *m, int x, int y) {
+    int i = y * m->size + x;
+    if (!isfinite(m->pen_distance[i])) return 0;
+    int t = m->terrain[i];
+    if (t == T_Road || t == T_Bridge) return 0;
+    int d = m->deco[i];
+    return d == D_None || d == D_Tuft || d == D_Flowers || d == D_Boulder;
+}
+
+#define LIBRARY_COUNT 24
+
+int herder_place_libraries(const HerderMap *map, const HerderSheep *sheep, int sheepN,
+                           uint32_t *stp, HerderLib *out) {
+    int n = map->size;
+    uint32_t st = *stp;
+    /* byDistance: stable sort of sheep indices by pen distance (ties keep order). */
+    int order[128]; for (int i = 0; i < sheepN; i++) order[i] = i;
+    for (int i = 1; i < sheepN; i++) { /* insertion sort = stable */
+        int key = order[i]; double kd = map->pen_distance[sheep[key].y * n + sheep[key].x];
+        int j = i - 1;
+        while (j >= 0) { double jd = map->pen_distance[sheep[order[j]].y * n + sheep[order[j]].x]; if (jd <= kd) break; order[j+1] = order[j]; j--; }
+        order[j+1] = key;
+    }
+    int count = LIBRARY_COUNT < sheepN ? LIBRARY_COUNT : sheepN;
+    uint8_t *used = calloc((size_t)n * n, 1);
+    int outn = 0;
+    for (int k = 0; k < count; k++) {
+        double frac = pow((double)k / (double)(sheepN > count ? 1 : (count - 1 < 1 ? 1 : count - 1)), 0.75);
+        /* anchor = byDistance[round(pow(k/max(1,count-1),0.75)*(len-1))] */
+        double denom = (count - 1) < 1 ? 1 : (count - 1);
+        int anchorPos = (int)floor(pow((double)k / denom, 0.75) * (sheepN - 1) + 0.5);
+        const HerderSheep *anchor = &sheep[order[anchorPos]];
+        (void)frac;
+        for (int tries = 0; tries < 60; tries++) {
+            double r = 3 + (herder_unit_from_u32(herder_mulberry32_u32(&st))) * 4;
+            double a = (herder_unit_from_u32(herder_mulberry32_u32(&st))) * M_PI * 2;
+            int x = (int)floor(anchor->x + cos(a) * r + 0.5);
+            int y = (int)floor(anchor->y + sin(a) * r + 0.5);
+            if (x < 2 || y < 2 || x >= n - 2 || y >= n - 2) continue;
+            int i = y * n + x;
+            if (used[i] || !lib_placeable(map, x, y)) continue;
+            int onSheep = 0; for (int q = 0; q < sheepN; q++) if (sheep[q].x == x && sheep[q].y == y) { onSheep = 1; break; }
+            if (onSheep) continue;
+            int tooClose = 0; for (int q = 0; q < outn; q++) if (hypot((double)out[q].x - x, (double)out[q].y - y) < 10) { tooClose = 1; break; }
+            if (tooClose) continue;
+            used[i] = 1; out[outn].x = x; out[outn].y = y; out[outn].taken = 0; outn++;
+            break;
+        }
+    }
+    /* sort libraries by pen distance (stable). */
+    for (int i = 1; i < outn; i++) {
+        HerderLib key = out[i]; double kd = map->pen_distance[key.y * n + key.x];
+        int j = i - 1;
+        while (j >= 0) { double jd = map->pen_distance[out[j].y * n + out[j].x]; if (jd <= kd) break; out[j+1] = out[j]; j--; }
+        out[j+1] = key;
+    }
+    free(used);
+    *stp = st;
+    return outn;
+}
+
+int herder_create_world(const HerderMap *map, const char *seed,
+                        HerderSheep *sheep_out, int sheep_max,
+                        HerderLib *lib_out, int *lib_count) {
+    char fseed[128]; snprintf(fseed, sizeof(fseed), "%s|flock", seed);
+    uint32_t st = herder_fnv1a(fseed);
+    int sc = flock_core(map, seed, sheep_out, sheep_max, &st);
+    *lib_count = herder_place_libraries(map, sheep_out, sc, &st, lib_out);
+    return sc;
 }

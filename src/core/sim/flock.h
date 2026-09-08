@@ -17,4 +17,13 @@ typedef struct {
 
 int herder_create_flock(const HerderMap *map, const char *seed, HerderSheep *out, int max);
 
+typedef struct { int x, y; int taken; } HerderLib;
+/* Full deterministic world setup: flock then libraries, sharing one rng.
+ * Returns sheep count; writes library count to *lib_count. */
+int herder_place_libraries(const HerderMap *map, const HerderSheep *sheep, int sheepN,
+                           uint32_t *stp, HerderLib *out);
+int herder_create_world(const HerderMap *map, const char *seed,
+                        HerderSheep *sheep_out, int sheep_max,
+                        HerderLib *lib_out, int *lib_count);
+
 #endif
