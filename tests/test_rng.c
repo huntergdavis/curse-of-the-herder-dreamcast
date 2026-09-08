@@ -3,6 +3,7 @@
 #include "core/noise.h"
 #include "core/map/terrain.h"
 #include "core/map/path.h"
+#include "core/map/generate.h"
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -15,6 +16,12 @@ static void expect_u32(const char *what, uint32_t got, uint32_t want) {
 }
 
 /* Split `line` into up to `max` fields on single '\t' (empty fields kept). */
+static const char *HEXD = "0123456789abcde";
+static uint32_t byte_hash(const uint8_t *a, int len) {
+    uint32_t h = 0x811c9dc5u;
+    for (int i = 0; i < len; i++) { h ^= a[i]; h *= 0x01000193u; }
+    return h;
+}
 static uint64_t bits_of(double d) { uint64_t u; memcpy(&u, &d, 8); return u; }
 static double dbl_of(const char *hex16) { uint64_t u = (uint64_t)strtoull(hex16, NULL, 16); double d; memcpy(&d, &u, 8); return d; }
 static void expect_bits(const char *what, double got, const char *wanthex) {
@@ -32,12 +39,12 @@ int main(int argc, char **argv) {
     const char *path = argc > 1 ? argv[1] : "tests/golden/rng.txt";
     FILE *f = fopen(path, "r");
     if (!f) { printf("cannot open %s\n", path); return 2; }
-    static char line[65536]; char *fld[10];
+    static char line[65536]; char *fld[12];
     static uint8_t gterr[64*64]; int gn = 0; char gid[32] = {0};
     while (fgets(line, sizeof(line), f)) {
         char *nl = strchr(line, '\n'); if (nl) *nl = 0;
         if (line[0] == 0) continue;
-        int n = split_tabs(line, fld, 8);
+        int n = split_tabs(line, fld, 12);
         if (n < 2) continue;
         if (strcmp(fld[0], "FNV") == 0 && n >= 3) {
             char w[80]; snprintf(w, sizeof(w), "FNV(%s)", fld[1]);
@@ -66,6 +73,29 @@ int main(int argc, char **argv) {
             double x = dbl_of(fld[2]), y = dbl_of(fld[3]), sc = dbl_of(fld[4]);
             char w[64]; snprintf(w, sizeof(w), "FBM(%u,%.2f,%.2f,%.1f)", seed, x, y, sc);
             expect_bits(w, herder_fbm(seed, x, y, sc), fld[5]);
+        } else if (strcmp(fld[0], "MAP") == 0 && n >= 9) {
+            HerderMap m; herder_generate_map(fld[1], atoi(fld[2]), &m);
+            char vs[512]; int vp = 0;
+            for (int v = 0; v < m.village_count; v++) vp += snprintf(vs + vp, sizeof(vs) - (size_t)vp, "%s%d.%d.%d", v ? ";" : "", m.villages[v].name, m.villages[v].x, m.villages[v].y);
+            char got[600];
+            snprintf(got, sizeof(got), "%08x\t%08x\t%d\t%d\t%d\t%s",
+                     byte_hash(m.terrain, m.size*m.size), byte_hash(m.deco, m.size*m.size),
+                     m.pen_x, m.pen_y, m.walkable_count, vs);
+            char want[600];
+            snprintf(want, sizeof(want), "%s\t%s\t%s\t%s\t%s\t%s", fld[3], fld[4], fld[5], fld[6], fld[7], n >= 9 ? fld[8] : "");
+            checks++;
+            if (strcmp(got, want) != 0) { failures++; printf("FAIL MAP(%s,%s):\n  got  %s\n  want %s\n", fld[1], fld[2], got, want); }
+            herder_map_free(&m);
+        } else if (strcmp(fld[0], "MAPGRID") == 0 && n >= 5) {
+            HerderMap m; herder_generate_map(fld[1], atoi(fld[2]), &m);
+            int len = m.size * m.size, bad_t = 0, bad_d = 0, first = -1;
+            for (int i = 0; i < len; i++) {
+                if (HEXD[m.terrain[i]] != fld[3][i]) { bad_t++; if (first < 0) first = i; }
+                if (HEXD[m.deco[i]] != fld[4][i]) { bad_d++; if (first < 0) first = i; }
+            }
+            checks++;
+            if (bad_t || bad_d) { failures++; printf("FAIL MAPGRID: terrain %d, deco %d differ (first at tile %d = %d,%d)\n", bad_t, bad_d, first, first % m.size, first / m.size); }
+            herder_map_free(&m);
         } else if (strcmp(fld[0], "GRID") == 0 && n >= 4) {
             snprintf(gid, sizeof(gid), "%s", fld[1]);
             gn = atoi(fld[2]);
