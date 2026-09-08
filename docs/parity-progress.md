@@ -37,17 +37,17 @@ The game is a faithful, playable, byte-exact port: **title -> play -> gravestone
 -> Hall -> title**, with a floating speech bubble, a portable bitmap font (so all
 text is host-verified, no BIOS-font dependency), sprites with a walk cycle, the
 sheepdog, day/night tint, rain/fog, an island minimap, render-layer delighters
-(signpost, hat-in-wind) on top of every sim-event line, and a proper vmu_pkg save.
+(signpost, hat-in-wind) on top of every sim-event line, a rainbow after the rain,
+a gravestone induction finale, and a proper vmu_pkg save.
 
 What is left is small and mostly needs a screen or a memory card:
 
 1. **On-hardware confirmation** — no Flycast/hardware here. The world, sprites,
    and *all text* are verified via the host PNG pipeline, but the actual **VMU
    save round-trip** has never run against a real card (the code now builds a
-   correct vmu_pkg, so it should work).
-2. **Finishing flourishes** — the end-of-day finale fly-through and the
-   rainbow-after-rain are not ported; a few more render-proximity delighters
-   (inn, hens, cow, stick) could be wired like the signpost one.
+   correct vmu_pkg, so it should work), and nothing has been seen on a TV.
+2. **A few minor delighters** — the signpost and hat lines are wired; inn/hens/
+   cow/stick could be added the same way where the map supports them.
 3. **Animation depth** — the walk cycle is two frames; the web's sprites are
    richer.
 
@@ -56,7 +56,7 @@ What is left is small and mostly needs a screen or a memory card:
 Everything that can be built and verified from this environment is done:
 **all logic byte-exact**, a **faithful renderer** with all the major visual
 systems, **all text verified**, the **full game structure** with persistence, and
-the **speech bubble**. A fully polished, hardware-confirmed 1:1 build is roughly
-**85%** there. The remaining ~15% is hardware confirmation (VMU/TV), the finale
-and rainbow flourishes, and richer animation — none of it exactness-critical, and
-the first of those simply needs a Dreamcast or an emulator.
+the **speech bubble**. A fully polished, hardware-confirmed 1:1 build is roughly **88%** there. The
+remaining ~12% is hardware confirmation (VMU round-trip and how it looks on a
+TV), richer sprite animation, and a couple of minor delighters — none of it
+exactness-critical, and the confirmation simply needs a Dreamcast or an emulator.
