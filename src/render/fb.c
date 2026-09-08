@@ -82,16 +82,20 @@ static void tex_fleck(uint16_t *fb,int px,int py,int mx,int my,int t){
 static void shadow(uint16_t *fb,int cx,int cy,int rx){ /* cheap dark ellipse */
     for(int dx=-rx;dx<=rx;dx++){ int w=(int)(rx*0.5*(1.0-(double)dx*dx/(rx*rx))); if(w<0)continue; int x=cx+dx,y=cy; for(int dy=-1;dy<=1;dy++){ int yy=y+dy; if((unsigned)x<HERDER_SCRW&&(unsigned)yy<HERDER_SCRH){ uint16_t c=fb[yy*HERDER_SCRW+x]; fb[yy*HERDER_SCRW+x]=(uint16_t)((c>>1)&0x7bef);} } }
 }
-static void draw_sheep(uint16_t *fb,int cx,int cy,int black,int facing,int moving,int named,int crowned){
-    uint16_t wool=black?C_black:C_sheep; uint16_t face=black?HEX(0xe8e2d4):HEX(0x3a2f2a);
+static void draw_sheep(uint16_t *fb,int cx,int cy,int black,int facing,int moving,int named,int crowned,int pose){
+    /* pose: 0 idle/walk, 1 graze (head down), 2 asleep */
+    uint16_t wool=black?C_black:(pose==2?HEX(0xe9e4d3):C_sheep); uint16_t face=black?HEX(0xe8e2d4):HEX(0x3a2f2a);
     int bob = moving ? ((g_anim/4)%2 ? -1 : 0) : 0;
     shadow(fb,cx,cy+7,9);
     int sw = moving ? ((g_anim/4)%2 ? 1 : -1) : 0;   /* leg swing */
-    herder_fb_fill(fb,cx-5,cy+5, 2, 4+sw, face); herder_fb_fill(fb,cx+3,cy+5, 2, 4-sw, face);
+    if(pose==2){ herder_fb_fill(fb,cx-5,cy+6,10,3,face); }  /* asleep: folded legs (a bar) */
+    else { herder_fb_fill(fb,cx-5,cy+5, 2, 4+sw, face); herder_fb_fill(fb,cx+3,cy+5, 2, 4-sw, face); }
     cy+=bob;
     disc(fb,cx,cy+1,7,wool); disc(fb,cx-4,cy,5,wool); disc(fb,cx+4,cy,5,wool); disc(fb,cx,cy-4,5,wool);
-    int hx=facing==2?-8:8; disc(fb,cx+hx,cy-1,3,face);
-    herder_fb_fill(fb,cx+hx+(facing==2?-1:1),cy-2,1,1,HEX(0xf6f2e6)); /* eye white */
+    int hx=facing==2?-8:8; int hd=(pose==1?3:0);   /* head drops when grazing */
+    disc(fb,cx+hx,cy-1+hd,3,face);
+    if(pose==2){ herder_fb_fill(fb,cx+hx-1,cy-1,3,1,HEX(0xf6f2e6)); } /* closed eye: a line */
+    else herder_fb_fill(fb,cx+hx+(facing==2?-1:1),cy-2+hd,1,1,HEX(0xf6f2e6));
     if(crowned){ uint16_t g=HEX(0xe0b33c); int gx=cx+(facing==2?-6:6); herder_fb_fill(fb,gx-3,cy-8,7,2,g); herder_fb_fill(fb,gx-3,cy-11,2,3,g); herder_fb_fill(fb,gx,cy-11,2,3,g); herder_fb_fill(fb,gx+2,cy-11,2,3,g); }
     else if(named){ uint16_t r=HEX(0xc94f4f); int rx=cx+(facing==2?-5:5); herder_fb_fill(fb,rx-1,cy-7,3,3,r); }
 }
@@ -169,7 +173,9 @@ void herder_fb_draw_world(uint16_t *fb, const HerderWorld *w){
     for(int i=0;i<w->sheep_count;i++){ const HerderSheep*s=&w->sheep[i]; if(s->mode==1) continue; /* carried: drawn with herder */
         int sx=(int)((s->x-ox)*HERDER_TS)+HERDER_TS/2, sy=HERDER_TOP+(int)((s->y-oy)*HERDER_TS)+HERDER_TS/2;
         if(sx<-20||sy<HERDER_TOP-20||sx>HERDER_SCRW+20||sy>HERDER_SCRH-HERDER_BOT+20) continue;
-        int smv=(s->mode==0)&&((s->tx!=s->x)||(s->ty!=s->y)); draw_sheep(fb,sx,sy,s->black,s->x<w->h.x?2:0,smv,s->named,s->nemesis); }
+        int smv=(s->mode==0)&&((s->tx!=s->x)||(s->ty!=s->y));
+        int pose=0; if(!smv && s->mode==0){ if(s->temper==3 && ((s->id*7+w->tick/512)%5)==0) pose=2; else if(((s->id*13+w->tick/256)%3)==0) pose=1; }
+        draw_sheep(fb,sx,sy,s->black,s->x<w->h.x?2:0,smv,s->named,s->nemesis,pose); }
     /* herder */
     { int sx=(int)((w->h.x-ox)*HERDER_TS)+HERDER_TS/2, sy=HERDER_TOP+(int)((w->h.y-oy)*HERDER_TS)+HERDER_TS/2;
       int hmv=(w->h.mode==HM_TOSHEEP||w->h.mode==HM_TOPEN||w->h.mode==HM_TOLIBRARY);
@@ -354,7 +360,7 @@ void herder_fb_gravestone(uint16_t *fb){
 
 /* dev helper: draw one herder / sheep for the sprite sheet. */
 void herder_fb_test_herder(uint16_t *fb,int x,int y,int facing,int carrying,int moving,int level){ draw_herder(fb,x,y,facing,carrying,moving,level,0); }
-void herder_fb_test_sheep(uint16_t *fb,int x,int y,int black,int facing,int moving,int named,int crowned){ draw_sheep(fb,x,y,black,facing,moving,named,crowned); }
+void herder_fb_test_sheep(uint16_t *fb,int x,int y,int black,int facing,int moving,int named,int crowned,int pose){ draw_sheep(fb,x,y,black,facing,moving,named,crowned,pose); }
 void herder_fb_test_dog(uint16_t *fb,int x,int y,int facing,int moving){ draw_dog(fb,x,y,facing,moving); }
 
 static void draw_rival(uint16_t *fb, const HerderWorld *w){
@@ -367,7 +373,7 @@ static void draw_rival(uint16_t *fb, const HerderWorld *w){
     int dir = w->rival_dx<0 ? 2 : 0;                 /* facing */
     int back = w->rival_dx<0 ? 1 : -1;               /* his flock trails behind */
     /* his tidy flock: a neat line, all facing the same way, none fleeing */
-    for(int i=1;i<=4;i++){ draw_sheep(fb, rx+back*i*(HERDER_TS+2), ry+2, 0, dir, 1, 0, 0); }
+    for(int i=1;i<=4;i++){ draw_sheep(fb, rx+back*i*(HERDER_TS+2), ry+2, 0, dir, 1, 0, 0, 0); }
     /* the rival: a herder in a different coat */
     /* reuse draw_herder via test wrapper colour? draw a compact figure */
     herder_fb_fill(fb,rx-4,ry-2,8,12,HEX(0x4a6a8a));   /* blue coat, unlike ours */

@@ -16,7 +16,7 @@ void herder_fb_set_tint(double hour);
 void herder_fb_set_anim(int frame);
 void herder_fb_reset_camera(void);
 void herder_fb_test_herder(uint16_t *fb,int x,int y,int facing,int carrying,int moving,int level);
-void herder_fb_test_sheep(uint16_t *fb,int x,int y,int black,int facing,int moving,int named,int crowned);
+void herder_fb_test_sheep(uint16_t *fb,int x,int y,int black,int facing,int moving,int named,int crowned,int pose);
 void herder_fb_test_dog(uint16_t *fb,int x,int y,int facing,int moving);
 void herder_fb_draw_world(uint16_t *fb, const HerderWorld *w);
 void herder_fb_minimap(uint16_t *fb, const HerderWorld *w);
